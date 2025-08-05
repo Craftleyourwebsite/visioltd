@@ -26,18 +26,7 @@
 		flex: 1;
 	}
 	
-	.site-title {
-		text-align: center;
-		margin: 0;
-		padding: 0;
-	}
 	
-	.site-title a {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		text-decoration: none;
-	}
 	
 	.logo-image {
 		max-height: 30px;
@@ -49,6 +38,29 @@
 	@media screen and (max-width: 991px) {
 		.logo-image {
 			max-height: 24px;
+		}
+	}
+
+	/* STYLE DE TITRE FIX RESPONSIVE */
+		.qodef-m-title {
+		font-size: 7vw; /* Responsive, s'adapte à la largeur de l'écran */
+		white-space: nowrap;
+		overflow-wrap: break-word;
+		word-break: break-word;
+		text-align: center;
+		width: 110%;
+		max-width: 100vw;
+		overflow: visible;
+	}
+	.qodef-e-word-holder {
+		display: inline-block;
+		width: auto;
+		max-width: 100vw;
+		overflow: visible;
+	}
+	@media (max-width: 600px) {
+		.qodef-m-title {
+			font-size: 10vw;
 		}
 	}
 	</style>
@@ -881,7 +893,7 @@ body { background: #ffffff; }
 				<div class="elementor-widget-container">
 					<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-letter qodef-qi--has-appear qodef--appear-fade" >
 		<h1 class="qodef-m-title">
-		<span class="qodef-e-word-holder">Let's</span> <span class="qodef-e-word-holder">work</span> <span class="qodef-e-word-holder">together.</span>	</h1>
+		<span class="qodef-e-word-holder">Let's</span> <span class="qodef-e-word-holder">work</span> <br><span class="qodef-e-word-holder">together.</span><br/>	</h1>
 </div>
 				</div>
 				</div>
@@ -980,7 +992,7 @@ body { background: #ffffff; }
 				<div class="elementor-widget-container">
 					<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-word qodef-qi--has-appear qodef--appear-from-top" data-appear-delay="100">
 		<h1 class="qodef-m-title">
-		<span class="qodef-e-word">CONTACT</span> <span class="qodef-e-word">US</span>	</h1>
+		<span class="qodef-e-word">OUR</span> <span class="qodef-e-word">PROJECTS</span>	</h1>
 </div>
 				</div>
 				</div>
@@ -1064,7 +1076,7 @@ Mauritius</p>				</div>
 				</div>
 				<div class="elementor-element elementor-element-b3a56ca animated-slow elementor-invisible elementor-widget elementor-widget-heading" data-id="b3a56ca" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-					<p class="elementor-heading-title elementor-size-default"><a href="https://themes.pixelwars.org/arkiz/demo-01/contact/">Contact</a></p>				</div>
+					<p class="elementor-heading-title elementor-size-default"><a href="contact.html">Contact</a></p>				</div>
 				</div>
 				<div class="elementor-element elementor-element-83c27ac animated-slow elementor-invisible elementor-widget elementor-widget-heading" data-id="83c27ac" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
@@ -1114,7 +1126,7 @@ Mauritius</p>				</div>
         <footer id="colophon" class="site-footer" role="contentinfo">
 									<div class="site-info">
 											
-<p>© 2025 Visio Architecture Ltd. All Rights Reserved.</p>
+		<p>© 2025 Visio. All Rights Reserved.</p>
 						</div> <!-- .site-info -->
 							</footer> <!-- #colophon .site-footer -->
 	</div>

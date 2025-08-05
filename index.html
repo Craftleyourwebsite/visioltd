@@ -12,169 +12,57 @@
 
 		/* STYLE DE TITRE */
 		/* --- AJOUT POUR LE TITRE SERVICES (identique à africa.html) --- */
-.qodef-m-title {
-    font-size: 7vw; /* Responsive, s'adapte à la largeur de l'écran */
-    white-space: nowrap;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    text-align: center;
-    width: 110%;
-    max-width: 100vw;
-    overflow: visible;
-}
-.qodef-e-word-holder {
-    display: inline-block;
-    width: auto;
-    max-width: 100vw;
-    overflow: visible;
-}
-@media (max-width: 600px) {
-    .qodef-m-title {
-        font-size: 10vw;
-    }
-}
-		/* Centrage du logo sur la page d'accueil - style simple comme about us */
-		.site-title img {
-			display: block !important;
-			visibility: visible !important;
-			opacity: 1 !important;
-			margin: 0 auto !important;
-			max-height: 30px !important;
-			width: auto !important;
+		.qodef-m-title {
+			font-size: 7vw; /* Responsive, s'adapte à la largeur de l'écran */
+			white-space: nowrap;
+			overflow-wrap: break-word;
+			word-break: break-word;
+			text-align: center;
+			width: 110%;
+			max-width: 100vw;
+			overflow: visible;
 		}
-		.site-title {
-			text-align: center !important;
+		.qodef-e-word-holder {
+			display: inline-block;
+			width: auto;
+			max-width: 100vw;
+			overflow: visible;
 		}
-		.site-title-text {
-			display: none !important;
+		@media (max-width: 600px) {
+			.qodef-m-title {
+				font-size: 10vw;
+			}
 		}
-		
-		/* Cacher le texte et forcer l'image */
-		.site-title a {
-			display: flex !important;
-			justify-content: center !important;
-			align-items: center !important;
-			text-decoration: none !important;
-		}
-		
-		/* Cacher complètement le texte du logo */
-		.site-title a:not(:has(img)) {
-			display: none !important;
-		}
-		
-		/* Forcer l'affichage de l'image du logo */
-		.site-title img.logo-image {
-			display: block !important;
-			visibility: visible !important;
-			opacity: 1 !important;
-			max-height: 30px !important;
-			width: auto !important;
-			margin: 0 auto !important;
-		}
-		
-		/* Centrer le logo dans le header */
+
 		.site-branding-center {
-			display: flex !important;
-			justify-content: center !important;
-			align-items: center !important;
-			width: 100% !important;
-		}
-		
-		@media screen and (max-width: 991px) {
-			.site-title img,
-			.site-title img.logo-image {
-				max-height: 24px !important;
-			}
-		}
-		
-		/* Règle spécifique pour forcer l'affichage du logo */
-		.site-branding-center .site-title a img {
-			display: block !important;
-			visibility: visible !important;
-			opacity: 1 !important;
-			max-height: 30px !important;
-			width: auto !important;
-			margin: 0 auto !important;
-		}
-		
-		/* Cacher le texte et forcer l'image du logo */
-		.site-title a:before,
-		.site-title a:after {
-			display: none !important;
-		}
-		
-		/* Forcer l'affichage de l'image et cacher le texte */
-		.site-title a img.logo-image {
-			display: block !important;
-			visibility: visible !important;
-			opacity: 1 !important;
-			max-height: 30px !important;
-			width: auto !important;
-			margin: 0 auto !important;
-			position: relative !important;
-			z-index: 100 !important;
-		}
-		
-		/* Cacher tout texte dans le logo */
-		.site-title a span,
-		.site-title a .screen-reader-text {
-			display: none !important;
-			visibility: hidden !important;
-			opacity: 0 !important;
-		}
-		
-		@media screen and (max-width: 991px) {
-			.site-branding-center .site-title a img,
-			.site-title a img.logo-image {
-				max-height: 24px !important;
-			}
-		}
-	</style>
-<meta name='robots' content='max-image-preview:large' />
-	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }
-	
-	/* Centrage du logo */
-	.site-branding-wrap {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-	}
-	
-	.site-branding-center {
 		text-align: center;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex: 1;
 	}
-	
-	.site-title {
-		text-align: center;
-		margin: 0;
-		padding: 0;
-	}
-	
-	.site-title a {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		text-decoration: none;
-	}
-	
-	.logo-image {
+		
+		/* Styles pour l'image du logo */
+		.logo-image {
 		max-height: 30px;
 		width: auto;
 		display: block;
 		margin: 0 auto;
+		max-height: 80px;
+		opacity: 1;
+		visibility: visible;
 	}
 	
-	@media screen and (max-width: 991px) {
-		.logo-image {
-			max-height: 24px;
+		
+		/* Responsive pour mobile */
+		@media screen and (max-width: 991px) {
+			.site-title img.logo-image {
+				max-height: 24px !important;
+			}
 		}
-	}
 	</style>
+<meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Arkiz. &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
 <link rel="alternate" type="application/rss+xml" title="Arkiz. &raquo; Comments Feed" href="https://themes.pixelwars.org/arkiz/demo-01/comments/feed/" />
@@ -313,9 +201,7 @@ h1, .entry-title, .footer-subscribe h3, .widget_categories ul li, .widget_recent
 
 .header-wrap:after { bottom: -1px; }
 
-@media screen and (min-width: 992px) { .site-title img { max-height: 44px; } }
 
-@media screen and (max-width: 991px) { .site-title img { max-height: 24px; } }
 
 .top-bar { line-height: 36px; }
 
@@ -468,11 +354,11 @@ body { background: #ffffff; }
 															</div> <!-- .site-branding-left -->
 							
 							<div class="site-branding-center">
-																				<h1 class="site-title">
+													<h1 class="site-title">
 													<a href="index.html" rel="home">
-														<span class="logo-text">VISIO</span>
+														<img src="/public/logo.png" alt="Visio Architecture Ltd" class="logo-image">
 														<span class="screen-reader-text">
-															Viseo Architecture Ltd														</span>
+															Visio Architecture Ltd														</span>
 													</a>
 												</h1> <!-- .site-title -->
 																			<p class="site-description">
@@ -2676,7 +2562,7 @@ mauritius</p>				</div>
         <footer id="colophon" class="site-footer" role="contentinfo">
 									<div class="site-info">
 							
-<p>© 2025 Visio Architecture Ltd. All Rights Reserved.</p>
+		<p>© 2025 Visio. All Rights Reserved.</p>
 						</div> <!-- .site-info -->
 							</footer> <!-- #colophon .site-footer -->
 	</div>

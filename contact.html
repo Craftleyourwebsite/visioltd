@@ -141,9 +141,19 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 			margin: 0 auto 30px;
 		}
 
+		.contact-info {
+			text-align: center;
+			margin: 30px auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
 		.contact-info p {
 			font-size: 16px;
 			margin: 8px 0;
+			text-align: center;
 		}
 
 		/* Formulaire */
@@ -209,16 +219,19 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 			margin: 0;
 			cursor: pointer;
 			flex-shrink: 0;
-			accent-color: #a67c52;
 			border: 2px solid #ddd;
 			border-radius: 3px;
 			appearance: auto;
 			-webkit-appearance: auto;
 			background-color: #fff;
+			transition: border-color 0.2s ease;
 		}
 
 		.terms input[type="checkbox"]:checked {
-			background-color: #a67c52;
+			border-color: #a67c52;
+		}
+
+		.terms input[type="checkbox"]:hover {
 			border-color: #a67c52;
 		}
 
@@ -922,7 +935,7 @@ Mauritius</p>				</div>
         <footer id="colophon" class="site-footer" role="contentinfo">
 									<div class="site-info">
 							
-<p>© 2025 Visio Architecture Ltd. All Rights Reserved.</p>
+		<p>© 2025 Visio. All Rights Reserved.</p>
 						</div> <!-- .site-info -->
 							</footer> <!-- #colophon .site-footer -->
 	</div>
