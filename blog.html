@@ -51,6 +51,73 @@
 			max-height: 24px;
 		}
 	}
+
+	/* --- STYLES POUR LE BOUTON DE LANGUE (FIXE NOIR) --- */
+	.language-switcher {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: flex-end !important;
+		margin-left: auto !important;
+		position: relative !important;
+		z-index: 100 !important;
+	}
+
+	.language-btn {
+		background: rgba(255, 255, 255, 0.9) !important;
+		border: 2px solid #000000 !important;
+		color: #000000 !important;
+		font-weight: bold !important;
+		font-size: 14px !important;
+		padding: 8px 16px !important;
+		cursor: pointer !important;
+		border-radius: 4px !important;
+		transition: all 0.3s ease !important;
+		text-transform: uppercase !important;
+		letter-spacing: 1px !important;
+		min-width: 40px !important;
+		text-align: center !important;
+		white-space: nowrap !important;
+	}
+
+	.language-btn:hover {
+		background: #000000 !important;
+		color: #ffffff !important;
+		transform: scale(1.05) !important;
+	}
+
+	.language-btn.active {
+		background: #000000 !important;
+		color: #ffffff !important;
+	}
+
+	/* Forcer le positionnement à droite dans le header */
+	.layout-medium {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: space-between !important;
+	}
+
+	.nav-menu {
+		flex: 1 !important;
+		display: flex !important;
+		justify-content: center !important;
+	}
+
+	.language-switcher {
+		flex-shrink: 0 !important;
+	}
+
+	@media screen and (max-width: 991px) {
+		.language-switcher {
+			margin-left: 10px;
+		}
+		
+		.language-btn {
+			font-size: 12px;
+			padding: 6px 12px;
+			min-width: 35px;
+		}
+	}
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
@@ -362,24 +429,9 @@ body { background: #ffffff; }
 <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14999 current_page_item current_page_parent menu-item-blog"><a href="blog.html" aria-current="page">Blog</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
-</ul></div>											<a class="search-toggle toggle-link"></a>
-											
-											<div class="search-container">
-												<div class="search-box">
-													<form class="search-form" method="get" action="https://themes.pixelwars.org/arkiz/demo-01/">
-														<label>
-															<span>
-																Search for															</span>
-															<input type="search" id="search-field" name="s" placeholder="type and hit enter">
-														</label>
-														<input type="submit" class="search-submit" value="Search">
-													</form> <!-- .search-form -->
-												</div> <!-- .search-box -->
-											</div> <!-- .search-container -->
-																					<div class="social-container widget-area">
-																	<a class="social-link twitter" target="_blank" href="#"></a>
-									<a class="social-link instagram" target="_blank" href="#"></a>
-															</div> <!-- .social-container -->
+</ul></div>											<div class="language-switcher">
+												<button id="language-btn" onclick="toggleLanguage()">EN</button>
+											</div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
 					</nav> <!-- #site-navigation .main-navigation .site-navigation -->
@@ -1045,5 +1097,30 @@ step: $.validator.format("Please enter a multiple of {0}.")
 }
 </style>
 <!-- FIN STYLE TITRE BLOG AGRANDI -->
+
+<script>
+// Fonction pour basculer entre les langues (version simplifiée sans scroll)
+function toggleLanguage() {
+    const languageBtn = document.getElementById('language-btn');
+    const currentText = languageBtn.textContent;
+    
+    if (currentText === 'EN') {
+        languageBtn.textContent = 'FR';
+        languageBtn.classList.add('active');
+    } else {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+}
+
+// Initialisation : s'assurer que le bouton est en mode EN par défaut
+document.addEventListener('DOMContentLoaded', function() {
+    const languageBtn = document.getElementById('language-btn');
+    if (languageBtn) {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+});
+</script>
 </body>
 </html>

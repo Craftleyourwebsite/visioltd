@@ -51,6 +51,73 @@
 			max-height: 24px;
 		}
 	}
+
+	/* --- STYLES POUR LE BOUTON DE LANGUE (FIXE NOIR) --- */
+	.language-switcher {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: flex-end !important;
+		margin-left: auto !important;
+		position: relative !important;
+		z-index: 100 !important;
+	}
+
+	.language-btn {
+		background: rgba(255, 255, 255, 0.9) !important;
+		border: 2px solid #000000 !important;
+		color: #000000 !important;
+		font-weight: bold !important;
+		font-size: 14px !important;
+		padding: 8px 16px !important;
+		cursor: pointer !important;
+		border-radius: 4px !important;
+		transition: all 0.3s ease !important;
+		text-transform: uppercase !important;
+		letter-spacing: 1px !important;
+		min-width: 40px !important;
+		text-align: center !important;
+		white-space: nowrap !important;
+	}
+
+	.language-btn:hover {
+		background: #000000 !important;
+		color: #ffffff !important;
+		transform: scale(1.05) !important;
+	}
+
+	.language-btn.active {
+		background: #000000 !important;
+		color: #ffffff !important;
+	}
+
+	/* Forcer le positionnement à droite dans le header */
+	.layout-medium {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: space-between !important;
+	}
+
+	.nav-menu {
+		flex: 1 !important;
+		display: flex !important;
+		justify-content: center !important;
+	}
+
+	.language-switcher {
+		flex-shrink: 0 !important;
+	}
+
+	@media screen and (max-width: 991px) {
+		.language-switcher {
+			margin-left: 10px;
+		}
+		
+		.language-btn {
+			font-size: 12px;
+			padding: 6px 12px;
+			min-width: 35px;
+		}
+	}
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
@@ -586,24 +653,9 @@ body { background: #ffffff; }
 <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-blog"><a href="blog.html">Blog</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-23132 current_page_item menu-item-23184"><a href="contact.html" aria-current="page">Contact</a></li>
-</ul></div>											<a class="search-toggle toggle-link"></a>
-											
-											<div class="search-container">
-												<div class="search-box">
-													<form class="search-form" method="get" action="https://themes.pixelwars.org/arkiz/demo-01/">
-														<label>
-															<span>
-																Search for															</span>
-															<input type="search" id="search-field" name="s" placeholder="type and hit enter">
-														</label>
-														<input type="submit" class="search-submit" value="Search">
-													</form> <!-- .search-form -->
-												</div> <!-- .search-box -->
-											</div> <!-- .search-container -->
-																					<div class="social-container widget-area">
-																	<a class="social-link twitter" target="_blank" href="#"></a>
-									<a class="social-link instagram" target="_blank" href="#"></a>
-															</div> <!-- .social-container -->
+</ul></div>											<div class="language-switcher">
+												<button id="language-btn" onclick="toggleLanguage()">EN</button>
+											</div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
 					</nav> <!-- #site-navigation .main-navigation .site-navigation -->
@@ -1012,6 +1064,31 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 /* <![CDATA[ */
 var wpforms_settings = {"val_required":"This field is required.","val_email":"Please enter a valid email address.","val_email_suggestion":"Did you mean {suggestion}?","val_email_suggestion_title":"Click to accept this suggestion.","val_email_restricted":"This email address is not allowed.","val_number":"Please enter a valid number.","val_number_positive":"Please enter a valid positive number.","val_minimum_price":"Amount entered is less than the required minimum.","val_confirm":"Field values do not match.","val_checklimit":"You have exceeded the number of allowed selections: {#}.","val_limit_characters":"{count} of {limit} max characters.","val_limit_words":"{count} of {limit} max words.","val_recaptcha_fail_msg":"Google reCAPTCHA verification failed, please try again later.","val_turnstile_fail_msg":"Cloudflare Turnstile verification failed, please try again later.","val_inputmask_incomplete":"Please fill out the field in required format.","uuid_cookie":"","locale":"en","country":"","country_list_label":"Country list","wpforms_plugin_url":"https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-content\/plugins\/wpforms-lite\/","gdpr":"","ajaxurl":"https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-admin\/admin-ajax.php","mailcheck_enabled":"1","mailcheck_domains":[],"mailcheck_toplevel_domains":["dev"],"is_ssl":"1","currency_code":"USD","currency_thousands":",","currency_decimals":"2","currency_decimal":".","currency_symbol":"$","currency_symbol_pos":"left","val_requiredpayment":"Payment is required.","val_creditcard":"Please enter a valid credit card number.","css_vars":["field-border-radius","field-border-style","field-border-size","field-background-color","field-border-color","field-text-color","field-menu-color","label-color","label-sublabel-color","label-error-color","button-border-radius","button-border-style","button-border-size","button-background-color","button-border-color","button-text-color","page-break-color","background-image","background-position","background-repeat","background-size","background-width","background-height","background-color","background-url","container-padding","container-border-style","container-border-width","container-border-color","container-border-radius","field-size-input-height","field-size-input-spacing","field-size-font-size","field-size-line-height","field-size-padding-h","field-size-checkbox-size","field-size-sublabel-spacing","field-size-icon-size","label-size-font-size","label-size-line-height","label-size-sublabel-font-size","label-size-sublabel-line-height","button-size-font-size","button-size-height","button-size-padding-h","button-size-margin-top","container-shadow-size-box-shadow"],"isModernMarkupEnabled":"1","formErrorMessagePrefix":"Form error message","errorMessagePrefix":"Error message","submitBtnDisabled":"Submit button is disabled during form submission.","error_updating_token":"Error updating token. Please try again or contact support if the issue persists.","network_error":"Network error or server is unreachable. Check your connection or try again later.","token_cache_lifetime":"86400","hn_data":[]}
 /* ]]> */
+</script>
+
+<script>
+// Fonction pour basculer entre les langues (version simplifiée sans scroll)
+function toggleLanguage() {
+    const languageBtn = document.getElementById('language-btn');
+    const currentText = languageBtn.textContent;
+    
+    if (currentText === 'EN') {
+        languageBtn.textContent = 'FR';
+        languageBtn.classList.add('active');
+    } else {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+}
+
+// Initialisation : s'assurer que le bouton est en mode EN par défaut
+document.addEventListener('DOMContentLoaded', function() {
+    const languageBtn = document.getElementById('language-btn');
+    if (languageBtn) {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+});
 </script>
 </body>
 </html>

@@ -51,6 +51,73 @@
 			max-height: 24px;
 		}
 	}
+
+	/* --- STYLES POUR LE BOUTON DE LANGUE (FIXE NOIR) --- */
+	.language-switcher {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		margin-left: auto;
+		position: relative;
+		z-index: 100;
+	}
+
+	.language-btn {
+		background: rgba(255, 255, 255, 0.9);
+		border: 2px solid #000000;
+		color: #000000;
+		font-weight: bold;
+		font-size: 14px;
+		padding: 8px 16px;
+		cursor: pointer;
+		border-radius: 4px;
+		transition: all 0.3s ease;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		min-width: 40px;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	.language-btn:hover {
+		background: #000000;
+		color: #ffffff;
+		transform: scale(1.05);
+	}
+
+	.language-btn.active {
+		background: #000000;
+		color: #ffffff;
+	}
+
+	/* Forcer le positionnement à droite dans le header */
+	.layout-medium {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: space-between !important;
+	}
+
+	.nav-menu {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+	}
+
+	.language-switcher {
+		flex-shrink: 0;
+	}
+
+	@media screen and (max-width: 991px) {
+		.language-switcher {
+			margin-left: 10px;
+		}
+		
+		.language-btn {
+			font-size: 12px;
+			padding: 6px 12px;
+			min-width: 35px;
+		}
+	}
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
@@ -368,22 +435,9 @@ body { background: #ffffff; }
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
 </ul></div>											<a class="search-toggle toggle-link"></a>
 											
-											<div class="search-container">
-												<div class="search-box">
-													<form class="search-form" method="get" action="https://themes.pixelwars.org/arkiz/demo-01/">
-														<label>
-															<span>
-																Search for															</span>
-															<input type="search" id="search-field" name="s" placeholder="type and hit enter">
-														</label>
-														<input type="submit" class="search-submit" value="Search">
-													</form> <!-- .search-form -->
-												</div> <!-- .search-box -->
-											</div> <!-- .search-container -->
-																					<div class="social-container widget-area">
-																	<a class="social-link twitter" target="_blank" href="#"></a>
-									<a class="social-link instagram" target="_blank" href="#"></a>
-															</div> <!-- .social-container -->
+											<div class="language-switcher">
+												<button id="language-btn" class="language-btn" onclick="toggleLanguage()">EN</button>
+											</div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
 					</nav> <!-- #site-navigation .main-navigation .site-navigation -->
@@ -924,5 +978,30 @@ step: $.validator.format("Please enter a multiple of {0}.")
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/main.js" id="arkiz-main-js"></script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/pixelwars-core/themes/global/js/shortcodes.js" id="pixelwars-core-shortcodes-js"></script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/bdthemes-prime-slider-lite/assets/js/prime-slider-site.min.js?ver=3.17.6" id="prime-slider-site-js"></script>
+
+<script>
+// Fonction pour basculer entre les langues (version simplifiée sans scroll)
+function toggleLanguage() {
+    const languageBtn = document.getElementById('language-btn');
+    const currentText = languageBtn.textContent;
+    
+    if (currentText === 'EN') {
+        languageBtn.textContent = 'FR';
+        languageBtn.classList.add('active');
+    } else {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+}
+
+// Initialisation : s'assurer que le bouton est en mode EN par défaut
+document.addEventListener('DOMContentLoaded', function() {
+    const languageBtn = document.getElementById('language-btn');
+    if (languageBtn) {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+});
+</script>
 </body>
 </html>

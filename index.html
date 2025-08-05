@@ -60,6 +60,112 @@
 				max-height: 24px !important;
 			}
 		}
+
+		/* --- STYLES POUR LE BOUTON DE LANGUE --- */
+		.language-switcher {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			margin-left: auto;
+			position: relative;
+			z-index: 100;
+		}
+
+		.language-btn {
+			background: none;
+			border: 2px solid #ffffff;
+			color: #ffffff;
+			font-weight: bold;
+			font-size: 14px;
+			padding: 8px 16px;
+			cursor: pointer;
+			border-radius: 4px;
+			transition: all 0.3s ease;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			min-width: 40px;
+			text-align: center;
+			white-space: nowrap;
+		}
+
+		.language-btn:hover {
+			background: #ffffff;
+			color: #000000;
+			transform: scale(1.05);
+		}
+
+		.language-btn.active {
+			background: #ffffff;
+			color: #000000;
+		}
+
+		/* Style pour le bouton quand on scrolle */
+		.language-btn.scrolled {
+			border-color: #000000 !important;
+			color: #000000 !important;
+			background: rgba(255, 255, 255, 0.9) !important;
+		}
+
+		.language-btn.scrolled:hover {
+			background: #000000 !important;
+			color: #ffffff !important;
+			border-color: #000000 !important;
+		}
+
+		.language-btn.scrolled.active {
+			background: #000000 !important;
+			color: #ffffff !important;
+			border-color: #000000 !important;
+		}
+
+		/* S'assurer que le bouton reste visible même quand le header devient blanc */
+		.site-header.clone .language-btn,
+		.site-header:not(.clone) .language-btn.scrolled {
+			border-color: #000000 !important;
+			color: #000000 !important;
+			background: rgba(255, 255, 255, 0.9) !important;
+		}
+
+		.site-header.clone .language-btn:hover,
+		.site-header:not(.clone) .language-btn.scrolled:hover {
+			background: #000000 !important;
+			color: #ffffff !important;
+		}
+
+		.site-header.clone .language-btn.active,
+		.site-header:not(.clone) .language-btn.scrolled.active {
+			background: #000000 !important;
+			color: #ffffff !important;
+		}
+
+		/* Forcer le positionnement à droite dans le header */
+		.layout-medium {
+			display: flex !important;
+			align-items: center !important;
+			justify-content: space-between !important;
+		}
+
+		.nav-menu {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+		}
+
+		.language-switcher {
+			flex-shrink: 0;
+		}
+
+		@media screen and (max-width: 991px) {
+			.language-switcher {
+				margin-left: 10px;
+			}
+			
+			.language-btn {
+				font-size: 12px;
+				padding: 6px 12px;
+				min-width: 35px;
+			}
+		}
 	</style>
 <meta name='robots' content='max-image-preview:large' />
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
@@ -356,7 +462,7 @@ body { background: #ffffff; }
 							<div class="site-branding-center">
 													<h1 class="site-title">
 													<a href="index.html" rel="home">
-														<img src="/public/logo.png" alt="Visio Architecture Ltd" class="logo-image">
+														<img src="public/logo.png" alt="Visio Architecture Ltd" class="logo-image">
 														<span class="screen-reader-text">
 															Visio Architecture Ltd														</span>
 													</a>
@@ -385,22 +491,9 @@ body { background: #ffffff; }
   <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
 </ul></div>											
 											
-											<div class="search-container">
-												<div class="search-box">
-													<form class="search-form" method="get" action="https://themes.pixelwars.org/arkiz/demo-01/">
-														<label>
-															<span>
-																Search for															</span>
-															<input type="search" id="search-field" name="s" placeholder="type and hit enter">
-														</label>
-														<input type="submit" class="search-submit" value="Search">
-													</form> <!-- .search-form -->
-												</div> <!-- .search-box -->
-											</div> <!-- .search-container -->
-																					<div class="social-container widget-area">
-																	<a class="social-link twitter" target="_blank" href="#"></a>
-									<a class="social-link instagram" target="_blank" href="#"></a>
-															</div> <!-- .social-container -->
+											<div class="language-switcher">
+												<button id="language-btn" class="language-btn" onclick="toggleLanguage()">EN</button>
+											</div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
 					</nav> <!-- #site-navigation .main-navigation .site-navigation -->
@@ -2676,5 +2769,51 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 /* ]]> */
 </script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/inc/plugins/elementor/assets/js/elementor.js?ver=6.8.2" id="qi-addons-for-elementor-elementor-js"></script>
+
+<script>
+// Fonction pour basculer entre les langues
+function toggleLanguage() {
+    const languageBtn = document.getElementById('language-btn');
+    const currentText = languageBtn.textContent;
+    
+    if (currentText === 'EN') {
+        languageBtn.textContent = 'FR';
+        languageBtn.classList.add('active');
+    } else {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+}
+
+// Fonction pour gérer le scroll
+function handleScroll() {
+    const languageBtn = document.getElementById('language-btn');
+    const header = document.querySelector('.site-header');
+    
+    if (languageBtn) {
+        // Vérifier si on scrolle ou si le header a la classe 'clone'
+        if (window.scrollY > 50 || (header && header.classList.contains('clone'))) {
+            languageBtn.classList.add('scrolled');
+        } else {
+            languageBtn.classList.remove('scrolled');
+        }
+    }
+}
+
+// Initialisation : s'assurer que le bouton est en mode EN par défaut
+document.addEventListener('DOMContentLoaded', function() {
+    const languageBtn = document.getElementById('language-btn');
+    if (languageBtn) {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+    
+    // Ajouter l'écouteur d'événement pour le scroll
+    window.addEventListener('scroll', handleScroll);
+    
+    // Vérifier la position initiale
+    handleScroll();
+});
+</script>
 </body>
 </html>

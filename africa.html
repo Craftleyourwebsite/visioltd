@@ -8,102 +8,26 @@
 	<link rel="shortcut icon" type="image/jpeg" href="public/favicon.jpeg">
 	<title>Visio Architecture Ltd</title>
 	<style>
-		/* Centrage du logo sur la page d'accueil - style simple comme about us */
-		.site-title img {
-			display: block !important;
-			visibility: visible !important;
-			opacity: 1 !important;
-			margin: 0 auto !important;
-			max-height: 30px !important;
-			width: auto !important;
-		}
-		.site-title {
-			text-align: center !important;
-		}
-		.site-title-text {
-			display: none !important;
-		}
-		
-		/* Cacher le texte et forcer l'image */
-		.site-title a {
-			display: flex !important;
-			justify-content: center !important;
-			align-items: center !important;
-			text-decoration: none !important;
-		}
-		
-		/* Cacher complètement le texte du logo */
-		.site-title a:not(:has(img)) {
-			display: none !important;
-		}
-		
-		/* Forcer l'affichage de l'image du logo */
-		.site-title img.logo-image {
-			display: block !important;
-			visibility: visible !important;
-			opacity: 1 !important;
-			max-height: 30px !important;
-			width: auto !important;
-			margin: 0 auto !important;
-		}
-		
-		/* Centrer le logo dans le header */
 		.site-branding-center {
-			display: flex !important;
-			justify-content: center !important;
-			align-items: center !important;
-			width: 100% !important;
-		}
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex: 1;
+	}
 		
-		@media screen and (max-width: 991px) {
-			.site-title img,
-			.site-title img.logo-image {
-				max-height: 24px !important;
-			}
-		}
+		/* Styles pour l'image du logo */
+		.logo-image {
+		max-height: 30px;
+		width: auto;
+		display: block;
+		margin: 0 auto;
+		max-height: 80px;
+		opacity: 1;
+		visibility: visible;
+	}
 		
-		/* Règle spécifique pour forcer l'affichage du logo */
-		.site-branding-center .site-title a img {
-			display: block !important;
-			visibility: visible !important;
-			opacity: 1 !important;
-			max-height: 30px !important;
-			width: auto !important;
-			margin: 0 auto !important;
-		}
 		
-		/* Cacher le texte et forcer l'image du logo */
-		.site-title a:before,
-		.site-title a:after {
-			display: none !important;
-		}
-		
-		/* Forcer l'affichage de l'image et cacher le texte */
-		.site-title a img.logo-image {
-			display: block !important;
-			visibility: visible !important;
-			opacity: 1 !important;
-			max-height: 30px !important;
-			width: auto !important;
-			margin: 0 auto !important;
-			position: relative !important;
-			z-index: 100 !important;
-		}
-		
-		/* Cacher tout texte dans le logo */
-		.site-title a span,
-		.site-title a .screen-reader-text {
-			display: none !important;
-			visibility: hidden !important;
-			opacity: 0 !important;
-		}
-		
-		@media screen and (max-width: 991px) {
-			.site-branding-center .site-title a img,
-			.site-title a img.logo-image {
-				max-height: 24px !important;
-			}
-		}
 
         /* --- AJOUT POUR LE TITRE SERVICES --- */
         .qodef-m-title {
@@ -127,6 +51,112 @@
                 font-size: 10vw;
             }
         }
+
+        /* --- STYLES POUR LE BOUTON DE LANGUE --- */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-left: auto;
+            position: relative;
+            z-index: 100;
+        }
+
+        .language-btn {
+            background: none;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 40px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .language-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: scale(1.05);
+        }
+
+        .language-btn.active {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* Style pour le bouton quand on scrolle */
+        .language-btn.scrolled {
+            border-color: #000000 !important;
+            color: #000000 !important;
+            background: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        .language-btn.scrolled:hover {
+            background: #000000 !important;
+            color: #ffffff !important;
+            border-color: #000000 !important;
+        }
+
+        .language-btn.scrolled.active {
+            background: #000000 !important;
+            color: #ffffff !important;
+            border-color: #000000 !important;
+        }
+
+        /* S'assurer que le bouton reste visible même quand le header devient blanc */
+        .site-header.clone .language-btn,
+        .site-header:not(.clone) .language-btn.scrolled {
+            border-color: #000000 !important;
+            color: #000000 !important;
+            background: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        .site-header.clone .language-btn:hover,
+        .site-header:not(.clone) .language-btn.scrolled:hover {
+            background: #000000 !important;
+            color: #ffffff !important;
+        }
+
+        .site-header.clone .language-btn.active,
+        .site-header:not(.clone) .language-btn.scrolled.active {
+            background: #000000 !important;
+            color: #ffffff !important;
+        }
+
+        /* Forcer le positionnement à droite dans le header */
+        .layout-medium {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+        }
+
+        .nav-menu {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .language-switcher {
+            flex-shrink: 0;
+        }
+
+        @media screen and (max-width: 991px) {
+            .language-switcher {
+                margin-left: 10px;
+            }
+            
+            .language-btn {
+                font-size: 12px;
+                padding: 6px 12px;
+                min-width: 35px;
+            }
+        }
 	</style>
 <meta name='robots' content='max-image-preview:large' />
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }
@@ -139,39 +169,7 @@
 		width: 100%;
 	}
 	
-	.site-branding-center {
-		text-align: center;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
 	
-	.site-title {
-		text-align: center;
-		margin: 0;
-		padding: 0;
-	}
-	
-	.site-title a {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		text-decoration: none;
-	}
-	
-	.logo-image {
-		max-height: 30px;
-		width: auto;
-		display: block;
-		margin: 0 auto;
-	}
-	
-	@media screen and (max-width: 991px) {
-		.logo-image {
-			max-height: 24px;
-		}
-	}
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Arkiz. &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
@@ -497,22 +495,9 @@ body { background: #ffffff; }
   <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
 </ul></div>											
 											
-											<div class="search-container">
-												<div class="search-box">
-													<form class="search-form" method="get" action="https://themes.pixelwars.org/arkiz/demo-01/">
-														<label>
-															<span>
-																Search for															</span>
-															<input type="search" id="search-field" name="s" placeholder="type and hit enter">
-														</label>
-														<input type="submit" class="search-submit" value="Search">
-													</form> <!-- .search-form -->
-												</div> <!-- .search-box -->
-											</div> <!-- .search-container -->
-																					<div class="social-container widget-area">
-																	<a class="social-link twitter" target="_blank" href="#"></a>
-									<a class="social-link instagram" target="_blank" href="#"></a>
-															</div> <!-- .social-container -->
+											<div class="language-switcher">
+												<button id="language-btn" class="language-btn" onclick="toggleLanguage()">EN</button>
+											</div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
 					</nav> <!-- #site-navigation .main-navigation .site-navigation -->
@@ -1601,5 +1586,51 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 /* ]]> */
 </script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/inc/plugins/elementor/assets/js/elementor.js?ver=6.8.2" id="qi-addons-for-elementor-elementor-js"></script>
+
+<script>
+// Fonction pour basculer entre les langues
+function toggleLanguage() {
+    const languageBtn = document.getElementById('language-btn');
+    const currentText = languageBtn.textContent;
+    
+    if (currentText === 'EN') {
+        languageBtn.textContent = 'FR';
+        languageBtn.classList.add('active');
+    } else {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+}
+
+// Fonction pour gérer le scroll
+function handleScroll() {
+    const languageBtn = document.getElementById('language-btn');
+    const header = document.querySelector('.site-header');
+    
+    if (languageBtn) {
+        // Vérifier si on scrolle ou si le header a la classe 'clone'
+        if (window.scrollY > 50 || (header && header.classList.contains('clone'))) {
+            languageBtn.classList.add('scrolled');
+        } else {
+            languageBtn.classList.remove('scrolled');
+        }
+    }
+}
+
+// Initialisation : s'assurer que le bouton est en mode EN par défaut
+document.addEventListener('DOMContentLoaded', function() {
+    const languageBtn = document.getElementById('language-btn');
+    if (languageBtn) {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+    
+    // Ajouter l'écouteur d'événement pour le scroll
+    window.addEventListener('scroll', handleScroll);
+    
+    // Vérifier la position initiale
+    handleScroll();
+});
+</script>
 </body>
 </html>
