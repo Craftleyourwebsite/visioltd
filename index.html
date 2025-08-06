@@ -249,6 +249,99 @@
 				min-width: 35px;
 			}
 		}
+
+		/* --- STYLES POUR L'ALIGNEMENT DE LA SECTION TEAM --- */
+		/* Conteneur principal de la section team */
+		.elementor-element-af195fa {
+			display: flex !important;
+			flex-wrap: wrap !important;
+			justify-content: center !important;
+			gap: 30px !important;
+			align-items: stretch !important;
+		}
+
+		/* Conteneurs individuels des membres de l'équipe */
+		.elementor-element-af195fa > .elementor-element {
+			flex: 1 1 250px !important;
+			max-width: 300px !important;
+			min-width: 250px !important;
+			display: flex !important;
+			flex-direction: column !important;
+		}
+
+		/* Conteneurs des widgets team member */
+		.elementor-widget-qi_addons_for_elementor_team_member {
+			height: 100% !important;
+			display: flex !important;
+			flex-direction: column !important;
+		}
+
+		.elementor-widget-qi_addons_for_elementor_team_member .elementor-widget-container {
+			height: 100% !important;
+			display: flex !important;
+			flex-direction: column !important;
+		}
+
+		/* Conteneur interne du team member */
+		.qodef-qi-team-member {
+			height: 100% !important;
+			display: flex !important;
+			flex-direction: column !important;
+		}
+
+		.qodef-qi-team-member .qodef-m-inner {
+			height: 100% !important;
+			display: flex !important;
+			flex-direction: column !important;
+		}
+
+		/* Section image */
+		.qodef-qi-team-member .qodef-m-image {
+			flex: 1 !important;
+			display: flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			overflow: hidden !important;
+		}
+
+		.qodef-qi-team-member .qodef-m-media-image {
+			width: 100% !important;
+			height: 100% !important;
+			display: flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+		}
+
+		/* Images des membres de l'équipe */
+		.qodef-qi-team-member .qodef-m-media-image img {
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: cover !important;
+			object-position: center top !important;
+			max-height: 400px !important;
+			min-height: 350px !important;
+		}
+
+		/* Section contenu */
+		.qodef-qi-team-member .qodef-m-content {
+			flex-shrink: 0 !important;
+			padding: 20px !important;
+			background: #fff !important;
+			text-align: center !important;
+		}
+
+		/* Responsive pour mobile */
+		@media screen and (max-width: 768px) {
+			.elementor-element-af195fa > .elementor-element {
+				flex: 1 1 100% !important;
+				max-width: 100% !important;
+			}
+
+			.qodef-qi-team-member .qodef-m-media-image img {
+				max-height: 300px !important;
+				min-height: 250px !important;
+			}
+		}
 	</style>
 <meta name='robots' content='max-image-preview:large' />
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
