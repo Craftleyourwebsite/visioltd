@@ -359,6 +359,45 @@
 			gap: 10px !important;
 		}
 
+		/* Gestion des titres longs pour éviter l'overlap */
+		.qodef-qi-team-member .qodef-m-title {
+			word-wrap: break-word !important;
+			hyphens: auto !important;
+			line-height: 1.2 !important;
+			margin-bottom: 8px !important;
+			font-size: 1.1em !important;
+		}
+
+		.qodef-qi-team-member .qodef-m-role {
+			word-wrap: break-word !important;
+			hyphens: auto !important;
+			line-height: 1.3 !important;
+			font-size: 0.9em !important;
+			padding: 0 10px !important;
+			max-width: 100% !important;
+		}
+
+		/* Espacement supplémentaire pour les cartes avec des titres longs */
+		.qodef-qi-team-member .qodef-m-content {
+			min-height: 120px !important;
+			display: flex !important;
+			flex-direction: column !important;
+			justify-content: space-between !important;
+		}
+
+		/* Responsive pour les titres longs */
+		@media screen and (max-width: 768px) {
+			.qodef-qi-team-member .qodef-m-title {
+				font-size: 1em !important;
+				line-height: 1.1 !important;
+			}
+
+			.qodef-qi-team-member .qodef-m-role {
+				font-size: 0.85em !important;
+				line-height: 1.2 !important;
+			}
+		}
+
 		/* Responsive pour mobile */
 		@media screen and (max-width: 768px) {
 			.elementor-element-af195fa > .elementor-element {
@@ -2479,7 +2518,7 @@ body { background: #ffffff; }
 		<div class="qodef-m-content">
 				<h4 itemprop="name" class="qodef-m-title">
 					Vinesh CHINTARAM	</h4>
-					<p class="qodef-m-role">Managing Director <br>/  CEO , Principal Architect</p>
+					<p class="qodef-m-role">Managing Director /  CEO , Principal Architect</p>
 				<div class="qodef-m-social-icons">
 							<a class="qodef-e-social-icon-link" itemprop="url" href="#" target="_blank">
 								<span class="qodef-e-social-icon">
@@ -2552,8 +2591,8 @@ body { background: #ffffff; }
 		</div>
 		<div class="qodef-m-content">
 				<h4 itemprop="name" class="qodef-m-title">
-					Zainab SAYED HOSSEN. Jr	</h4>
-					<p class="qodef-m-role">Architect</p>
+					Zainab SAYED HOSSEN. 	</h4>
+					<p class="qodef-m-role">Jr Architect</p>
 				<div class="qodef-m-social-icons">
 							<a class="qodef-e-social-icon-link" itemprop="url" href="#" target="_blank">
 								<span class="qodef-e-social-icon">
