@@ -52,41 +52,234 @@
 		}
 	}
 
-	/* --- STYLES POUR LE BOUTON DE LANGUE (FIXE NOIR) --- */
+	/* --- STYLES SPÉCIFIQUES POUR LE BOUTON DE LANGUE ABOUT US --- */
 	.language-switcher {
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		margin-left: auto;
-		position: relative;
-		z-index: 100;
+		display: flex !important;
+		align-items: center !important;
+		justify-content: flex-end !important;
+		margin-left: auto !important;
+		position: relative !important;
+		z-index: 100 !important;
 	}
 
-	.language-btn {
-		background: none;
-		border: none;
-		color: #000000;
-		font-weight: bold;
-		font-size: 14px;
-		padding: 8px 16px;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		min-width: 40px;
-		text-align: center;
-		white-space: nowrap;
+	.aboutus-language-btn {
+		background: transparent !important;
+		background-color: transparent !important;
+		background-image: none !important;
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		color: #000000 !important;
+		font-weight: bold !important;
+		font-size: 14px !important;
+		padding: 8px 16px !important;
+		cursor: pointer !important;
+		transition: none !important;
+		text-transform: uppercase !important;
+		letter-spacing: 1px !important;
+		min-width: 40px !important;
+		text-align: center !important;
+		white-space: nowrap !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		display: inline-block !important;
+		vertical-align: middle !important;
+		line-height: 1 !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
+		-webkit-appearance: none !important;
+		-moz-appearance: none !important;
+		appearance: none !important;
 	}
 
-	.language-btn:hover {
-		background: none;
-		color: #000000;
-		transform: none;
+	.aboutus-language-btn:hover {
+		background: transparent !important;
+		background-color: transparent !important;
+		background-image: none !important;
+		color: #000000 !important;
+		transform: none !important;
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
 	}
 
-	.language-btn.active {
-		background: none;
-		color: #000000;
+	.aboutus-language-btn.active {
+		background: transparent !important;
+		background-color: transparent !important;
+		background-image: none !important;
+		color: #000000 !important;
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
+	}
+
+	.aboutus-language-btn:focus {
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
+	}
+
+	.aboutus-language-btn:active {
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
+	}
+
+	/* Supprimer tous les pseudo-éléments qui pourraient causer des icônes */
+	.aboutus-language-btn::before,
+	.aboutus-language-btn::after {
+		content: none !important;
+		display: none !important;
+		visibility: hidden !important;
+		opacity: 0 !important;
+		width: 0 !important;
+		height: 0 !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		border: none !important;
+		background: none !important;
+		background-image: none !important;
+	}
+
+	/* Forcer l'override de tous les styles possibles */
+	.aboutus-language-btn,
+	.aboutus-language-btn:hover,
+	.aboutus-language-btn:focus,
+	.aboutus-language-btn:active,
+	.aboutus-language-btn.active,
+	.aboutus-language-btn::before,
+	.aboutus-language-btn::after {
+		background: transparent !important;
+		background-color: transparent !important;
+		background-image: none !important;
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
+		-webkit-appearance: none !important;
+		-moz-appearance: none !important;
+		appearance: none !important;
+	}
+
+	/* Styles ultra-spécifiques pour éliminer tout élément perturbateur */
+	#language-btn.aboutus-language-btn {
+		background: transparent !important;
+		background-color: transparent !important;
+		background-image: none !important;
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
+		-webkit-appearance: none !important;
+		-moz-appearance: none !important;
+		appearance: none !important;
+		position: relative !important;
+		z-index: 1 !important;
+	}
+
+	/* Supprimer tous les éléments enfants qui pourraient causer des icônes */
+	#language-btn.aboutus-language-btn *,
+	#language-btn.aboutus-language-btn *::before,
+	#language-btn.aboutus-language-btn *::after {
+		content: none !important;
+		display: none !important;
+		visibility: hidden !important;
+		opacity: 0 !important;
+		width: 0 !important;
+		height: 0 !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		border: none !important;
+		background: none !important;
+		background-image: none !important;
+	}
+
+	/* Forcer le texte uniquement */
+	#language-btn.aboutus-language-btn {
+		color: #000000 !important;
+		font-weight: bold !important;
+		font-size: 14px !important;
+		padding: 8px 16px !important;
+		cursor: pointer !important;
+		text-transform: uppercase !important;
+		letter-spacing: 1px !important;
+		min-width: 40px !important;
+		text-align: center !important;
+		white-space: nowrap !important;
+		display: inline-block !important;
+		vertical-align: middle !important;
+		line-height: 1 !important;
 	}
 
 	/* Forcer le positionnement à droite dans le header */
@@ -111,10 +304,10 @@
 			margin-left: 10px;
 		}
 		
-		.language-btn {
-			font-size: 12px;
-			padding: 6px 12px;
-			min-width: 35px;
+		.aboutus-language-btn {
+			font-size: 12px !important;
+			padding: 6px 12px !important;
+			min-width: 35px !important;
 		}
 	}
 	</style>
@@ -439,10 +632,9 @@ body { background: #ffffff; }
 <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-blog"><a href="blog.html">Blog</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
-</ul></div>											<a class="search-toggle toggle-link"></a>
-											
+</ul></div>											
 											<div class="language-switcher">
-												<button id="language-btn" class="language-btn" onclick="toggleLanguage()">EN</button>
+												<button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()">EN</button>
 											</div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
