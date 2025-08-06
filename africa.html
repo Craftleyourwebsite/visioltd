@@ -18,14 +18,74 @@
 		
 		/* Styles pour l'image du logo */
 		.logo-image {
-		max-height: 30px;
+		max-height: 50px;
 		width: auto;
 		display: block;
 		margin: 0 auto;
-		max-height: 80px;
 		opacity: 1;
 		visibility: visible;
-	}
+		transition: all 0.3s ease;
+		}
+		
+		/* Logo en mode normal (header transparent) */
+		.site-header:not(.clone) .logo-image {
+			max-height: 50px;
+			opacity: 1;
+			visibility: visible;
+		}
+		
+		/* Logo en mode scroll (header clone) */
+		.site-header.clone .logo-image {
+			max-height: 45px;
+			opacity: 1;
+			visibility: visible;
+		}
+		
+		/* Surcharger les limitations de hauteur du thème */
+		.site-branding {
+			max-height: none !important;
+			display: flex !important;
+			align-items: center !important;
+		}
+		
+		.site-branding-center {
+			display: flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			height: auto !important;
+			min-height: 80px !important;
+		}
+		
+		.site-header.clone .site-branding-center {
+			min-height: 60px !important;
+		}
+		
+		/* S'assurer que le logo est toujours visible */
+		.site-title a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.site-title a img {
+			display: block !important;
+			opacity: 1 !important;
+			visibility: visible !important;
+		}
+		
+		/* Masquer le texte du logo */
+		.logo-text {
+			display: none !important;
+		}
+		
+		/* S'assurer que l'image du logo s'affiche */
+		.site-title img.logo-image {
+			display: block !important;
+			opacity: 1 !important;
+			visibility: visible !important;
+			max-width: 100%;
+			height: auto;
+		}
 		
 		
 
@@ -176,6 +236,27 @@
                 font-size: 12px;
                 padding: 6px 12px;
                 min-width: 35px;
+            }
+            
+            /* Responsive pour le logo */
+            .site-title img.logo-image {
+                max-height: 35px !important;
+            }
+            
+            .site-header:not(.clone) .logo-image {
+                max-height: 35px !important;
+            }
+            
+            .site-header.clone .logo-image {
+                max-height: 30px !important;
+            }
+            
+            .site-branding-center {
+                min-height: 60px !important;
+            }
+            
+            .site-header.clone .site-branding-center {
+                min-height: 50px !important;
             }
         }
 	</style>
@@ -332,7 +413,7 @@ h1, .entry-title, .footer-subscribe h3, .widget_categories ul li, .widget_recent
 
 @media screen and (min-width: 992px) { .site-title img { max-height: 44px; } }
 
-@media screen and (max-width: 991px) { .site-title img { max-height: 24px; } }
+@media screen and (max-width: 991px) { .site-title img { max-height: 35px; } }
 
 .top-bar { line-height: 36px; }
 
@@ -487,9 +568,9 @@ body { background: #ffffff; }
 							<div class="site-branding-center">
 																				<h1 class="site-title">
 													<a href="index.html" rel="home">
-														<span class="logo-text">VISIO</span>
+														<img src="public/logo.png" alt="Visio Architecture Ltd" class="logo-image">
 														<span class="screen-reader-text">
-															Viseo Architecture Ltd														</span>
+															Visio Architecture Ltd														</span>
 													</a>
 												</h1> <!-- .site-title -->
 																			<p class="site-description">
@@ -1028,10 +1109,10 @@ body { background: #ffffff; }
 				</div>
 				</div>
 				</div>
-		<div class="elementor-element elementor-element-1bbe67d4 e-con-full e-flex e-con e-child" data-id="1bbe67d4" data-element_type="container">
+		<div class="elementor-element elementor-element-1bbe67d4 e-con-full e-flex e-con e-child" data-id="1bbe67d4" data-element_type="container" style="width: 100%; border-top: 1px solid #000000; border-bottom: 1px solid #000000; padding: 40px 0;">
 				<div class="elementor-element elementor-element-3a4a2b96 animated-slow elementor-invisible elementor-widget elementor-widget-qi_addons_for_elementor_tabs_horizontal" data-id="3a4a2b96" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="qi_addons_for_elementor_tabs_horizontal.default">
 				<div class="elementor-widget-container">
-					<div class="qodef-shortcode qodef-m qodef-qi-tabs-horizontal qodef-qi-clear qodef-layout--simple qodef-title-hover--underline-draw qodef-title-underline-from-left">
+					<div class="qodef-shortcode qodef-m qodef-qi-tabs-horizontal qodef-qi-clear qodef-layout--simple qodef-title-hover--underline-draw qodef-title-underline-from-left" style="max-width: 100%; margin: 0 auto;">
 	<ul class="qodef-tabs-horizontal-navigation">
 		<li>
 	<h3 class="qodef-tab-title" role="tab">
