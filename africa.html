@@ -86,13 +86,12 @@
 
         .language-btn {
             background: none;
-            border: 2px solid #ffffff;
+            border: none;
             color: #ffffff;
             font-weight: bold;
             font-size: 14px;
             padding: 8px 16px;
             cursor: pointer;
-            border-radius: 4px;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -102,53 +101,53 @@
         }
 
         .language-btn:hover {
-            background: #ffffff;
-            color: #000000;
-            transform: scale(1.05);
+            background: none;
+            color: #ffffff;
+            transform: none;
         }
 
         .language-btn.active {
-            background: #ffffff;
-            color: #000000;
+            background: none;
+            color: #ffffff;
         }
 
         /* Style pour le bouton quand on scrolle */
         .language-btn.scrolled {
-            border-color: #000000 !important;
+            border: none !important;
             color: #000000 !important;
-            background: rgba(255, 255, 255, 0.9) !important;
+            background: none !important;
         }
 
         .language-btn.scrolled:hover {
-            background: #000000 !important;
-            color: #ffffff !important;
-            border-color: #000000 !important;
+            background: none !important;
+            color: #000000 !important;
+            border: none !important;
         }
 
         .language-btn.scrolled.active {
-            background: #000000 !important;
-            color: #ffffff !important;
-            border-color: #000000 !important;
+            background: none !important;
+            color: #000000 !important;
+            border: none !important;
         }
 
         /* S'assurer que le bouton reste visible même quand le header devient blanc */
         .site-header.clone .language-btn,
         .site-header:not(.clone) .language-btn.scrolled {
-            border-color: #000000 !important;
+            border: none !important;
             color: #000000 !important;
-            background: rgba(255, 255, 255, 0.9) !important;
+            background: none !important;
         }
 
         .site-header.clone .language-btn:hover,
         .site-header:not(.clone) .language-btn.scrolled:hover {
-            background: #000000 !important;
-            color: #ffffff !important;
+            background: none !important;
+            color: #000000 !important;
         }
 
         .site-header.clone .language-btn.active,
         .site-header:not(.clone) .language-btn.scrolled.active {
-            background: #000000 !important;
-            color: #ffffff !important;
+            background: none !important;
+            color: #000000 !important;
         }
 
         /* Forcer le positionnement à droite dans le header */
