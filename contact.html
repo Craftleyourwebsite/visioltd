@@ -52,7 +52,7 @@
 		}
 	}
 
-	/* --- STYLES POUR LE BOUTON DE LANGUE (FIXE NOIR) --- */
+	/* --- STYLES SPÉCIFIQUES POUR LE BOUTON DE LANGUE CONTACT --- */
 	.language-switcher {
 		display: flex !important;
 		align-items: center !important;
@@ -62,31 +62,84 @@
 		z-index: 100 !important;
 	}
 
-	.language-btn {
-		background: none !important;
+	.contact-language-btn {
+		background: transparent !important;
 		border: none !important;
+		outline: none !important;
 		color: #000000 !important;
 		font-weight: bold !important;
 		font-size: 14px !important;
 		padding: 8px 16px !important;
 		cursor: pointer !important;
-		transition: all 0.3s ease !important;
+		transition: none !important;
 		text-transform: uppercase !important;
 		letter-spacing: 1px !important;
 		min-width: 40px !important;
 		text-align: center !important;
 		white-space: nowrap !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		display: inline-block !important;
+		vertical-align: middle !important;
+		line-height: 1 !important;
 	}
 
-	.language-btn:hover {
-		background: none !important;
+	.contact-language-btn:hover {
+		background: transparent !important;
 		color: #000000 !important;
 		transform: none !important;
+		border: none !important;
+		outline: none !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
 	}
 
-	.language-btn.active {
-		background: none !important;
+	.contact-language-btn.active {
+		background: transparent !important;
 		color: #000000 !important;
+		border: none !important;
+		outline: none !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+	}
+
+	.contact-language-btn:focus {
+		border: none !important;
+		outline: none !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+	}
+
+	.contact-language-btn:active {
+		border: none !important;
+		outline: none !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+	}
+
+	/* Forcer l'override de tous les styles possibles */
+	.contact-language-btn,
+	.contact-language-btn:hover,
+	.contact-language-btn:focus,
+	.contact-language-btn:active,
+	.contact-language-btn.active {
+		background: transparent !important;
+		background-color: transparent !important;
+		background-image: none !important;
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
 	}
 
 	/* Forcer le positionnement à droite dans le header */
@@ -111,10 +164,10 @@
 			margin-left: 10px;
 		}
 		
-		.language-btn {
-			font-size: 12px;
-			padding: 6px 12px;
-			min-width: 35px;
+		.contact-language-btn {
+			font-size: 12px !important;
+			padding: 6px 12px !important;
+			min-width: 35px !important;
 		}
 	}
 	</style>
@@ -653,7 +706,7 @@ body { background: #ffffff; }
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-23132 current_page_item menu-item-23184"><a href="contact.html" aria-current="page">Contact</a></li>
 </ul></div>											<div class="language-switcher">
-												<button id="language-btn" onclick="toggleLanguage()">EN</button>
+												<button id="language-btn" class="contact-language-btn" onclick="toggleLanguage()">EN</button>
 											</div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
