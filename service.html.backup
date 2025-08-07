@@ -29,7 +29,7 @@
 	
 	
 	.logo-image {
-		max-height: 20px;
+		max-height: 30px;
 		width: auto;
 		display: block;
 		margin: 0 auto;
@@ -37,11 +37,9 @@
 	
 	@media screen and (max-width: 991px) {
 		.logo-image {
-			max-height: 16px;
+			max-height: 24px;
 		}
 	}
-	
-	
 
 	/* STYLE DE TITRE FIX RESPONSIVE */
 		.qodef-m-title {
@@ -75,18 +73,6 @@
 		opacity: 1 !important;
 	}
 
-	/* Forcer le header à être noir en permanence */
-	.site-header .header-wrap,
-	.site-header.clone .header-wrap {
-		background: #000000 !important;
-	}
-
-	/* S'assurer que le header-wrap-inner est aussi noir */
-	.site-header .header-wrap-inner,
-	.site-header.clone .header-wrap-inner {
-		background: #000000 !important;
-	}
-
 	/* Texte blanc en permanence pour tous les liens de navigation */
 	.site-header .nav-menu a,
 	.site-header .menu-toggle .lines,
@@ -116,7 +102,7 @@
 	}
 
 	/* Bouton de langue blanc en permanence */
-	.aboutus-language-btn {
+	.service-language-btn {
 		background: transparent !important;
 		background-color: transparent !important;
 		background-image: none !important;
@@ -161,7 +147,7 @@
 		visibility: visible !important;
 	}
 
-	.aboutus-language-btn:hover {
+	.service-language-btn:hover {
 		background: transparent !important;
 		background-color: transparent !important;
 		background-image: none !important;
@@ -183,7 +169,7 @@
 		border-radius: 0 !important;
 	}
 
-	.aboutus-language-btn.active {
+	.service-language-btn.active {
 		background: transparent !important;
 		background-color: transparent !important;
 		background-image: none !important;
@@ -204,7 +190,7 @@
 		border-radius: 0 !important;
 	}
 
-	.aboutus-language-btn:focus {
+	.service-language-btn:focus {
 		border: none !important;
 		border-width: 0 !important;
 		border-style: none !important;
@@ -221,7 +207,7 @@
 		border-radius: 0 !important;
 	}
 
-	.aboutus-language-btn:active {
+	.service-language-btn:active {
 		border: none !important;
 		border-width: 0 !important;
 		border-style: none !important;
@@ -236,162 +222,11 @@
 		-webkit-border-radius: 0 !important;
 		-moz-border-radius: 0 !important;
 		border-radius: 0 !important;
-	}
-
-	/* Styles spécifiques pour service.html - Menu burger à droite */
-	.menu-toggle {
-		order: 1 !important;
-		margin-left: auto !important;
-	}
-
-	.nav-menu {
-		order: 2 !important;
-	}
-
-	.language-switcher {
-		order: 3 !important;
-	}
-
-	/* Styles pour le header quand le menu est ouvert - Header noir */
-	.is-menu-toggled-on .site-header:not(.clone) .header-wrap:before {
-		background: #000000 !important;
-		opacity: 1 !important;
-	}
-
-	/* Styles pour le hamburger quand le menu est ouvert - Texte blanc */
-	.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines,
-	.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:before,
-	.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:after {
-		background-color: #ffffff !important;
-	}
-
-	/* Isolation complète de l'animation du hamburger - ne s'applique qu'au bouton */
-	.is-menu-toggled-on .menu-toggle {
-		/* L'animation ne s'applique qu'ici */
-	}
-
-	.is-menu-toggled-on .menu-toggle .lines {
-		/* Animation spécifique au hamburger uniquement */
-		background-color: transparent !important;
-	}
-
-	.is-menu-toggled-on .menu-toggle .lines:before {
-		/* Animation spécifique au hamburger uniquement */
-		top: 0 !important;
-		transform: rotate(45deg) !important;
-		background-color: #ffffff !important;
-	}
-
-	.is-menu-toggled-on .menu-toggle .lines:after {
-		/* Animation spécifique au hamburger uniquement */
-		bottom: 0 !important;
-		transform: rotate(-45deg) !important;
-		background-color: #ffffff !important;
-	}
-
-	/* Styles pour le language switcher quand le menu est ouvert */
-	.is-menu-toggled-on .site-header:not(.clone) .aboutus-language-btn {
-		color: #ffffff !important;
-	}
-
-	.is-menu-toggled-on .site-header:not(.clone) .aboutus-language-btn:hover {
-		color: #ffffff !important;
-	}
-
-	/* S'assurer que le header reste noir quand le menu est ouvert, même en mode scroll */
-	.is-menu-toggled-on .site-header.clone .header-wrap:before {
-		background: #000000 !important;
-		opacity: 1 !important;
-	}
-
-	/* Styles pour le hamburger en mode scroll quand le menu est ouvert */
-	.is-menu-toggled-on .site-header.clone .menu-toggle .lines,
-	.is-menu-toggled-on .site-header.clone .menu-toggle .lines:before,
-	.is-menu-toggled-on .site-header.clone .menu-toggle .lines:after {
-		background-color: #ffffff !important;
-	}
-
-	/* S'assurer que le menu lui-même n'est pas affecté par l'animation du hamburger */
-	.is-menu-toggled-on .nav-menu {
-		/* Le menu garde son comportement normal */
-		display: block !important;
-	}
-
-	.is-menu-toggled-on .nav-menu ul {
-		/* La liste du menu garde son comportement normal */
-		display: block !important;
-	}
-
-	.is-menu-toggled-on .nav-menu li {
-		/* Les éléments du menu gardent leur comportement normal */
-		display: block !important;
-	}
-
-	.is-menu-toggled-on .nav-menu a {
-		/* Les liens du menu gardent leur comportement normal */
-		display: block !important;
-	}
-
-	/* Styles de base pour le hamburger - Adapté de l'exemple */
-	.menu-toggle {
-		position: relative;
-		cursor: pointer;
-		z-index: 1000;
-		display: block;
-		width: 30px;
-		height: 30px;
-	}
-
-	.menu-toggle .lines {
-		display: block;
-		width: 25px;
-		height: 2px;
-		background-color: #ffffff;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		transition: all 0.3s ease;
-	}
-
-	.menu-toggle .lines:before,
-	.menu-toggle .lines:after {
-		content: '';
-		position: absolute;
-		width: 25px;
-		height: 2px;
-		background-color: #ffffff;
-		transition: all 0.3s ease;
-	}
-
-	.menu-toggle .lines:before {
-		top: -8px;
-	}
-
-	.menu-toggle .lines:after {
-		bottom: -8px;
-	}
-
-	/* Animation du hamburger pour fermer (X) - Version corrigée selon l'exemple */
-	.is-menu-toggled-on .menu-toggle .lines {
-		background-color: transparent !important;
-	}
-
-	.is-menu-toggled-on .menu-toggle .lines:before {
-		top: 0 !important;
-		transform: rotate(45deg) !important;
-		background-color: #ffffff !important;
-	}
-
-	.is-menu-toggled-on .menu-toggle .lines:after {
-		bottom: 0 !important;
-		transform: rotate(-45deg) !important;
-		background-color: #ffffff !important;
 	}
 
 	/* Supprimer tous les pseudo-éléments qui pourraient causer des icônes */
-	.aboutus-language-btn::before,
-	.aboutus-language-btn::after {
+	.service-language-btn::before,
+	.service-language-btn::after {
 		content: none !important;
 		display: none !important;
 		visibility: hidden !important;
@@ -406,13 +241,13 @@
 	}
 
 	/* Forcer l'override de tous les styles possibles */
-	.aboutus-language-btn,
-	.aboutus-language-btn:hover,
-	.aboutus-language-btn:focus,
-	.aboutus-language-btn:active,
-	.aboutus-language-btn.active,
-	.aboutus-language-btn::before,
-	.aboutus-language-btn::after {
+	.service-language-btn,
+	.service-language-btn:hover,
+	.service-language-btn:focus,
+	.service-language-btn:active,
+	.service-language-btn.active,
+	.service-language-btn::before,
+	.service-language-btn::after {
 		background: transparent !important;
 		background-color: transparent !important;
 		background-image: none !important;
@@ -436,7 +271,7 @@
 	}
 
 	/* Styles ultra-spécifiques pour éliminer tout élément perturbateur */
-	#language-btn.aboutus-language-btn {
+	#language-btn.service-language-btn {
 		background: transparent !important;
 		background-color: transparent !important;
 		background-image: none !important;
@@ -462,9 +297,9 @@
 	}
 
 	/* Supprimer tous les éléments enfants qui pourraient causer des icônes */
-	#language-btn.aboutus-language-btn *,
-	#language-btn.aboutus-language-btn *::before,
-	#language-btn.aboutus-language-btn *::after {
+	#language-btn.service-language-btn *,
+	#language-btn.service-language-btn *::before,
+	#language-btn.service-language-btn *::after {
 		content: none !important;
 		display: none !important;
 		visibility: hidden !important;
@@ -479,49 +314,50 @@
 	}
 
 	/* Forcer le texte uniquement */
-	#language-btn.aboutus-language-btn {
+	#language-btn.service-language-btn {
 		color: #ffffff !important;
 		font-weight: bold !important;
 		font-size: 14px !important;
 		padding: 8px 16px !important;
 		cursor: pointer !important;
+		text-transform: uppercase !important;
+		letter-spacing: 1px !important;
+		min-width: 40px !important;
+		text-align: center !important;
+		white-space: nowrap !important;
+		display: inline-block !important;
+		vertical-align: middle !important;
+		line-height: 1 !important;
 	}
 
-	/* Styles pour aligner le bouton de langue à droite comme dans le blog */
+	/* Forcer le positionnement à droite dans le header */
 	.layout-medium {
 		display: flex !important;
 		align-items: center !important;
 		justify-content: space-between !important;
-		width: 100% !important;
 	}
 
 	.nav-menu {
-		flex: 1 !important;
-		display: flex !important;
-		justify-content: center !important;
+		flex: 1;
+		display: flex;
+		justify-content: center;
 	}
 
 	.language-switcher {
-		flex-shrink: 0 !important;
-		margin-left: auto !important;
-	}
-
-	/* Styles pour le bouton mobile */
-	.language-switcher-mobile {
-		display: none !important;
+		flex-shrink: 0;
 	}
 
 	@media screen and (max-width: 991px) {
 		.language-switcher {
-			display: none !important;
+			margin-left: 10px;
 		}
 		
-		.language-switcher-mobile {
-			display: block !important;
+		.service-language-btn {
+			font-size: 12px !important;
+			padding: 6px 12px !important;
+			min-width: 35px !important;
 		}
 	}
-
-
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
@@ -599,11 +435,17 @@ body { font-family: 'Onest'; }
 
 @media screen and (min-width: 992px) { .is-header-smaller .site-header.clone .site-title { font-size: 20px; } }
 
+@media screen and (max-width: 991px) { .site-header .site-title { font-size: 14px; } }
+
+@media screen and (min-width: 992px) { .blog-small .entry-title { font-size: 19px; } }
 
 @media screen and (min-width: 992px) { h1 { font-size: 98px; } }
 
 @media screen and (min-width: 992px) { html { font-size: 16px; } }
 
+@media screen and (max-width: 991px) { html { font-size: 15px; } }
+
+@media screen and (min-width: 992px) { .nav-menu > ul { font-size: 13px; } }
 
 @media screen and (min-width: 992px) { .blog-stream .entry-content { font-size: 16px; } }
 
@@ -657,6 +499,9 @@ h1, .entry-title, .footer-subscribe h3, .widget_categories ul li, .widget_recent
 
 @media screen and (min-width: 992px) { .site-title img { max-height: 44px; } }
 
+@media screen and (max-width: 991px) { .site-title img { max-height: 24px; } }
+
+.top-bar { line-height: 36px; }
 
 html .site-header .site-title a { padding: 12px 24px; }
 
@@ -690,19 +535,19 @@ a { color: #d84156; }
 
 a:hover { color: #c60035; }
 
-.header-wrap:before { background: #000000 !important; }
+.header-wrap:before { background: #262100; }
 
-.is-header-half-transparent:not(.is-menu-toggled-on) .site-header:not(.clone) .header-wrap:before { opacity: 1 !important; }
+.is-header-half-transparent:not(.is-menu-toggled-on) .site-header:not(.clone) .header-wrap:before { opacity: 0.45; }
 
-.header-wrap:after { opacity: 0 !important; }
+.header-wrap:after { opacity: 0.08; }
 
-@media screen and (min-width: 992px) { .nav-menu > ul > li.current-menu-item > a { color: #000000 !important; } }
+@media screen and (min-width: 992px) { .nav-menu > ul > li.current-menu-item > a { color: #ffffff !important; } }
 
 @media screen and (min-width: 992px) { .nav-menu li.current-menu-item > a .link-text:before { background-color: #0a0000 !important; border-color: #0a0000 !important; } }
 
-@media screen and (min-width: 992px) { html .nav-menu > ul > li > a:hover, .nav-menu > ul > li.has-submenu:hover > a { color: #000000 !important; } }
+@media screen and (min-width: 992px) { html .nav-menu > ul > li > a:hover, .nav-menu > ul > li.has-submenu:hover > a { color: #0a0a0a; } }
 
-@media screen and (min-width: 992px) { html.loaded .nav-menu ul li a .link-text:before, .nav-menu li.has-submenu:hover > a .link-text:before { background-color: #ffffff !important; border-color: #ffffff !important; } }
+@media screen and (min-width: 992px) { html.loaded .nav-menu ul li a .link-text:before, .nav-menu li.has-submenu:hover > a .link-text:before { background-color: #fcf1e5; border-color: #fcf1e5; } }
 
 @media screen and (min-width: 992px) { .nav-menu  ul ul li.current-menu-item > a .link-text { color: #b79f8a !important; } }
 
@@ -860,13 +705,9 @@ body { background: #ffffff; }
 <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-blog"><a href="blog.html">Blog</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
-</ul>
-											<!-- Switch de langue pour mobile -->
-											<div class="language-switcher-mobile">
-												<button id="language-btn-mobile" class="language-btn" onclick="toggleLanguage()">EN</button>
-											</div>
-</div>											<div class="language-switcher">
-												<button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()">EN</button>
+</ul></div>											
+											<div class="language-switcher">
+												<button id="language-btn" class="service-language-btn" onclick="toggleLanguage()">EN</button>
 											</div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
@@ -1598,47 +1439,6 @@ Mauritius</p>				</div>
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 			<script>
-// Fonction pour basculer entre les langues
-function toggleLanguage() {
-    const desktopBtn = document.getElementById('language-btn');
-    const menuLanguageItem = document.querySelector('#menu-item-language a');
-    
-    // Toggle la langue
-    const currentLang = desktopBtn.textContent;
-    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-    
-    // Mettre à jour le bouton
-    desktopBtn.textContent = newLang;
-    
-    // Mettre à jour l'élément de menu
-    if (menuLanguageItem) {
-        menuLanguageItem.textContent = 'Language: ' + newLang;
-    }
-    
-    // Ajouter/retirer la classe active
-    desktopBtn.classList.toggle('active');
-    
-    // Ici vous pouvez ajouter la logique pour changer la langue du site
-    console.log('Langue changée vers:', newLang);
-}
-
-// Initialiser le bouton au chargement de la page
-document.addEventListener('DOMContentLoaded', function() {
-    const desktopBtn = document.getElementById('language-btn');
-    const menuLanguageItem = document.querySelector('#menu-item-language a');
-    
-    if (desktopBtn) {
-        // S'assurer que le bouton est dans un état cohérent
-        if (!desktopBtn.textContent) {
-            desktopBtn.textContent = 'EN';
-        }
-        
-        // Synchroniser l'élément de menu
-        if (menuLanguageItem) {
-            menuLanguageItem.textContent = 'Language: ' + desktopBtn.textContent;
-        }
-    }
-});
 				const lazyloadRunObserver = () => {
 					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
 					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
@@ -1732,5 +1532,29 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 </script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/inc/plugins/elementor/assets/js/elementor.js?ver=6.8.2" id="qi-addons-for-elementor-elementor-js"></script>
 
+<script>
+// Fonction pour basculer entre les langues (version simplifiée sans scroll)
+function toggleLanguage() {
+    const languageBtn = document.getElementById('language-btn');
+    const currentText = languageBtn.textContent;
+    
+    if (currentText === 'EN') {
+        languageBtn.textContent = 'FR';
+        languageBtn.classList.add('active');
+    } else {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+}
+
+// Initialisation : s'assurer que le bouton est en mode EN par défaut
+document.addEventListener('DOMContentLoaded', function() {
+    const languageBtn = document.getElementById('language-btn');
+    if (languageBtn) {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+});
+</script>
 </body>
 </html>

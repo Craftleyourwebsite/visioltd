@@ -40,7 +40,7 @@
 	}
 	
 	.logo-image {
-		max-height: 20px;
+		max-height: 30px;
 		width: auto;
 		display: block;
 		margin: 0 auto;
@@ -48,139 +48,30 @@
 	
 	@media screen and (max-width: 991px) {
 		.logo-image {
-			max-height: 16px;
+			max-height: 24px;
 		}
 	}
-	
 
-	/* --- STYLES SPÉCIFIQUES POUR LE HEADER CONTACT - TRANSPARENT AVEC HOVER ET SCROLL --- */
-	
-	/* Header transparent par défaut */
-	.site-header .header-wrap:before {
+	/* --- STYLES SPÉCIFIQUES POUR LE BOUTON DE LANGUE CONTACT --- */
+	.language-switcher {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: flex-end !important;
+		margin-left: auto !important;
+		position: relative !important;
+		z-index: 100 !important;
+	}
+
+	.contact-language-btn {
 		background: transparent !important;
-		opacity: 0 !important;
-		transition: all 0.3s ease !important;
-	}
-
-	/* Header noir au hover */
-	.site-header:hover .header-wrap:before {
-		background: #000000 !important;
-		opacity: 1 !important;
-	}
-
-	/* Header noir lors du scroll (clone) */
-	.site-header.clone .header-wrap:before {
-		background: #000000 !important;
-		opacity: 1 !important;
-	}
-
-	/* Header transparent par défaut */
-	.site-header .header-wrap {
-		background: transparent !important;
-		transition: all 0.3s ease !important;
-	}
-
-	/* Header noir au hover */
-	.site-header:hover .header-wrap {
-		background: #000000 !important;
-	}
-
-	/* Header noir lors du scroll (clone) */
-	.site-header.clone .header-wrap {
-		background: #000000 !important;
-	}
-
-	/* Header-wrap-inner transparent par défaut */
-	.site-header .header-wrap-inner {
-		background: transparent !important;
-		transition: all 0.3s ease !important;
-	}
-
-	/* Header-wrap-inner noir au hover */
-	.site-header:hover .header-wrap-inner {
-		background: #000000 !important;
-	}
-
-	/* Header-wrap-inner noir lors du scroll (clone) */
-	.site-header.clone .header-wrap-inner {
-		background: #000000 !important;
-	}
-
-	/* Texte noir par défaut pour tous les liens de navigation (car fond transparent) */
-	.site-header .nav-menu a,
-	.site-header .menu-toggle .lines,
-	.site-header .menu-toggle .lines:before,
-	.site-header .menu-toggle .lines:after {
-		color: #000000 !important;
-		transition: color 0.3s ease !important;
-	}
-
-	/* Texte blanc au hover du header (car fond devient noir) */
-	.site-header:hover .nav-menu a,
-	.site-header:hover .menu-toggle .lines,
-	.site-header:hover .menu-toggle .lines:before,
-	.site-header:hover .menu-toggle .lines:after {
-		color: #ffffff !important;
-	}
-
-	/* Texte blanc lors du scroll (clone) car fond noir */
-	.site-header.clone .nav-menu a,
-	.site-header.clone .menu-toggle .lines,
-	.site-header.clone .menu-toggle .lines:before,
-	.site-header.clone .menu-toggle .lines:after {
-		color: #ffffff !important;
-	}
-
-	/* Hover sur les liens : noir sur fond transparent, blanc sur fond noir */
-	.site-header .nav-menu a:hover {
-		color: #000000 !important;
-	}
-
-	.site-header:hover .nav-menu a:hover,
-	.site-header.clone .nav-menu a:hover {
-		color: #ffffff !important;
-	}
-
-	/* Effet de soulignement au hover */
-	.site-header .nav-menu a .link-text:before {
-		background-color: #000000 !important;
-		border-color: #000000 !important;
-		transition: all 0.3s ease !important;
-	}
-
-	.site-header:hover .nav-menu a .link-text:before,
-	.site-header.clone .nav-menu a .link-text:before {
-		background-color: #ffffff !important;
-		border-color: #ffffff !important;
-	}
-
-	/* Exception spéciale : "Contact" reste noir par défaut et au hover */
-	.site-header .nav-menu .current-menu-item a {
-		color: #000000 !important;
-	}
-
-	.site-header:hover .nav-menu .current-menu-item a,
-	.site-header.clone .nav-menu .current-menu-item a {
-		color: #000000 !important;
-	}
-
-	/* Bouton de langue noir par défaut (car fond transparent) */
-	.aboutus-language-btn {
-		background: transparent !important;
-		background-color: transparent !important;
-		background-image: none !important;
 		border: none !important;
-		border-width: 0 !important;
-		border-style: none !important;
-		border-color: transparent !important;
 		outline: none !important;
-		outline-width: 0 !important;
 		color: #000000 !important;
 		font-weight: bold !important;
 		font-size: 14px !important;
 		padding: 8px 16px !important;
 		cursor: pointer !important;
-		transition: color 0.3s ease !important;
+		transition: none !important;
 		text-transform: uppercase !important;
 		letter-spacing: 1px !important;
 		min-width: 40px !important;
@@ -191,76 +82,25 @@
 		display: inline-block !important;
 		vertical-align: middle !important;
 		line-height: 1 !important;
-		-webkit-box-shadow: none !important;
-		-moz-box-shadow: none !important;
-		-webkit-border-radius: 0 !important;
-		-moz-border-radius: 0 !important;
-		border-radius: 0 !important;
-		-webkit-appearance: none !important;
-		-moz-appearance: none !important;
-		appearance: none !important;
 	}
 
-	/* Bouton de langue blanc au hover du header */
-	.site-header:hover .aboutus-language-btn {
-		color: #ffffff !important;
+	.contact-language-btn:hover {
+		background: transparent !important;
+		color: #000000 !important;
+		transform: none !important;
+		border: none !important;
+		outline: none !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
 	}
 
-	/* Bouton de langue blanc lors du scroll (clone) */
-	.site-header.clone .aboutus-language-btn {
-		color: #ffffff !important;
-	}
-
-	/* Logo noir par défaut (car fond transparent) */
-	.site-header .logo-image {
-		filter: none !important;
-		opacity: 1 !important;
-		visibility: visible !important;
-		transition: filter 0.3s ease !important;
-	}
-
-	/* Logo blanc au hover du header (car fond devient noir) */
-	.site-header:hover .logo-image {
-		filter: brightness(0) invert(1) !important;
-	}
-
-	/* Logo blanc lors du scroll (clone) car fond noir */
-	.site-header.clone .logo-image {
-		filter: brightness(0) invert(1) !important;
-	}
-
-	/* Styles pour aligner le bouton de langue à droite comme dans le blog */
-	.layout-medium {
-		display: flex !important;
-		align-items: center !important;
-		justify-content: space-between !important;
-		width: 100% !important;
-	}
-
-	.nav-menu {
-		flex: 1 !important;
-		display: flex !important;
-		justify-content: center !important;
-	}
-
-	.language-switcher {
-		flex-shrink: 0 !important;
-		margin-left: auto !important;
-	}
-
-	/* Styles pour le bouton mobile */
-	.language-switcher-mobile {
-		display: none !important;
-	}
-
-	@media screen and (max-width: 991px) {
-		.language-switcher {
-			display: none !important;
-		}
-		
-		.language-switcher-mobile {
-			display: block !important;
-		}
+	.contact-language-btn.active {
+		background: transparent !important;
+		color: #000000 !important;
+		border: none !important;
+		outline: none !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
 	}
 
 	.contact-language-btn:focus {
@@ -319,12 +159,17 @@
 		flex-shrink: 0 !important;
 	}
 
+	@media screen and (max-width: 991px) {
+		.language-switcher {
+			margin-left: 10px;
+		}
 		
 		.contact-language-btn {
 			font-size: 12px !important;
 			padding: 6px 12px !important;
 			min-width: 35px !important;
 		}
+	}
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
@@ -756,6 +601,9 @@ h1, .entry-title, .footer-subscribe h3, .widget_categories ul li, .widget_recent
 
 @media screen and (min-width: 992px) { .site-title img { max-height: 44px; } }
 
+@media screen and (max-width: 991px) { .site-title img { max-height: 24px; } }
+
+.top-bar { line-height: 36px; }
 
 html .site-header .site-title a { padding: 12px 24px; }
 
@@ -789,19 +637,19 @@ a { color: #d84156; }
 
 a:hover { color: #c60035; }
 
-.header-wrap:before { background: #000000 !important; }
+.header-wrap:before { background: #262100; }
 
-.is-header-half-transparent:not(.is-menu-toggled-on) .site-header:not(.clone) .header-wrap:before { opacity: 1 !important; }
+.is-header-half-transparent:not(.is-menu-toggled-on) .site-header:not(.clone) .header-wrap:before { opacity: 0.45; }
 
-.header-wrap:after { opacity: 0 !important; }
+.header-wrap:after { opacity: 0.08; }
 
-@media screen and (min-width: 992px) { .nav-menu > ul > li.current-menu-item > a { color: #000000 !important; } }
+@media screen and (min-width: 992px) { .nav-menu > ul > li.current-menu-item > a { color: #ffffff !important; } }
 
 @media screen and (min-width: 992px) { .nav-menu li.current-menu-item > a .link-text:before { background-color: #0a0000 !important; border-color: #0a0000 !important; } }
 
-@media screen and (min-width: 992px) { html .nav-menu > ul > li > a:hover, .nav-menu > ul > li.has-submenu:hover > a { color: #000000 !important; } }
+@media screen and (min-width: 992px) { html .nav-menu > ul > li > a:hover, .nav-menu > ul > li.has-submenu:hover > a { color: #0a0a0a; } }
 
-@media screen and (min-width: 992px) { html.loaded .nav-menu ul li a .link-text:before, .nav-menu li.has-submenu:hover > a .link-text:before { background-color: #ffffff !important; border-color: #ffffff !important; } }
+@media screen and (min-width: 992px) { html.loaded .nav-menu ul li a .link-text:before, .nav-menu li.has-submenu:hover > a .link-text:before { background-color: #fcf1e5; border-color: #fcf1e5; } }
 
 @media screen and (min-width: 992px) { .nav-menu  ul ul li.current-menu-item > a .link-text { color: #b79f8a !important; } }
 
@@ -906,7 +754,7 @@ body { background: #ffffff; }
 							<div class="site-branding-center">
 																				<h1 class="site-title">
 													<a href="index.html" rel="home">
-														<img src="public/logoblanc.png" alt="Viseo Architecture Ltd" class="logo-image">
+														<img src="public/logo.png" alt="Viseo Architecture Ltd" class="logo-image">
 														<span class="screen-reader-text">
 															Viseo Architecture Ltd														</span>
 													</a>
@@ -935,9 +783,8 @@ body { background: #ffffff; }
 <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-blog"><a href="blog.html">Blog</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-23132 current_page_item menu-item-23184"><a href="contact.html" aria-current="page">Contact</a></li>
-</ul>
-</div>											<div class="language-switcher">
-												<button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()">EN</button>
+</ul></div>											<div class="language-switcher">
+												<button id="language-btn" class="contact-language-btn" onclick="toggleLanguage()">EN</button>
 											</div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
@@ -1200,23 +1047,6 @@ Mauritius</p>				</div>
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 			<script>
-// Fonction pour basculer entre les langues
-function toggleLanguage() {
-    const desktopBtn = document.getElementById('language-btn');
-    
-    // Toggle la langue
-    const currentLang = desktopBtn.textContent;
-    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-    
-    // Mettre à jour le bouton
-    desktopBtn.textContent = newLang;
-    
-    // Ajouter/retirer la classe active
-    desktopBtn.classList.toggle('active');
-    
-    // Ici vous pouvez ajouter la logique pour changer la langue du site
-    console.log('Langue changée vers:', newLang);
-}
 				const lazyloadRunObserver = () => {
 					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
 					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
@@ -1380,25 +1210,42 @@ var wpforms_settings = {"val_required":"This field is required.","val_email":"Pl
 </script>
 
 <script>
-// Fonction pour basculer entre les langues
+// Fonction pour basculer entre les langues (version simplifiée sans scroll)
 function toggleLanguage() {
-    const desktopBtn = document.getElementById('language-btn');
-    const mobileBtn = document.getElementById('language-btn-mobile');
+    const languageBtn = document.getElementById('language-btn');
+    const currentText = languageBtn.textContent;
     
-    // Toggle la langue
-    const currentLang = desktopBtn.textContent;
-    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-    
-    // Mettre à jour les deux boutons
-    desktopBtn.textContent = newLang;
-    mobileBtn.textContent = newLang;
-    
-    // Ajouter/retirer la classe active
-    desktopBtn.classList.toggle('active');
-    
-    // Ici vous pouvez ajouter la logique pour changer la langue du site
-    console.log('Langue changée vers:', newLang);
+    if (currentText === 'EN') {
+        languageBtn.textContent = 'FR';
+        languageBtn.classList.add('active');
+    } else {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
 }
+
+// Gestion robuste de Google Maps
+function initMap() {
+    const mapContainer = document.querySelector('.map-container');
+    const mapIframe = document.querySelector('.map-container iframe');
+    const mapFallback = document.querySelector('.map-fallback');
+    
+    if (!mapContainer || !mapIframe || !mapFallback) return;
+    
+    // Ajouter la classe de chargement
+    mapContainer.classList.add('loading');
+    
+    // Vérifier si l'iframe se charge correctement
+    let loadTimeout = setTimeout(() => {
+        showMapFallback();
+        mapContainer.classList.remove('loading');
+    }, 10000); // 10 secondes de timeout
+    
+    mapIframe.addEventListener('load', () => {
+        clearTimeout(loadTimeout);
+        hideMapFallback();
+        mapContainer.classList.remove('loading');
+    });
     
     mapIframe.addEventListener('error', () => {
         clearTimeout(loadTimeout);
@@ -1412,7 +1259,7 @@ function toggleLanguage() {
         hideMapFallback();
         mapContainer.classList.remove('loading');
     }
-
+}
 
 function showMapFallback() {
     const mapIframe = document.querySelector('.map-container iframe');

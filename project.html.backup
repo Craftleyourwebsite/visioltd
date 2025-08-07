@@ -1,19 +1,355 @@
-
 <!doctype html>
 <html lang="en-US" class="no-featured-area is-header-small is-body-full-width is-single-post-title-default is-post-title-align-center is-post-media-fixed is-blog-text-align-left is-meta-with-icons is-header-light is-header-full-width is-header-parallax-no is-menu-sticky is-menu-fixed-width is-menu-align-center is-menu-light is-submenu-light is-submenu-align-left is-menu-uppercase is-featured-area-full is-slider-buttons-center-margin is-slider-buttons-rounded is-slider-buttons-dark is-slider-title-label is-slider-parallax is-slider-title-none-uppercase is-slider-more-link-show-on-hover is-slider-more-link-border-bottom is-slider-text-align-center is-slider-v-align-center is-slider-h-align-center is-link-box-title-default is-link-box-title-transform-none is-link-box-text-align-center is-link-box-v-align-center is-link-box-parallax is-intro-align-center is-intro-text-dark is-intro-parallax-no is-more-link-border-bottom-light is-about-author-minimal is-related-posts-parallax is-related-posts-fixed is-share-links-boxed is-tagcloud-minimal is-nav-single-rounded is-nav-single-no-animated is-comments-minimal is-comments-image-rounded is-comment-form-boxed is-comment-form-border is-sidebar-right is-sidebar-sticky is-sidebar-align-left is-widget-title-align-left is-widget-bottomline is-trending-posts-default is-footer-subscribe-light is-footer-widgets-align-left is-footer-full-width is-meta-uppercase is-slider-dots-rounded-line-grow is-top-bar-mobile-left-visible is-top-bar-uppercase is-top-bar-full is-sub-menu-ani-fade-in-left is-menu-hover-solid is-menu-hover-overflow is-menu-hover-arrow-left is-copyright-uppercase is-logo-bg-stretch-left is-header-sticky-shadow-soft-shorter is-header-transparent-border-bottom is-header-bg-blur-slightly is-footer-border-top is-footer-border-light" data-title-ratio="0.7" data-link-box-title-ratio="0.5" data-generic-button-style="" data-header-bg-shape="">
 <head>
 	<meta charset="UTF-8">
 					<meta name="viewport" content="width=device-width, initial-scale=1">
 				<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="icon" type="image/jpeg" href="../../public/favicon.jpeg">
-	<link rel="shortcut icon" type="image/jpeg" href="../../public/favicon.jpeg">
-	<title>Architectural Heritage &#8211; Visio Architecture Ltd</title>
+	<link rel="icon" type="image/jpeg" href="public/favicon.jpeg">
+	<link rel="shortcut icon" type="image/jpeg" href="public/favicon.jpeg">
+	<title>Projects &#8211; Visio Architecture Ltd</title>
 <meta name='robots' content='max-image-preview:large' />
-	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }
+	
+	/* Centrage du logo */
+	.site-branding-wrap {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+	
+	.site-branding-center {
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex: 1;
+	}
+	
+	.site-title {
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.site-title a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-decoration: none;
+	}
+	
+	.logo-image {
+		max-height: 30px;
+		width: auto;
+		display: block;
+		margin: 0 auto;
+	}
+	
+	@media screen and (max-width: 991px) {
+		.logo-image {
+			max-height: 24px;
+		}
+	}
+
+	/* --- STYLES SPÉCIFIQUES POUR LE HEADER PROJECT - NOIR EN PERMANENCE --- */
+	
+	/* Header noir en permanence (normal et scroll) */
+	.site-header .header-wrap:before,
+	.site-header.clone .header-wrap:before {
+		background: #000000 !important;
+		opacity: 1 !important;
+	}
+
+	/* Texte blanc en permanence pour tous les liens de navigation */
+	.site-header .nav-menu a,
+	.site-header .menu-toggle .lines,
+	.site-header .menu-toggle .lines:before,
+	.site-header .menu-toggle .lines:after,
+	.site-header.clone .nav-menu a,
+	.site-header.clone .menu-toggle .lines,
+	.site-header.clone .menu-toggle .lines:before,
+	.site-header.clone .menu-toggle .lines:after {
+		color: #ffffff !important;
+	}
+
+	.site-header .nav-menu a:hover,
+	.site-header.clone .nav-menu a:hover {
+		color: #000000 !important;
+	}
+
+	/* Exception spéciale : "Projects" est noir par défaut et reste noir au hover */
+	.site-header .nav-menu .current-menu-item a,
+	.site-header.clone .nav-menu .current-menu-item a {
+		color: #000000 !important;
+	}
+
+	.site-header .nav-menu .current-menu-item a:hover,
+	.site-header.clone .nav-menu .current-menu-item a:hover {
+		color: #000000 !important;
+	}
+
+	/* Bouton de langue blanc en permanence */
+	.project-language-btn {
+		background: transparent !important;
+		background-color: transparent !important;
+		background-image: none !important;
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		color: #ffffff !important;
+		font-weight: bold !important;
+		font-size: 14px !important;
+		padding: 8px 16px !important;
+		cursor: pointer !important;
+		transition: none !important;
+		text-transform: uppercase !important;
+		letter-spacing: 1px !important;
+		min-width: 40px !important;
+		text-align: center !important;
+		white-space: nowrap !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		display: inline-block !important;
+		vertical-align: middle !important;
+		line-height: 1 !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
+		-webkit-appearance: none !important;
+		-moz-appearance: none !important;
+		appearance: none !important;
+	}
+
+	/* S'assurer que le logo reste blanc (car c'est logoblanc.png) */
+	.site-header .logo-image,
+	.site-header.clone .logo-image {
+		filter: brightness(0) invert(1) !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+	}
+
+	.project-language-btn:hover {
+		background: transparent !important;
+		background-color: transparent !important;
+		background-image: none !important;
+		color: #ffffff !important;
+		transform: none !important;
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
+	}
+
+	.project-language-btn.active {
+		background: transparent !important;
+		background-color: transparent !important;
+		background-image: none !important;
+		color: #ffffff !important;
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
+	}
+
+	.project-language-btn:focus {
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
+	}
+
+	.project-language-btn:active {
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
+	}
+
+	/* Supprimer tous les pseudo-éléments qui pourraient causer des icônes */
+	.project-language-btn::before,
+	.project-language-btn::after {
+		content: none !important;
+		display: none !important;
+		visibility: hidden !important;
+		opacity: 0 !important;
+		width: 0 !important;
+		height: 0 !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		border: none !important;
+		background: none !important;
+		background-image: none !important;
+	}
+
+	/* Forcer l'override de tous les styles possibles */
+	.project-language-btn,
+	.project-language-btn:hover,
+	.project-language-btn:focus,
+	.project-language-btn:active,
+	.project-language-btn.active,
+	.project-language-btn::before,
+	.project-language-btn::after {
+		background: transparent !important;
+		background-color: transparent !important;
+		background-image: none !important;
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
+		-webkit-appearance: none !important;
+		-moz-appearance: none !important;
+		appearance: none !important;
+	}
+
+	/* Styles ultra-spécifiques pour éliminer tout élément perturbateur */
+	#language-btn.project-language-btn {
+		background: transparent !important;
+		background-color: transparent !important;
+		background-image: none !important;
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		outline: none !important;
+		outline-width: 0 !important;
+		box-shadow: none !important;
+		text-decoration: none !important;
+		text-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-border-radius: 0 !important;
+		-moz-border-radius: 0 !important;
+		border-radius: 0 !important;
+		-webkit-appearance: none !important;
+		-moz-appearance: none !important;
+		appearance: none !important;
+		position: relative !important;
+		z-index: 1 !important;
+	}
+
+	/* Supprimer tous les éléments enfants qui pourraient causer des icônes */
+	#language-btn.project-language-btn *,
+	#language-btn.project-language-btn *::before,
+	#language-btn.project-language-btn *::after {
+		content: none !important;
+		display: none !important;
+		visibility: hidden !important;
+		opacity: 0 !important;
+		width: 0 !important;
+		height: 0 !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		border: none !important;
+		background: none !important;
+		background-image: none !important;
+	}
+
+	/* Forcer le texte uniquement */
+	#language-btn.project-language-btn {
+		color: #ffffff !important;
+		font-weight: bold !important;
+		font-size: 14px !important;
+		padding: 8px 16px !important;
+		cursor: pointer !important;
+		text-transform: uppercase !important;
+		letter-spacing: 1px !important;
+		min-width: 40px !important;
+		text-align: center !important;
+		white-space: nowrap !important;
+		display: inline-block !important;
+		vertical-align: middle !important;
+		line-height: 1 !important;
+	}
+
+	/* Forcer le positionnement à droite dans le header */
+	.layout-medium {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: space-between !important;
+	}
+
+	.nav-menu {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+	}
+
+	.language-switcher {
+		flex-shrink: 0;
+	}
+
+	@media screen and (max-width: 991px) {
+		.language-switcher {
+			margin-left: 10px;
+		}
+		
+		.project-language-btn {
+			font-size: 12px !important;
+			padding: 6px 12px !important;
+			min-width: 35px !important;
+		}
+	}
+	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
 <link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Comments Feed" href="https://themes.pixelwars.org/arkiz/demo-01/comments/feed/" />
-<link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Architectural Heritage Comments Feed" href="https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/feed/" />
 <script type="text/javascript">
 /* <![CDATA[ */
 window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.2"}};
@@ -88,11 +424,17 @@ body { font-family: 'Onest'; }
 
 @media screen and (min-width: 992px) { .is-header-smaller .site-header.clone .site-title { font-size: 20px; } }
 
+@media screen and (max-width: 991px) { .site-header .site-title { font-size: 14px; } }
+
+@media screen and (min-width: 992px) { .blog-small .entry-title { font-size: 19px; } }
 
 @media screen and (min-width: 992px) { h1 { font-size: 98px; } }
 
 @media screen and (min-width: 992px) { html { font-size: 16px; } }
 
+@media screen and (max-width: 991px) { html { font-size: 15px; } }
+
+@media screen and (min-width: 992px) { .nav-menu > ul { font-size: 13px; } }
 
 @media screen and (min-width: 992px) { .blog-stream .entry-content { font-size: 16px; } }
 
@@ -146,6 +488,9 @@ h1, .entry-title, .footer-subscribe h3, .widget_categories ul li, .widget_recent
 
 @media screen and (min-width: 992px) { .site-title img { max-height: 44px; } }
 
+@media screen and (max-width: 991px) { .site-title img { max-height: 24px; } }
+
+.top-bar { line-height: 36px; }
 
 html .site-header .site-title a { padding: 12px 24px; }
 
@@ -247,12 +592,12 @@ body { background: #ffffff; }
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/bdthemes-prime-slider-lite/assets/js/bdt-uikit.min.js?ver=3.21.7" id="bdt-uikit-js"></script>
-<link rel="https://api.w.org/" href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/wp/v2/posts/5656" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://themes.pixelwars.org/arkiz/demo-01/xmlrpc.php?rsd" />
+<link rel="https://api.w.org/" href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/wp/v2/pages/15001" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://themes.pixelwars.org/arkiz/demo-01/xmlrpc.php?rsd" />
 <meta name="generator" content="WordPress 6.8.2" />
-<link rel="canonical" href="https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/" />
-<link rel='shortlink' href='https://themes.pixelwars.org/arkiz/demo-01/?p=5656' />
-<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthemes.pixelwars.org%2Farkiz%2Fdemo-01%2Farchitectural-heritage%2F" />
-<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthemes.pixelwars.org%2Farkiz%2Fdemo-01%2Farchitectural-heritage%2F&#038;format=xml" />
+<link rel="canonical" href="https://themes.pixelwars.org/arkiz/demo-01/projects/" />
+<link rel='shortlink' href='https://themes.pixelwars.org/arkiz/demo-01/?p=15001' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthemes.pixelwars.org%2Farkiz%2Fdemo-01%2Fprojects%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthemes.pixelwars.org%2Farkiz%2Fdemo-01%2Fprojects%2F&#038;format=xml" />
 <meta name="generator" content="Elementor 3.27.7; features: e_font_icon_svg, additional_custom_breakpoints, e_element_cache; settings: css_print_method-external, google_font-enabled, font_display-swap">
 			<style>
 				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
@@ -274,7 +619,7 @@ body { background: #ffffff; }
 			</style>
 			</head>
 
-<body class="wp-singular post-template-default single single-post postid-5656 single-format-standard wp-theme-arkiz qodef-qi--no-touch qi-addons-for-elementor-1.8.9 elementor-default elementor-kit-11">
+<body class="wp-singular page-template page-template-page_template-projects page-template-page_template-projects-php page page-id-15001 wp-theme-arkiz qodef-qi--no-touch qi-addons-for-elementor-1.8.9 elementor-default elementor-kit-11">
 		    <div id="page" class="hfeed site">
 		        <header id="masthead" class="site-header" role="banner">
 						<div class="header-wrap" data-parallax-video="">
@@ -286,11 +631,10 @@ body { background: #ffffff; }
 							
 							<div class="site-branding-center">
 																				<h1 class="site-title">
-													<a href="https://themes.pixelwars.org/arkiz/demo-01/" rel="home">
+													<a href="index.html" rel="home">
+														<img src="public/logoblanc.png" alt="Viseo Architecture Ltd" class="logo-image">
 														<span class="screen-reader-text">
-															Visio Architecture Ltd														</span>
-														<span class="site-title-text">
-															Visio Architecture Ltd														</span>
+															Viseo Architecture Ltd														</span>
 													</a>
 												</h1> <!-- .site-title -->
 																			<p class="site-description">
@@ -307,253 +651,475 @@ body { background: #ffffff; }
 								<a class="menu-toggle">
 									<span class="lines"></span>
 								</a> <!-- .menu-toggle -->
-								<div class="nav-menu"><ul id="menu-mymenu" class=""><li id="menu-item-23651" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children menu-item-23651"><a href="https://themes.pixelwars.org/arkiz/demo-01/">Home</a>
-<ul class="sub-menu">
-	<li id="menu-item-23650" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23650"><a href="https://themes.pixelwars.org/arkiz/demo-01/home-02/">Home-02</a></li>
-	<li id="menu-item-23649" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23649"><a href="https://themes.pixelwars.org/arkiz/demo-01/home-03/">Home-03</a></li>
-	<li id="menu-item-23645" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23645"><a href="https://themes.pixelwars.org/arkiz/demo-01/home-04/">Home-04</a></li>
-	<li id="menu-item-23647" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23647"><a href="https://themes.pixelwars.org/arkiz/demo-01/home-05/">Home-05</a></li>
-	<li id="menu-item-23646" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23646"><a href="https://themes.pixelwars.org/arkiz/demo-01/home-06/">Home-06</a></li>
-	<li id="menu-item-23648" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23648"><a href="https://themes.pixelwars.org/arkiz/demo-01/home-07/">Home-07</a></li>
-	<li id="menu-item-23644" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23644"><a href="https://themes.pixelwars.org/arkiz/demo-01/home-08/">Home-08</a></li>
-	<li id="menu-item-23643" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23643"><a href="https://themes.pixelwars.org/arkiz/demo-01/home-09/">Home-09</a></li>
-</ul>
+								<div class="nav-menu"><ul id="menu-mymenu" class=""><li id="menu-item-africa" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-africa"><a href="africa.html">Africa</a></li>
+<li id="menu-item-23651" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children menu-item-23651"><a href="index.html">Home</a>
+
 </li>
-<li id="menu-item-23186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23186"><a href="https://themes.pixelwars.org/arkiz/demo-01/about-us/">About Us</a></li>
-<li id="menu-item-23188" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23188"><a href="https://themes.pixelwars.org/arkiz/demo-01/services/">Services</a></li>
-<li id="menu-item-15520" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15520"><a href="https://themes.pixelwars.org/arkiz/demo-01/portfolio/">Portfolio</a></li>
-<li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-15519"><a href="../../news.html">News</a></li>
-<li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="https://themes.pixelwars.org/arkiz/demo-01/contact/">Contact</a></li>
-</ul>
-											<!-- Switch de langue pour mobile -->
-											<div class="language-switcher-mobile">
-												<button id="language-btn-mobile" class="language-btn" onclick="toggleLanguage()">EN</button>
-											</div>
-</div>											<a class="search-toggle toggle-link"></a>
-											
-											<div class="search-container">
-												<div class="search-box">
-													<form class="search-form" method="get" action="https://themes.pixelwars.org/arkiz/demo-01/">
-														<label>
-															<span>
-																Search for															</span>
-															<input type="search" id="search-field" name="s" placeholder="type and hit enter">
-														</label>
-														<input type="submit" class="search-submit" value="Search">
-													</form> <!-- .search-form -->
-												</div> <!-- .search-box -->
-											</div> <!-- .search-container -->
-																					<div class="social-container widget-area">
-																	<a class="social-link twitter" target="_blank" href="#"></a>
-									<a class="social-link instagram" target="_blank" href="#"></a>
-															</div> <!-- .social-container -->
+<li id="menu-item-23186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23186"><a href="aboutus.html">About Us</a></li>
+<li id="menu-item-23188" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23188"><a href="service.html">Services</a></li>
+<li id="menu-item-15520" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-15001 current_page_item menu-item-15520"><a href="project.html" aria-current="page">Projects</a></li>
+<li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-blog"><a href="blog.html">Blog</a></li>
+<!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
+<li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
+</ul></div>											
+											<div class="language-switcher">
+												<button id="language-btn" class="project-language-btn" onclick="toggleLanguage()">EN</button>
+											</div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
 					</nav> <!-- #site-navigation .main-navigation .site-navigation -->
 				</div> <!-- .header-wrap-inner -->
 			</div> <!-- .header-wrap -->
         </header> <!-- #masthead .site-header -->
-			<section class="top-content-single is-top-content-single-full with-parallax">
-				<div class="layout-medium">
-								<div class="post-header post-header-classic is-cat-link-borders-light is-cat-link-rounded">
-							<header class="entry-header" >
-									<div class="entry-meta above-title">
-										<span class="cat-links">
-					<span class="prefix">
-						in					</span>
-					<a href="https://themes.pixelwars.org/arkiz/demo-01/category/news/" rel="category tag">News</a>				</span> <!-- .cat-links -->
-								</div> <!-- .entry-meta .above-title -->
-				<h1 class="entry-title">Architectural Heritage</h1>					<div class="entry-meta below-title">
-									<span class="posted-on">
-				<span class="prefix">
-					on				</span>
-				<a href="https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/" rel="bookmark">
-					<time class="entry-date published" datetime="2023-05-18T11:27:25+00:00">
-						May 18, 2023					</time>
-					<time class="updated" datetime="2025-02-25T21:31:31+00:00">
-						February 25, 2025					</time>
-				</a>
-			</span> <!-- .posted-on -->
-					<span class="entry-share">
-				<span class="entry-share-text">Share</span> <!-- .entry-share-text -->
-				
-				<span class="entry-share-wrap">
-					<span class="entry-share-inner-wrap">
-						<a class="share-facebook" rel="nofollow" target="_blank" href="https://www.facebook.com/sharer.php?u=https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/&#038;t=Architectural%20Heritage" title="Share this post on Facebook">Facebook</a>
-						
-						<a class="share-twitter" rel="nofollow" target="_blank" href="https://twitter.com/intent/tweet?text=Currently%20reading:%20&#039;Architectural%20Heritage&#039;%20on%20https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/" title="Tweet this post to your followers">Twitter</a>
-						
-						<a class="share-pinterest" rel="nofollow" target="_blank" href="https://pinterest.com/pin/create/button/?url=https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/&#038;media=https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom.jpg&#038;description=Architectural%20Heritage" title="Pin it">Pinterest</a>
-						
-						<a class="share-mail" rel="nofollow" target="_blank" href="mailto:?subject=I%20wanted%20you%20to%20see%20this%20post&#038;body=Check%20out%20this%20post:%20Architectural%20Heritage%20-%20https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/" title="Email this post to a friend">Email</a>
-					</span> <!-- .entry-share-inner-wrap -->
-				</span> <!-- .entry-share-wrap -->
-			</span> <!-- .entry-share -->
-							</div> <!-- .entry-meta .below-title -->
-							</header> <!-- .entry-header -->
-						<div class="post-thumbnail" style="background-image: url(https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom-550x308.jpg);" data-medium-image="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom-1060x594.jpg" data-large-image="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom.jpg">
-					<div class="post-wrap">
-												<span class="scrolldown"></span> <!-- .scrolldown -->
-					</div> <!-- .post-wrap -->
-				</div> <!-- .post-thumbnail -->
-						</div> <!-- .post-header -->
-						</div> <!-- .layout-medium -->
-			</section> <!-- .top-content-single -->
-		
+
 <div id="main" class="site-main">
-	<div class="layout-fixed">
+	<div class="layout-full">
 		<div id="primary" class="content-area ">
 			<div id="content" class="site-content" role="main">
-				<article id="post-5656" class="post-5656 post type-post status-publish format-standard has-post-thumbnail hentry category-news is-cat-link-borders-light is-cat-link-rounded">
-					<div class="hentry-wrap">
-												<div class="entry-content">
+				<div class="post-header post-header-classic projects-header">
+					<header class="entry-header" >
+						<h1 class="entry-title">
+							Projects						</h1> <!-- .entry-title -->
+					</header> <!-- .entry-header -->
+				</div> <!-- .post-header .post-header-classic .portfolio-header -->
+				
+				<ul id="filters" class="filters">
+													<li class="current">
+									<a data-filter="*" href="#">
+										all									</a>
+								</li>
+															<li>
+									<a data-filter=".architecture" href="https://themes.pixelwars.org/arkiz/demo-01/projects-category/architecture/">
+										Architecture									</a>
+								</li>
+															<li>
+									<a data-filter=".interior-design" href="https://themes.pixelwars.org/arkiz/demo-01/projects-category/interior-design/">
+										Interior Design									</a>
+								</li>
+															<li>
+									<a data-filter=".urban" href="https://themes.pixelwars.org/arkiz/demo-01/projects-category/urban/">
+										Urban									</a>
+								</li>
+											</ul> <!-- #filters .filters -->
+				
+								
+								
+				<div class="blog-grid-wrap">
+					<style>
+						* {
+							margin: 0;
+							padding: 0;
+							box-sizing: border-box;
+						}
+
+						body {
+							font-family: 'Arial', sans-serif;
+							overflow-x: hidden;
+						}
+
+						/* Forcer full width sur tous les containers parents */
+						.layout-full,
+						.content-area,
+						.site-content,
+						#content {
+							max-width: none !important;
+							padding: 0 !important;
+							margin: 0 !important;
+						}
+
+						/* Override complet pour éliminer tous les espacements */
+						#page,
+						.site,
+						.site-main,
+						.layout-full,
+						.content-area,
+						.site-content,
+						#content {
+							max-width: none !important;
+							width: 100vw !important;
+							margin: 0 !important;
+							padding: 0 !important;
+							box-sizing: border-box !important;
+						}
+
+						/* Ajuster l'espacement du titre et du filtre */
+						.post-header {
+							padding: 60px 0 40px 0 !important;
+							margin: 0 !important;
+							text-align: center;
+						}
+
+						.entry-title {
+							margin: 0 0 20px 0 !important;
+							padding: 0 !important;
+						}
+
+						#filters {
+							padding: 30px 0 50px 0 !important;
+							margin: 0 !important;
+							text-align: center;
+							border-bottom: 1px solid #eee;
+						}
+
+						#filters li {
+							margin: 0 15px !important;
+							padding: 0 !important;
+						}
+
+						#filters a {
+							padding: 8px 20px !important;
+							text-decoration: none;
+							color: #333;
+							transition: all 0.3s ease;
+						}
+
+						#filters a:hover,
+						#filters .current a {
+							background: #333;
+							color: white;
+						}
+
+						/* Forcer le body et html à ne pas avoir de scroll horizontal */
+						html, body {
+							overflow-x: hidden !important;
+							width: 100% !important;
+							margin: 0 !important;
+							padding: 0 !important;
+						}
+
+						/* Améliorer l'apparence générale */
+						.site-main {
+							padding-top: 0 !important;
+						}
+
+						.content-area {
+							padding: 0 !important;
+						}
+
+						/* Espacement responsive */
+						@media (max-width: 768px) {
+							.post-header {
+								padding: 40px 0 30px 0 !important;
+							}
+
+							#filters {
+								padding: 20px 0 30px 0 !important;
+							}
+
+							#filters li {
+								margin: 0 8px !important;
+							}
+
+							.blog-grid-wrap {
+								padding: 15px 0 0 0 !important;
+							}
+						}
+
+						/* Container principal pour la galerie - full width */
+						.blog-grid-wrap {
+							width: 100vw !important;
+							margin: 0 !important;
+							padding: 20px 0 0 0 !important;
+							overflow: hidden;
+							position: relative;
+							transform: translateX(-50%);
+							left: 50%;
+							right: auto;
+						}
+
+						.gallery-container {
+							display: grid;
+							grid-template-columns: repeat(2, 1fr);
+							grid-template-rows: repeat(4, 25vh);
+							height: 100vh;
+							width: 100vw !important;
+							margin: 0 !important;
+							padding: 0 !important;
+							max-width: none !important;
+						}
+
+						.gallery-item {
+							position: relative;
+							overflow: hidden;
+							cursor: pointer;
+							margin: 0 !important;
+							padding: 0 !important;
+						}
+
+						.gallery-item img {
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+							object-position: center;
+							transition: transform 0.4s ease;
+							aspect-ratio: 3/4; /* Force le portrait */
+						}
+
+						.gallery-item:hover img {
+							transform: scale(1.05);
+						}
+
+						.overlay {
+							position: absolute;
+							top: 0;
+							left: 0;
+							right: 0;
+							bottom: 0;
+							background: rgba(255, 255, 255, 0.95);
+							opacity: 0;
+							transition: opacity 0.3s ease;
+							display: flex;
+							flex-direction: column;
+							justify-content: center;
+							align-items: center;
+							padding: 15px;
+							text-align: center;
+						}
+
+						.gallery-item:hover .overlay {
+							opacity: 1;
+						}
+
+						.hotel-title {
+							font-size: 1.4rem;
+							font-weight: bold;
+							color: #333;
+							margin-bottom: 6px;
+							line-height: 1.2;
+						}
+
+						.location {
+							color: #888;
+							font-size: 0.85rem;
+							margin-bottom: 8px;
+							font-style: italic;
+						}
+
+						.description {
+							color: #555;
+							font-size: 0.75rem;
+							line-height: 1.3;
+							margin-bottom: 10px;
+							max-height: 40px;
+							overflow: hidden;
+							display: -webkit-box;
+							-webkit-line-clamp: 3;
+							-webkit-box-orient: vertical;
+						}
+
+						.category {
+							display: inline-block;
+							background: #f0f0f0;
+							color: #999;
+							padding: 3px 10px;
+							border-radius: 12px;
+							font-size: 0.65rem;
+							letter-spacing: 0.5px;
+							text-transform: uppercase;
+						}
+
+						/* Item central en taille double (portrait) */
+						.gallery-item.featured {
+							grid-column: span 1;
+							grid-row: span 2;
+						}
+
+						.gallery-item.featured .hotel-title {
+							font-size: 1.8rem;
+							margin-bottom: 10px;
+						}
+
+						.gallery-item.featured .location {
+							font-size: 1rem;
+							margin-bottom: 12px;
+						}
+
+						.gallery-item.featured .description {
+							font-size: 0.9rem;
+							max-height: 60px;
+							margin-bottom: 15px;
+							-webkit-line-clamp: 4;
+						}
+
+						.gallery-item.featured .category {
+							font-size: 0.75rem;
+							padding: 5px 14px;
+						}
+
+						/* Responsive Design */
+						@media (max-width: 768px) {
+							.blog-grid-wrap {
+								width: 100vw !important;
+								margin: 0 !important;
+								padding: 0 !important;
+								position: relative;
+								transform: translateX(-50%);
+								left: 50%;
+								right: auto;
+							}
 							
-<p>Modern architecture emphasizes sustainable design principles, including energy-efficient building materials, renewable energy sources, and green roofs. Architects also consider the environmental impact of the building&#8217;s construction and operation, ensuring a minimal carbon footprint.</p>
+							.gallery-container {
+								grid-template-columns: 1fr;
+								grid-template-rows: repeat(8, 30vh);
+								width: 100vw !important;
+								margin: 0 !important;
+								padding: 0 !important;
+							}
 
+							.gallery-item.featured {
+								grid-column: span 1;
+								grid-row: span 1;
+							}
+							
+							.hotel-title {
+								font-size: 1.2rem;
+							}
+							
+							.gallery-item.featured .hotel-title {
+								font-size: 1.4rem;
+							}
+							
+							.description {
+								font-size: 0.7rem;
+								max-height: 35px;
+							}
+							
+							.overlay {
+								padding: 12px;
+							}
+						}
 
+						@media (max-width: 480px) {
+							.blog-grid-wrap {
+								width: 100vw !important;
+								margin: 0 !important;
+								padding: 0 !important;
+								position: relative;
+								transform: translateX(-50%);
+								left: 50%;
+								right: auto;
+							}
+							
+							.gallery-container {
+								grid-template-rows: repeat(8, 25vh);
+								width: 100vw !important;
+								margin: 0 !important;
+								padding: 0 !important;
+							}
+							
+							.hotel-title {
+								font-size: 1rem;
+							}
+							
+							.location {
+								font-size: 0.75rem;
+							}
+							
+							.description {
+								font-size: 0.65rem;
+								max-height: 30px;
+								-webkit-line-clamp: 2;
+							}
+						}
+					</style>
 
-<h2 class="wp-block-heading has-large-font-size">Sustainable Design</h2>
+					<div class="gallery-container">
+						<!-- Item 1 -->
+						<div class="gallery-item">
+							<img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Développement urbain">
+							<div class="overlay">
+								<h2 class="hotel-title">Eco District</h2>
+								<p class="location">Florence, Italie</p>
+								<p class="description">Quartier résidentiel écologique intégrant espaces verts et architecture durable.</p>
+								<span class="category">Urbanisme</span>
+							</div>
+						</div>
 
+						<!-- Item 2 - Featured (portrait) -->
+						<div class="gallery-item featured">
+							<img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800&q=80" alt="Fantastic Life Hotel">
+							<div class="overlay">
+								<h2 class="hotel-title">Fantastic Life Hotel & Spa</h2>
+								<p class="location">Rome, Italie</p>
+								<p class="description">Avec son design saisissant et son ambiance sereine, le Fantastic Life Hotel & Spa crée une oasis de détente et de luxe.</p>
+								<span class="category">Hôtel</span>
+							</div>
+						</div>
 
+						<!-- Item 3 -->
+						<div class="gallery-item">
+							<img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Villa moderne">
+							<div class="overlay">
+								<h2 class="hotel-title">Villa Milano</h2>
+								<p class="location">Milano, Italie</p>
+								<p class="description">Résidence de prestige au design contemporain avec vue panoramique sur la ville.</p>
+								<span class="category">Villa</span>
+							</div>
+						</div>
 
-<p>Modern architecture often features a minimalistic and clean design aesthetic, focusing on simplicity, functionality, and ample natural light. This approach enhances the building&#8217;s energy efficiency, reduces visual clutter, and creates a more visually appealing experience.</p>
+						<!-- Item 4 -->
+						<div class="gallery-item">
+							<img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Maison design">
+							<div class="overlay">
+								<h2 class="hotel-title">Casa Moderna</h2>
+								<p class="location">Venise, Italie</p>
+								<p class="description">Maison contemporaine alliant tradition vénitienne et modernité architecturale.</p>
+								<span class="category">Résidentiel</span>
+							</div>
+						</div>
 
+						<!-- Item 5 -->
+						<div class="gallery-item">
+							<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Hôtel vue mer">
+							<div class="overlay">
+								<h2 class="hotel-title">Seaside Resort</h2>
+								<p class="location">Amalfi, Italie</p>
+								<p class="description">Complexe hôtelier de luxe face à la mer Méditerranée avec spa et restaurants gastronomiques.</p>
+								<span class="category">Resort</span>
+							</div>
+						</div>
 
+						<!-- Item 6 -->
+						<div class="gallery-item">
+							<img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Paysage">
+							<div class="overlay">
+								<h2 class="hotel-title">Nature Resort</h2>
+								<p class="location">Sardaigne, Italie</p>
+								<p class="description">Éco-lodge intégré dans un environnement naturel préservé avec activités outdoor.</p>
+								<span class="category">Écologie</span>
+							</div>
+						</div>
 
-<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="1024" height="574" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom-1024x574.jpg" alt="" class="wp-image-15547" srcset="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom-1024x574.jpg 1024w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom-300x168.jpg 300w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom-768x430.jpg 768w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom-981x550.jpg 981w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom-1060x594.jpg 1060w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom-1536x861.jpg 1536w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom-550x308.jpg 550w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom-892x500.jpg 892w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom.jpg 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+						<!-- Item 7 -->
+						<div class="gallery-item">
+							<img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Vue urbaine">
+							<div class="overlay">
+								<h2 class="hotel-title">Urban Plaza</h2>
+								<p class="location">Naples, Italie</p>
+								<p class="description">Complexe mixte combinant bureaux, commerces et espaces de vie urbains modernes.</p>
+								<span class="category">Mixte</span>
+							</div>
+						</div>
 
-
-
-<h2 class="wp-block-heading has-large-font-size">Minimalistic Aesthetic</h2>
-
-
-
-<p>Modern architecture often features a minimalistic and clean design aesthetic, focusing on simplicity, functionality, and ample natural light. This approach enhances the building&#8217;s energy efficiency, reduces visual clutter, and creates a more visually appealing experience.</p>
-
-
-
-<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-9d6595d7 wp-block-columns-is-layout-flex">
-<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
-<h2 class="wp-block-heading">Integration of Passive Design Strategies</h2>
-
-
-
-<p>Passive design strategies focus on optimizing the building&#8217;s orientation, insulation, ventilation, and shading to reduce reliance on mechanical systems for heating, cooling, and lighting. Modern architecture incorporates passive design principles to enhance energy efficiency and occupant comfort.</p>
-
-
-
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="1024" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Spiral-Elegance_-The-Wooden-Helix-Custom-1024x1024.jpg" alt="" class="wp-image-15552" srcset="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Spiral-Elegance_-The-Wooden-Helix-Custom-1024x1024.jpg 1024w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Spiral-Elegance_-The-Wooden-Helix-Custom-300x300.jpg 300w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Spiral-Elegance_-The-Wooden-Helix-Custom-150x150.jpg 150w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Spiral-Elegance_-The-Wooden-Helix-Custom-768x768.jpg 768w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Spiral-Elegance_-The-Wooden-Helix-Custom-550x550.jpg 550w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Spiral-Elegance_-The-Wooden-Helix-Custom-1060x1060.jpg 1060w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Spiral-Elegance_-The-Wooden-Helix-Custom-500x500.jpg 500w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Spiral-Elegance_-The-Wooden-Helix-Custom-650x650.jpg 650w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Spiral-Elegance_-The-Wooden-Helix-Custom.jpg 1080w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
-</div>
-</div>
-
-
-
-<p>By incorporating these modern architectural principles, your architectural project can deliver a sustainable, functional, and aesthetically pleasing structure that enhances the occupant&#8217;s well-being and minimizes the building&#8217;s environmental impact.</p>
-						</div> <!-- .entry-content -->
-					</div> <!-- .hentry-wrap -->
-								<div class="share-links">
-				<h3>Share This</h3>
+						<!-- Item 8 -->
+						<div class="gallery-item">
+							<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Skyline">
+							<div class="overlay">
+								<h2 class="hotel-title">Business Center</h2>
+								<p class="location">Turin, Italie</p>
+								<p class="description">Centre d'affaires moderne avec espaces de coworking et technologies avancées.</p>
+								<span class="category">Business</span>
+							</div>
+						</div>
+					</div>
+				</div> <!-- .blog-grid-wrap -->
 				
-				<a class="share-facebook" rel="nofollow" target="_blank" href="https://www.facebook.com/sharer.php?u=https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/&#038;t=Architectural%20Heritage" title="Share this post on Facebook">
-					<i class="pw-icon-facebook"></i>
-				</a>
-				
-				<a class="share-twitter" rel="nofollow" target="_blank" href="https://twitter.com/intent/tweet?text=Currently%20reading:%20&#039;Architectural%20Heritage&#039;%20on%20https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/" title="Tweet this post to your followers">
-					<i class="pw-icon-twitter"></i>
-				</a>
-				
-				<a class="share-pinterest" rel="nofollow" target="_blank" href="https://pinterest.com/pin/create/button/?url=https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/&#038;media=https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom.jpg&#038;description=Architectural%20Heritage" title="Pin it">
-					<i class="pw-icon-pinterest"></i>
-				</a>
-				
-				<a class="share-mail" rel="nofollow" target="_blank" href="mailto:?subject=I%20wanted%20you%20to%20see%20this%20post&#038;body=Check%20out%20this%20post:%20Architectural%20Heritage%20-%20https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/" title="Email this post to a friend">
-					<i class="pw-icon-mail"></i>
-				</a>
-			</div> <!-- .share-links -->
-								<nav class="nav-single">
-																	<div class="nav-previous">
-																									<a class="nav-image-link" href="https://themes.pixelwars.org/arkiz/demo-01/iconic-skyscrapers-redefining/">
-															<img alt="" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/a-large-flat-seamless-round-swimming-pool-within-a-Custom-300x300.jpg">
-														</a> <!-- .nav-image-link -->
-													<div class="nav-desc"><h4>Previous Post</h4><a href="https://themes.pixelwars.org/arkiz/demo-01/iconic-skyscrapers-redefining/" rel="prev"><span class="meta-nav">&#8592;</span> Iconic Skyscrapers Redefining</a></div>														<a class="nav-overlay-link" href="https://themes.pixelwars.org/arkiz/demo-01/iconic-skyscrapers-redefining/" rel="prev">
-															Iconic Skyscrapers Redefining														</a> <!-- .nav-overlay-link -->
-																							</div> <!-- .nav-previous -->
-																
-													</nav> <!-- .nav-single -->
-									<div class="related-posts">
-					<h3 class="widget-title">
-						<span>You May Also Like</span>
-					</h3> <!-- .widget-title -->
-					
-					<div class="blocks">
-															<div class="block">
-																				<div class="post-thumbnail" style="background-image: url(https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/beautiful-view-empire-states-skyscrapers-new-york-city-Custom-550x550.jpg);">
-											<div class="post-wrap">
-												<header class="entry-header">
-													<div class="entry-meta">
-														<span class="cat-links"><a href="https://themes.pixelwars.org/arkiz/demo-01/category/insights/" rel="category tag">Insights</a></span> <!-- .cat-links -->
-													</div> <!-- .entry-meta -->
-													
-													<h2 class="entry-title">
-														<a href="https://themes.pixelwars.org/arkiz/demo-01/the-evolution-of-modern-architecture/">The Evolution of Modern Architecture</a>
-													</h2> <!-- .entry-title -->
-													
-													<a class="more-link" href="https://themes.pixelwars.org/arkiz/demo-01/the-evolution-of-modern-architecture/">View Post</a> <!-- .more-link -->
-												</header> <!-- .entry-header -->
-											</div> <!-- .post-wrap -->
-										</div> <!-- .post-thumbnail -->
-									</div> <!-- .block -->
-																	<div class="block">
-																				<div class="post-thumbnail" style="background-image: url(https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/a-large-flat-seamless-round-swimming-pool-within-a-Custom-550x550.jpg);">
-											<div class="post-wrap">
-												<header class="entry-header">
-													<div class="entry-meta">
-														<span class="cat-links"><a href="https://themes.pixelwars.org/arkiz/demo-01/category/news/" rel="category tag">News</a></span> <!-- .cat-links -->
-													</div> <!-- .entry-meta -->
-													
-													<h2 class="entry-title">
-														<a href="https://themes.pixelwars.org/arkiz/demo-01/iconic-skyscrapers-redefining/">Iconic Skyscrapers Redefining</a>
-													</h2> <!-- .entry-title -->
-													
-													<a class="more-link" href="https://themes.pixelwars.org/arkiz/demo-01/iconic-skyscrapers-redefining/">View Post</a> <!-- .more-link -->
-												</header> <!-- .entry-header -->
-											</div> <!-- .post-wrap -->
-										</div> <!-- .post-thumbnail -->
-									</div> <!-- .block -->
-																	<div class="block">
-																				<div class="post-thumbnail" style="background-image: url(https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/beautiful-view-skyscrapers-against-cloudy-blue-sky-san-francisco-california-Custom-550x550.jpg);">
-											<div class="post-wrap">
-												<header class="entry-header">
-													<div class="entry-meta">
-														<span class="cat-links"><a href="https://themes.pixelwars.org/arkiz/demo-01/category/insights/" rel="category tag">Insights</a></span> <!-- .cat-links -->
-													</div> <!-- .entry-meta -->
-													
-													<h2 class="entry-title">
-														<a href="https://themes.pixelwars.org/arkiz/demo-01/exploring-the-evolution-of-modern-architecture/">Exploring the Evolution of Modern Architecture</a>
-													</h2> <!-- .entry-title -->
-													
-													<a class="more-link" href="https://themes.pixelwars.org/arkiz/demo-01/exploring-the-evolution-of-modern-architecture/">View Post</a> <!-- .more-link -->
-												</header> <!-- .entry-header -->
-											</div> <!-- .post-wrap -->
-										</div> <!-- .post-thumbnail -->
-									</div> <!-- .block -->
-													</div> <!-- .blocks -->
-				</div> <!-- .related-posts -->
-							</article> <!-- .post -->
-							<div id="comments" class="comments-area">
-					<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave A Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/arkiz/demo-01/architectural-heritage/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://themes.pixelwars.org/arkiz/demo-01/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p><p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required /></p>
-<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required /></p>
-<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url" /></p>
-<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
-<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='5656' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-</p></form>	</div><!-- #respond -->
-				</div>
-					</div> <!-- #content .site-content -->
+							</div> <!-- #content .site-content -->
 		</div> <!-- #primary .content-area -->
-	</div> <!-- layout -->
+		
+			</div> <!-- layout -->
 </div> <!-- #main .site-main -->
+
 
 	
         <footer id="colophon" class="site-footer" role="contentinfo">
@@ -567,40 +1133,6 @@ body { background: #ffffff; }
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 			<script>
-// Fonction pour basculer entre les langues
-function toggleLanguage() {
-    const desktopBtn = document.getElementById('language-btn');
-    const mobileBtn = document.getElementById('language-btn-mobile');
-    
-    // Toggle la langue
-    const currentLang = desktopBtn.textContent;
-    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-    
-    // Mettre à jour les deux boutons
-    desktopBtn.textContent = newLang;
-    mobileBtn.textContent = newLang;
-    
-    // Ajouter/retirer la classe active
-    desktopBtn.classList.toggle('active');
-    mobileBtn.classList.toggle('active');
-    
-    // Ici vous pouvez ajouter la logique pour changer la langue du site
-    console.log('Langue changée vers:', newLang);
-}
-
-// Synchroniser les boutons au chargement de la page
-document.addEventListener('DOMContentLoaded', function() {
-    const desktopBtn = document.getElementById('language-btn');
-    const mobileBtn = document.getElementById('language-btn-mobile');
-    
-    if (desktopBtn && mobileBtn) {
-        // S'assurer que les deux boutons ont le même état
-        mobileBtn.textContent = desktopBtn.textContent;
-        if (desktopBtn.classList.contains('active')) {
-            mobileBtn.classList.add('active');
-        }
-    }
-});
 				const lazyloadRunObserver = () => {
 					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
 					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
@@ -626,17 +1158,13 @@ document.addEventListener('DOMContentLoaded', function() {
 					document.addEventListener( event, lazyloadRunObserver );
 				} );
 			</script>
-			<style id='core-block-supports-inline-css' type='text/css'>
-.wp-container-core-columns-is-layout-9d6595d7{flex-wrap:nowrap;}
-</style>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js"></script>
+			<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js"></script>
 <script type="text/javascript" id="qi-addons-for-elementor-script-js-extra">
 /* <![CDATA[ */
 var qodefQiAddonsGlobal = {"vars":{"adminBarHeight":0,"iconArrowLeft":"<svg  xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewBox=\"0 0 34.2 32.3\" xml:space=\"preserve\" style=\"stroke-width: 2;\"><line x1=\"0.5\" y1=\"16\" x2=\"33.5\" y2=\"16\"\/><line x1=\"0.3\" y1=\"16.5\" x2=\"16.2\" y2=\"0.7\"\/><line x1=\"0\" y1=\"15.4\" x2=\"16.2\" y2=\"31.6\"\/><\/svg>","iconArrowRight":"<svg  xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewBox=\"0 0 34.2 32.3\" xml:space=\"preserve\" style=\"stroke-width: 2;\"><line x1=\"0\" y1=\"16\" x2=\"33\" y2=\"16\"\/><line x1=\"17.3\" y1=\"0.7\" x2=\"33.2\" y2=\"16.5\"\/><line x1=\"17.3\" y1=\"31.6\" x2=\"33.5\" y2=\"15.4\"\/><\/svg>","iconClose":"<svg  xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewBox=\"0 0 9.1 9.1\" xml:space=\"preserve\"><g><path d=\"M8.5,0L9,0.6L5.1,4.5L9,8.5L8.5,9L4.5,5.1L0.6,9L0,8.5L4,4.5L0,0.6L0.6,0L4.5,4L8.5,0z\"\/><\/g><\/svg>"}};
 /* ]]> */
 </script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/js/main.min.js?ver=1.8.9" id="qi-addons-for-elementor-script-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/comment-reply.min.js?ver=6.8.2" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery.fitvids.js" id="fitvids-js"></script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jarallax.min.js" id="jarallax-js"></script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jarallax-video.min.js" id="jarallax-video-js"></script>
@@ -677,5 +1205,30 @@ step: $.validator.format("Please enter a multiple of {0}.")
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/main.js" id="arkiz-main-js"></script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/pixelwars-core/themes/global/js/shortcodes.js" id="pixelwars-core-shortcodes-js"></script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/bdthemes-prime-slider-lite/assets/js/prime-slider-site.min.js?ver=3.17.6" id="prime-slider-site-js"></script>
+
+<script>
+// Fonction pour basculer entre les langues (version simplifiée sans scroll)
+function toggleLanguage() {
+    const languageBtn = document.getElementById('language-btn');
+    const currentText = languageBtn.textContent;
+    
+    if (currentText === 'EN') {
+        languageBtn.textContent = 'FR';
+        languageBtn.classList.add('active');
+    } else {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+}
+
+// Initialisation : s'assurer que le bouton est en mode EN par défaut
+document.addEventListener('DOMContentLoaded', function() {
+    const languageBtn = document.getElementById('language-btn');
+    if (languageBtn) {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+});
+</script>
 </body>
 </html>

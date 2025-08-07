@@ -61,6 +61,18 @@
 		opacity: 1 !important;
 	}
 
+	/* Forcer le header à être noir en permanence */
+	.site-header .header-wrap,
+	.site-header.clone .header-wrap {
+		background: #000000 !important;
+	}
+
+	/* S'assurer que le header-wrap-inner est aussi noir */
+	.site-header .header-wrap-inner,
+	.site-header.clone .header-wrap-inner {
+		background: #000000 !important;
+	}
+
 	/* Texte blanc en permanence pour tous les liens de navigation */
 	.site-header .nav-menu a,
 	.site-header .menu-toggle .lines,
@@ -198,18 +210,157 @@
 	.aboutus-language-btn:active {
 		border: none !important;
 		border-width: 0 !important;
-		border-style: none !important;
-		border-color: transparent !important;
-		outline: none !important;
-		outline-width: 0 !important;
-		box-shadow: none !important;
-		text-decoration: none !important;
-		text-shadow: none !important;
-		-webkit-box-shadow: none !important;
-		-moz-box-shadow: none !important;
-		-webkit-border-radius: 0 !important;
-		-moz-border-radius: 0 !important;
-		border-radius: 0 !important;
+	}
+
+	/* Styles spécifiques pour aboutus.html - Menu burger à droite */
+	.menu-toggle {
+		order: 1 !important;
+		margin-left: auto !important;
+	}
+
+	.nav-menu {
+		order: 2 !important;
+	}
+
+	.language-switcher {
+		order: 3 !important;
+	}
+
+	/* Styles pour le header quand le menu est ouvert - Header noir */
+	.is-menu-toggled-on .site-header:not(.clone) .header-wrap:before {
+		background: #000000 !important;
+		opacity: 1 !important;
+	}
+
+	/* Styles pour le hamburger quand le menu est ouvert - Texte blanc */
+	.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines,
+	.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:before,
+	.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:after {
+		background-color: #ffffff !important;
+	}
+
+	/* Isolation complète de l'animation du hamburger - ne s'applique qu'au bouton */
+	.is-menu-toggled-on .menu-toggle {
+		/* L'animation ne s'applique qu'ici */
+	}
+
+	.is-menu-toggled-on .menu-toggle .lines {
+		/* Animation spécifique au hamburger uniquement */
+		background-color: transparent !important;
+	}
+
+	.is-menu-toggled-on .menu-toggle .lines:before {
+		/* Animation spécifique au hamburger uniquement */
+		top: 0 !important;
+		transform: rotate(45deg) !important;
+		background-color: #ffffff !important;
+	}
+
+	.is-menu-toggled-on .menu-toggle .lines:after {
+		/* Animation spécifique au hamburger uniquement */
+		bottom: 0 !important;
+		transform: rotate(-45deg) !important;
+		background-color: #ffffff !important;
+	}
+
+	/* Styles pour le language switcher quand le menu est ouvert */
+	.is-menu-toggled-on .site-header:not(.clone) .aboutus-language-btn {
+		color: #ffffff !important;
+	}
+
+	.is-menu-toggled-on .site-header:not(.clone) .aboutus-language-btn:hover {
+		color: #ffffff !important;
+	}
+
+	/* S'assurer que le header reste noir quand le menu est ouvert, même en mode scroll */
+	.is-menu-toggled-on .site-header.clone .header-wrap:before {
+		background: #000000 !important;
+		opacity: 1 !important;
+	}
+
+	/* Styles pour le hamburger en mode scroll quand le menu est ouvert */
+	.is-menu-toggled-on .site-header.clone .menu-toggle .lines,
+	.is-menu-toggled-on .site-header.clone .menu-toggle .lines:before,
+	.is-menu-toggled-on .site-header.clone .menu-toggle .lines:after {
+		background-color: #ffffff !important;
+	}
+
+	/* S'assurer que le menu lui-même n'est pas affecté par l'animation du hamburger */
+	.is-menu-toggled-on .nav-menu {
+		/* Le menu garde son comportement normal */
+		display: block !important;
+	}
+
+	.is-menu-toggled-on .nav-menu ul {
+		/* La liste du menu garde son comportement normal */
+		display: block !important;
+	}
+
+	.is-menu-toggled-on .nav-menu li {
+		/* Les éléments du menu gardent leur comportement normal */
+		display: block !important;
+	}
+
+	.is-menu-toggled-on .nav-menu a {
+		/* Les liens du menu gardent leur comportement normal */
+		display: block !important;
+	}
+
+	/* Styles de base pour le hamburger - Adapté de l'exemple */
+	.menu-toggle {
+		position: relative;
+		cursor: pointer;
+		z-index: 1000;
+		display: block;
+		width: 30px;
+		height: 30px;
+	}
+
+	.menu-toggle .lines {
+		display: block;
+		width: 25px;
+		height: 2px;
+		background-color: #ffffff;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		transition: all 0.3s ease;
+	}
+
+	.menu-toggle .lines:before,
+	.menu-toggle .lines:after {
+		content: '';
+		position: absolute;
+		width: 25px;
+		height: 2px;
+		background-color: #ffffff;
+		transition: all 0.3s ease;
+	}
+
+	.menu-toggle .lines:before {
+		top: -8px;
+	}
+
+	.menu-toggle .lines:after {
+		bottom: -8px;
+	}
+
+	/* Animation du hamburger pour fermer (X) - Version corrigée selon l'exemple */
+	.is-menu-toggled-on .menu-toggle .lines {
+		background-color: transparent !important;
+	}
+
+	.is-menu-toggled-on .menu-toggle .lines:before {
+		top: 0 !important;
+		transform: rotate(45deg) !important;
+		background-color: #ffffff !important;
+	}
+
+	.is-menu-toggled-on .menu-toggle .lines:after {
+		bottom: 0 !important;
+		transform: rotate(-45deg) !important;
+		background-color: #ffffff !important;
 	}
 
 	/* Supprimer tous les pseudo-éléments qui pourraient causer des icônes */
@@ -344,6 +495,153 @@
 			font-size: 12px !important;
 			padding: 6px 12px !important;
 			min-width: 35px !important;
+		}
+
+		/* Masquer le language switcher sur mobile et afficher l'option dans le menu */
+		.language-switcher {
+			display: none !important;
+		}
+		
+		.menu-item-language {
+			display: block !important;
+		}
+
+		/* Styles pour le texte du header en mobile - Texte blanc pour être visible */
+		.site-header:not(.clone) .nav-menu a,
+		.site-header:not(.clone) .menu-toggle .lines,
+		.site-header:not(.clone) .menu-toggle .lines:before,
+		.site-header:not(.clone) .menu-toggle .lines:after {
+			color: #ffffff !important;
+		}
+
+		.site-header:not(.clone) .menu-toggle .lines,
+		.site-header:not(.clone) .menu-toggle .lines:before,
+		.site-header:not(.clone) .menu-toggle .lines:after {
+			background-color: #ffffff !important;
+		}
+
+		/* Quand le menu est ouvert en mobile - Texte blanc */
+		.is-menu-toggled-on .site-header:not(.clone) .nav-menu a,
+		.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines,
+		.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:before,
+		.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:after {
+			color: #ffffff !important;
+		}
+
+		.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines,
+		.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:before,
+		.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:after {
+			background-color: #ffffff !important;
+		}
+
+		/* Animation d'entrée du menu - slide depuis la droite */
+		.nav-menu {
+			transform: translateX(100%);
+			transition: transform 0.3s ease-in-out;
+		}
+
+		.is-menu-toggled-on .nav-menu {
+			transform: translateX(0);
+		}
+
+		/* Overlay pour assombrir le contenu derrière le menu */
+		.is-menu-toggled-on::before {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			background: rgba(0, 0, 0, 0.5);
+			z-index: 998;
+		}
+
+		/* Styles pour le menu mobile quand il est ouvert - Demi-écran comme l'exemple */
+		.is-menu-toggled-on .nav-menu {
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 50%;
+			height: 100vh;
+			background: #000000;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 999;
+			transform: translateX(0);
+			transition: transform 0.3s ease;
+		}
+
+		.is-menu-toggled-on .nav-menu ul {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 20px;
+			padding: 0 40px;
+			width: 100%;
+		}
+
+		.is-menu-toggled-on .nav-menu li {
+			display: block;
+			width: 100%;
+		}
+
+		.is-menu-toggled-on .nav-menu a {
+			color: #ffffff !important;
+			font-size: 18px;
+			font-weight: 400;
+			text-decoration: none;
+			transition: all 0.3s ease;
+			display: block;
+			padding: 10px 0;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.is-menu-toggled-on .nav-menu a:hover {
+			color: #ffffff !important;
+			opacity: 0.8;
+			padding-left: 10px;
+		}
+
+		/* Style spécial pour l'élément language dans le menu */
+		.is-menu-toggled-on .menu-item-language a {
+			border-bottom: none;
+			font-weight: 600;
+			color: #cccccc !important;
+		}
+
+		/* Animation des éléments du menu - apparition progressive */
+		.is-menu-toggled-on .nav-menu li {
+			opacity: 0;
+			transform: translateX(20px);
+			animation: slideInMenu 0.3s ease forwards;
+		}
+
+		.is-menu-toggled-on .nav-menu li:nth-child(1) { animation-delay: 0.1s; }
+		.is-menu-toggled-on .nav-menu li:nth-child(2) { animation-delay: 0.2s; }
+		.is-menu-toggled-on .nav-menu li:nth-child(3) { animation-delay: 0.3s; }
+		.is-menu-toggled-on .nav-menu li:nth-child(4) { animation-delay: 0.4s; }
+		.is-menu-toggled-on .nav-menu li:nth-child(5) { animation-delay: 0.5s; }
+		.is-menu-toggled-on .nav-menu li:nth-child(6) { animation-delay: 0.6s; }
+		.is-menu-toggled-on .nav-menu li:nth-child(7) { animation-delay: 0.7s; }
+		.is-menu-toggled-on .nav-menu li:nth-child(8) { animation-delay: 0.8s; }
+
+		@keyframes slideInMenu {
+			to {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+	}
+
+	/* Afficher le language switcher sur desktop et masquer l'option dans le menu */
+	@media screen and (min-width: 992px) {
+		.language-switcher {
+			display: flex !important;
+		}
+		
+		.menu-item-language {
+			display: none !important;
 		}
 	}
 	</style>
@@ -523,19 +821,19 @@ a { color: #d84156; }
 
 a:hover { color: #c60035; }
 
-.header-wrap:before { background: #262100; }
+.header-wrap:before { background: #000000 !important; }
 
-.is-header-half-transparent:not(.is-menu-toggled-on) .site-header:not(.clone) .header-wrap:before { opacity: 0.45; }
+.is-header-half-transparent:not(.is-menu-toggled-on) .site-header:not(.clone) .header-wrap:before { opacity: 1 !important; }
 
-.header-wrap:after { opacity: 0.08; }
+.header-wrap:after { opacity: 0 !important; }
 
-@media screen and (min-width: 992px) { .nav-menu > ul > li.current-menu-item > a { color: #ffffff !important; } }
+@media screen and (min-width: 992px) { .nav-menu > ul > li.current-menu-item > a { color: #000000 !important; } }
 
 @media screen and (min-width: 992px) { .nav-menu li.current-menu-item > a .link-text:before { background-color: #0a0000 !important; border-color: #0a0000 !important; } }
 
-@media screen and (min-width: 992px) { html .nav-menu > ul > li > a:hover, .nav-menu > ul > li.has-submenu:hover > a { color: #0a0a0a; } }
+@media screen and (min-width: 992px) { html .nav-menu > ul > li > a:hover, .nav-menu > ul > li.has-submenu:hover > a { color: #000000 !important; } }
 
-@media screen and (min-width: 992px) { html.loaded .nav-menu ul li a .link-text:before, .nav-menu li.has-submenu:hover > a .link-text:before { background-color: #fcf1e5; border-color: #fcf1e5; } }
+@media screen and (min-width: 992px) { html.loaded .nav-menu ul li a .link-text:before, .nav-menu li.has-submenu:hover > a .link-text:before { background-color: #ffffff !important; border-color: #ffffff !important; } }
 
 @media screen and (min-width: 992px) { .nav-menu  ul ul li.current-menu-item > a .link-text { color: #b79f8a !important; } }
 
@@ -668,6 +966,7 @@ body { background: #ffffff; }
 <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-blog"><a href="blog.html">Blog</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
+<li id="menu-item-language" class="menu-item menu-item-language"><a href="#" onclick="toggleLanguage(); return false;">Language: EN</a></li>
 </ul></div>											
 											<div class="language-switcher">
 												<button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()">EN</button>
@@ -1301,23 +1600,36 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 // Fonction pour basculer entre les langues (version simplifiée sans scroll)
 function toggleLanguage() {
     const languageBtn = document.getElementById('language-btn');
+    const languageMenuItem = document.querySelector('.menu-item-language a');
     const currentText = languageBtn.textContent;
     
     if (currentText === 'EN') {
         languageBtn.textContent = 'FR';
         languageBtn.classList.add('active');
+        if (languageMenuItem) {
+            languageMenuItem.textContent = 'Language: FR';
+        }
     } else {
         languageBtn.textContent = 'EN';
         languageBtn.classList.remove('active');
+        if (languageMenuItem) {
+            languageMenuItem.textContent = 'Language: EN';
+        }
     }
 }
 
 // Initialisation : s'assurer que le bouton est en mode EN par défaut
 document.addEventListener('DOMContentLoaded', function() {
     const languageBtn = document.getElementById('language-btn');
+    const languageMenuItem = document.querySelector('.menu-item-language a');
+    
     if (languageBtn) {
         languageBtn.textContent = 'EN';
         languageBtn.classList.remove('active');
+    }
+    
+    if (languageMenuItem) {
+        languageMenuItem.textContent = 'Language: EN';
     }
 });
 </script>

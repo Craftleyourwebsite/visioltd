@@ -88,11 +88,17 @@ body { font-family: 'Onest'; }
 
 @media screen and (min-width: 992px) { .is-header-smaller .site-header.clone .site-title { font-size: 20px; } }
 
+@media screen and (max-width: 991px) { .site-header .site-title { font-size: 14px; } }
+
+@media screen and (min-width: 992px) { .blog-small .entry-title { font-size: 19px; } }
 
 @media screen and (min-width: 992px) { h1 { font-size: 98px; } }
 
 @media screen and (min-width: 992px) { html { font-size: 16px; } }
 
+@media screen and (max-width: 991px) { html { font-size: 15px; } }
+
+@media screen and (min-width: 992px) { .nav-menu > ul { font-size: 13px; } }
 
 @media screen and (min-width: 992px) { .blog-stream .entry-content { font-size: 16px; } }
 
@@ -146,6 +152,9 @@ h1, .entry-title, .footer-subscribe h3, .widget_categories ul li, .widget_recent
 
 @media screen and (min-width: 992px) { .site-title img { max-height: 44px; } }
 
+@media screen and (max-width: 991px) { .site-title img { max-height: 24px; } }
+
+.top-bar { line-height: 36px; }
 
 html .site-header .site-title a { padding: 12px 24px; }
 
@@ -324,12 +333,7 @@ body { background: #ffffff; }
 <li id="menu-item-15520" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15520"><a href="https://themes.pixelwars.org/arkiz/demo-01/portfolio/">Portfolio</a></li>
 <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-15519"><a href="../../news.html">News</a></li>
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="https://themes.pixelwars.org/arkiz/demo-01/contact/">Contact</a></li>
-</ul>
-											<!-- Switch de langue pour mobile -->
-											<div class="language-switcher-mobile">
-												<button id="language-btn-mobile" class="language-btn" onclick="toggleLanguage()">EN</button>
-											</div>
-</div>											<a class="search-toggle toggle-link"></a>
+</ul></div>											<a class="search-toggle toggle-link"></a>
 											
 											<div class="search-container">
 												<div class="search-box">
@@ -567,40 +571,6 @@ body { background: #ffffff; }
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 			<script>
-// Fonction pour basculer entre les langues
-function toggleLanguage() {
-    const desktopBtn = document.getElementById('language-btn');
-    const mobileBtn = document.getElementById('language-btn-mobile');
-    
-    // Toggle la langue
-    const currentLang = desktopBtn.textContent;
-    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-    
-    // Mettre à jour les deux boutons
-    desktopBtn.textContent = newLang;
-    mobileBtn.textContent = newLang;
-    
-    // Ajouter/retirer la classe active
-    desktopBtn.classList.toggle('active');
-    mobileBtn.classList.toggle('active');
-    
-    // Ici vous pouvez ajouter la logique pour changer la langue du site
-    console.log('Langue changée vers:', newLang);
-}
-
-// Synchroniser les boutons au chargement de la page
-document.addEventListener('DOMContentLoaded', function() {
-    const desktopBtn = document.getElementById('language-btn');
-    const mobileBtn = document.getElementById('language-btn-mobile');
-    
-    if (desktopBtn && mobileBtn) {
-        // S'assurer que les deux boutons ont le même état
-        mobileBtn.textContent = desktopBtn.textContent;
-        if (desktopBtn.classList.contains('active')) {
-            mobileBtn.classList.add('active');
-        }
-    }
-});
 				const lazyloadRunObserver = () => {
 					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
 					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {

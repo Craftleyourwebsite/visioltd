@@ -40,7 +40,7 @@
 	}
 	
 	.logo-image {
-		max-height: 30px;
+		max-height: 20px;
 		width: auto;
 		display: block;
 		margin: 0 auto;
@@ -48,8 +48,10 @@
 	
 	@media screen and (max-width: 991px) {
 		.logo-image {
-			max-height: 24px;
+			max-height: 16px;
 		}
+	}
+	
 	}
 
 	/* --- STYLES SPÉCIFIQUES POUR LE HEADER BLOG - NOIR EN PERMANENCE --- */
@@ -59,6 +61,18 @@
 	.site-header.clone .header-wrap:before {
 		background: #000000 !important;
 		opacity: 1 !important;
+	}
+
+	/* Forcer le header à être noir en permanence */
+	.site-header .header-wrap,
+	.site-header.clone .header-wrap {
+		background: #000000 !important;
+	}
+
+	/* S'assurer que le header-wrap-inner est aussi noir */
+	.site-header .header-wrap-inner,
+	.site-header.clone .header-wrap-inner {
+		background: #000000 !important;
 	}
 
 	/* Texte blanc en permanence pour tous les liens de navigation */
@@ -335,10 +349,6 @@
 		flex-shrink: 0 !important;
 	}
 
-	@media screen and (max-width: 991px) {
-		.language-switcher {
-			margin-left: 10px;
-		}
 		
 		.blog-language-btn {
 			font-size: 12px !important;
@@ -424,17 +434,11 @@ body { font-family: 'Onest'; }
 
 @media screen and (min-width: 992px) { .is-header-smaller .site-header.clone .site-title { font-size: 20px; } }
 
-@media screen and (max-width: 991px) { .site-header .site-title { font-size: 14px; } }
-
-@media screen and (min-width: 992px) { .blog-small .entry-title { font-size: 19px; } }
 
 @media screen and (min-width: 992px) { h1 { font-size: 98px; } }
 
 @media screen and (min-width: 992px) { html { font-size: 16px; } }
 
-@media screen and (max-width: 991px) { html { font-size: 15px; } }
-
-@media screen and (min-width: 992px) { .nav-menu > ul { font-size: 13px; } }
 
 @media screen and (min-width: 992px) { .blog-stream .entry-content { font-size: 16px; } }
 
@@ -488,9 +492,6 @@ h1, .entry-title, .footer-subscribe h3, .widget_categories ul li, .widget_recent
 
 @media screen and (min-width: 992px) { .site-title img { max-height: 44px; } }
 
-@media screen and (max-width: 991px) { .site-title img { max-height: 24px; } }
-
-.top-bar { line-height: 36px; }
 
 html .site-header .site-title a { padding: 12px 24px; }
 
@@ -524,19 +525,19 @@ a { color: #d84156; }
 
 a:hover { color: #c60035; }
 
-.header-wrap:before { background: #262100; }
+.header-wrap:before { background: #000000 !important; }
 
-.is-header-half-transparent:not(.is-menu-toggled-on) .site-header:not(.clone) .header-wrap:before { opacity: 0.45; }
+.is-header-half-transparent:not(.is-menu-toggled-on) .site-header:not(.clone) .header-wrap:before { opacity: 1 !important; }
 
-.header-wrap:after { opacity: 0.08; }
+.header-wrap:after { opacity: 0 !important; }
 
-@media screen and (min-width: 992px) { .nav-menu > ul > li.current-menu-item > a { color: #ffffff !important; } }
+@media screen and (min-width: 992px) { .nav-menu > ul > li.current-menu-item > a { color: #000000 !important; } }
 
 @media screen and (min-width: 992px) { .nav-menu li.current-menu-item > a .link-text:before { background-color: #0a0000 !important; border-color: #0a0000 !important; } }
 
-@media screen and (min-width: 992px) { html .nav-menu > ul > li > a:hover, .nav-menu > ul > li.has-submenu:hover > a { color: #0a0a0a; } }
+@media screen and (min-width: 992px) { html .nav-menu > ul > li > a:hover, .nav-menu > ul > li.has-submenu:hover > a { color: #000000 !important; } }
 
-@media screen and (min-width: 992px) { html.loaded .nav-menu ul li a .link-text:before, .nav-menu li.has-submenu:hover > a .link-text:before { background-color: #fcf1e5; border-color: #fcf1e5; } }
+@media screen and (min-width: 992px) { html.loaded .nav-menu ul li a .link-text:before, .nav-menu li.has-submenu:hover > a .link-text:before { background-color: #ffffff !important; border-color: #ffffff !important; } }
 
 @media screen and (min-width: 992px) { .nav-menu  ul ul li.current-menu-item > a .link-text { color: #b79f8a !important; } }
 
@@ -657,7 +658,8 @@ body { background: #ffffff; }
 <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14999 current_page_item current_page_parent menu-item-blog"><a href="blog.html" aria-current="page">Blog</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
-</ul></div>											<div class="language-switcher">
+</ul>
+</div>											<div class="language-switcher">
 												<button id="language-btn" class="blog-language-btn" onclick="toggleLanguage()">EN</button>
 											</div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
@@ -1031,6 +1033,23 @@ body { background: #ffffff; }
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 			<script>
+// Fonction pour basculer entre les langues
+function toggleLanguage() {
+    const desktopBtn = document.getElementById('language-btn');
+    
+    // Toggle la langue
+    const currentLang = desktopBtn.textContent;
+    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
+    
+    // Mettre à jour le bouton
+    desktopBtn.textContent = newLang;
+    
+    // Ajouter/retirer la classe active
+    desktopBtn.classList.toggle('active');
+    
+    // Ici vous pouvez ajouter la logique pour changer la langue du site
+    console.log('Langue changée vers:', newLang);
+}
 				const lazyloadRunObserver = () => {
 					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
 					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
@@ -1327,28 +1346,23 @@ step: $.validator.format("Please enter a multiple of {0}.")
 <!-- FIN STYLE TITRE BLOG AGRANDI -->
 
 <script>
-// Fonction pour basculer entre les langues (version simplifiée sans scroll)
+// Fonction pour basculer entre les langues
 function toggleLanguage() {
-    const languageBtn = document.getElementById('language-btn');
-    const currentText = languageBtn.textContent;
+    const desktopBtn = document.getElementById('language-btn');
     
-    if (currentText === 'EN') {
-        languageBtn.textContent = 'FR';
-        languageBtn.classList.add('active');
-    } else {
-        languageBtn.textContent = 'EN';
-        languageBtn.classList.remove('active');
-    }
+    // Toggle la langue
+    const currentLang = desktopBtn.textContent;
+    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
+    
+    // Mettre à jour le bouton
+    desktopBtn.textContent = newLang;
+    
+    // Ajouter/retirer la classe active
+    desktopBtn.classList.toggle('active');
+    
+    // Ici vous pouvez ajouter la logique pour changer la langue du site
+    console.log('Langue changée vers:', newLang);
 }
-
-// Initialisation : s'assurer que le bouton est en mode EN par défaut
-document.addEventListener('DOMContentLoaded', function() {
-    const languageBtn = document.getElementById('language-btn');
-    if (languageBtn) {
-        languageBtn.textContent = 'EN';
-        languageBtn.classList.remove('active');
-    }
-});
 </script>
 </body>
 </html>
