@@ -6,7 +6,7 @@
 				<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="icon" type="image/jpeg" href="public/favicon.jpeg">
 	<link rel="shortcut icon" type="image/jpeg" href="public/favicon.jpeg">
-	<title>Visio Architecture Ltd</title>
+	<title>Africa - Visio Architecture Ltd</title>
 	<style>
 		.site-branding-center {
 		text-align: center;
@@ -144,10 +144,23 @@
             display: inline-block !important;
         }
 
+        /* Styles pour le header - texte noir par défaut */
+        .site-header:not(.clone) .nav-menu a,
+        .site-header:not(.clone) .menu-toggle .lines,
+        .site-header:not(.clone) .menu-toggle .lines:before,
+        .site-header:not(.clone) .menu-toggle .lines:after {
+            color: #000000 !important;
+        }
+
+        .site-header:not(.clone) .nav-menu a:hover {
+            color: #000000 !important;
+        }
+
+        /* Styles pour le bouton de langue - noir par défaut */
         .language-btn {
             background: none;
             border: none;
-            color: #ffffff;
+            color: #000000;
             font-weight: bold;
             font-size: 14px;
             padding: 8px 16px;
@@ -162,52 +175,49 @@
 
         .language-btn:hover {
             background: none;
-            color: #ffffff;
+            color: #000000;
             transform: none;
         }
 
         .language-btn.active {
             background: none;
-            color: #ffffff;
+            color: #000000;
         }
 
-        /* Style pour le bouton quand on scrolle */
-        .language-btn.scrolled {
-            border: none !important;
-            color: #000000 !important;
-            background: none !important;
+        /* Styles pour le header en mode scroll - texte blanc, header noir */
+        .site-header.clone .header-wrap:before {
+            background: #000000 !important;
+            opacity: 1 !important;
         }
 
-        .language-btn.scrolled:hover {
-            background: none !important;
-            color: #000000 !important;
-            border: none !important;
+        .site-header.clone .nav-menu a,
+        .site-header.clone .menu-toggle .lines,
+        .site-header.clone .menu-toggle .lines:before,
+        .site-header.clone .menu-toggle .lines:after {
+            color: #ffffff !important;
         }
 
-        .language-btn.scrolled.active {
-            background: none !important;
-            color: #000000 !important;
-            border: none !important;
+        .site-header.clone .nav-menu a:hover {
+            color: #ffffff !important;
         }
 
-        /* S'assurer que le bouton reste visible même quand le header devient blanc */
-        .site-header.clone .language-btn,
-        .site-header:not(.clone) .language-btn.scrolled {
-            border: none !important;
-            color: #000000 !important;
-            background: none !important;
+        /* Style pour le bouton quand on scrolle - blanc */
+        .site-header.clone .language-btn {
+            color: #ffffff !important;
         }
 
-        .site-header.clone .language-btn:hover,
-        .site-header:not(.clone) .language-btn.scrolled:hover {
-            background: none !important;
-            color: #000000 !important;
+        .site-header.clone .language-btn:hover {
+            color: #ffffff !important;
         }
 
-        .site-header.clone .language-btn.active,
-        .site-header:not(.clone) .language-btn.scrolled.active {
-            background: none !important;
-            color: #000000 !important;
+        .site-header.clone .language-btn.active {
+            color: #ffffff !important;
+        }
+
+        /* S'assurer que le logo reste blanc dans tous les cas */
+        .site-header:not(.clone) .logo-image,
+        .site-header.clone .logo-image {
+            filter: brightness(0) invert(1) !important;
         }
 
         /* Forcer le positionnement à droite dans le header */
@@ -1634,21 +1644,6 @@ function toggleLanguage() {
     }
 }
 
-// Fonction pour gérer le scroll
-function handleScroll() {
-    const languageBtn = document.getElementById('language-btn');
-    const header = document.querySelector('.site-header');
-    
-    if (languageBtn) {
-        // Vérifier si on scrolle ou si le header a la classe 'clone'
-        if (window.scrollY > 50 || (header && header.classList.contains('clone'))) {
-            languageBtn.classList.add('scrolled');
-        } else {
-            languageBtn.classList.remove('scrolled');
-        }
-    }
-}
-
 // Initialisation : s'assurer que le bouton est en mode EN par défaut
 document.addEventListener('DOMContentLoaded', function() {
     const languageBtn = document.getElementById('language-btn');
@@ -1656,12 +1651,6 @@ document.addEventListener('DOMContentLoaded', function() {
         languageBtn.textContent = 'EN';
         languageBtn.classList.remove('active');
     }
-    
-    // Ajouter l'écouteur d'événement pour le scroll
-    window.addEventListener('scroll', handleScroll);
-    
-    // Vérifier la position initiale
-    handleScroll();
 });
 </script>
 </body>
