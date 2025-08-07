@@ -181,6 +181,17 @@
             color: #000000 !important;
         }
 
+        /* Styles pour le hover fixe - élément actif (comme aboutus.html) */
+        .site-header .nav-menu .current-menu-item a,
+        .site-header.clone .nav-menu .current-menu-item a {
+            color: #000000 !important;
+        }
+
+        .site-header .nav-menu .current-menu-item a:hover,
+        .site-header.clone .nav-menu .current-menu-item a:hover {
+            color: #000000 !important;
+        }
+
         /* Styles pour le bouton de langue - noir par défaut */
         .language-btn {
             background: none;
@@ -818,13 +829,13 @@ a:hover { color: #c60035; }
 
 .header-wrap:after { opacity: 0.08; }
 
-@media screen and (min-width: 992px) { .nav-menu > ul > li.current-menu-item > a { color: #ffffff !important; } }
+@media screen and (min-width: 992px) { .nav-menu > ul > li.current-menu-item > a { color: #000000 !important; } }
 
 @media screen and (min-width: 992px) { .nav-menu li.current-menu-item > a .link-text:before { background-color: #0a0000 !important; border-color: #0a0000 !important; } }
 
-@media screen and (min-width: 992px) { html .nav-menu > ul > li > a:hover, .nav-menu > ul > li.has-submenu:hover > a { color: #0a0a0a; } }
+@media screen and (min-width: 992px) { html .nav-menu > ul > li > a:hover, .nav-menu > ul > li.has-submenu:hover > a { color: #000000 !important; } }
 
-@media screen and (min-width: 992px) { html.loaded .nav-menu ul li a .link-text:before, .nav-menu li.has-submenu:hover > a .link-text:before { background-color: #fcf1e5; border-color: #fcf1e5; } }
+@media screen and (min-width: 992px) { html.loaded .nav-menu ul li a .link-text:before, .nav-menu li.has-submenu:hover > a .link-text:before { background-color: #ffffff !important; border-color: #ffffff !important; } }
 
 @media screen and (min-width: 992px) { .nav-menu  ul ul li.current-menu-item > a .link-text { color: #b79f8a !important; } }
 
@@ -950,7 +961,7 @@ body { background: #ffffff; }
 								<a class="menu-toggle">
 									<span class="lines"></span>
 								</a> <!-- .menu-toggle -->
-								<div class="nav-menu"><ul id="menu-mymenu" class=""><li id="menu-item-africa" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-africa"><a href="blog.html">Africa</a></li>
+								<div class="nav-menu"><ul id="menu-mymenu" class=""><li id="menu-item-africa" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-africa current_page_item menu-item-africa"><a href="africa.html" aria-current="page">Africa</a></li>
   <li id="menu-item-23651" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-23651"><a href="index.html">Home</a></li>
   <li id="menu-item-23186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23186"><a href="aboutus.html">About Us</a></li>
   <li id="menu-item-23188" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23188"><a href="service.html">Services</a></li>
