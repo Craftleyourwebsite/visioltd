@@ -572,6 +572,168 @@
 			box-shadow: none !important;
 		}
 
+		/* ===== Architecture Blog Section (custom) ===== */
+		.arch-container {
+			max-width: none !important;
+			width: 100% !important;
+			margin: 0 !important;
+			padding: 20px 40px;
+			display: grid;
+			grid-template-columns: 1fr 2fr 1fr; /* left | center | right */
+			gap: 40px;
+		}
+
+		.left-sidebar,
+		.right-sidebar {
+			display: flex;
+			flex-direction: column;
+			gap: 30px;
+		}
+
+		/* FORCE blog content area FULL WIDTH - Override theme constraints */
+		.site-main > .layout-medium { 
+			max-width: none !important; 
+			width: 100% !important;
+			margin-left: 0 !important; 
+			margin-right: 0 !important; 
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+
+		/* Override global .layout-medium rule specifically for blog */
+		.blog .site-main .layout-medium {
+			max-width: none !important;
+			width: 100% !important;
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+
+		/* Center the header area and main title within full-width container */
+		.site-main > .layout-medium > #primary,
+		.site-main > .layout-medium > #primary > #content {
+			max-width: 1200px;
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
+		}
+
+
+
+		/* Main article */
+		.article-image {
+			width: 100%;
+			height: 400px;
+			object-fit: cover;
+		}
+
+		.article-text {
+			color: #666;
+			font-size: 16px;
+			line-height: 1.8;
+			margin-bottom: 30px;
+		}
+
+		.article-meta {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+			color: #d4a574;
+			font-size: 14px;
+		}
+
+		/* Sidebar sections */
+		.sidebar-section {
+			background: #fff;
+			padding: 30px;
+			border-radius: 8px;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		}
+
+		.sidebar-title {
+			font-size: 14px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 25px;
+			color: #333;
+			border-bottom: 3px solid #000;
+			padding-bottom: 10px;
+		}
+
+		/* Recent articles */
+		.recent-article {
+			display: flex;
+			gap: 15px;
+			margin-bottom: 25px;
+			padding-bottom: 20px;
+			border-bottom: 1px solid #eee;
+		}
+
+		.recent-article:last-child {
+			margin-bottom: 0;
+			padding-bottom: 0;
+			border-bottom: none;
+		}
+
+		.recent-article-image {
+			width: 80px;
+			height: 60px;
+			object-fit: cover;
+			border-radius: 4px;
+			flex-shrink: 0;
+		}
+
+		.recent-article-content h3 {
+			color: #d4a574;
+			font-size: 16px;
+			font-weight: 400;
+			margin-bottom: 8px;
+			line-height: 1.4;
+		}
+
+		.recent-article-date {
+			color: #999;
+			font-size: 12px;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		/* Categories (reuse .category-list) */
+		.category-item { margin-bottom: 12px; }
+		.category-item a { color: #d4a574; text-decoration: none; font-size: 16px; }
+		.category-item .count { color: #999; font-size: 14px; }
+
+		/* Tags */
+		.tags-list { display: flex; flex-wrap: wrap; gap: 10px; }
+		.tag {
+			background: #f8f8f8;
+			color: #d4a574;
+			padding: 8px 15px;
+			border-radius: 20px;
+			text-decoration: none;
+			font-size: 14px;
+			border: 1px solid #e0e0e0;
+			transition: background-color 0.3s, color 0.3s;
+		}
+		.tag:hover { background: #d4a574; color: #fff; }
+
+		/* Newsletter */
+		.newsletter-form { display: flex; flex-direction: column; gap: 15px; }
+		.newsletter-input { padding: 15px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+		.newsletter-checkbox { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: #666; }
+		.newsletter-submit {
+			background: #333; color: #fff; padding: 15px; border: none; border-radius: 4px;
+			font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
+		}
+		.newsletter-submit:hover { background: #555; }
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			.arch-container { grid-template-columns: 1fr; padding: 10px; }
+			.article-title { font-size: 24px; }
+			.sidebar-section { padding: 20px; }
+		}
+
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
@@ -898,7 +1060,128 @@ body { background: #ffffff; }
                     </header>
                 </div> <!-- .post-header .post-header-classic .archive-header -->
                 
-                <!-- MAIN CONTENT AREA SUPPRIMÉE -->
+                <!-- Architecture Blog custom content (inserted under main title) -->
+                <div class="arch-container">
+                    <!-- Colonne gauche vide pour équilibrer -->
+                    <aside class="left-sidebar" aria-hidden="true"></aside>
+
+                    <!-- Contenu principal (au milieu) -->
+                    <main class="main-content">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop" alt="National Library of Moscow" class="article-image">
+                        
+                        <div class="article-content content-wrapper">
+                            <h2 class="article-title">National Library of Moscow is Completed</h2>
+                            
+                            <p class="article-text">
+                                Exciting news! The completion of the National Library of Moscow marks a significant milestone in architectural excellence. Discover the stunning design, innovative features, and cultural significance of this remarkable project.
+                            </p>
+                            
+                            <div class="article-meta">
+                                <span>6 Comments</span>
+                                <span>September 14, 2018</span>
+                            </div>
+                        </div>
+                    </main>
+
+                    <!-- Catégories / Sidebar (à droite) -->
+                    <aside class="right-sidebar">
+                        <!-- Architecture Blog -->
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title">Architecture Blog</h3>
+                            
+                            <div class="recent-articles">
+                                <article class="recent-article">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=60&fit=crop" alt="Library" class="recent-article-image">
+                                    <div class="recent-article-content">
+                                        <h3>National Library of Moscow is Completed</h3>
+                                        <div class="recent-article-date">September 14, 2018</div>
+                                    </div>
+                                </article>
+                                
+                                <article class="recent-article">
+                                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=80&h=60&fit=crop" alt="Hotel" class="recent-article-image">
+                                    <div class="recent-article-content">
+                                        <h3>We Completed Our New Hotel Project</h3>
+                                        <div class="recent-article-date">September 14, 2018</div>
+                                    </div>
+                                </article>
+                                
+                                <article class="recent-article">
+                                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=80&h=60&fit=crop" alt="Office" class="recent-article-image">
+                                    <div class="recent-article-content">
+                                        <h3>We Are Building Global Company Offices</h3>
+                                        <div class="recent-article-date">September 14, 2018</div>
+                                    </div>
+                                </article>
+                                
+                                <article class="recent-article">
+                                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=80&h=60&fit=crop" alt="Center" class="recent-article-image">
+                                    <div class="recent-article-content">
+                                        <h3>We Will Meet in Xtra Center</h3>
+                                        <div class="recent-article-date">September 14, 2018</div>
+                                    </div>
+                                </article>
+                                
+                                <article class="recent-article">
+                                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=80&h=60&fit=crop" alt="Board" class="recent-article-image">
+                                    <div class="recent-article-content">
+                                        <h3>About Our Board of Directors</h3>
+                                        <div class="recent-article-date">September 14, 2018</div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+
+                        <!-- Catégories -->
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title">Categories</h3>
+                            <ul class="category-list">
+                                <li class="category-item">
+                                    <a href="#">Global</a> <span class="count">(1)</span>
+                                </li>
+                                <li class="category-item">
+                                    <a href="#">Meetings</a> <span class="count">(1)</span>
+                                </li>
+                                <li class="category-item">
+                                    <a href="#">News</a> <span class="count">(1)</span>
+                                </li>
+                                <li class="category-item">
+                                    <a href="#">Projects</a> <span class="count">(3)</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title">Tags</h3>
+                            <div class="tags-list">
+                                <a href="#" class="tag">Architecture</a>
+                                <a href="#" class="tag">Build</a>
+                                <a href="#" class="tag">Construction</a>
+                                <a href="#" class="tag">Design</a>
+                                <a href="#" class="tag">Hotel</a>
+                                <a href="#" class="tag">Idea</a>
+                                <a href="#" class="tag">Interior</a>
+                                <a href="#" class="tag">Luxe</a>
+                                <a href="#" class="tag">Project</a>
+                            </div>
+                        </div>
+
+                        <!-- Newsletter -->
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title">Newsletter</h3>
+                            <form class="newsletter-form">
+                                <input type="email" placeholder="Your email address" class="newsletter-input">
+                                <label class="newsletter-checkbox">
+                                    <input type="checkbox" required>
+                                    <span>I have agreed to the terms and conditions.</span>
+                                </label>
+                                <button type="submit" class="newsletter-submit">Sign Up</button>
+                            </form>
+                        </div>
+                    </aside>
+                </div>
+                <!-- /Architecture Blog custom content -->
 							</div> <!-- #content .site-content -->
 		</div> <!-- #primary .content-area -->
 			</div> <!-- .layout-medium -->

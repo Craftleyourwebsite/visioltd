@@ -265,10 +265,8 @@
 		background-color: #ffffff !important;
 	}
 
-	/* Isolation complète de l'animation du hamburger - ne s'applique qu'au bouton */
-	.is-menu-toggled-on .menu-toggle {
-		/* L'animation ne s'applique qu'ici */
-	}
+    /* Isolation complète de l'animation du hamburger - ne s'applique qu'au bouton */
+    .is-menu-toggled-on .menu-toggle { pointer-events: auto; }
 
 	.is-menu-toggled-on .menu-toggle .lines {
 		/* Animation spécifique au hamburger uniquement */
@@ -465,7 +463,7 @@
 			background-color: #ffffff !important;
 		}
 
-		/* Animation d'entrée du menu - slide depuis la droite */
+		/* Animation d'entrée du menu - slide depuis la droite (identique à aboutus.html) */
 		.nav-menu {
 			transform: translateX(100%);
 			transition: transform 0.3s ease-in-out;

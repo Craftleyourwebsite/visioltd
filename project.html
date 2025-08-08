@@ -46,9 +46,14 @@
 		margin: 0 auto;
 	}
 	
-	}
 
-	/* --- STYLES SPÉCIFIQUES POUR LE HEADER PROJECT - NOIR EN PERMANENCE --- */
+    /* --- STYLES SPÉCIFIQUES POUR LE HEADER PROJECT - NOIR EN PERMANENCE --- */
+    .header--project .header-wrap:before,
+    .header--project.clone .header-wrap:before,
+    .header--project .header-wrap,
+    .header--project.clone .header-wrap,
+    .header--project .header-wrap-inner,
+    .header--project.clone .header-wrap-inner { background: #000 !important; opacity: 1 !important; }
 	
 	/* Header noir en permanence (normal et scroll) */
 	.site-header .header-wrap:before,
@@ -337,20 +342,7 @@
 		margin-left: auto !important;
 	}
 
-	/* Styles pour le bouton mobile */
-	.language-switcher-mobile {
-		display: none !important;
-	}
 
-	@media screen and (max-width: 991px) {
-		.language-switcher {
-			display: none !important;
-		}
-		
-		.language-switcher-mobile {
-			display: block !important;
-		}
-	}
 
 	/* Forcer le positionnement à droite dans le header */
 	.layout-medium {
@@ -374,8 +366,18 @@
 			font-size: 12px !important;
 			padding: 6px 12px !important;
 			min-width: 35px !important;
-		}
 	}
+
+
+    /* Mobile: masquer le bouton de langue à droite pour éviter les doublons */
+    @media screen and (max-width: 991px) {
+        /* Masquer toutes les variantes du bouton langue desktop en mobile */
+        .language-switcher,
+        .site-header .language-switcher,
+        .site-header.clone .language-switcher,
+        .is-menu-toggled-on .language-switcher,
+        .menu-wrap .language-switcher { display: none !important; }
+    }
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
@@ -420,6 +422,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 <link rel='stylesheet' id='arkiz-font-texgyreadventor-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/css/fonts/texgyreadventor/stylesheet.css?ver=6.8.2' type='text/css' media='all' />
 <link rel='stylesheet' id='arkiz-font-now-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/css/fonts/now/stylesheet.css?ver=6.8.2' type='text/css' media='all' />
 <link rel='stylesheet' id='arkiz-fonts-css' href='//fonts.googleapis.com/css?family=Onest%3A100%2C100i%2C200%2C200i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i%7CJost%3A100%2C100i%2C200%2C200i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i&#038;ver=6.8.2' type='text/css' media='all' />
+<!-- Official Bootstrap 4.4.1 for gt-main components -->
+<style id="bootstrap-441-inline">@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');</style>
 <link rel='stylesheet' id='normalize-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/css/normalize.css?ver=6.8.2' type='text/css' media='all' />
 <link rel='stylesheet' id='bootstrap-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/css/bootstrap.css?ver=6.8.2' type='text/css' media='all' />
 <link rel='stylesheet' id='fluidbox-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/fluidbox/fluidbox.css?ver=6.8.2' type='text/css' media='all' />
@@ -640,11 +644,95 @@ body { background: #ffffff; }
 					}
 				}
 			</style>
+			<!-- Overrides pour la section .gt-main (harmonisation avec le thème) -->
+			<style id="gt-overrides">
+				/* Scope strict à la section injectée */
+				/* Full-bleed sans scroll horizontal; on ajoute 1px pour couvrir les arrondis sous certains zooms */
+				.gt-main { all: initial; display: block; width: calc(100vw + 2px); max-width: none; margin-left: calc(50% - 50vw - 1px); margin-right: calc(50% - 50vw - 1px); overflow-x: hidden; }
+				/* Réactiver l'héritage utile depuis le body du site */
+				body .gt-main, body .gt-main * { box-sizing: border-box; font-family: 'Rajdhani', 'Onest', 'Jost', sans-serif; color: #32455e; }
+
+				/* Supprimer tout padding/marge latéral du layout autour de la section projets */
+				.page-template-page_template-projects #content.site-content,
+				#content.site-content,
+				.page-template-page_template-projects .content-area,
+				.content-area,
+				.page-template-page_template-projects .site-main,
+				.site-main,
+				.page-template-page_template-projects .layout-full,
+				.layout-full { padding-left: 0 !important; padding-right: 0 !important; margin-left: 0 !important; margin-right: 0 !important; max-width: none !important; width: 100% !important; }
+
+				/* Grid utilitaires type bootstrap (scopés) */
+				.gt-main .row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-right: 0; margin-left: 0; }
+				.gt-main [class^="col-"],
+				.gt-main [class*=" col-"] { position: relative; width: 100%; padding-right: 0; padding-left: 0; }
+				.gt-main .col-lg-12 { -ms-flex: 0 0 100%; flex: 0 0 100%; max-width: 100%; }
+
+				/* Forcer pleine largeur de tous les wrappers internes (WPBakery) */
+				.gt-main .vc_row,
+				.gt-main .vc_row > div,
+				.gt-main .wpb_column,
+				.gt-main .vc_column-inner,
+				.gt-main .wpb_wrapper { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
+
+				/* Wrapper / conteneur */
+				.gt-main .gt-page-wrapper { padding: 0 !important; background: #fff; }
+				.gt-main .gt-container { max-width: 100%; margin: 0; padding: 0; }
+
+				/* Bannière – masquée pour un rendu 100% largeur comme la maquette */
+				.gt-main .gt-page-banner { display: none; }
+				.gt-main .gt-page-banner-img { display: none; }
+
+				/* Titre + breadcrumb alignés au style du site */
+				.gt-main .gt-page-heading { text-align: center; }
+				.gt-main .gt-page-heading .gt-line { width: 44px; height: 3px; margin: 0 auto 10px; background: #d84156; }
+				.gt-main .gt-page-heading span { display: block; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #a0a6b0; margin-bottom: 6px; }
+				.gt-main .gt-page-heading h1 { margin: 0; font-family: 'Onest', sans-serif; font-weight: 900; text-transform: uppercase; color: #020014; font-size: clamp(28px, 5vw, 60px); }
+
+				/* Breadcrumb */
+				.gt-main .gt-breadcrumb { list-style: none; padding: 0; margin: 10px 0 0; display: inline-flex; gap: 10px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #7b8796; }
+				.gt-main .gt-breadcrumb a { color: #d84156; text-decoration: none; }
+				.gt-main .gt-breadcrumb a:hover { color: #c60035; }
+
+				/* Grille Masonry (CSS Grid) – pleine largeur, sans gouttières */
+				/* Laisser .gt-main gérer le full-bleed; la grille occupe 100% pour éviter les arrondis créant un vide à droite */
+				.gt-main .gt-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin: 0; width: 100%; max-width: 100%; }
+				@media (min-width: 768px) { .gt-main .gt-grid { grid-template-columns: repeat(3, 1fr); } }
+				@media (min-width: 992px) { .gt-main .gt-grid { grid-template-columns: repeat(4, 1fr); } }
+
+				/* Clearfix pour compatibilité avec contenus flottants */
+				.gt-main .gt-page-content:before,
+				.gt-main .gt-page-content:after,
+				.gt-main .gt-page-content > .page:before,
+				.gt-main .gt-page-content > .page:after,
+				.gt-main .gt-post-content:before,
+				.gt-main .gt-post-content:after,
+				.gt-main .gt-post-content > .post:before,
+				.gt-main .gt-post-content > .post:after { content: ''; display: block; clear: both; }
+
+				/* Items */
+				.gt-main .gt-grid-item { position: relative; overflow: hidden; border-radius: 0; background: transparent; }
+				.gt-main .gt-grid-item .gt-img { width: 100%; padding-top: 100%; background-size: cover; background-position: center center; transition: transform .35s ease; }
+				.gt-main .gt-grid-item:hover .gt-img { transform: scale(1.04); }
+
+				/* Overlay contenu */
+				.gt-main .gt-grid-item .gt-content { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 18px; background: linear-gradient(to top, rgba(0,0,0,.58), rgba(0,0,0,.08) 60%, rgba(0,0,0,0)); color: #ffffff; text-decoration: none; }
+				.gt-main .gt-grid-item .gt-content span { display: block; width: 100%; }
+				.gt-main .gt-grid-item .gt-content h2 { margin: 0 0 8px; font-size: clamp(16px, 1.2vw + 10px, 22px); line-height: 1.2; color: #ffffff; font-family: 'Onest', sans-serif; font-weight: 700; }
+				.gt-main .gt-location { list-style: none; padding: 0; margin: 0 0 10px; display: flex; gap: 8px; color: #e6e6e6; font-size: 12px; opacity: .9; }
+				.gt-main .gt-excerpt { margin: 0 0 12px; font-size: 13px; line-height: 1.4; color: #f2f2f2; }
+				.gt-main .gt-cat { list-style: none; padding: 0; margin: 0; display: flex; gap: 8px; }
+				.gt-main .gt-cat li { display: inline-block; background: #ffffff; color: #32455e; border-radius: 14px; padding: 3px 10px; font-size: 11px; letter-spacing: .5px; text-transform: uppercase; }
+
+				/* Liens internes */
+				.gt-main a { color: #d84156; }
+				.gt-main a:hover { color: #c60035; }
+			</style>
 			</head>
 
 <body class="wp-singular page-template page-template-page_template-projects page-template-page_template-projects-php page page-id-15001 wp-theme-arkiz qodef-qi--no-touch qi-addons-for-elementor-1.8.9 elementor-default elementor-kit-11">
 		    <div id="page" class="hfeed site">
-		        <header id="masthead" class="site-header" role="banner">
+        <header id="masthead" class="site-header header--project" role="banner">
 						<div class="header-wrap" data-parallax-video="">
 				<div class="header-wrap-inner">
 					<div class="site-branding">
@@ -674,7 +762,7 @@ body { background: #ffffff; }
 								<a class="menu-toggle">
 									<span class="lines"></span>
 								</a> <!-- .menu-toggle -->
-								<div class="nav-menu"><ul id="menu-mymenu" class=""><li id="menu-item-africa" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-africa"><a href="africa.html">Africa</a></li>
+                                <div class="nav-menu"><ul id="menu-mymenu" class=""><li id="menu-item-africa" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-africa"><a href="africa.html">Africa</a></li>
 <li id="menu-item-23651" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children menu-item-23651"><a href="index.html">Home</a>
 
 </li>
@@ -684,12 +772,8 @@ body { background: #ffffff; }
 <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-blog"><a href="blog.html">Blog</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
-</ul>
-											<!-- Switch de langue pour mobile -->
-											<div class="language-switcher-mobile">
-												<button id="language-btn-mobile" class="language-btn" onclick="toggleLanguage()">EN</button>
-											</div>
-</div>											
+<li id="menu-item-language" class="menu-item menu-item-language"><a href="#" onclick="toggleLanguage(); return false;">Language: EN</a></li>
+</ul></div>                                            
 											<div class="language-switcher">
 												<button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()">EN</button>
 											</div> <!-- .language-switcher -->
@@ -711,436 +795,81 @@ body { background: #ffffff; }
 					</header> <!-- .entry-header -->
 				</div> <!-- .post-header .post-header-classic .portfolio-header -->
 				
-				<ul id="filters" class="filters">
-													<li class="current">
-									<a data-filter="*" href="#">
-										all									</a>
-								</li>
-															<li>
-									<a data-filter=".architecture" href="https://themes.pixelwars.org/arkiz/demo-01/projects-category/architecture/">
-										Architecture									</a>
-								</li>
-															<li>
-									<a data-filter=".interior-design" href="https://themes.pixelwars.org/arkiz/demo-01/projects-category/interior-design/">
-										Interior Design									</a>
-								</li>
-															<li>
-									<a data-filter=".urban" href="https://themes.pixelwars.org/arkiz/demo-01/projects-category/urban/">
-										Urban									</a>
-								</li>
-											</ul> <!-- #filters .filters -->
-				
-								
-								
-				<div class="blog-grid-wrap">
-					<style>
-						* {
-							margin: 0;
-							padding: 0;
-							box-sizing: border-box;
-						}
-
-						body {
-							font-family: 'Arial', sans-serif;
-							overflow-x: hidden;
-						}
-
-						/* Forcer full width sur tous les containers parents */
-						.layout-full,
-						.content-area,
-						.site-content,
-						#content {
-							max-width: none !important;
-							padding: 0 !important;
-							margin: 0 !important;
-						}
-
-						/* Override complet pour éliminer tous les espacements */
-						#page,
-						.site,
-						.site-main,
-						.layout-full,
-						.content-area,
-						.site-content,
-						#content {
-							max-width: none !important;
-							width: 100vw !important;
-							margin: 0 !important;
-							padding: 0 !important;
-							box-sizing: border-box !important;
-						}
-
-						/* Ajuster l'espacement du titre et du filtre */
-						.post-header {
-							padding: 60px 0 40px 0 !important;
-							margin: 0 !important;
-							text-align: center;
-						}
-
-						.entry-title {
-							margin: 0 0 20px 0 !important;
-							padding: 0 !important;
-						}
-
-						#filters {
-							padding: 30px 0 50px 0 !important;
-							margin: 0 !important;
-							text-align: center;
-							border-bottom: 1px solid #eee;
-						}
-
-						#filters li {
-							margin: 0 15px !important;
-							padding: 0 !important;
-						}
-
-						#filters a {
-							padding: 8px 20px !important;
-							text-decoration: none;
-							color: #333;
-							transition: all 0.3s ease;
-						}
-
-						#filters a:hover,
-						#filters .current a {
-							background: #333;
-							color: white;
-						}
-
-						/* Forcer le body et html à ne pas avoir de scroll horizontal */
-						html, body {
-							overflow-x: hidden !important;
-							width: 100% !important;
-							margin: 0 !important;
-							padding: 0 !important;
-						}
-
-						/* Améliorer l'apparence générale */
-						.site-main {
-							padding-top: 0 !important;
-						}
-
-						.content-area {
-							padding: 0 !important;
-						}
-
-						/* Espacement responsive */
-						@media (max-width: 768px) {
-							.post-header {
-								padding: 40px 0 30px 0 !important;
-							}
-
-							#filters {
-								padding: 20px 0 30px 0 !important;
-							}
-
-							#filters li {
-								margin: 0 8px !important;
-							}
-
-							.blog-grid-wrap {
-								padding: 15px 0 0 0 !important;
-							}
-						}
-
-						/* Container principal pour la galerie - full width */
-						.blog-grid-wrap {
-							width: 100vw !important;
-							margin: 0 !important;
-							padding: 20px 0 0 0 !important;
-							overflow: hidden;
-							position: relative;
-							transform: translateX(-50%);
-							left: 50%;
-							right: auto;
-						}
-
-						.gallery-container {
-							display: grid;
-							grid-template-columns: repeat(2, 1fr);
-							grid-template-rows: repeat(4, 25vh);
-							height: 100vh;
-							width: 100vw !important;
-							margin: 0 !important;
-							padding: 0 !important;
-							max-width: none !important;
-						}
-
-						.gallery-item {
-							position: relative;
-							overflow: hidden;
-							cursor: pointer;
-							margin: 0 !important;
-							padding: 0 !important;
-						}
-
-						.gallery-item img {
-							width: 100%;
-							height: 100%;
-							object-fit: cover;
-							object-position: center;
-							transition: transform 0.4s ease;
-							aspect-ratio: 3/4; /* Force le portrait */
-						}
-
-						.gallery-item:hover img {
-							transform: scale(1.05);
-						}
-
-						.overlay {
-							position: absolute;
-							top: 0;
-							left: 0;
-							right: 0;
-							bottom: 0;
-							background: rgba(255, 255, 255, 0.95);
-							opacity: 0;
-							transition: opacity 0.3s ease;
-							display: flex;
-							flex-direction: column;
-							justify-content: center;
-							align-items: center;
-							padding: 15px;
-							text-align: center;
-						}
-
-						.gallery-item:hover .overlay {
-							opacity: 1;
-						}
-
-						.hotel-title {
-							font-size: 1.4rem;
-							font-weight: bold;
-							color: #333;
-							margin-bottom: 6px;
-							line-height: 1.2;
-						}
-
-						.location {
-							color: #888;
-							font-size: 0.85rem;
-							margin-bottom: 8px;
-							font-style: italic;
-						}
-
-						.description {
-							color: #555;
-							font-size: 0.75rem;
-							line-height: 1.3;
-							margin-bottom: 10px;
-							max-height: 40px;
-							overflow: hidden;
-							display: -webkit-box;
-							-webkit-line-clamp: 3;
-							-webkit-box-orient: vertical;
-						}
-
-						.category {
-							display: inline-block;
-							background: #f0f0f0;
-							color: #999;
-							padding: 3px 10px;
-							border-radius: 12px;
-							font-size: 0.65rem;
-							letter-spacing: 0.5px;
-							text-transform: uppercase;
-						}
-
-						/* Item central en taille double (portrait) */
-						.gallery-item.featured {
-							grid-column: span 1;
-							grid-row: span 2;
-						}
-
-						.gallery-item.featured .hotel-title {
-							font-size: 1.8rem;
-							margin-bottom: 10px;
-						}
-
-						.gallery-item.featured .location {
-							font-size: 1rem;
-							margin-bottom: 12px;
-						}
-
-						.gallery-item.featured .description {
-							font-size: 0.9rem;
-							max-height: 60px;
-							margin-bottom: 15px;
-							-webkit-line-clamp: 4;
-						}
-
-						.gallery-item.featured .category {
-							font-size: 0.75rem;
-							padding: 5px 14px;
-						}
-
-						/* Responsive Design */
-						@media (max-width: 768px) {
-							.blog-grid-wrap {
-								width: 100vw !important;
-								margin: 0 !important;
-								padding: 0 !important;
-								position: relative;
-								transform: translateX(-50%);
-								left: 50%;
-								right: auto;
-							}
-							
-							.gallery-container {
-								grid-template-columns: 1fr;
-								grid-template-rows: repeat(8, 30vh);
-								width: 100vw !important;
-								margin: 0 !important;
-								padding: 0 !important;
-							}
-
-							.gallery-item.featured {
-								grid-column: span 1;
-								grid-row: span 1;
-							}
-							
-							.hotel-title {
-								font-size: 1.2rem;
-							}
-							
-							.gallery-item.featured .hotel-title {
-								font-size: 1.4rem;
-							}
-							
-							.description {
-								font-size: 0.7rem;
-								max-height: 35px;
-							}
-							
-							.overlay {
-								padding: 12px;
-							}
-						}
-
-						@media (max-width: 480px) {
-							.blog-grid-wrap {
-								width: 100vw !important;
-								margin: 0 !important;
-								padding: 0 !important;
-								position: relative;
-								transform: translateX(-50%);
-								left: 50%;
-								right: auto;
-							}
-							
-							.gallery-container {
-								grid-template-rows: repeat(8, 25vh);
-								width: 100vw !important;
-								margin: 0 !important;
-								padding: 0 !important;
-							}
-							
-							.hotel-title {
-								font-size: 1rem;
-							}
-							
-							.location {
-								font-size: 0.75rem;
-							}
-							
-							.description {
-								font-size: 0.65rem;
-								max-height: 30px;
-								-webkit-line-clamp: 2;
-							}
-						}
-					</style>
-
-					<div class="gallery-container">
-						<!-- Item 1 -->
-						<div class="gallery-item">
-							<img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Développement urbain">
-							<div class="overlay">
-								<h2 class="hotel-title">Eco District</h2>
-								<p class="location">Florence, Italie</p>
-								<p class="description">Quartier résidentiel écologique intégrant espaces verts et architecture durable.</p>
-								<span class="category">Urbanisme</span>
+				<!-- Nouvelle section projets (masonry) injectée -->
+				<section class="gt-main">
+					<div class="gt-page-banner gt-center">
+						<div class="gt-container">
+							<div class="gt-page-heading">
+								<div class="gt-line"></div>
+								<span>Our Projects</span>
+								<h1>Project List 10 – Masonry</h1>
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb gt-breadcrumb ">
+										<li class="gt-item-home"><a href="index.html">Home</a></li>
+										<li class="gt-item gt-item-current">Project List 10 – Masonry</li>
+									</ol>
+								</nav>
 							</div>
 						</div>
-
-						<!-- Item 2 - Featured (portrait) -->
-						<div class="gallery-item featured">
-							<img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800&q=80" alt="Fantastic Life Hotel">
-							<div class="overlay">
-								<h2 class="hotel-title">Fantastic Life Hotel & Spa</h2>
-								<p class="location">Rome, Italie</p>
-								<p class="description">Avec son design saisissant et son ambiance sereine, le Fantastic Life Hotel & Spa crée une oasis de détente et de luxe.</p>
-								<span class="category">Hôtel</span>
+						<div class="gt-page-banner-img"></div>
+							</div>
+					<div class="gt-page-wrapper">
+						<div class="gt-container gt-main-container">
+							<div class="row gt-main-row">
+								<div class="col-lg-12">
+									<div class="gt-page-content">
+										<div id="post-317" class="post-317 page type-page status-publish hentry">
+											<div class="wpb-content-wrapper">
+												<div data-vc-full-width="true" data-vc-full-width-init="true" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_custom_1537373100287 gt-background-position-initial gt-background-attachment-initial gt-text-default vc_row-no-padding" style="position: relative; left: 0px; box-sizing: border-box; width: 100%; max-width: 100%;">
+													<div class="wpb_column vc_column_container vc_col-sm-12">
+														<div class="vc_column-inner">
+															<div class="wpb_wrapper">
+																<div class="gt-grid" style="position: relative;">
+																	<div class="gt-grid-item gt-grid-item--h2" style="position: relative;">
+																		<div class="gt-img" style="background-image:url(https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-2-750x750.jpg);"></div>
+																		<a href="#" class="gt-content"><span><h2>England Grand Mall</h2><ul class="gt-location"><li>London, England</li></ul><p class="gt-excerpt"> A stunning commercial project combining modern design and functionality, England Grand Mall offers a luxurious shopping experience with its exquisite architecture and state-of-the-art facilities.</p><ul class="gt-cat"><li>Hotel</li></ul></span></a>
+						</div>
+																	<div class="gt-grid-item gt-grid-item--h2" style="position: relative;">
+																		<div class="gt-img" style="background-image:url(https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-4-750x750.jpg);"></div>
+																		<a href="#" class="gt-content"><span><h2>Fantastic Life Hotel &amp; Spa</h2><ul class="gt-location"><li>Rome, Italy</li></ul><p class="gt-excerpt">With its striking design and serene ambiance, Fantastic Life Hotel &amp; Spa creates an oasis of relaxation and luxury. This remarkable project showcases innovative architectural elements and indulgent amenities.</p><ul class="gt-cat"><li>Hotel</li></ul></span></a>
+							</div>
+																	<div class="gt-grid-item gt-grid-item--h2" style="position: relative;">
+																		<div class="gt-img" style="background-image:url(https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-3-750x750.jpg);"></div>
+																		<a href="#" class="gt-content"><span><h2>Grand Tower</h2><ul class="gt-location"><li>Istanbul, Turkey</li></ul><p class="gt-excerpt">Grand Tower stands tall as a remarkable residential skyscraper, embodying elegance and sophistication. Its sleek design, panoramic views, and high-end amenities redefine modern living at its finest.</p><ul class="gt-cat"><li>Workplace</li></ul></span></a>
+						</div>
+																	<div class="gt-grid-item gt-grid-item--h2" style="position: relative;">
+																		<div class="gt-img" style="background-image:url(https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/08/project-1-750x750.jpg);"></div>
+																		<a href="#" class="gt-content"><span><h2>Gloria Life Center</h2><ul class="gt-location"><li>London, England</li></ul><p class="gt-excerpt">The Gloria Life Center is a harmonious blend of wellness and architectural brilliance. Designed to provide a holistic approach to health, this project features serene spaces and cutting-edge facilities.</p><ul class="gt-cat"><li>Workplace</li></ul></span></a>
+							</div>
+										<div class="gt-grid-item" style="position: relative;">
+											<div class="gt-img" style="background-image:url(public/section/1.jpeg);"></div>
+											<a href="#" class="gt-content"><span><h2>Palm Resort</h2><ul class="gt-location"><li>Abuja, Nigeria</li></ul><p class="gt-excerpt">A contemporary residential complex surrounded by lush greenery and crafted for calm, everyday living.</p><ul class="gt-cat"><li>Residential</li></ul></span></a>
+						</div>
+										<div class="gt-grid-item" style="position: relative;">
+											<div class="gt-img" style="background-image:url(public/section/2.jpeg);"></div>
+											<a href="#" class="gt-content"><span><h2>Urban Tech Hub</h2><ul class="gt-location"><li>Lagos, Nigeria</li></ul><p class="gt-excerpt">A vibrant workplace designed for collaboration, innovation, and a flexible future of work.</p><ul class="gt-cat"><li>Workplace</li></ul></span></a>
+							</div>
+										<div class="gt-grid-item" style="position: relative;">
+											<div class="gt-img" style="background-image:url(public/section/3.jpeg);"></div>
+											<a href="#" class="gt-content"><span><h2>Coastal Arena</h2><ul class="gt-location"><li>Accra, Ghana</li></ul><p class="gt-excerpt">An energetic venue with coastal views, engineered for large-scale events and performances.</p><ul class="gt-cat"><li>Sport</li></ul></span></a>
+						</div>
+										<div class="gt-grid-item" style="position: relative;">
+											<div class="gt-img" style="background-image:url(public/section/4.jpeg);"></div>
+											<a href="#" class="gt-content"><span><h2>Horizon Pavilion</h2><ul class="gt-location"><li>Nairobi, Kenya</li></ul><p class="gt-excerpt">A light-filled cultural space celebrating community, art, and the outdoors.</p><ul class="gt-cat"><li>Cultural</li></ul></span></a>
+							</div>
+										<!-- autres items -->
+						</div>
 							</div>
 						</div>
-
-						<!-- Item 3 -->
-						<div class="gallery-item">
-							<img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Villa moderne">
-							<div class="overlay">
-								<h2 class="hotel-title">Villa Milano</h2>
-								<p class="location">Milano, Italie</p>
-								<p class="description">Résidence de prestige au design contemporain avec vue panoramique sur la ville.</p>
-								<span class="category">Villa</span>
 							</div>
 						</div>
-
-						<!-- Item 4 -->
-						<div class="gallery-item">
-							<img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Maison design">
-							<div class="overlay">
-								<h2 class="hotel-title">Casa Moderna</h2>
-								<p class="location">Venise, Italie</p>
-								<p class="description">Maison contemporaine alliant tradition vénitienne et modernité architecturale.</p>
-								<span class="category">Résidentiel</span>
-							</div>
-						</div>
-
-						<!-- Item 5 -->
-						<div class="gallery-item">
-							<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Hôtel vue mer">
-							<div class="overlay">
-								<h2 class="hotel-title">Seaside Resort</h2>
-								<p class="location">Amalfi, Italie</p>
-								<p class="description">Complexe hôtelier de luxe face à la mer Méditerranée avec spa et restaurants gastronomiques.</p>
-								<span class="category">Resort</span>
-							</div>
-						</div>
-
-						<!-- Item 6 -->
-						<div class="gallery-item">
-							<img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Paysage">
-							<div class="overlay">
-								<h2 class="hotel-title">Nature Resort</h2>
-								<p class="location">Sardaigne, Italie</p>
-								<p class="description">Éco-lodge intégré dans un environnement naturel préservé avec activités outdoor.</p>
-								<span class="category">Écologie</span>
-							</div>
-						</div>
-
-						<!-- Item 7 -->
-						<div class="gallery-item">
-							<img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Vue urbaine">
-							<div class="overlay">
-								<h2 class="hotel-title">Urban Plaza</h2>
-								<p class="location">Naples, Italie</p>
-								<p class="description">Complexe mixte combinant bureaux, commerces et espaces de vie urbains modernes.</p>
-								<span class="category">Mixte</span>
-							</div>
-						</div>
-
-						<!-- Item 8 -->
-						<div class="gallery-item">
-							<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Skyline">
-							<div class="overlay">
-								<h2 class="hotel-title">Business Center</h2>
-								<p class="location">Turin, Italie</p>
-								<p class="description">Centre d'affaires moderne avec espaces de coworking et technologies avancées.</p>
-								<span class="category">Business</span>
+											<div class="vc_row-full-width vc_clearfix"></div>
+					</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div> <!-- .blog-grid-wrap -->
+				</section>
 				
 							</div> <!-- #content .site-content -->
 		</div> <!-- #primary .content-area -->
@@ -1161,38 +890,39 @@ body { background: #ffffff; }
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 			<script>
-// Fonction pour basculer entre les langues
+// Fonction pour basculer entre les langues (version simplifiée sans scroll)
 function toggleLanguage() {
-    const desktopBtn = document.getElementById('language-btn');
-    const mobileBtn = document.getElementById('language-btn-mobile');
+    const languageBtn = document.getElementById('language-btn');
+    const languageMenuItem = document.querySelector('.menu-item-language a');
+    const currentText = languageBtn.textContent;
     
-    // Toggle la langue
-    const currentLang = desktopBtn.textContent;
-    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-    
-    // Mettre à jour les deux boutons
-    desktopBtn.textContent = newLang;
-    mobileBtn.textContent = newLang;
-    
-    // Ajouter/retirer la classe active
-    desktopBtn.classList.toggle('active');
-    mobileBtn.classList.toggle('active');
-    
-    // Ici vous pouvez ajouter la logique pour changer la langue du site
-    console.log('Langue changée vers:', newLang);
+    if (currentText === 'EN') {
+        languageBtn.textContent = 'FR';
+        languageBtn.classList.add('active');
+        if (languageMenuItem) {
+            languageMenuItem.textContent = 'Language: FR';
+        }
+    } else {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+        if (languageMenuItem) {
+            languageMenuItem.textContent = 'Language: EN';
+        }
+    }
 }
 
-// Synchroniser les boutons au chargement de la page
+// Initialisation : s'assurer que le bouton est en mode EN par défaut
 document.addEventListener('DOMContentLoaded', function() {
-    const desktopBtn = document.getElementById('language-btn');
-    const mobileBtn = document.getElementById('language-btn-mobile');
+    const languageBtn = document.getElementById('language-btn');
+    const languageMenuItem = document.querySelector('.menu-item-language a');
     
-    if (desktopBtn && mobileBtn) {
-        // S'assurer que les deux boutons ont le même état
-        mobileBtn.textContent = desktopBtn.textContent;
-        if (desktopBtn.classList.contains('active')) {
-            mobileBtn.classList.add('active');
-        }
+    if (languageBtn) {
+        languageBtn.textContent = 'EN';
+        languageBtn.classList.remove('active');
+    }
+    
+    if (languageMenuItem) {
+        languageMenuItem.textContent = 'Language: EN';
     }
 });
 				const lazyloadRunObserver = () => {
@@ -1268,42 +998,6 @@ step: $.validator.format("Please enter a multiple of {0}.")
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/pixelwars-core/themes/global/js/shortcodes.js" id="pixelwars-core-shortcodes-js"></script>
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/bdthemes-prime-slider-lite/assets/js/prime-slider-site.min.js?ver=3.17.6" id="prime-slider-site-js"></script>
 
-<script>
-// Fonction pour basculer entre les langues
-function toggleLanguage() {
-    const desktopBtn = document.getElementById('language-btn');
-    const mobileBtn = document.getElementById('language-btn-mobile');
-    
-    // Toggle la langue
-    const currentLang = desktopBtn.textContent;
-    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-    
-    // Mettre à jour les deux boutons
-    desktopBtn.textContent = newLang;
-    mobileBtn.textContent = newLang;
-    
-    // Ajouter/retirer la classe active
-    desktopBtn.classList.toggle('active');
-    mobileBtn.classList.toggle('active');
-    
-    // Ici vous pouvez ajouter la logique pour changer la langue du site
-    console.log('Langue changée vers:', newLang);
-}
 
-// Synchroniser les boutons au chargement de la page
-document.addEventListener('DOMContentLoaded', function() {
-    const desktopBtn = document.getElementById('language-btn');
-    const mobileBtn = document.getElementById('language-btn-mobile');
-    
-    if (desktopBtn && mobileBtn) {
-        // S'assurer que les deux boutons ont le même état
-        mobileBtn.textContent = desktopBtn.textContent;
-        if (desktopBtn.classList.contains('active')) {
-            mobileBtn.classList.add('active');
-        }
-    }
-});
-// Fonction pour basculer entre les langues (version simplifiée sans scroll)
-</script>
 </body>
 </html>
