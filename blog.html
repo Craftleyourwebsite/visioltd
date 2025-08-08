@@ -52,7 +52,7 @@
 		}
 	}
 	
-	}
+
 
 	/* --- STYLES SPÉCIFIQUES POUR LE HEADER BLOG - NOIR EN PERMANENCE --- */
 	
@@ -355,7 +355,223 @@
 			padding: 6px 12px !important;
 			min-width: 35px !important;
 		}
-	}
+
+		/* Nouveau design Architecture Blog */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Arial', sans-serif;
+			background-color: #f8f8f8;
+			color: #333;
+			line-height: 1.6;
+		}
+
+		.container {
+			max-width: 1400px;
+			margin: 0 auto;
+			padding: 20px;
+			display: grid;
+			grid-template-columns: 1fr 2fr 1fr;
+			gap: 40px;
+		}
+
+		/* Colonne de gauche (supprimée avec le contenu) */
+
+		/* Colonne centrale - contenu principal */
+		.main-content {
+			background: white;
+			border-radius: 8px;
+			overflow: hidden;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		}
+
+		/* Colonne de droite - sidebar */
+		.sidebar {
+			display: flex;
+			flex-direction: column;
+			gap: 30px;
+		}
+
+		/* (duplicate .main-content supprimé) */
+
+		.hero-image {
+			width: 100%;
+			height: 500px;
+			background: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+			background-size: cover;
+			background-position: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.content-wrapper {
+			padding: 30px;
+		}
+
+		.article-title {
+			color: #D4A574;
+			font-size: 28px;
+			font-weight: 300;
+			margin-bottom: 20px;
+			letter-spacing: 0.5px;
+		}
+
+		.article-content {
+			color: #666;
+			font-size: 16px;
+			line-height: 1.8;
+			margin-bottom: 30px;
+		}
+
+		.article-meta {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			color: #D4A574;
+			font-size: 14px;
+		}
+
+		.comments-link {
+			color: #D4A574;
+			text-decoration: none;
+		}
+
+		/* (duplicate .sidebar supprimé) */
+
+		.widget {
+			background: white;
+			border-radius: 8px;
+			padding: 25px;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		}
+
+		.widget-title {
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			color: #333;
+			margin-bottom: 20px;
+			padding-bottom: 10px;
+			border-bottom: 2px solid #D4A574;
+		}
+
+		.blog-post {
+			display: flex;
+			margin-bottom: 20px;
+			align-items: flex-start;
+		}
+
+		.post-thumbnail {
+			width: 60px;
+			height: 45px;
+			background: #D4A574;
+			border-radius: 4px;
+			margin-right: 15px;
+			flex-shrink: 0;
+		}
+
+		.post-content h3 {
+			font-size: 14px;
+			color: #D4A574;
+			margin-bottom: 5px;
+			line-height: 1.4;
+		}
+
+		.post-date {
+			font-size: 11px;
+			color: #999;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		.category-list {
+			list-style: none;
+		}
+
+		.category-list li {
+			margin-bottom: 8px;
+		}
+
+		.category-list a {
+			color: #D4A574;
+			text-decoration: none;
+			font-size: 14px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.category-count {
+			color: #999;
+			font-size: 12px;
+		}
+
+		@media (max-width: 768px) {
+			.container {
+				grid-template-columns: 1fr;
+				padding: 10px;
+				gap: 20px;
+			}
+			
+			.left-sidebar {
+				display: none;
+			}
+			
+			.hero-image {
+				height: 300px;
+			}
+			
+			.article-title {
+				font-size: 24px;
+			}
+			
+			.content-wrapper {
+				padding: 20px;
+			}
+		}
+
+		/* Suppression de tous les filtres sombres */
+		.site-content,
+		.content-area,
+		.site-main,
+		#main,
+		#content,
+		#primary {
+			background: transparent !important;
+			box-shadow: none !important;
+		}
+
+		/* Suppression des overlays sombres */
+		.site-content::before,
+		.site-content::after,
+		.content-area::before,
+		.content-area::after,
+		.site-main::before,
+		.site-main::after {
+			display: none !important;
+			background: none !important;
+		}
+
+		/* Suppression des bordures sombres */
+		.site-content,
+		.content-area,
+		.site-main {
+			border: none !important;
+			border-bottom: none !important;
+		}
+
+		/* Assurer que le footer est transparent */
+		.site-footer {
+			background: transparent !important;
+			box-shadow: none !important;
+		}
+
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
@@ -675,348 +891,14 @@ body { background: #ffffff; }
 	<div class="layout-medium">
 		<div id="primary" class="content-area ">
 			<div id="content" class="site-content" role="main">
-								<div class="post-header post-header-classic archive-header">
-										<header class="entry-header" >
-						<h1 class="entry-title">
-							<span class="cat-title">Blog</span> <!-- .cat-title -->						</h1> <!-- .entry-title -->
-<!-- FILTRE BLOG -->
-<div class="blog-filter">
-  <button class="active">ALL</button>
-  <button>ARCHITECTURE</button>
-  <button>INTERIOR DESIGN</button>
-  <button>URBAN</button>
-</div>
-<style>
-.blog-filter {
-  display: flex;
-  gap: 80px;
-  margin: 30px 0 40px 0;
-}
-.blog-filter button {
-  background: none;
-  border: none;
-  color: #bdbdbd;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 15px;
-  letter-spacing: 2px;
-  font-weight: 600;
-  padding: 10px 25px;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-}
-.blog-filter button.active {
-  background: #393b3b;
-  color: #fff;
-  border-radius: 2px;
-}
-</style>
-<!-- FIN FILTRE BLOG -->
-					</header> <!-- .entry-header -->
-				</div> <!-- .post-header .post-header-classic .archive-header -->
-							<div class="blog-grid-wrap">
-					<div class="blog-stream blog-grid blog-small masonry " data-layout="fitRows" data-item-width="380">
-																<article id="post-5656" class="post-5656 post type-post status-publish format-standard has-post-thumbnail hentry category-news is-cat-link-borders-light is-cat-link-rounded">
-											<div class="hentry-wrap">
-																<div class="featured-image">
-					<a href="https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/">
-						<img fetchpriority="high" fetchpriority="high" width="550" height="362" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom-550x362.jpg" class="attachment-arkiz_image_size_4 size-arkiz_image_size_4 wp-post-image" alt="" decoding="async" />					</a>
-				</div> <!-- .featured-image -->
-															<div class="hentry-middle">
-													<header class="entry-header">
-																												<h2 class="entry-title">
-															<a href="https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/">Architectural Heritage</a>
-														</h2>
-																			<div class="entry-meta below-title">
-										<span class="cat-links">
-					<span class="prefix">
-						in					</span>
-					<a href="https://themes.pixelwars.org/arkiz/demo-01/category/news/" rel="category tag">Blog</a>				</span> <!-- .cat-links -->
-						<span class="posted-on">
-				<span class="prefix">
-					on				</span>
-				<a href="https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/" rel="bookmark">
-					<time class="entry-date published" datetime="2023-05-18T11:27:25+00:00">
-						May 18, 2023					</time>
-					<time class="updated" datetime="2025-02-25T21:31:31+00:00">
-						February 25, 2025					</time>
-				</a>
-			</span> <!-- .posted-on -->
-					<span class="entry-share">
-				<span class="entry-share-text">Share</span> <!-- .entry-share-text -->
-				
-				<span class="entry-share-wrap">
-					<span class="entry-share-inner-wrap">
-						<a class="share-facebook" rel="nofollow" target="_blank" href="https://www.facebook.com/sharer.php?u=https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/&#038;t=Architectural%20Heritage" title="Share this post on Facebook">Facebook</a>
-						
-						<a class="share-twitter" rel="nofollow" target="_blank" href="https://twitter.com/intent/tweet?text=Currently%20reading:%20&#039;Architectural%20Heritage&#039;%20on%20https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/" title="Tweet this post to your followers">Twitter</a>
-						
-						<a class="share-pinterest" rel="nofollow" target="_blank" href="https://pinterest.com/pin/create/button/?url=https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/&#038;media=https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-Dollhouse-Style-Residential-Interior-with-Young-Woman-Custom.jpg&#038;description=Architectural%20Heritage" title="Pin it">Pinterest</a>
-						
-						<a class="share-mail" rel="nofollow" target="_blank" href="mailto:?subject=I%20wanted%20you%20to%20see%20this%20post&#038;body=Check%20out%20this%20post:%20Architectural%20Heritage%20-%20https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/" title="Email this post to a friend">Email</a>
-					</span> <!-- .entry-share-inner-wrap -->
-				</span> <!-- .entry-share-wrap -->
-			</span> <!-- .entry-share -->
-							</div> <!-- .entry-meta .below-title -->
-																	</header> <!-- .entry-header -->
-													<div class="entry-content">
-														<p>&#8230; </p>
-<p class="more"><a class="more-link" href="https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/">Read More</a></p>
-													</div> <!-- .entry-content -->
-																									</div> <!-- .hentry-middle -->
-											</div> <!-- .hentry-wrap -->
-										</article>
-																			<article id="post-5654" class="post-5654 post type-post status-publish format-standard has-post-thumbnail hentry category-news is-cat-link-borders-light is-cat-link-rounded">
-											<div class="hentry-wrap">
-																<div class="featured-image">
-					<a href="https://themes.pixelwars.org/arkiz/demo-01/iconic-skyscrapers-redefining/">
-						<img width="550" height="362" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/a-large-flat-seamless-round-swimming-pool-within-a-Custom-550x362.jpg" class="attachment-arkiz_image_size_4 size-arkiz_image_size_4 wp-post-image" alt="" decoding="async" />					</a>
-				</div> <!-- .featured-image -->
-															<div class="hentry-middle">
-													<header class="entry-header">
-																												<h2 class="entry-title">
-															<a href="https://themes.pixelwars.org/arkiz/demo-01/iconic-skyscrapers-redefining/">Iconic Skyscrapers Redefining</a>
-														</h2>
-																			<div class="entry-meta below-title">
-										<span class="cat-links">
-					<span class="prefix">
-						in					</span>
-					<a href="https://themes.pixelwars.org/arkiz/demo-01/category/news/" rel="category tag">Blog</a>				</span> <!-- .cat-links -->
-						<span class="posted-on">
-				<span class="prefix">
-					on				</span>
-				<a href="https://themes.pixelwars.org/arkiz/demo-01/iconic-skyscrapers-redefining/" rel="bookmark">
-					<time class="entry-date published" datetime="2023-05-18T11:25:05+00:00">
-						May 18, 2023					</time>
-					<time class="updated" datetime="2025-03-12T04:07:45+00:00">
-						March 12, 2025					</time>
-				</a>
-			</span> <!-- .posted-on -->
-					<span class="entry-share">
-				<span class="entry-share-text">Share</span> <!-- .entry-share-text -->
-				
-				<span class="entry-share-wrap">
-					<span class="entry-share-inner-wrap">
-						<a class="share-facebook" rel="nofollow" target="_blank" href="https://www.facebook.com/sharer.php?u=https://themes.pixelwars.org/arkiz/demo-01/iconic-skyscrapers-redefining/&#038;t=Iconic%20Skyscrapers%20Redefining" title="Share this post on Facebook">Facebook</a>
-						
-						<a class="share-twitter" rel="nofollow" target="_blank" href="https://twitter.com/intent/tweet?text=Currently%20reading:%20&#039;Iconic%20Skyscrapers%20Redefining&#039;%20on%20https://themes.pixelwars.org/arkiz/demo-01/iconic-skyscrapers-redefining/" title="Tweet this post to your followers">Twitter</a>
-						
-						<a class="share-pinterest" rel="nofollow" target="_blank" href="https://pinterest.com/pin/create/button/?url=https://themes.pixelwars.org/arkiz/demo-01/iconic-skyscrapers-redefining/&#038;media=https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/a-large-flat-seamless-round-swimming-pool-within-a-Custom.jpg&#038;description=Iconic%20Skyscrapers%20Redefining" title="Pin it">Pinterest</a>
-						
-						<a class="share-mail" rel="nofollow" target="_blank" href="mailto:?subject=I%20wanted%20you%20to%20see%20this%20post&#038;body=Check%20out%20this%20post:%20Iconic%20Skyscrapers%20Redefining%20-%20https://themes.pixelwars.org/arkiz/demo-01/iconic-skyscrapers-redefining/" title="Email this post to a friend">Email</a>
-					</span> <!-- .entry-share-inner-wrap -->
-				</span> <!-- .entry-share-wrap -->
-			</span> <!-- .entry-share -->
-							</div> <!-- .entry-meta .below-title -->
-																	</header> <!-- .entry-header -->
-													<div class="entry-content">
-														<p>&#8230; </p>
-<p class="more"><a class="more-link" href="https://themes.pixelwars.org/arkiz/demo-01/iconic-skyscrapers-redefining/">Read More</a></p>
-													</div> <!-- .entry-content -->
-																									</div> <!-- .hentry-middle -->
-											</div> <!-- .hentry-wrap -->
-										</article>
-																			<article id="post-5652" class="post-5652 post type-post status-publish format-standard has-post-thumbnail hentry category-insights is-cat-link-borders-light is-cat-link-rounded">
-											<div class="hentry-wrap">
-																<div class="featured-image">
-					<a href="https://themes.pixelwars.org/arkiz/demo-01/smart-cities-of-tomorrow/">
-						<img width="550" height="362" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-take-on-bali-inspired-small-apartment-white-copy-Custom-550x362.jpg" class="attachment-arkiz_image_size_4 size-arkiz_image_size_4 wp-post-image" alt="" decoding="async" />					</a>
-				</div> <!-- .featured-image -->
-															<div class="hentry-middle">
-													<header class="entry-header">
-																												<h2 class="entry-title">
-															<a href="https://themes.pixelwars.org/arkiz/demo-01/smart-cities-of-tomorrow/">Smart Cities of Tomorrow</a>
-														</h2>
-																			<div class="entry-meta below-title">
-										<span class="cat-links">
-					<span class="prefix">
-						in					</span>
-					<a href="https://themes.pixelwars.org/arkiz/demo-01/category/insights/" rel="category tag">Insights</a>				</span> <!-- .cat-links -->
-						<span class="posted-on">
-				<span class="prefix">
-					on				</span>
-				<a href="https://themes.pixelwars.org/arkiz/demo-01/smart-cities-of-tomorrow/" rel="bookmark">
-					<time class="entry-date published" datetime="2023-05-18T11:19:31+00:00">
-						May 18, 2023					</time>
-					<time class="updated" datetime="2025-02-25T21:37:33+00:00">
-						February 25, 2025					</time>
-				</a>
-			</span> <!-- .posted-on -->
-					<span class="entry-share">
-				<span class="entry-share-text">Share</span> <!-- .entry-share-text -->
-				
-				<span class="entry-share-wrap">
-					<span class="entry-share-inner-wrap">
-						<a class="share-facebook" rel="nofollow" target="_blank" href="https://www.facebook.com/sharer.php?u=https://themes.pixelwars.org/arkiz/demo-01/smart-cities-of-tomorrow/&#038;t=Smart%20Cities%20of%20Tomorrow" title="Share this post on Facebook">Facebook</a>
-						
-						<a class="share-twitter" rel="nofollow" target="_blank" href="https://twitter.com/intent/tweet?text=Currently%20reading:%20&#039;Smart%20Cities%20of%20Tomorrow&#039;%20on%20https://themes.pixelwars.org/arkiz/demo-01/smart-cities-of-tomorrow/" title="Tweet this post to your followers">Twitter</a>
-						
-						<a class="share-pinterest" rel="nofollow" target="_blank" href="https://pinterest.com/pin/create/button/?url=https://themes.pixelwars.org/arkiz/demo-01/smart-cities-of-tomorrow/&#038;media=https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Modern-take-on-bali-inspired-small-apartment-white-copy-Custom.jpg&#038;description=Smart%20Cities%20of%20Tomorrow" title="Pin it">Pinterest</a>
-						
-						<a class="share-mail" rel="nofollow" target="_blank" href="mailto:?subject=I%20wanted%20you%20to%20see%20this%20post&#038;body=Check%20out%20this%20post:%20Smart%20Cities%20of%20Tomorrow%20-%20https://themes.pixelwars.org/arkiz/demo-01/smart-cities-of-tomorrow/" title="Email this post to a friend">Email</a>
-					</span> <!-- .entry-share-inner-wrap -->
-				</span> <!-- .entry-share-wrap -->
-			</span> <!-- .entry-share -->
-							</div> <!-- .entry-meta .below-title -->
-																	</header> <!-- .entry-header -->
-													<div class="entry-content">
-														<p>&#8230; </p>
-<p class="more"><a class="more-link" href="https://themes.pixelwars.org/arkiz/demo-01/smart-cities-of-tomorrow/">Read More</a></p>
-													</div> <!-- .entry-content -->
-																									</div> <!-- .hentry-middle -->
-											</div> <!-- .hentry-wrap -->
-										</article>
-																			<article id="post-5632" class="post-5632 post type-post status-publish format-standard has-post-thumbnail hentry category-news is-cat-link-borders-light is-cat-link-rounded">
-											<div class="hentry-wrap">
-																<div class="featured-image">
-					<a href="https://themes.pixelwars.org/arkiz/demo-01/architectural-marvels/">
-						<img width="550" height="362" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Spiral-Elegance_-The-Wooden-Helix-Custom-550x362.jpg" class="attachment-arkiz_image_size_4 size-arkiz_image_size_4 wp-post-image" alt="" decoding="async" />					</a>
-				</div> <!-- .featured-image -->
-															<div class="hentry-middle">
-													<header class="entry-header">
-																												<h2 class="entry-title">
-															<a href="https://themes.pixelwars.org/arkiz/demo-01/architectural-marvels/">Architectural Marvels</a>
-														</h2>
-																			<div class="entry-meta below-title">
-										<span class="cat-links">
-					<span class="prefix">
-						in					</span>
-					<a href="https://themes.pixelwars.org/arkiz/demo-01/category/news/" rel="category tag">Blog</a>				</span> <!-- .cat-links -->
-						<span class="posted-on">
-				<span class="prefix">
-					on				</span>
-				<a href="https://themes.pixelwars.org/arkiz/demo-01/architectural-marvels/" rel="bookmark">
-					<time class="entry-date published" datetime="2023-05-18T10:31:48+00:00">
-						May 18, 2023					</time>
-					<time class="updated" datetime="2025-03-03T22:28:04+00:00">
-						March 3, 2025					</time>
-				</a>
-			</span> <!-- .posted-on -->
-					<span class="entry-share">
-				<span class="entry-share-text">Share</span> <!-- .entry-share-text -->
-				
-				<span class="entry-share-wrap">
-					<span class="entry-share-inner-wrap">
-						<a class="share-facebook" rel="nofollow" target="_blank" href="https://www.facebook.com/sharer.php?u=https://themes.pixelwars.org/arkiz/demo-01/architectural-marvels/&#038;t=Architectural%20Marvels" title="Share this post on Facebook">Facebook</a>
-						
-						<a class="share-twitter" rel="nofollow" target="_blank" href="https://twitter.com/intent/tweet?text=Currently%20reading:%20&#039;Architectural%20Marvels&#039;%20on%20https://themes.pixelwars.org/arkiz/demo-01/architectural-marvels/" title="Tweet this post to your followers">Twitter</a>
-						
-						<a class="share-pinterest" rel="nofollow" target="_blank" href="https://pinterest.com/pin/create/button/?url=https://themes.pixelwars.org/arkiz/demo-01/architectural-marvels/&#038;media=https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/Spiral-Elegance_-The-Wooden-Helix-Custom.jpg&#038;description=Architectural%20Marvels" title="Pin it">Pinterest</a>
-						
-						<a class="share-mail" rel="nofollow" target="_blank" href="mailto:?subject=I%20wanted%20you%20to%20see%20this%20post&#038;body=Check%20out%20this%20post:%20Architectural%20Marvels%20-%20https://themes.pixelwars.org/arkiz/demo-01/architectural-marvels/" title="Email this post to a friend">Email</a>
-					</span> <!-- .entry-share-inner-wrap -->
-				</span> <!-- .entry-share-wrap -->
-			</span> <!-- .entry-share -->
-							</div> <!-- .entry-meta .below-title -->
-																	</header> <!-- .entry-header -->
-													<div class="entry-content">
-														<p>&#8230; </p>
-<p class="more"><a class="more-link" href="https://themes.pixelwars.org/arkiz/demo-01/architectural-marvels/">Read More</a></p>
-													</div> <!-- .entry-content -->
-																									</div> <!-- .hentry-middle -->
-											</div> <!-- .hentry-wrap -->
-										</article>
-																			<article id="post-5493" class="post-5493 post type-post status-publish format-standard has-post-thumbnail hentry category-insights is-cat-link-borders-light is-cat-link-rounded">
-											<div class="hentry-wrap">
-																<div class="featured-image">
-					<a href="https://themes.pixelwars.org/arkiz/demo-01/exploring-the-evolution-of-modern-architecture/">
-						<img width="550" height="362" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/beautiful-view-skyscrapers-against-cloudy-blue-sky-san-francisco-california-Custom-550x362.jpg" class="attachment-arkiz_image_size_4 size-arkiz_image_size_4 wp-post-image" alt="" decoding="async" />					</a>
-				</div> <!-- .featured-image -->
-															<div class="hentry-middle">
-													<header class="entry-header">
-																												<h2 class="entry-title">
-															<a href="https://themes.pixelwars.org/arkiz/demo-01/exploring-the-evolution-of-modern-architecture/">Exploring the Evolution of Modern Architecture</a>
-														</h2>
-																			<div class="entry-meta below-title">
-										<span class="cat-links">
-					<span class="prefix">
-						in					</span>
-					<a href="https://themes.pixelwars.org/arkiz/demo-01/category/insights/" rel="category tag">Insights</a>				</span> <!-- .cat-links -->
-						<span class="posted-on">
-				<span class="prefix">
-					on				</span>
-				<a href="https://themes.pixelwars.org/arkiz/demo-01/exploring-the-evolution-of-modern-architecture/" rel="bookmark">
-					<time class="entry-date published" datetime="2023-05-15T09:24:18+00:00">
-						May 15, 2023					</time>
-					<time class="updated" datetime="2025-02-25T21:39:29+00:00">
-						February 25, 2025					</time>
-				</a>
-			</span> <!-- .posted-on -->
-					<span class="entry-share">
-				<span class="entry-share-text">Share</span> <!-- .entry-share-text -->
-				
-				<span class="entry-share-wrap">
-					<span class="entry-share-inner-wrap">
-						<a class="share-facebook" rel="nofollow" target="_blank" href="https://www.facebook.com/sharer.php?u=https://themes.pixelwars.org/arkiz/demo-01/exploring-the-evolution-of-modern-architecture/&#038;t=Exploring%20the%20Evolution%20of%20Modern%20Architecture" title="Share this post on Facebook">Facebook</a>
-						
-						<a class="share-twitter" rel="nofollow" target="_blank" href="https://twitter.com/intent/tweet?text=Currently%20reading:%20&#039;Exploring%20the%20Evolution%20of%20Modern%20Architecture&#039;%20on%20https://themes.pixelwars.org/arkiz/demo-01/exploring-the-evolution-of-modern-architecture/" title="Tweet this post to your followers">Twitter</a>
-						
-						<a class="share-pinterest" rel="nofollow" target="_blank" href="https://pinterest.com/pin/create/button/?url=https://themes.pixelwars.org/arkiz/demo-01/exploring-the-evolution-of-modern-architecture/&#038;media=https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/beautiful-view-skyscrapers-against-cloudy-blue-sky-san-francisco-california-Custom.jpg&#038;description=Exploring%20the%20Evolution%20of%20Modern%20Architecture" title="Pin it">Pinterest</a>
-						
-						<a class="share-mail" rel="nofollow" target="_blank" href="mailto:?subject=I%20wanted%20you%20to%20see%20this%20post&#038;body=Check%20out%20this%20post:%20Exploring%20the%20Evolution%20of%20Modern%20Architecture%20-%20https://themes.pixelwars.org/arkiz/demo-01/exploring-the-evolution-of-modern-architecture/" title="Email this post to a friend">Email</a>
-					</span> <!-- .entry-share-inner-wrap -->
-				</span> <!-- .entry-share-wrap -->
-			</span> <!-- .entry-share -->
-							</div> <!-- .entry-meta .below-title -->
-																	</header> <!-- .entry-header -->
-													<div class="entry-content">
-														<p>&#8230; </p>
-<p class="more"><a class="more-link" href="https://themes.pixelwars.org/arkiz/demo-01/exploring-the-evolution-of-modern-architecture/">Read More</a></p>
-													</div> <!-- .entry-content -->
-																									</div> <!-- .hentry-middle -->
-											</div> <!-- .hentry-wrap -->
-										</article>
-																			<article id="post-7197" class="post-7197 post type-post status-publish format-standard has-post-thumbnail hentry category-insights is-cat-link-borders-light is-cat-link-rounded">
-											<div class="hentry-wrap">
-																<div class="featured-image">
-					<a href="https://themes.pixelwars.org/arkiz/demo-01/the-evolution-of-modern-architecture/">
-						<img width="550" height="362" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/beautiful-view-empire-states-skyscrapers-new-york-city-Custom-550x362.jpg" class="attachment-arkiz_image_size_4 size-arkiz_image_size_4 wp-post-image" alt="" decoding="async" />					</a>
-				</div> <!-- .featured-image -->
-															<div class="hentry-middle">
-													<header class="entry-header">
-																												<h2 class="entry-title">
-															<a href="https://themes.pixelwars.org/arkiz/demo-01/the-evolution-of-modern-architecture/">The Evolution of Modern Architecture</a>
-														</h2>
-																			<div class="entry-meta below-title">
-										<span class="cat-links">
-					<span class="prefix">
-						in					</span>
-					<a href="https://themes.pixelwars.org/arkiz/demo-01/category/insights/" rel="category tag">Insights</a>				</span> <!-- .cat-links -->
-						<span class="posted-on">
-				<span class="prefix">
-					on				</span>
-				<a href="https://themes.pixelwars.org/arkiz/demo-01/the-evolution-of-modern-architecture/" rel="bookmark">
-					<time class="entry-date published" datetime="2023-05-12T08:47:51+00:00">
-						May 12, 2023					</time>
-					<time class="updated" datetime="2025-02-25T21:40:05+00:00">
-						February 25, 2025					</time>
-				</a>
-			</span> <!-- .posted-on -->
-					<span class="entry-share">
-				<span class="entry-share-text">Share</span> <!-- .entry-share-text -->
-				
-				<span class="entry-share-wrap">
-					<span class="entry-share-inner-wrap">
-						<a class="share-facebook" rel="nofollow" target="_blank" href="https://www.facebook.com/sharer.php?u=https://themes.pixelwars.org/arkiz/demo-01/the-evolution-of-modern-architecture/&#038;t=The%20Evolution%20of%20Modern%20Architecture" title="Share this post on Facebook">Facebook</a>
-						
-						<a class="share-twitter" rel="nofollow" target="_blank" href="https://twitter.com/intent/tweet?text=Currently%20reading:%20&#039;The%20Evolution%20of%20Modern%20Architecture&#039;%20on%20https://themes.pixelwars.org/arkiz/demo-01/the-evolution-of-modern-architecture/" title="Tweet this post to your followers">Twitter</a>
-						
-						<a class="share-pinterest" rel="nofollow" target="_blank" href="https://pinterest.com/pin/create/button/?url=https://themes.pixelwars.org/arkiz/demo-01/the-evolution-of-modern-architecture/&#038;media=https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/beautiful-view-empire-states-skyscrapers-new-york-city-Custom.jpg&#038;description=The%20Evolution%20of%20Modern%20Architecture" title="Pin it">Pinterest</a>
-						
-						<a class="share-mail" rel="nofollow" target="_blank" href="mailto:?subject=I%20wanted%20you%20to%20see%20this%20post&#038;body=Check%20out%20this%20post:%20The%20Evolution%20of%20Modern%20Architecture%20-%20https://themes.pixelwars.org/arkiz/demo-01/the-evolution-of-modern-architecture/" title="Email this post to a friend">Email</a>
-					</span> <!-- .entry-share-inner-wrap -->
-				</span> <!-- .entry-share-wrap -->
-			</span> <!-- .entry-share -->
-							</div> <!-- .entry-meta .below-title -->
-																	</header> <!-- .entry-header -->
-													<div class="entry-content">
-														<p>&#8230; </p>
-<p class="more"><a class="more-link" href="https://themes.pixelwars.org/arkiz/demo-01/the-evolution-of-modern-architecture/">Read More</a></p>
-													</div> <!-- .entry-content -->
-																									</div> <!-- .hentry-middle -->
-											</div> <!-- .hentry-wrap -->
-										</article>
-														</div> <!-- .blog-stream .blog-grid .blog-small .masonry -->
-				</div> <!-- .blog-grid-wrap -->
+                                <div class="post-header post-header-classic archive-header">
+                                        <header class="entry-header" >
+                        <h1 class="entry-title">
+                            <span class="cat-title">Blog</span> <!-- .cat-title -->						</h1> <!-- .entry-title -->
+                    </header>
+                </div> <!-- .post-header .post-header-classic .archive-header -->
+                
+                <!-- MAIN CONTENT AREA SUPPRIMÉE -->
 							</div> <!-- #content .site-content -->
 		</div> <!-- #primary .content-area -->
 			</div> <!-- .layout-medium -->
@@ -1034,25 +916,18 @@ body { background: #ffffff; }
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-			<script>
+<script>
 // Fonction pour basculer entre les langues
 function toggleLanguage() {
     const desktopBtn = document.getElementById('language-btn');
-    
-    // Toggle la langue
+    if (!desktopBtn) return;
     const currentLang = desktopBtn.textContent;
     const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-    
-    // Mettre à jour le bouton
     desktopBtn.textContent = newLang;
-    
-    // Ajouter/retirer la classe active
     desktopBtn.classList.toggle('active');
-    
-    // Ici vous pouvez ajouter la logique pour changer la langue du site
     console.log('Langue changée vers:', newLang);
 }
-				const lazyloadRunObserver = () => {
+                const lazyloadRunObserver = () => {
 					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
 					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
 						entries.forEach( ( entry ) => {
@@ -1127,244 +1002,21 @@ step: $.validator.format("Please enter a multiple of {0}.")
 
 
 
-<!-- NOUVEAU DESIGN DES CARTES BLOG -->
-<style>
-/* Reset et nouveau design des cartes blog */
-.blog-grid-wrap {
-  margin: 0;
-  padding: 0;
-}
 
-.blog-stream {
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 0;
-  width: 100%;
-}
 
-.blog-stream article {
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: #fff;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
 
-.blog-stream article:hover {
-  transform: translateY(-5px);
-}
 
-.hentry-wrap {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.featured-image {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 16/10;
-}
-
-.featured-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.blog-stream article:hover .featured-image img {
-  transform: scale(1.05);
-}
-
-.hentry-middle {
-  margin: 0;
-  padding: 25px 30px 30px 30px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-}
-
-.entry-header {
-  margin: 0 0 15px 0;
-  padding: 0;
-}
-
-.entry-title {
-  margin: 0 0 10px 0;
-  padding: 0;
-  font-size: 22px;
-  line-height: 1.3;
-  font-weight: 600;
-  color: #1a1a1a;
-}
-
-.entry-title a {
-  color: #1a1a1a;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.entry-title a:hover {
-  color: #666;
-}
-
-.entry-meta {
-  margin: 0 0 15px 0;
-  padding: 0;
-  font-size: 13px;
-  color: #888;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.entry-meta span {
-  margin: 0;
-  padding: 0;
-}
-
-.entry-meta a {
-  color: #888;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.entry-meta a:hover {
-  color: #1a1a1a;
-}
-
-.entry-content {
-  margin: 0;
-  padding: 0;
-  flex: 1;
-}
-
-.entry-content p {
-  margin: 0 0 15px 0;
-  padding: 0;
-  font-size: 15px;
-  line-height: 1.6;
-  color: #666;
-}
-
-.more {
-  margin: 0;
-  padding: 0;
-}
-
-.more-link {
-  display: inline-block;
-  color: #1a1a1a;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: color 0.3s ease;
-  position: relative;
-}
-
-.more-link:hover {
-  color: #888;
-}
-
-.more-link::after {
-  content: '→';
-  margin-left: 5px;
-  transition: transform 0.3s ease;
-}
-
-.more-link:hover::after {
-  transform: translateX(3px);
-}
-
-/* Suppression des éléments de partage pour un design plus épuré */
-.entry-share {
-  display: none;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .blog-stream {
-    grid-template-columns: 1fr;
-  }
-  
-  .hentry-middle {
-    padding: 20px 25px 25px 25px;
-  }
-  
-  .entry-title {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hentry-middle {
-    padding: 15px 20px 20px 20px;
-  }
-  
-  .entry-title {
-    font-size: 18px;
-  }
-}
-</style>
-<!-- FIN NOUVEAU DESIGN DES CARTES BLOG -->
-
-<!-- STYLE TITRE BLOG AGRANDI -->
-<style>
-.entry-title .cat-title {
-  font-size: 48px;
-  font-weight: 700;
-  color: #1a1a1a;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin: 0;
-  padding: 0;
-}
-
-@media (max-width: 768px) {
-  .entry-title .cat-title {
-    font-size: 36px;
-  }
-}
-
-@media (max-width: 480px) {
-  .entry-title .cat-title {
-    font-size: 28px;
-  }
-}
-</style>
-<!-- FIN STYLE TITRE BLOG AGRANDI -->
-
-<script>
+            <script>
 // Fonction pour basculer entre les langues
 function toggleLanguage() {
     const desktopBtn = document.getElementById('language-btn');
-    
-    // Toggle la langue
+    if (!desktopBtn) return;
     const currentLang = desktopBtn.textContent;
     const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-    
-    // Mettre à jour le bouton
     desktopBtn.textContent = newLang;
-    
-    // Ajouter/retirer la classe active
     desktopBtn.classList.toggle('active');
-    
-    // Ici vous pouvez ajouter la logique pour changer la langue du site
     console.log('Langue changée vers:', newLang);
 }
-</script>
+            </script>
 </body>
 </html>
