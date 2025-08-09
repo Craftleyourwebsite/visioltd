@@ -768,8 +768,8 @@ body { background: #ffffff; }
 				.gt-main .vc_column-inner,
 				.gt-main .wpb_wrapper { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
 
-				/* Wrapper / conteneur */
-				.gt-main .gt-page-wrapper { padding: 0 !important; background: #fff; }
+                /* Wrapper / conteneur */
+                .gt-main .gt-page-wrapper { padding: 0 !important; background: transparent !important; }
 				.gt-main .gt-container { max-width: 100%; margin: 0; padding: 0; }
 
 				/* Bannière – masquée pour un rendu 100% largeur comme la maquette */
@@ -819,7 +819,46 @@ body { background: #ffffff; }
 
 				/* Liens internes */
 				.gt-main a { color: #d84156; }
-				.gt-main a:hover { color: #c60035; }
+                .gt-main a:hover { color: #c60035; }
+
+                /* === PROJECTS PAGE – GRID SHOULD FILL, NO BODY BACKGROUND === */
+                /* Ensure wrappers stay transparent so the grid itself defines visuals */
+                #main,
+                .site-main,
+                .content-area,
+                .site-content,
+                .layout-full { background: transparent !important; }
+
+                /* Remove any pale/white subscribe strip and spacing above footer */
+                .site .footer-subscribe { display: none !important; background: transparent !important; }
+                .site-footer { margin-top: 0 !important; border-top: none !important; }
+                #content.site-content, .content-area, .site-main { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+                .gt-main .gt-page-wrapper { margin-bottom: 0 !important; }
+
+                /* === GRID FILL LOGIC ===
+                   Make the 4x4 grid occupy the available height so no white band shows,
+                   without using a page background. */
+                .gt-main .gt-grid {
+                    min-height: 100vh;           /* let rows stretch to fill viewport height */
+                    grid-auto-rows: 1fr;         /* rows share height equally */
+                    grid-auto-flow: dense;       /* compact fill */
+                }
+                /* Square tiles driven by container, image fills the tile */
+                .gt-main .gt-grid-item { aspect-ratio: 1 / 1; }
+                .gt-main .gt-grid-item .gt-img {
+                    padding-top: 0 !important;   /* override padding square trick */
+                    height: 100% !important;     /* fill the tile height */
+                    background-size: cover !important;
+                    background-position: center center !important;
+                }
+			</style>
+			<style id="footer-dark-override">
+				/* Force dark footer across Projects */
+				.site-footer,
+				.site-footer .site-info { background: #000 !important; background-color: #000 !important; color: #fff !important; border-top: none !important; }
+				.site-footer a,
+				.site-footer .site-info a { color: #fff !important; }
+				.site-footer .site-info p { color: #fff !important; }
 			</style>
 			</head>
 
