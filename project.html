@@ -332,6 +332,54 @@
         cursor: pointer !important;
     }
 
+    /* ====== HEADER & MENU MOBILE FIX ====== */
+    @media screen and (max-width: 991px) {
+        /* Masquer le switch de langue dans le header mobile (spécificité sous site-header) */
+        .site-header .language-switcher { display: none !important; visibility: hidden !important; }
+        /* Afficher l'item langue dans le menu hamburger */
+        .site-header .menu-item-language { display: block !important; visibility: visible !important; }
+
+        /* Menu hamburger noir */
+        .is-menu-toggled-on .nav-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100vh;
+            background: #000000 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+        }
+
+        /* Liens du menu hamburger */
+        .is-menu-toggled-on .nav-menu a {
+            color: #ffffff !important;
+            font-size: 18px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+        .is-menu-toggled-on .nav-menu a:hover {
+            opacity: 0.8;
+            padding-left: 10px;
+        }
+    }
+
+    /* Header toujours noir */
+    .site-header .header-wrap:before,
+    .site-header.clone .header-wrap:before,
+    .site-header .header-wrap,
+    .site-header.clone .header-wrap,
+    .site-header .header-wrap-inner,
+    .site-header.clone .header-wrap-inner {
+        background: #000000 !important;
+        opacity: 1 !important;
+    }
+
     /* EN-FR toggle parts + active highlight */
     .aboutus-language-btn .lang-part,
     .menu-item-language .lang-part {
@@ -371,9 +419,11 @@
 	}
 
 /* Toujours visible sur desktop par défaut */
-.site-header .language-switcher {
-    display: flex !important;
-    align-items: center;
+@media screen and (min-width: 992px) {
+  .site-header .language-switcher {
+      display: flex !important;
+      align-items: center;
+  }
 }
 
 
@@ -419,13 +469,13 @@
 	}
 
 
-    /* Mobile: masquer le bouton de langue à droite pour éviter les doublons */
+    /* Mobile: masquer le bouton de langue à droite; afficher l'item du menu */
     @media screen and (max-width: 991px) {
-        /* Hide the desktop language switcher only on mobile */
-        .language-switcher { display: none !important; }
+        .language-switcher { display: none !important; visibility: hidden !important; }
+        .menu-item-language { display: block !important; visibility: visible !important; }
     }
 
-    /* === HEADER MOBILE – aligné sur About Us === */
+    /* === HEADER MOBILE – aligné sur Services === */
     @media screen and (max-width: 991px) {
         :root { --projectHeaderH: 64px; }
         /* Header fixé */
@@ -435,11 +485,11 @@
         /* Espace contenu */
         #main { padding-top: var(--projectHeaderH); }
 
-        /* Ordre: burger à droite, menu centré, switcher à droite (masqué en mobile) */
+        /* Ordre: burger à droite, menu centré, pas de switcher (utiliser item dans le menu) */
         .layout-medium { display: flex; align-items: center; }
-        .menu-toggle { order: 3 !important; margin-left: auto !important; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; cursor: pointer; position: relative; z-index: 10002; }
+        .menu-toggle { order: 1 !important; margin-left: auto !important; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; cursor: pointer; position: relative; z-index: 10002; }
         .nav-menu { order: 2 !important; }
-        .language-switcher { order: 1 !important; display: none !important; }
+        .language-switcher { order: 3 !important; display: none !important; }
 
         /* Burger base */
         .menu-toggle .lines { display: block; width: 25px; height: 2px; background: #ffffff !important; position: relative; transition: background-color .2s ease; }
@@ -448,13 +498,15 @@
         .menu-toggle .lines:after { bottom: -8px; }
 
         /* Panneau latéral (off-canvas) */
-        .nav-menu { position: fixed; top: 0; right: 0; width: min(420px, 85vw); height: 100vh; background: #000000; padding: 70px 0 16px; overflow-y: auto; z-index: 10000; transform: translateX(100%) !important; transition: transform 0.3s ease; display: block !important; }
-        .nav-menu > ul { list-style: none; margin: 0; padding: 0; display: flex !important; flex-direction: column; align-items: flex-start; }
-        .nav-menu > ul > li { width: 100%; opacity: 1; transform: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-menu { position: fixed; top: 0; right: 0; width: min(420px, 85vw); height: 100vh; background: #000000; padding: 70px 0 16px; overflow-y: auto; z-index: 10000; transform: translateX(100%) !important; transition: transform 0.3s ease; display: block !important; pointer-events: auto; }
+        .nav-menu > ul { list-style: none; margin: 0; padding: 0; display: flex !important; flex-direction: column; align-items: flex-start; width: 100%; }
+        .nav-menu > ul > li { width: 100%; opacity: 1; transform: none; border-bottom: 1px solid rgba(255,255,255,0.1); background: transparent !important; }
         .nav-menu > ul > li > a { display: block; width: 100%; padding: 16px 20px; color: #ffffff !important; text-decoration: none; font-size: 18px; }
         .nav-menu > ul > li > a:hover { color: #ffffff !important; opacity: 0.85; padding-left: 26px; }
         /* Style spécial pour l'élément language dans le menu (comme Services) */
-        .menu-item-language a { border-bottom: none; font-weight: 600; color: #cccccc !important; }
+        .menu-item-language { width: 100%; }
+        .menu-item-language a { display: block; width: 100%; padding: 16px 20px; border-bottom: none !important; font-weight: 600; color: #cccccc !important; }
+        .menu-item-language a:hover { color: #ffffff !important; opacity: 0.8; padding-left: 26px; }
         .menu-item-language a:hover { color: #ffffff !important; opacity: 0.8; padding-left: 10px; }
 
         /* Etat ouvert comme About Us (utilise la classe globale) */
