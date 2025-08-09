@@ -339,6 +339,36 @@
 		line-height: 1 !important;
 	}
 
+	/* Réactiver l'affichage des spans internes pour EN/FR */
+	#language-btn.blog-language-btn span {
+		display: inline !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+		width: auto !important;
+		height: auto !important;
+		margin: 0 0 !important;
+		padding: 0 0 !important;
+	}
+
+	/* EN-FR toggle parts + active highlight */
+	.blog-language-btn .lang-part,
+	.menu-item-language .lang-part {
+		opacity: 0.6;
+		transition: color 0.2s ease, opacity 0.2s ease;
+	}
+	.blog-language-btn .lang-part.active,
+	.menu-item-language .lang-part.active {
+		opacity: 1;
+		color: #d4af37;
+		font-weight: 700;
+	}
+	.blog-language-btn .lang-sep,
+	.menu-item-language .lang-sep {
+		display: inline-block;
+		margin: 0 8px;
+		opacity: 0.6;
+	}
+
 	/* Forcer le positionnement à droite dans le header */
 	.layout-medium {
 		display: flex !important;
@@ -354,6 +384,18 @@
 
 	.language-switcher {
 		flex-shrink: 0 !important;
+	}
+
+	/* Responsive pour le sélecteur de langue (même logique que service.html) */
+	@media screen and (max-width: 991px) {
+		.language-switcher { display: none !important; }
+		.menu-item-language { display: block !important; }
+		.is-menu-toggled-on .menu-item-language a { border-bottom: none; font-weight: 600; color: #cccccc !important; }
+	}
+
+	@media screen and (min-width: 992px) {
+		.language-switcher { display: flex !important; }
+		.menu-item-language { display: none !important; }
 	}
 
 		
@@ -1149,6 +1191,7 @@ body { background: #ffffff; }
 <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14999 current_page_item current_page_parent menu-item-blog"><a href="blog.html" aria-current="page">Blog</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
+<li id="menu-item-language" class="menu-item menu-item-language"><a href="#" onclick="toggleLanguage(); return false;">Language: <span class="lang-part lang-en">EN</span><span class="lang-sep">  -  </span><span class="lang-part lang-fr">FR</span></a></li>
 </ul>
 </div>											<div class="language-switcher">
 												<button id="language-btn" class="blog-language-btn" onclick="toggleLanguage()">EN</button>
@@ -1245,16 +1288,57 @@ body { background: #ffffff; }
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 <script>
-// Fonction pour basculer entre les langues
-function toggleLanguage() {
-    const desktopBtn = document.getElementById('language-btn');
-    if (!desktopBtn) return;
-    const currentLang = desktopBtn.textContent;
-    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-    desktopBtn.textContent = newLang;
-    desktopBtn.classList.toggle('active');
-    console.log('Langue changée vers:', newLang);
+// Gestion de l'état de langue avec mise en évidence EN-FR (persistée)
+const LANGUAGE_STORAGE_KEY = 'currentLanguage';
+
+function getCurrentLanguage() {
+    try {
+        return localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'EN';
+    } catch (e) {
+        return 'EN';
+    }
 }
+
+function setCurrentLanguage(lang) {
+    try {
+        localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+    } catch (e) {
+        // ignore
+    }
+}
+
+function updateLanguageUI() {
+    const lang = getCurrentLanguage();
+    const languageBtn = document.getElementById('language-btn');
+    const languageMenuItem = document.querySelector('#menu-item-language a');
+
+    if (languageBtn && !languageBtn.querySelector('.lang-en')) {
+        languageBtn.innerHTML = '<span class="lang-part lang-en">EN<\/span><span class="lang-sep">  -  <\/span><span class="lang-part lang-fr">FR<\/span>';
+    }
+
+    const btnEn = languageBtn ? languageBtn.querySelector('.lang-en') : null;
+    const btnFr = languageBtn ? languageBtn.querySelector('.lang-fr') : null;
+    const menuEn = languageMenuItem ? languageMenuItem.querySelector('.lang-en') : null;
+    const menuFr = languageMenuItem ? languageMenuItem.querySelector('.lang-fr') : null;
+
+    [btnEn, menuEn].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'EN'); });
+    [btnFr, menuFr].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'FR'); });
+
+    if (languageBtn) {
+        languageBtn.classList.toggle('active', lang === 'FR');
+    }
+}
+
+function toggleLanguage() {
+    const next = getCurrentLanguage() === 'EN' ? 'FR' : 'EN';
+    setCurrentLanguage(next);
+    updateLanguageUI();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateLanguageUI();
+});
+
                 const lazyloadRunObserver = () => {
 					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
 					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
@@ -1335,16 +1419,56 @@ step: $.validator.format("Please enter a multiple of {0}.")
 
 
             <script>
-// Fonction pour basculer entre les langues
-function toggleLanguage() {
-    const desktopBtn = document.getElementById('language-btn');
-    if (!desktopBtn) return;
-    const currentLang = desktopBtn.textContent;
-    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-    desktopBtn.textContent = newLang;
-    desktopBtn.classList.toggle('active');
-    console.log('Langue changée vers:', newLang);
+// Gestion de l'état de langue avec mise en évidence EN-FR (persistée)
+const LANGUAGE_STORAGE_KEY = 'currentLanguage';
+
+function getCurrentLanguage() {
+    try {
+        return localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'EN';
+    } catch (e) {
+        return 'EN';
+    }
 }
+
+function setCurrentLanguage(lang) {
+    try {
+        localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+    } catch (e) {
+        // ignore
+    }
+}
+
+function updateLanguageUI() {
+    const lang = getCurrentLanguage();
+    const languageBtn = document.getElementById('language-btn');
+    const languageMenuItem = document.querySelector('#menu-item-language a');
+
+    if (languageBtn && !languageBtn.querySelector('.lang-en')) {
+        languageBtn.innerHTML = '<span class="lang-part lang-en">EN<\/span><span class="lang-sep">  -  <\/span><span class="lang-part lang-fr">FR<\/span>';
+    }
+
+    const btnEn = languageBtn ? languageBtn.querySelector('.lang-en') : null;
+    const btnFr = languageBtn ? languageBtn.querySelector('.lang-fr') : null;
+    const menuEn = languageMenuItem ? languageMenuItem.querySelector('.lang-en') : null;
+    const menuFr = languageMenuItem ? languageMenuItem.querySelector('.lang-fr') : null;
+
+    [btnEn, menuEn].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'EN'); });
+    [btnFr, menuFr].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'FR'); });
+
+    if (languageBtn) {
+        languageBtn.classList.toggle('active', lang === 'FR');
+    }
+}
+
+function toggleLanguage() {
+    const next = getCurrentLanguage() === 'EN' ? 'FR' : 'EN';
+    setCurrentLanguage(next);
+    updateLanguageUI();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateLanguageUI();
+});
             </script>
 </body>
 </html>

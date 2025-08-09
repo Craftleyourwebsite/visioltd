@@ -55,24 +55,13 @@
     .header--project .header-wrap-inner,
     .header--project.clone .header-wrap-inner { background: #000 !important; opacity: 1 !important; }
 	
-	/* Header noir en permanence (normal et scroll) */
-	.site-header .header-wrap:before,
-	.site-header.clone .header-wrap:before {
-		background: #000000 !important;
-		opacity: 1 !important;
-	}
-
-	/* Forcer le header à être noir en permanence */
-	.site-header .header-wrap,
-	.site-header.clone .header-wrap {
-		background: #000000 !important;
-	}
-
-	/* S'assurer que le header-wrap-inner est aussi noir */
-	.site-header .header-wrap-inner,
-	.site-header.clone .header-wrap-inner {
-		background: #000000 !important;
-	}
+    /* Header noir en permanence (normal et scroll) */
+    .site-header .header-wrap:before,
+    .site-header.clone .header-wrap:before { background: #000000 !important; opacity: 1 !important; }
+    .site-header .header-wrap,
+    .site-header.clone .header-wrap { background: #000000 !important; }
+    .site-header .header-wrap-inner,
+    .site-header.clone .header-wrap-inner { background: #000000 !important; }
 
 	/* Texte blanc en permanence pour tous les liens de navigation */
 	.site-header .nav-menu a,
@@ -86,21 +75,14 @@
 		color: #ffffff !important;
 	}
 
-	.site-header .nav-menu a:hover,
-	.site-header.clone .nav-menu a:hover {
-		color: #000000 !important;
-	}
+    .site-header .nav-menu a:hover,
+    .site-header.clone .nav-menu a:hover { color: #ffffff !important; }
 
-	/* Exception spéciale : "Projects" est noir par défaut et reste noir au hover */
-	.site-header .nav-menu .current-menu-item a,
-	.site-header.clone .nav-menu .current-menu-item a {
-		color: #000000 !important;
-	}
-
-	.site-header .nav-menu .current-menu-item a:hover,
-	.site-header.clone .nav-menu .current-menu-item a:hover {
-		color: #000000 !important;
-	}
+    /* Actif: garder la même couleur que les autres liens (lisible sur fond noir) */
+    .site-header .nav-menu .current-menu-item a,
+    .site-header.clone .nav-menu .current-menu-item a,
+    .site-header .nav-menu .current-menu-item a:hover,
+    .site-header.clone .nav-menu .current-menu-item a:hover { color: #ffffff !important; }
 
 	/* Bouton de langue blanc en permanence */
 	.aboutus-language-btn {
@@ -333,52 +315,11 @@
     }
 
     /* ====== HEADER & MENU MOBILE FIX ====== */
-    @media screen and (max-width: 991px) {
-        /* Masquer le switch de langue dans le header mobile (spécificité sous site-header) */
-        .site-header .language-switcher { display: none !important; visibility: hidden !important; }
-        /* Afficher l'item langue dans le menu hamburger */
-        .site-header .menu-item-language { display: block !important; visibility: visible !important; }
+    /* Consolidé plus bas (bloc mobile principal) */
 
-        /* Menu hamburger noir */
-        .is-menu-toggled-on .nav-menu {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100vh;
-            background: #000000 !important;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            transform: translateX(0);
-            transition: transform 0.3s ease;
-        }
+    /* Header toujours noir (déjà géré plus haut) */
 
-        /* Liens du menu hamburger */
-        .is-menu-toggled-on .nav-menu a {
-            color: #ffffff !important;
-            font-size: 18px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            text-decoration: none;
-        }
-        .is-menu-toggled-on .nav-menu a:hover {
-            opacity: 0.8;
-            padding-left: 10px;
-        }
-    }
-
-    /* Header toujours noir */
-    .site-header .header-wrap:before,
-    .site-header.clone .header-wrap:before,
-    .site-header .header-wrap,
-    .site-header.clone .header-wrap,
-    .site-header .header-wrap-inner,
-    .site-header.clone .header-wrap-inner {
-        background: #000000 !important;
-        opacity: 1 !important;
-    }
+    /* Supprimé: bloc mobile contradictoire (fond blanc) */
 
     /* EN-FR toggle parts + active highlight */
     .aboutus-language-btn .lang-part,
@@ -399,24 +340,10 @@
         opacity: 0.6;
     }
 
-	/* Styles pour aligner le bouton de langue à droite comme dans le blog */
-	.layout-medium {
-		display: flex !important;
-		align-items: center !important;
-		justify-content: space-between !important;
-		width: 100% !important;
-	}
-
-	.nav-menu {
-		flex: 1 !important;
-		display: flex !important;
-		justify-content: center !important;
-	}
-
-	.language-switcher {
-		flex-shrink: 0 !important;
-		margin-left: auto !important;
-	}
+    /* Styles pour aligner le bouton de langue à droite comme dans le blog */
+    .layout-medium { display: flex !important; align-items: center !important; justify-content: space-between !important; width: 100% !important; }
+    .nav-menu { flex: 1 !important; display: flex !important; justify-content: center !important; }
+    .language-switcher { flex-shrink: 0 !important; margin-left: auto !important; }
 
 /* Toujours visible sur desktop par défaut */
 @media screen and (min-width: 992px) {
@@ -428,22 +355,8 @@
 
 
 
-	/* Forcer le positionnement à droite dans le header */
-	.layout-medium {
-		display: flex !important;
-		align-items: center !important;
-		justify-content: space-between !important;
-	}
-
-	.nav-menu {
-		flex: 1;
-		display: flex;
-		justify-content: center;
-	}
-
-	.language-switcher {
-		flex-shrink: 0;
-	}
+    /* Forcer le positionnement à droite dans le header */
+    /* (doublons supprimés; voir bloc ci-dessus) */
 
 	/* Décalage de 90px vers la droite pour les titres du menu (desktop uniquement) */
 	@media screen and (min-width: 992px) {
@@ -460,6 +373,20 @@
 		.nav-menu { order: 2 !important; }
 		.language-switcher { order: 3 !important; }
 	}
+
+    /* Desktop: forcer "Projects" (élément actif) en noir, y compris au hover */
+    @media screen and (min-width: 992px) {
+        .site-header .nav-menu > ul > li.current-menu-item > a,
+        .site-header.clone .nav-menu > ul > li.current-menu-item > a,
+        .site-header .nav-menu > ul > li.current-menu-item > a:hover,
+        .site-header.clone .nav-menu > ul > li.current-menu-item > a:hover,
+        .site-header .nav-menu #menu-item-15520 > a,
+        .site-header.clone .nav-menu #menu-item-15520 > a,
+        .site-header .nav-menu #menu-item-15520 > a:hover,
+        .site-header.clone .nav-menu #menu-item-15520 > a:hover {
+            color: #000000 !important;
+        }
+    }
 
 		
 		.aboutus-language-btn {
@@ -480,6 +407,9 @@
         :root { --projectHeaderH: 64px; }
         /* Header fixé */
         .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; }
+        /* Eviter tout recouvrement par un fond blanc du header */
+        .site-header .header-wrap:before { z-index: 0 !important; }
+        .site-header .menu-wrap, .site-header .layout-medium { background: transparent !important; }
         html, body { overflow-x: hidden; }
 
         /* Espace contenu */
@@ -498,16 +428,18 @@
         .menu-toggle .lines:after { bottom: -8px; }
 
         /* Panneau latéral (off-canvas) */
-        .nav-menu { position: fixed; top: 0; right: 0; width: min(420px, 85vw); height: 100vh; background: #000000; padding: 70px 0 16px; overflow-y: auto; z-index: 10000; transform: translateX(100%) !important; transition: transform 0.3s ease; display: block !important; pointer-events: auto; }
-        .nav-menu > ul { list-style: none; margin: 0; padding: 0; display: flex !important; flex-direction: column; align-items: flex-start; width: 100%; }
+        .nav-menu { position: fixed; top: 0; right: 0; width: min(420px, 85vw); height: 100vh; background: #000000 !important; padding: 70px 0 16px; overflow-y: auto; z-index: 10002 !important; transform: translateX(100%) !important; transition: transform 0.3s ease; display: block !important; pointer-events: auto; }
+        .nav-menu > ul { list-style: none; margin: 0; padding: 0; display: flex !important; flex-direction: column; align-items: flex-start; width: 100%; background: transparent !important; }
         .nav-menu > ul > li { width: 100%; opacity: 1; transform: none; border-bottom: 1px solid rgba(255,255,255,0.1); background: transparent !important; }
-        .nav-menu > ul > li > a { display: block; width: 100%; padding: 16px 20px; color: #ffffff !important; text-decoration: none; font-size: 18px; }
+        .nav-menu > ul > li > a { display: block; width: 100%; padding: 16px 20px; color: #ffffff !important; text-decoration: none; font-size: 18px; background: transparent !important; }
         .nav-menu > ul > li > a:hover { color: #ffffff !important; opacity: 0.85; padding-left: 26px; }
         /* Style spécial pour l'élément language dans le menu (comme Services) */
         .menu-item-language { width: 100%; }
-        .menu-item-language a { display: block; width: 100%; padding: 16px 20px; border-bottom: none !important; font-weight: 600; color: #cccccc !important; }
-        .menu-item-language a:hover { color: #ffffff !important; opacity: 0.8; padding-left: 26px; }
-        .menu-item-language a:hover { color: #ffffff !important; opacity: 0.8; padding-left: 10px; }
+        .menu-item-language a { display: flex; align-items: center; gap: 8px; width: 100%; padding: 16px 20px; border-bottom: none !important; font-weight: 600; color: #cccccc !important; background: transparent !important; }
+        .menu-item-language a:hover { color: #ffffff !important; opacity: 0.9; padding-left: 26px; }
+        .menu-item-language .lang-part { opacity: 0.8; font-weight: 600; }
+        .menu-item-language .lang-part.active { opacity: 1; color: #d4af37; }
+        .menu-item-language .lang-sep { margin: 0 6px; opacity: 0.6; }
 
         /* Etat ouvert comme About Us (utilise la classe globale) */
         body.is-menu-toggled-on .nav-menu { transform: translateX(0) !important; }
@@ -537,7 +469,7 @@
         .nav-menu > ul > li.current-menu-item > a:hover { color: #ffffff !important; }
 
         /* Backdrop cliquable */
-        #menu-backdrop { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 9998; }
+        #menu-backdrop { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 10001; }
     }
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
