@@ -975,13 +975,16 @@
 		:root { --gt-accent: #D4A574; --gt-text-color: #32455e; }
 
         /* Layout: center content and separate right sidebar */
-		.gt-page-wrapper { padding: 80px 0; background: #fff; }
+        .gt-page-wrapper { padding: 80px 0; background: #fff; }
         .gt-page-wrapper .gt-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
+        }
+        /* Apply the 2-column grid to the direct wrapper of main and sidebar */
+        .gt-page-wrapper .gt-container .gt-main-row {
             display: grid;
-            grid-template-columns: minmax(0, 2fr) 360px; /* fixed sidebar width */
+            grid-template-columns: minmax(0, 2fr) 360px; /* content | fixed sidebar */
             gap: 48px;
             align-items: start;
         }
@@ -992,13 +995,19 @@
 		/* Left content (blog list) */
 		.gt-blog-list { display: block; }
 		.gt-blog-list-item { margin-bottom: 48px; }
-		.gt-blog-list-item .gt-img img { width: 100%; height: auto; display: block; }
+        .gt-blog-list-item .gt-img { position: relative; display: block; overflow: hidden; }
+        .gt-blog-list-item .gt-img img { width: 100%; height: auto; display: block; transition: transform .4s ease; }
+        /* Subtle zoom on hover for better visual alignment cue */
+        .gt-blog-list-item .gt-img:hover img { transform: scale(1.02); }
 		.gt-content .gt-title { color: var(--gt-accent); font-size: 28px; font-weight: 600; margin: 24px 0 12px; line-height: 1.25; }
 		.gt-excerpt { color: #666; font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
 		.gt-comments a, .gt-date { color: var(--gt-accent); font-size: 12px; letter-spacing: .2px; }
 
 		/* Right sidebar */
-		.gt-right-sidebar .gt-widget { margin-bottom: 28px; }
+        .gt-right-sidebar { padding-top: 0; }
+        .gt-right-sidebar .gt-widget { margin-bottom: 28px; }
+        /* Remove top border/padding on first widget so it aligns with main image top */
+        .gt-right-sidebar .gt-widget:first-child .gt-widget-heading { border-top: none; padding-top: 0; margin-top: 0; }
 		.gt-right-sidebar .gt-widget-heading { border-top: 3px solid #111; padding-top: 12px; margin-bottom: 16px; }
 		.gt-right-sidebar .gt-widget-title { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
 
@@ -1013,17 +1022,24 @@
 		.widget_categories ul { list-style: none; padding: 0; margin: 0; }
 		.widget_categories ul li { padding: 10px 0; border-bottom: 1px solid #eee; color: var(--gt-text-color); }
 		.widget_categories ul li a { color: var(--gt-accent); text-decoration: none; }
+        /* Shift the categories container 15px to the right */
+        .gt-right-sidebar .widget_categories { margin-left: 15px; }
 
-		/* Sticky behavior for sidebar */
-		.gt-sticky-sidebar .inner-wrapper-sticky { position: sticky; top: 100px; }
+        /* Sticky behavior for sidebar - align with main image top */
+        .gt-sticky-sidebar .inner-wrapper-sticky { position: sticky; top: 0; }
+        /* When header is sticky, keep a small offset so hover doesn't collide with header */
+        @media (min-width: 992px) {
+            body.is-header-small .gt-sticky-sidebar .inner-wrapper-sticky,
+            .site-header.clone ~ .site-main .gt-sticky-sidebar .inner-wrapper-sticky { top: 10px; }
+        }
 
 		/* Pagination spacing */
 		.gt-pagination { margin-top: 24px; }
 
 		/* Responsive */
-		@media (max-width: 1024px) {
-			.gt-page-wrapper .gt-container { grid-template-columns: 1fr; gap: 32px; }
-		}
+        @media (max-width: 1024px) {
+            .gt-page-wrapper .gt-container .gt-main-row { grid-template-columns: 1fr; gap: 32px; }
+        }
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
@@ -1354,7 +1370,7 @@ body { background: #ffffff; }
                 <!-- GT Blog content (full) -->
                 <div class="gt-page-wrapper">
                   <div class="gt-container gt-main-container">
-                    <div class="row gt-main-row">
+                    <div class="gt-main-row">
                       <!-- Left: content logic zone -->
                       <main class="gt-main">
                         <div class="gt-blog-list">
@@ -1555,57 +1571,6 @@ step: $.validator.format("Please enter a multiple of {0}.")
 
 
 
-            <script>
-// Gestion de l'état de langue avec mise en évidence EN-FR (persistée)
-const LANGUAGE_STORAGE_KEY = 'currentLanguage';
-
-function getCurrentLanguage() {
-    try {
-        return localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'EN';
-    } catch (e) {
-        return 'EN';
-    }
-}
-
-function setCurrentLanguage(lang) {
-    try {
-        localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
-    } catch (e) {
-        // ignore
-    }
-}
-
-function updateLanguageUI() {
-    const lang = getCurrentLanguage();
-    const languageBtn = document.getElementById('language-btn');
-    const languageMenuItem = document.querySelector('#menu-item-language a');
-
-    if (languageBtn && !languageBtn.querySelector('.lang-en')) {
-        languageBtn.innerHTML = '<span class="lang-part lang-en">EN<\/span><span class="lang-sep">  -  <\/span><span class="lang-part lang-fr">FR<\/span>';
-    }
-
-    const btnEn = languageBtn ? languageBtn.querySelector('.lang-en') : null;
-    const btnFr = languageBtn ? languageBtn.querySelector('.lang-fr') : null;
-    const menuEn = languageMenuItem ? languageMenuItem.querySelector('.lang-en') : null;
-    const menuFr = languageMenuItem ? languageMenuItem.querySelector('.lang-fr') : null;
-
-    [btnEn, menuEn].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'EN'); });
-    [btnFr, menuFr].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'FR'); });
-
-    if (languageBtn) {
-        languageBtn.classList.toggle('active', lang === 'FR');
-    }
-}
-
-function toggleLanguage() {
-    const next = getCurrentLanguage() === 'EN' ? 'FR' : 'EN';
-    setCurrentLanguage(next);
-    updateLanguageUI();
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    updateLanguageUI();
-});
-            </script>
+            
 </body>
 </html>
