@@ -407,6 +407,77 @@
 			z-index: 1000 !important;
 		}
 
+        /* === Base hamburger styles (aligné sur aboutus) === */
+        .menu-toggle {
+            position: relative;
+            cursor: pointer;
+            z-index: 1000;
+            display: block;
+            width: 30px;
+            height: 30px;
+        }
+        .menu-toggle .lines {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background-color: #ffffff;
+            border-radius: 1px;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            transition: all 0.25s ease;
+        }
+        .menu-toggle .lines:before,
+        .menu-toggle .lines:after {
+            content: '';
+            position: absolute;
+            width: 26px;
+            height: 2px;
+            background-color: #ffffff;
+            transition: all 0.25s ease;
+        }
+        .menu-toggle .lines:before { top: -7px; }
+        .menu-toggle .lines:after { top: 7px; }
+        .is-menu-toggled-on .menu-toggle .lines { background-color: transparent !important; }
+        .is-menu-toggled-on .menu-toggle .lines:before { top: 0 !important; transform: rotate(45deg) !important; background-color: #ffffff !important; }
+        .is-menu-toggled-on .menu-toggle .lines:after { top: 0 !important; transform: rotate(-45deg) !important; background-color: #ffffff !important; }
+
+        /* === Normalisation de l'espacement haut (suppression du gap) === */
+        .site { margin-top: 0 !important; margin-bottom: 0 !important; }
+        .site-main { padding-top: 0 !important; }
+    .elementor > .elementor-section.elementor-top-section:first-of-type,
+    [data-elementor-type="wp-page"] > .elementor > .elementor-section.elementor-top-section:first-of-type {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    /* === Hauteur/centrage du header en mobile (évite l'écrasement et aligne le burger) === */
+    .site-header .header-wrap-inner {
+        min-height: 60px !important;
+        display: flex !important;
+        align-items: center !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .site-header .site-branding {
+        max-height: 60px !important;
+        display: flex !important;
+        align-items: center !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .site-title img.logo-image,
+    .site-header:not(.clone) .logo-image,
+    .site-header.clone .logo-image {
+        max-height: 32px !important;
+    }
+        .menu-toggle { height: 40px !important; width: 40px !important; display: flex !important; align-items: center !important; justify-content: flex-end !important; }
+        .menu-wrap { padding-top: 0 !important; padding-bottom: 0 !important; min-height: 60px !important; display: flex !important; align-items: center !important; }
+    .site-header .nav-menu > ul#menu-mymenu { transform: none !important; }
+    .site-header .header-wrap:before { opacity: 1 !important; }
+    .site-header.clone .header-wrap:before { opacity: 1 !important; }
+
 		/* Forcer les lignes du hamburger à être visibles */
 		.menu-toggle .lines {
 			display: block !important;
@@ -507,29 +578,33 @@
 		}
 
 		/* Styles pour le menu mobile quand il est ouvert - Demi-écran comme l'exemple */
-		.is-menu-toggled-on .nav-menu {
-			position: fixed;
-			top: 0;
-			right: 0;
-			width: 50%;
-			height: 100vh;
-			background: #000000;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			z-index: 999;
-			transform: translateX(0);
-			transition: transform 0.3s ease;
-		}
+        .is-menu-toggled-on .nav-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100vh;
+            background: #000000;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding-top: 72px; /* clear the top area near the X */
+            z-index: 999;
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
 
-		.is-menu-toggled-on .nav-menu ul {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 20px;
-			padding: 0 40px;
-			width: 100%;
-		}
+        .is-menu-toggled-on .nav-menu ul {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 0 40px;
+            width: 100%;
+            margin: 0 !important; /* avoid any theme default margin-top */
+        }
 
 		.is-menu-toggled-on .nav-menu li {
 			display: block;
@@ -732,7 +807,8 @@ h1, .entry-title, .footer-subscribe h3, .widget_categories ul li, .widget_recent
 @media screen and (min-width: 992px) { .site-title img { max-height: 44px; } }
 
 
-html .site-header .site-title a { padding: 12px 24px; }
+/* Remove extra padding on logo link to eliminate header vertical offset */
+html .site-header .site-title a { padding: 0 !important; }
 
 @media screen and (min-width: 992px) { .site { margin-top: 0px; margin-bottom: 0px; } }
 
@@ -769,6 +845,14 @@ a:hover { color: #c60035; }
 .is-header-half-transparent:not(.is-menu-toggled-on) .site-header:not(.clone) .header-wrap:before { opacity: 1 !important; }
 
 .header-wrap:after { opacity: 0 !important; }
+
+/* Lock scroll when mobile menu is open */
+@media screen and (max-width: 991px) {
+    html.is-menu-toggled-on,
+    html.is-menu-toggled-on body {
+        overflow: hidden !important;
+    }
+}
 
 @media screen and (min-width: 992px) { .nav-menu > ul > li.current-menu-item > a { color: #000000 !important; } }
 
@@ -945,7 +1029,7 @@ body { background: #ffffff; }
 <li id="menu-item-language" class="menu-item menu-item-language"><a href="#" onclick="toggleLanguage(); return false;">Language: <span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span></a></li>
 </ul>
 </div>											<div class="language-switcher">
-												<button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()">EN</button>
+                                            <button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()"><span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span></button>
 											</div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
@@ -1751,6 +1835,74 @@ document.addEventListener('DOMContentLoaded', function() {
 				events.forEach( ( event ) => {
 					document.addEventListener( event, lazyloadRunObserver );
 				} );
+			</script>
+			<script>
+// Mobile menu toggle (explicit, to ensure consistent behavior on this static page)
+document.addEventListener('DOMContentLoaded', function () {
+  var root = document.documentElement;
+  var toggle = document.querySelector('.menu-toggle');
+  var navMenu = document.querySelector('.nav-menu');
+
+  // Accessibility bindings (alignés sur aboutus)
+  if (navMenu && !navMenu.id) {
+    navMenu.id = 'primary-nav';
+  }
+  if (toggle && navMenu) {
+    toggle.setAttribute('aria-controls', navMenu.id);
+  }
+
+  function closeMenu() {
+    root.classList.remove('is-menu-toggled-on');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    if (navMenu) navMenu.setAttribute('aria-hidden', 'true');
+  }
+
+  function openMenu() {
+    root.classList.add('is-menu-toggled-on');
+    if (toggle) toggle.setAttribute('aria-expanded', 'true');
+    if (navMenu) navMenu.setAttribute('aria-hidden', 'false');
+  }
+
+  if (toggle) {
+    toggle.setAttribute('role', 'button');
+    toggle.setAttribute('aria-label', 'Toggle menu');
+    toggle.setAttribute('aria-expanded', 'false');
+    var onToggleClick = function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+      var isOpen = root.classList.contains('is-menu-toggled-on');
+      isOpen ? closeMenu() : openMenu();
+    };
+    toggle.addEventListener('click', onToggleClick, true);
+    // Better responsiveness on some mobiles
+    toggle.addEventListener('touchstart', onToggleClick, { passive: false, capture: true });
+  }
+
+  // Close menu when a navigation link is clicked
+  document.querySelectorAll('.nav-menu a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close if clicking outside menu and toggle (acts as overlay click)
+  document.addEventListener('click', function (e) {
+    if (!root.classList.contains('is-menu-toggled-on')) return;
+    var target = e.target;
+    if (navMenu && navMenu.contains(target)) return;
+    if (toggle && toggle.contains(target)) return;
+    closeMenu();
+  });
+
+  // Close on ESC
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  // Reset state on resize to desktop
+  window.addEventListener('resize', function () {
+    if (window.innerWidth >= 992) closeMenu();
+  });
+});
 			</script>
 			<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js"></script>
 <script type="text/javascript" id="qi-addons-for-elementor-script-js-extra">
