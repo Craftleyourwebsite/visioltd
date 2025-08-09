@@ -1543,23 +1543,37 @@ body { background: #ffffff; }
 							padding-left: 0 !important;
 						}
 						
-						/* Styles responsives pour mobile avec sélecteurs très spécifiques */
+                        /* Styles responsives pour mobile avec sélecteurs très spécifiques */
 						@media screen and (max-width: 768px) {
 							/* Ajuster le conteneur principal pour mobile */
-							.elementor-element-1bbe67d4 {
-								margin-left: -20px !important;
-								padding: 20px 0 !important;
-							}
+                            .elementor-element-1bbe67d4 {
+                                margin-left: 0 !important;
+                                padding: 20px 0 !important;
+                            }
 							
-							/* Garder les onglets en ligne horizontale pour mobile mais centrés */
+                            /* Onglets en mobile: aligner les titres avec la description (à gauche) */
 							.qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tabs-horizontal-navigation {
+                                width: 100% !important;
 								flex-direction: row !important;
-								justify-content: center !important;
+                                justify-content: flex-start !important;
 								gap: 20px !important;
-								margin-left: 0 !important;
+                                margin-left: 20px !important; /* Aligner avec le contenu */
 								margin-bottom: 20px !important;
 								flex-wrap: wrap !important;
+                                align-items: flex-start !important;
+                                padding-left: 0 !important;
+                                margin-right: 0 !important;
 							}
+                            .qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tabs-horizontal-navigation li {
+                                margin: 0 !important;
+                                padding: 0 !important;
+                                text-align: left !important;
+                            }
+                            .qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tabs-horizontal-navigation li .qodef-tab-title,
+                            .qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tabs-horizontal-navigation li .qodef-tab-title a {
+                                display: inline-block !important;
+                                text-align: left !important;
+                            }
 							
 							/* Ajuster la taille des titres pour mobile */
 							.qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tab-title {
@@ -1591,17 +1605,24 @@ body { background: #ffffff; }
 						
 						/* Styles pour très petits écrans */
 						@media screen and (max-width: 480px) {
-							.elementor-element-1bbe67d4 {
-								margin-left: -10px !important;
-								padding: 15px 0 !important;
-							}
+                            .elementor-element-1bbe67d4 {
+                                margin-left: 0 !important;
+                                padding: 15px 0 !important;
+                            }
 							
-							.qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tabs-horizontal-navigation {
-								margin-left: 0 !important;
-								gap: 15px !important;
-								justify-content: center !important;
-								flex-wrap: wrap !important;
-							}
+                            .qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tabs-horizontal-navigation {
+                                width: 100% !important;
+                                margin-left: 10px !important; /* Aligner avec contenu très petit écran */
+                                gap: 15px !important;
+                                justify-content: flex-start !important;
+                                flex-wrap: wrap !important;
+                                align-items: flex-start !important;
+                                padding-left: 0 !important;
+                                margin-right: 0 !important;
+                            }
+                            .qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tabs-horizontal-navigation li {
+                                text-align: left !important;
+                            }
 							
 							.qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tab-title {
 								font-size: 15px !important;
@@ -1626,22 +1647,29 @@ body { background: #ffffff; }
 
                             if (window.innerWidth <= 480) {
                                 // Very small screens
-                                tabsNav.style.setProperty('justify-content', 'center', 'important');
-                                tabsNav.style.setProperty('margin-left', '0', 'important');
+                                tabsNav.style.setProperty('justify-content', 'flex-start', 'important');
+                                tabsNav.style.setProperty('margin-left', '10px', 'important');
                                 tabsNav.style.setProperty('gap', '15px', 'important');
                                 tabsNav.style.setProperty('flex-wrap', 'wrap', 'important');
+                                tabsNav.style.setProperty('width', '100%', 'important');
+                                tabsNav.style.setProperty('align-items', 'flex-start', 'important');
+                                tabsNav.style.setProperty('text-align', 'left', 'important');
                             } else if (window.innerWidth <= 768) {
                                 // Mobile / tablet
-                                tabsNav.style.setProperty('justify-content', 'center', 'important');
-                                tabsNav.style.setProperty('margin-left', '0', 'important');
+                                tabsNav.style.setProperty('justify-content', 'flex-start', 'important');
+                                tabsNav.style.setProperty('margin-left', '20px', 'important');
                                 tabsNav.style.setProperty('gap', '20px', 'important');
                                 tabsNav.style.setProperty('flex-wrap', 'wrap', 'important');
+                                tabsNav.style.setProperty('width', '100%', 'important');
+                                tabsNav.style.setProperty('align-items', 'flex-start', 'important');
+                                tabsNav.style.setProperty('text-align', 'left', 'important');
                             } else {
                                 // Desktop: align titles with content (no left offset)
                                 tabsNav.style.setProperty('justify-content', 'flex-start', 'important');
                                 tabsNav.style.setProperty('margin-left', '0', 'important');
                                 tabsNav.style.setProperty('gap', '30px', 'important');
                                 tabsNav.style.setProperty('flex-wrap', 'nowrap', 'important');
+                                tabsNav.style.setProperty('text-align', 'left', 'important');
                             }
                         }
 						
