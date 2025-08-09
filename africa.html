@@ -260,6 +260,13 @@
             display: block !important;
         }
 
+        /* Décalage de 30px vers la droite pour les titres du menu (desktop uniquement) */
+        @media screen and (min-width: 992px) {
+            .site-header .nav-menu > ul#menu-mymenu {
+                transform: translateX(90px);
+            }
+        }
+
         /* Styles pour le menu mobile quand il est ouvert - Demi-écran comme l'exemple */
         @media screen and (max-width: 991px) {
             .is-menu-toggled-on .nav-menu {
@@ -491,9 +498,6 @@
         }
 
         /* Isolation complète de l'animation du hamburger - ne s'applique qu'au bouton */
-        .is-menu-toggled-on .menu-toggle {
-            /* L'animation ne s'applique qu'ici */
-        }
 
         .is-menu-toggled-on .menu-toggle .lines {
             /* Animation spécifique au hamburger uniquement */

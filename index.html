@@ -259,6 +259,13 @@
 			flex-shrink: 0;
 		}
 
+		/* Décalage de 90px vers la droite pour les titres du menu (desktop uniquement) */
+		@media screen and (min-width: 992px) {
+			.site-header .nav-menu > ul#menu-mymenu {
+				transform: translateX(90px);
+			}
+		}
+
 		/* Styles spécifiques pour index.html - Menu burger à droite */
 		.menu-toggle {
 			order: 1 !important;
