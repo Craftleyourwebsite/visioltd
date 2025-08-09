@@ -870,6 +870,16 @@ body { background: #ffffff; }
                 .gt-main .gt-grid-item:hover .gt-content .gt-location li { color: #000 !important; }
                 /* Keep category pills readable on white */
                 .gt-main .gt-grid-item:hover .gt-cat li { background: #000 !important; color: #fff !important; }
+
+                /* === FILTER BAR (bottom of Projects) === */
+                .gt-main .gt-filters { width: 100%; display: flex; align-items: center; justify-content: center; gap: 36px; padding: 10px 12px 18px; margin-top: 0; background: transparent; }
+                .gt-main .gt-filters button { position: relative; appearance: none; border: 0; background: transparent; color: #444; font-size: 15px; letter-spacing: .3px; padding: 6px 2px; cursor: pointer; opacity: .95; transition: color .2s ease, opacity .2s ease; outline: none; box-shadow: none; text-decoration: none; }
+                .gt-main .gt-filters button:hover { opacity: 1; color: #000; text-decoration: none; }
+                .gt-main .gt-filters button.is-active { color: #000; opacity: 1; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+
+                /* Simple show/hide animation */
+                .gt-main .gt-grid-item { transition: opacity .25s ease, transform .25s ease; }
+                .gt-main .gt-grid-item.is-hidden { opacity: 0; transform: scale(.98); }
 			</style>
 			<style id="footer-dark-override">
 				/* Force dark footer across Projects */
@@ -975,7 +985,9 @@ body { background: #ffffff; }
 													<div class="wpb_column vc_column_container vc_col-sm-12">
 														<div class="vc_column-inner">
 															<div class="wpb_wrapper">
-																<div class="gt-grid" style="position: relative;">
+                                                                <!-- Filters bar (auto-built by JS) - moved above grid -->
+                                                                <div class="gt-filters" id="gt-filters"></div>
+                                                                <div class="gt-grid" style="position: relative;">
 																	<div class="gt-grid-item gt-grid-item--h2" style="position: relative;">
 																		<div class="gt-img" style="background-image:url(https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-2-750x750.jpg);"></div>
 																		<a href="#" class="gt-content"><span><h2>England Grand Mall</h2><ul class="gt-location"><li>London, England</li></ul><p class="gt-excerpt"> A stunning commercial project combining modern design and functionality, England Grand Mall offers a luxurious shopping experience with its exquisite architecture and state-of-the-art facilities.</p><ul class="gt-cat"><li>Hotel</li></ul></span></a>
@@ -1008,8 +1020,9 @@ body { background: #ffffff; }
 											<div class="gt-img" style="background-image:url(public/section/4.jpeg);"></div>
 											<a href="#" class="gt-content"><span><h2>Horizon Pavilion</h2><ul class="gt-location"><li>Nairobi, Kenya</li></ul><p class="gt-excerpt">A light-filled cultural space celebrating community, art, and the outdoors.</p><ul class="gt-cat"><li>Cultural</li></ul></span></a>
 							</div>
-										<!-- autres items -->
-						</div>
+                                        <!-- autres items -->
+                        </div>
+                        
 							</div>
 						</div>
 							</div>
@@ -1119,6 +1132,63 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   // Initial update on load
   updateMobileHeaderOffset();
+});
+// === Projects filter (bottom bar) ===
+document.addEventListener('DOMContentLoaded', function() {
+  var grid = document.querySelector('.gt-main .gt-grid');
+  var items = Array.from(document.querySelectorAll('.gt-main .gt-grid-item'));
+  var bar = document.getElementById('gt-filters');
+  if (!grid || !items.length || !bar) return;
+
+  // Derive categories from each item's first .gt-cat li
+  var categories = new Set();
+  items.forEach(function(item){
+    // read from visible category pill if present; fallback to data attr we inject
+    var catEl = item.querySelector('.gt-cat li');
+    var cat = catEl ? (catEl.textContent || '').trim() : '';
+    if (!cat) {
+      // try to infer from heading keywords
+      var h = (item.querySelector('h2')?.textContent || '').toLowerCase();
+      if (h.includes('hotel')) cat = 'Hotel';
+      else if (h.includes('tower') || h.includes('hub') || h.includes('work')) cat = 'Workplace';
+      else if (h.includes('arena') || h.includes('sport')) cat = 'Sport';
+      else if (h.includes('pavilion') || h.includes('cultural')) cat = 'Cultural';
+      else cat = 'Residential';
+    }
+    item.setAttribute('data-category', cat);
+    categories.add(cat);
+  });
+
+  // Preferred order
+  var order = ['All', 'Residential', 'Workplace', 'Hotel', 'Sport', 'Cultural'];
+  var finalCats = ['All'].concat(order.filter(function(c){ return categories.has(c); }))
+    .concat(Array.from(categories).filter(function(c){ return order.indexOf(c) === -1; }));
+
+  // Build bar
+  bar.innerHTML = '';
+  finalCats.forEach(function(cat, idx){
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = cat;
+    if (idx === 0) btn.classList.add('is-active');
+    btn.addEventListener('click', function(){
+      // set active
+      Array.from(bar.children).forEach(function(b){ b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      filter(cat);
+    });
+    bar.appendChild(btn);
+  });
+
+  function filter(cat){
+    items.forEach(function(item){
+      var itemCat = item.getAttribute('data-category');
+      var show = (cat === 'All') || (itemCat === cat);
+      // toggle class for transition, and toggle display to maintain grid density
+      item.classList.toggle('is-hidden', !show);
+      item.style.display = show ? '' : 'none';
+    });
+  }
 });
 // Gestion de l'état de langue avec mise en évidence EN-FR (persistée)
 const LANGUAGE_STORAGE_KEY = 'currentLanguage';
