@@ -851,6 +851,25 @@ body { background: #ffffff; }
                     background-size: cover !important;
                     background-position: center center !important;
                 }
+
+                /* === HOVER: image becomes white, description centered === */
+                .gt-main .gt-grid-item .gt-content { transition: background .25s ease, color .25s ease, align-items .25s ease, justify-content .25s ease, text-align .25s ease; }
+                .gt-main .gt-grid-item:hover .gt-content {
+                    background: rgba(255, 255, 255, 1) !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    text-align: center !important;
+                    color: #000 !important;
+                }
+                /* Center inner block and its lists */
+                .gt-main .gt-grid-item:hover .gt-content span { display: flex !important; flex-direction: column !important; align-items: center !important; }
+                .gt-main .gt-grid-item:hover .gt-location,
+                .gt-main .gt-grid-item:hover .gt-cat { justify-content: center !important; }
+                .gt-main .gt-grid-item:hover .gt-content h2,
+                .gt-main .gt-grid-item:hover .gt-content .gt-excerpt,
+                .gt-main .gt-grid-item:hover .gt-content .gt-location li { color: #000 !important; }
+                /* Keep category pills readable on white */
+                .gt-main .gt-grid-item:hover .gt-cat li { background: #000 !important; color: #fff !important; }
 			</style>
 			<style id="footer-dark-override">
 				/* Force dark footer across Projects */
