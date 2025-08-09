@@ -986,9 +986,34 @@ body { background: #ffffff; }
 				.site-footer a,
 				.site-footer .site-info a { color: #fff !important; }
 				.site-footer .site-info p { color: #fff !important; }
-			</style>
-			</head>
+            </style>
+            <style id="mobile-header-service-sync">
+  /* Mobile header sync with aboutus.html - service.html */
+  @media screen and (max-width: 991px) {
+    /* Icône hamburger visible sur fond noir */
+    .site-header .menu-toggle .lines,
+    .site-header .menu-toggle .lines:before,
+    .site-header .menu-toggle .lines:after {
+      background-color: #ffffff !important;
+    }
 
+    /* Panneau et liens lisibles quand le menu est ouvert */
+    .is-menu-toggled-on .site-header .menu-wrap,
+    .is-menu-toggled-on .site-header .nav-menu,
+    .is-menu-toggled-on .site-header .menu-wrap:before {
+      background: #000000 !important;
+    }
+    .is-menu-toggled-on .site-header .nav-menu a,
+    .is-menu-toggled-on #menu-item-language a {
+      color: #ffffff !important;
+    }
+
+    /* Superposer correctement le panneau */
+    .site-header .menu-wrap { position: relative; z-index: 1001; }
+    .is-menu-toggled-on .site-header { background: #000000 !important; }
+  }
+</style>
+            </head>
 <body class="wp-singular page-template page-template-elementor_header_footer page page-id-23123 wp-theme-arkiz qodef-qi--no-touch qi-addons-for-elementor-1.8.9 elementor-default elementor-template-full-width elementor-kit-11 elementor-page elementor-page-23123">
 		    <div id="page" class="hfeed site">
 		        <header id="masthead" class="site-header" role="banner">

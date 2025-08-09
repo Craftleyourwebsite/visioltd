@@ -912,8 +912,140 @@ body { background: #ffffff; }
 						background-image: none !important;
 					}
 				}
-			</style>
-			</head>
+            </style>
+<style>
+  /* Mobile header fixes - contact.html */
+  @media screen and (max-width: 991px) {
+    /* Rendre visibles les barres du hamburger */
+    .site-header .menu-toggle .lines,
+    .site-header .menu-toggle .lines:before,
+    .site-header .menu-toggle .lines:after {
+      background-color: #000000 !important;
+    }
+
+    /* Quand le menu est ouvert, afficher un panneau sombre et du texte lisible */
+    .is-menu-toggled-on .site-header .menu-wrap,
+    .is-menu-toggled-on .site-header .nav-menu,
+    .is-menu-toggled-on .site-header .menu-wrap:before {
+      background: #000000 !important;
+    }
+    .is-menu-toggled-on .site-header .nav-menu a {
+      color: #ffffff !important;
+    }
+    .is-menu-toggled-on #menu-item-language a {
+      color: #ffffff !important;
+    }
+    .is-menu-toggled-on .site-header .menu-toggle .lines,
+    .is-menu-toggled-on .site-header .menu-toggle .lines:before,
+    .is-menu-toggled-on .site-header .menu-toggle .lines:after {
+      background-color: #ffffff !important;
+    }
+
+    /* S'assurer que le panneau recouvre bien le contenu */
+    .site-header .menu-wrap { position: relative; z-index: 1001; }
+    .is-menu-toggled-on .site-header { background: #000000 !important; }
+  }
+            </style>
+            <style id="contact-mobile-header-ux">
+              /* Mobile off-canvas menu + overlay + scroll lock (consistent UX) */
+              @media screen and (max-width: 991px) {
+                /* Hide right language button; show language inside the menu */
+                .language-switcher { display: none !important; }
+                .menu-item-language { display: block !important; }
+
+                /* Off-canvas base */
+                .nav-menu { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+
+                /* Drawer */
+                .is-menu-toggled-on .nav-menu {
+                  position: fixed; top: 0; right: 0; width: 50%; max-width: 420px; height: 100vh;
+                  background: #000000; z-index: 999; transform: translateX(0);
+                  display: flex; align-items: flex-start; justify-content: flex-start;
+                  padding-top: 72px; overflow-y: auto; -webkit-overflow-scrolling: touch;
+                }
+                .is-menu-toggled-on .nav-menu ul {
+                  display: flex; flex-direction: column; gap: 20px; padding: 0 40px; width: 100%; margin: 0 !important;
+                }
+                .is-menu-toggled-on .nav-menu li { display: block; width: 100%; }
+                .is-menu-toggled-on .nav-menu a {
+                  color: #ffffff !important; font-size: 18px; font-weight: 400; text-decoration: none;
+                  display: block; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+                }
+                .is-menu-toggled-on .nav-menu a:hover { color: #ffffff !important; opacity: 0.85; padding-left: 10px; }
+                .is-menu-toggled-on .menu-item-language a { border-bottom: none; font-weight: 600; color: #cccccc !important; }
+
+                /* Overlay backdrop */
+                .is-menu-toggled-on::before {
+                  content: ''; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 998;
+                }
+
+                /* Scroll lock */
+                html.is-menu-toggled-on, html.is-menu-toggled-on body,
+                body.is-menu-toggled-on { overflow: hidden !important; }
+
+                /* Hamburger to X when open */
+                .is-menu-toggled-on .menu-toggle .lines { background-color: transparent !important; }
+                .is-menu-toggled-on .menu-toggle .lines:before { top: 0 !important; transform: rotate(45deg) !important; background-color: #ffffff !important; }
+                .is-menu-toggled-on .menu-toggle .lines:after { bottom: 0 !important; transform: rotate(-45deg) !important; background-color: #ffffff !important; }
+              }
+            </style>
+            <style id="contact-mobile-override-desktop-conflicts">
+              /* Neutraliser les effets desktop en mobile (pas d'interférence) */
+              @media screen and (max-width: 991px) {
+                /* Fond du header toujours noir en mobile */
+                .site-header .header-wrap:before,
+                .site-header.clone .header-wrap:before,
+                .site-header .header-wrap,
+                .site-header.clone .header-wrap,
+                .site-header .header-wrap-inner,
+                .site-header.clone .header-wrap-inner { background: #000 !important; opacity: 1 !important; }
+
+                /* Désactiver les variations au :hover (desktop) sur mobile */
+                .site-header:hover .header-wrap:before,
+                .site-header:hover .header-wrap,
+                .site-header:hover .header-wrap-inner { background: #000 !important; opacity: 1 !important; }
+
+                /* Logo blanc pour contraste */
+                .site-header .logo-image { filter: brightness(0) invert(1) !important; }
+
+                /* Liens lisibles (blanc) en mobile */
+                .site-header .nav-menu a,
+                .site-header .nav-menu .current-menu-item a { color: #ffffff !important; }
+
+                /* Hamburger blanc par défaut */
+                .site-header .menu-toggle .lines,
+                .site-header .menu-toggle .lines:before,
+                .site-header .menu-toggle .lines:after { background-color: #ffffff !important; }
+              }
+            </style>
+            <style id="contact-mobile-layout-fix">
+              /* Position/height fixes so the header doesn't fill the screen and burger sits top-right */
+              @media screen and (max-width: 991px) {
+                /* Header height */
+                .site-header,
+                .site-header .header-wrap,
+                .site-header .header-wrap-inner { min-height: 64px !important; height: 64px !important; }
+                /* Constrain the pseudo overlay to header height */
+                .site-header .header-wrap:before,
+                .site-header.clone .header-wrap:before { height: 64px !important; top: 0 !important; bottom: auto !important; }
+
+                /* Brand/logo sizing */
+                .site-branding { max-height: 64px !important; display: flex !important; align-items: center !important; }
+                /* Place the logo to the left with comfortable padding */
+                .site-branding-center { justify-content: flex-start !important; padding-left: 16px !important; }
+                .site-title { margin: 0 !important; }
+                .site-title a { display: flex !important; align-items: center !important; padding: 0 !important; }
+                .site-title img.logo-image { max-height: 24px !important; width: auto !important; display: block !important; }
+
+                /* Place burger at top-right inside the header */
+                .site-header .header-wrap-inner { position: relative !important; }
+                .menu-toggle { position: absolute !important; right: 16px !important; top: 18px !important; margin-left: 0 !important; width: 30px !important; height: 30px !important; z-index: 1001 !important; }
+
+                /* Flex row spacing */
+                .layout-medium { display: flex !important; align-items: center !important; justify-content: space-between !important; width: 100% !important; }
+              }
+            </style>
+            </head>
 
 <body class="wp-singular page-template page-template-elementor_header_footer page page-id-23132 wp-theme-arkiz qodef-qi--no-touch qi-addons-for-elementor-1.8.9 elementor-default elementor-template-full-width elementor-kit-11 elementor-page elementor-page-23132">
 		    <div id="page" class="hfeed site">
