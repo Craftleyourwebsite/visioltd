@@ -298,30 +298,58 @@
 	}
 
 	/* Supprimer tous les éléments enfants qui pourraient causer des icônes */
-	#language-btn.aboutus-language-btn *,
-	#language-btn.aboutus-language-btn *::before,
-	#language-btn.aboutus-language-btn *::after {
-		content: none !important;
-		display: none !important;
-		visibility: hidden !important;
-		opacity: 0 !important;
-		width: 0 !important;
-		height: 0 !important;
-		margin: 0 !important;
-		padding: 0 !important;
-		border: none !important;
-		background: none !important;
-		background-image: none !important;
-	}
+#language-btn.aboutus-language-btn *:not(.lang-part):not(.lang-sep),
+#language-btn.aboutus-language-btn *:not(.lang-part):not(.lang-sep)::before,
+#language-btn.aboutus-language-btn *:not(.lang-part):not(.lang-sep)::after {
+    content: none !important;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    background-image: none !important;
+}
 
-	/* Forcer le texte uniquement */
-	#language-btn.aboutus-language-btn {
-		color: #ffffff !important;
-		font-weight: bold !important;
-		font-size: 14px !important;
-		padding: 8px 16px !important;
-		cursor: pointer !important;
-	}
+#language-btn.aboutus-language-btn .lang-part,
+#language-btn.aboutus-language-btn .lang-sep {
+    display: inline !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+    /* Forcer le texte uniquement */
+    #language-btn.aboutus-language-btn {
+        color: #ffffff !important;
+        font-weight: bold !important;
+        font-size: 14px !important;
+        padding: 8px 16px !important;
+        cursor: pointer !important;
+    }
+
+    /* EN-FR toggle parts + active highlight */
+    .aboutus-language-btn .lang-part,
+    .menu-item-language .lang-part {
+        opacity: 0.6;
+        transition: color 0.2s ease, opacity 0.2s ease;
+    }
+    .aboutus-language-btn .lang-part.active,
+    .menu-item-language .lang-part.active {
+        opacity: 1;
+        color: #d4af37; /* highlight active language */
+        font-weight: 700;
+    }
+    .aboutus-language-btn .lang-sep,
+    .menu-item-language .lang-sep {
+        display: inline-block;
+        margin: 0 8px; /* spacing around dash */
+        opacity: 0.6;
+    }
 
 	/* Styles pour aligner le bouton de langue à droite comme dans le blog */
 	.layout-medium {
@@ -341,6 +369,12 @@
 		flex-shrink: 0 !important;
 		margin-left: auto !important;
 	}
+
+/* Toujours visible sur desktop par défaut */
+.site-header .language-switcher {
+    display: flex !important;
+    align-items: center;
+}
 
 
 
@@ -366,6 +400,15 @@
 		.site-header .nav-menu > ul#menu-mymenu {
 			transform: translateX(90px);
 		}
+
+		/* Afficher le switcher de langue à droite et masquer l'item du menu */
+		.language-switcher { display: flex !important; }
+		.menu-item-language { display: none !important; }
+
+		/* Ordre des éléments dans le header (burger, menu, switcher) */
+		.menu-toggle { order: 1 !important; margin-left: auto !important; }
+		.nav-menu { order: 2 !important; }
+		.language-switcher { order: 3 !important; }
 	}
 
 		
@@ -378,12 +421,8 @@
 
     /* Mobile: masquer le bouton de langue à droite pour éviter les doublons */
     @media screen and (max-width: 991px) {
-        /* Masquer toutes les variantes du bouton langue desktop en mobile */
-        .language-switcher,
-        .site-header .language-switcher,
-        .site-header.clone .language-switcher,
-        .is-menu-toggled-on .language-switcher,
-        .menu-wrap .language-switcher { display: none !important; }
+        /* Hide the desktop language switcher only on mobile */
+        .language-switcher { display: none !important; }
     }
 
     /* === HEADER MOBILE – aligné sur About Us === */
@@ -414,7 +453,9 @@
         .nav-menu > ul > li { width: 100%; opacity: 1; transform: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .nav-menu > ul > li > a { display: block; width: 100%; padding: 16px 20px; color: #ffffff !important; text-decoration: none; font-size: 18px; }
         .nav-menu > ul > li > a:hover { color: #ffffff !important; opacity: 0.85; padding-left: 26px; }
-        .menu-item-language a { border-bottom: none !important; font-weight: 600; color: #cccccc !important; }
+        /* Style spécial pour l'élément language dans le menu (comme Services) */
+        .menu-item-language a { border-bottom: none; font-weight: 600; color: #cccccc !important; }
+        .menu-item-language a:hover { color: #ffffff !important; opacity: 0.8; padding-left: 10px; }
 
         /* Etat ouvert comme About Us (utilise la classe globale) */
         body.is-menu-toggled-on .nav-menu { transform: translateX(0) !important; }
@@ -840,10 +881,11 @@ body { background: #ffffff; }
 <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-blog"><a href="blog.html">Blog</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
+<li id="menu-item-language" class="menu-item menu-item-language"><a href="#" onclick="toggleLanguage(); return false;"><span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span></a></li>
 </ul></div>                                            
-											<div class="language-switcher">
-												<button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()">EN</button>
-											</div> <!-- .language-switcher -->
+                                            <div class="language-switcher">
+                                                <button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()"><span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span></button>
+                                            </div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
 					</nav> <!-- #site-navigation .main-navigation .site-navigation -->
@@ -1036,40 +1078,58 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initial update on load
   updateMobileHeaderOffset();
 });
-// Fonction pour basculer entre les langues (version simplifiée sans scroll)
-function toggleLanguage() {
-    const languageBtn = document.getElementById('language-btn');
-    const languageMenuItem = document.querySelector('.menu-item-language a');
-    const currentText = languageBtn.textContent;
-    
-    if (currentText === 'EN') {
-        languageBtn.textContent = 'FR';
-        languageBtn.classList.add('active');
-        if (languageMenuItem) {
-            languageMenuItem.textContent = 'Language: FR';
-        }
-    } else {
-        languageBtn.textContent = 'EN';
-        languageBtn.classList.remove('active');
-        if (languageMenuItem) {
-            languageMenuItem.textContent = 'Language: EN';
-        }
+// Gestion de l'état de langue avec mise en évidence EN-FR (persistée)
+const LANGUAGE_STORAGE_KEY = 'currentLanguage';
+
+function getCurrentLanguage() {
+    try {
+        return localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'EN';
+    } catch (e) {
+        return 'EN';
     }
 }
 
-// Initialisation : s'assurer que le bouton est en mode EN par défaut
-document.addEventListener('DOMContentLoaded', function() {
+function setCurrentLanguage(lang) {
+    try {
+        localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+    } catch (e) {
+        // ignore
+    }
+}
+
+function updateLanguageUI() {
+    const lang = getCurrentLanguage();
     const languageBtn = document.getElementById('language-btn');
     const languageMenuItem = document.querySelector('.menu-item-language a');
-    
+
+    if (languageMenuItem && !languageMenuItem.querySelector('.lang-en')) {
+        languageMenuItem.innerHTML = '<span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span>';
+    }
+    if (languageBtn && !languageBtn.querySelector('.lang-en')) {
+        languageBtn.innerHTML = '<span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span>';
+    }
+
+    const btnEn = languageBtn ? languageBtn.querySelector('.lang-en') : null;
+    const btnFr = languageBtn ? languageBtn.querySelector('.lang-fr') : null;
+    const menuEn = languageMenuItem ? languageMenuItem.querySelector('.lang-en') : null;
+    const menuFr = languageMenuItem ? languageMenuItem.querySelector('.lang-fr') : null;
+
+    [btnEn, menuEn].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'EN'); });
+    [btnFr, menuFr].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'FR'); });
+
     if (languageBtn) {
-        languageBtn.textContent = 'EN';
-        languageBtn.classList.remove('active');
+        languageBtn.classList.toggle('active', lang === 'FR');
     }
-    
-    if (languageMenuItem) {
-        languageMenuItem.textContent = 'Language: EN';
-    }
+}
+
+function toggleLanguage() {
+    const next = getCurrentLanguage() === 'EN' ? 'FR' : 'EN';
+    setCurrentLanguage(next);
+    updateLanguageUI();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateLanguageUI();
 });
 				const lazyloadRunObserver = () => {
 					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );

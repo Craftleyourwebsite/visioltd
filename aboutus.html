@@ -139,6 +139,25 @@
 		appearance: none !important;
 	}
 
+	/* EN-FR toggle parts + active highlight */
+	.aboutus-language-btn .lang-part,
+	.menu-item-language .lang-part {
+		opacity: 0.6;
+		transition: color 0.2s ease, opacity 0.2s ease;
+	}
+	.aboutus-language-btn .lang-part.active,
+	.menu-item-language .lang-part.active {
+		opacity: 1;
+		color: #d4af37; /* highlight active language */
+		font-weight: 700;
+	}
+	.aboutus-language-btn .lang-sep,
+	.menu-item-language .lang-sep {
+		display: inline-block;
+		margin: 0 8px; /* spacing around dash */
+		opacity: 0.6;
+	}
+
 	/* S'assurer que le logo reste blanc (car c'est logoblanc.png) */
 	.site-header .logo-image,
 	.site-header.clone .logo-image {
@@ -440,9 +459,10 @@
 	}
 
 	/* Supprimer tous les éléments enfants qui pourraient causer des icônes */
-	#language-btn.aboutus-language-btn *,
-	#language-btn.aboutus-language-btn *::before,
-	#language-btn.aboutus-language-btn *::after {
+	/* Masquer les éléments décoratifs éventuels, mais préserver les parties EN/FR */
+	#language-btn.aboutus-language-btn *:not(.lang-part):not(.lang-sep),
+	#language-btn.aboutus-language-btn *:not(.lang-part):not(.lang-sep)::before,
+	#language-btn.aboutus-language-btn *:not(.lang-part):not(.lang-sep)::after {
 		content: none !important;
 		display: none !important;
 		visibility: hidden !important;
@@ -456,9 +476,28 @@
 		background-image: none !important;
 	}
 
+    /* Réactiver explicitement l'affichage pour EN/FR et le séparateur */
+    #language-btn.aboutus-language-btn .lang-part {
+        display: inline !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: auto !important;
+        height: auto !important;
+        padding: initial !important;
+    }
+    #language-btn.aboutus-language-btn .lang-sep {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 8px !important; /* enforce spacing */
+        padding: 0 !important;
+    }
+
 	/* Forcer le texte uniquement */
 	#language-btn.aboutus-language-btn {
-		color: #000000 !important;
+		color: #ffffff !important;
 		font-weight: bold !important;
 		font-size: 14px !important;
 		padding: 8px 16px !important;
@@ -970,11 +1009,11 @@ body { background: #ffffff; }
 <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-blog"><a href="blog.html">Blog</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
-<li id="menu-item-language" class="menu-item menu-item-language"><a href="#" onclick="toggleLanguage(); return false;">Language: EN</a></li>
+<li id="menu-item-language" class="menu-item menu-item-language"><a href="#" onclick="toggleLanguage(); return false;">Language: <span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span></a></li>
 </ul></div>											
-											<div class="language-switcher">
-												<button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()">EN</button>
-											</div> <!-- .language-switcher -->
+									<div class="language-switcher">
+										<button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()"><span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span></button>
+									</div> <!-- .language-switcher -->
 																	</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
 					</nav> <!-- #site-navigation .main-navigation .site-navigation -->
@@ -1601,40 +1640,51 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 <script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/inc/plugins/elementor/assets/js/elementor.js?ver=6.8.2" id="qi-addons-for-elementor-elementor-js"></script>
 
 <script>
-// Fonction pour basculer entre les langues (version simplifiée sans scroll)
-function toggleLanguage() {
-    const languageBtn = document.getElementById('language-btn');
-    const languageMenuItem = document.querySelector('.menu-item-language a');
-    const currentText = languageBtn.textContent;
-    
-    if (currentText === 'EN') {
-        languageBtn.textContent = 'FR';
-        languageBtn.classList.add('active');
-        if (languageMenuItem) {
-            languageMenuItem.textContent = 'Language: FR';
-        }
-    } else {
-        languageBtn.textContent = 'EN';
-        languageBtn.classList.remove('active');
-        if (languageMenuItem) {
-            languageMenuItem.textContent = 'Language: EN';
-        }
+// Gestion de l'état de langue avec mise en évidence EN-FR (persistée)
+const LANGUAGE_STORAGE_KEY = 'currentLanguage';
+
+function getCurrentLanguage() {
+    try {
+        return localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'EN';
+    } catch (e) {
+        return 'EN';
     }
 }
 
-// Initialisation : s'assurer que le bouton est en mode EN par défaut
-document.addEventListener('DOMContentLoaded', function() {
+function setCurrentLanguage(lang) {
+    try {
+        localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+    } catch (e) {
+        // ignore
+    }
+}
+
+function updateLanguageUI() {
+    const lang = getCurrentLanguage();
     const languageBtn = document.getElementById('language-btn');
     const languageMenuItem = document.querySelector('.menu-item-language a');
-    
+
+    const btnEn = languageBtn ? languageBtn.querySelector('.lang-en') : null;
+    const btnFr = languageBtn ? languageBtn.querySelector('.lang-fr') : null;
+    const menuEn = languageMenuItem ? languageMenuItem.querySelector('.lang-en') : null;
+    const menuFr = languageMenuItem ? languageMenuItem.querySelector('.lang-fr') : null;
+
+    [btnEn, menuEn].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'EN'); });
+    [btnFr, menuFr].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'FR'); });
+
     if (languageBtn) {
-        languageBtn.textContent = 'EN';
-        languageBtn.classList.remove('active');
+        languageBtn.classList.toggle('active', lang === 'FR');
     }
-    
-    if (languageMenuItem) {
-        languageMenuItem.textContent = 'Language: EN';
-    }
+}
+
+function toggleLanguage() {
+    const next = getCurrentLanguage() === 'EN' ? 'FR' : 'EN';
+    setCurrentLanguage(next);
+    updateLanguageUI();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateLanguageUI();
 });
 </script>
 </body>

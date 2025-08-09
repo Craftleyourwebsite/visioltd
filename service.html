@@ -153,6 +153,25 @@
 		appearance: none !important;
 	}
 
+	/* EN-FR toggle parts + active highlight */
+	.aboutus-language-btn .lang-part,
+	.menu-item-language .lang-part {
+		opacity: 0.6;
+		transition: color 0.2s ease, opacity 0.2s ease;
+	}
+	.aboutus-language-btn .lang-part.active,
+	.menu-item-language .lang-part.active {
+		opacity: 1;
+		color: #d4af37; /* highlight active language */
+		font-weight: 700;
+	}
+	.aboutus-language-btn .lang-sep,
+	.menu-item-language .lang-sep {
+		display: inline-block;
+		margin: 0 8px; /* spacing around dash */
+		opacity: 0.6;
+	}
+
 	/* S'assurer que le logo reste blanc (car c'est logoblanc.png) */
 	.site-header .logo-image,
 	.site-header.clone .logo-image {
@@ -920,7 +939,7 @@ body { background: #ffffff; }
 <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-blog"><a href="blog.html">Blog</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
-<li id="menu-item-language" class="menu-item menu-item-language"><a href="#" onclick="toggleLanguage(); return false;">Language: EN</a></li>
+<li id="menu-item-language" class="menu-item menu-item-language"><a href="#" onclick="toggleLanguage(); return false;">Language: <span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span></a></li>
 </ul>
 </div>											<div class="language-switcher">
 												<button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()">EN</button>
@@ -1655,46 +1674,55 @@ Mauritius</p>				</div>
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 			<script>
-// Fonction pour basculer entre les langues
-function toggleLanguage() {
-    const desktopBtn = document.getElementById('language-btn');
-    const menuLanguageItem = document.querySelector('#menu-item-language a');
-    
-    // Toggle la langue
-    const currentLang = desktopBtn.textContent;
-    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-    
-    // Mettre à jour le bouton
-    desktopBtn.textContent = newLang;
-    
-    // Mettre à jour l'élément de menu
-    if (menuLanguageItem) {
-        menuLanguageItem.textContent = 'Language: ' + newLang;
+// Gestion de l'état de langue avec mise en évidence EN-FR (persistée)
+const LANGUAGE_STORAGE_KEY = 'currentLanguage';
+
+function getCurrentLanguage() {
+    try {
+        return localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'EN';
+    } catch (e) {
+        return 'EN';
     }
-    
-    // Ajouter/retirer la classe active
-    desktopBtn.classList.toggle('active');
-    
-    // Ici vous pouvez ajouter la logique pour changer la langue du site
-    console.log('Langue changée vers:', newLang);
 }
 
-// Initialiser le bouton au chargement de la page
-document.addEventListener('DOMContentLoaded', function() {
-    const desktopBtn = document.getElementById('language-btn');
-    const menuLanguageItem = document.querySelector('#menu-item-language a');
-    
-    if (desktopBtn) {
-        // S'assurer que le bouton est dans un état cohérent
-        if (!desktopBtn.textContent) {
-            desktopBtn.textContent = 'EN';
-        }
-        
-        // Synchroniser l'élément de menu
-        if (menuLanguageItem) {
-            menuLanguageItem.textContent = 'Language: ' + desktopBtn.textContent;
-        }
+function setCurrentLanguage(lang) {
+    try {
+        localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+    } catch (e) {
+        // ignore
     }
+}
+
+function updateLanguageUI() {
+    const lang = getCurrentLanguage();
+    const languageBtn = document.getElementById('language-btn');
+    const languageMenuItem = document.querySelector('#menu-item-language a');
+
+    if (languageBtn && !languageBtn.querySelector('.lang-en')) {
+        languageBtn.innerHTML = '<span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span>';
+    }
+
+    const btnEn = languageBtn ? languageBtn.querySelector('.lang-en') : null;
+    const btnFr = languageBtn ? languageBtn.querySelector('.lang-fr') : null;
+    const menuEn = languageMenuItem ? languageMenuItem.querySelector('.lang-en') : null;
+    const menuFr = languageMenuItem ? languageMenuItem.querySelector('.lang-fr') : null;
+
+    [btnEn, menuEn].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'EN'); });
+    [btnFr, menuFr].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'FR'); });
+
+    if (languageBtn) {
+        languageBtn.classList.toggle('active', lang === 'FR');
+    }
+}
+
+function toggleLanguage() {
+    const next = getCurrentLanguage() === 'EN' ? 'FR' : 'EN';
+    setCurrentLanguage(next);
+    updateLanguageUI();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateLanguageUI();
 });
 				const lazyloadRunObserver = () => {
 					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
