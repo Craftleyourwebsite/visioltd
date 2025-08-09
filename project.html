@@ -401,17 +401,17 @@
         .menu-toggle .lines:before { top: -8px; }
         .menu-toggle .lines:after { bottom: -8px; }
 
-        /* Panneau latéral (50% écran, glissant depuis la droite) */
-        .nav-menu { position: fixed; top: 0; right: 0; bottom: 0; width: 50%; max-width: 420px; min-width: 280px; background: #000000; padding: 70px 0 16px; overflow-y: auto; z-index: 10000; transform: translateX(100%); transition: transform 0.3s ease; display: block !important; }
-        .nav-menu > ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; }
+        /* Panneau latéral (off-canvas) */
+        .nav-menu { position: fixed; top: 0; right: 0; width: min(420px, 85vw); height: 100vh; background: #000000; padding: 70px 0 16px; overflow-y: auto; z-index: 10000; transform: translateX(100%) !important; transition: transform 0.3s ease; display: block !important; }
+        .nav-menu > ul { list-style: none; margin: 0; padding: 0; display: flex !important; flex-direction: column; align-items: flex-start; }
         .nav-menu > ul > li { width: 100%; opacity: 1; transform: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .nav-menu > ul > li > a { display: block; width: 100%; padding: 16px 20px; color: #ffffff !important; text-decoration: none; font-size: 18px; }
         .nav-menu > ul > li > a:hover { color: #ffffff !important; opacity: 0.85; padding-left: 26px; }
         .menu-item-language a { border-bottom: none !important; font-weight: 600; color: #cccccc !important; }
 
         /* Etat ouvert comme About Us (utilise la classe globale) */
-        body.is-menu-toggled-on .nav-menu { transform: translateX(0); }
-        body.is-menu-toggled-on::before { content: ''; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 998; height: 100vh; }
+        body.is-menu-toggled-on .nav-menu { transform: translateX(0) !important; }
+        /* Backdrop géré par un élément dédié (#menu-backdrop) ajouté dynamiquement en JS */
         body.is-menu-toggled-on .site-header .header-wrap:before { background: #000000 !important; opacity: 1 !important; }
 
         /* Animation burger en X */
@@ -428,6 +428,16 @@
         body.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines,
         body.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:before,
         body.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:after { color: #ffffff !important; background-color: #ffffff !important; }
+
+        /* Empêcher le scroll du fond quand le menu est ouvert */
+        body.is-menu-toggled-on { overflow: hidden; touch-action: none; }
+
+        /* Lisibilité de l'item actif en mobile */
+        .nav-menu > ul > li.current-menu-item > a,
+        .nav-menu > ul > li.current-menu-item > a:hover { color: #ffffff !important; }
+
+        /* Backdrop cliquable */
+        #menu-backdrop { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 9998; }
     }
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
@@ -823,7 +833,6 @@ body { background: #ffffff; }
 <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-blog"><a href="blog.html">Blog</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
-<li id="menu-item-language" class="menu-item menu-item-language"><a href="#" onclick="toggleLanguage(); return false;">Language: EN</a></li>
 </ul></div>                                            
 											<div class="language-switcher">
 												<button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()">EN</button>
@@ -946,14 +955,46 @@ document.addEventListener('DOMContentLoaded', function() {
   var siteHeader = document.querySelector('.site-header');
   var menuToggle = document.querySelector('.menu-toggle');
   var navMenu = document.querySelector('.nav-menu');
+  var backdrop = null;
+  // Ajuste dynamiquement la hauteur du header mobile pour le padding du contenu
+  function updateMobileHeaderOffset() {
+    if (!siteHeader) return;
+    var headerHeight = siteHeader.offsetHeight || 64;
+    document.documentElement.style.setProperty('--projectHeaderH', headerHeight + 'px');
+  }
 
   if (!siteHeader || !menuToggle || !navMenu) return;
 
   function openMenu() {
     document.body.classList.add('is-menu-toggled-on');
+    // Empêcher le scroll sur html aussi (certains navigateurs ignorent body)
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.height = '100vh';
+    document.body.style.height = '100vh';
+    // Ajouter un backdrop cliquable
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.id = 'menu-backdrop';
+      backdrop.setAttribute('aria-hidden', 'true');
+    }
+    if (!document.getElementById('menu-backdrop')) {
+      document.body.appendChild(backdrop);
+    }
+    // Accessibilité
+    menuToggle.setAttribute('aria-expanded', 'true');
+    navMenu.setAttribute('aria-hidden', 'false');
   }
   function closeMenu() {
     document.body.classList.remove('is-menu-toggled-on');
+    document.documentElement.style.overflow = '';
+    document.documentElement.style.height = '';
+    document.body.style.height = '';
+    // Retirer le backdrop
+    var existing = document.getElementById('menu-backdrop');
+    if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+    // Accessibilité
+    menuToggle.setAttribute('aria-expanded', 'false');
+    navMenu.setAttribute('aria-hidden', 'true');
   }
   function toggleMenu(e) {
     e && e.preventDefault();
@@ -968,6 +1009,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (target && target.tagName === 'A') closeMenu();
   });
 
+  // Close when clicking on backdrop
+  document.addEventListener('click', function(e){
+    if (e.target && e.target.id === 'menu-backdrop') {
+      closeMenu();
+    }
+  });
+
   // Close on ESC
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape') closeMenu();
@@ -976,7 +1024,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Close on resize to desktop
   window.addEventListener('resize', function(){
     if (window.innerWidth > 991) closeMenu();
+    updateMobileHeaderOffset();
   });
+  // Initial update on load
+  updateMobileHeaderOffset();
 });
 // Fonction pour basculer entre les langues (version simplifiée sans scroll)
 function toggleLanguage() {

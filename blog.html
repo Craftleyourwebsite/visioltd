@@ -734,6 +734,110 @@
 			.sidebar-section { padding: 20px; }
 		}
 
+		/* === FULL WIDTH OVERRIDES FOR BLOG PAGE === */
+		/* Make the blog content area span the full viewport width */
+		.blog .site-main > .layout-medium,
+		.blog .site-main .layout-medium {
+			max-width: none !important;
+			width: 100% !important;
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+
+		/* Remove inner max-width caps */
+		.blog #primary,
+		.blog #content,
+		.blog #primary #content {
+			max-width: none !important;
+			width: 100% !important;
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+
+		/* Make the custom blog grid single-column and edge-to-edge */
+		.blog .arch-container {
+			grid-template-columns: 1fr !important;
+			gap: 0 !important;
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+
+		/* Hide sidebars on full width */
+		.blog .left-sidebar,
+		.blog .right-sidebar {
+			display: none !important;
+		}
+
+		/* Remove card styling when full width */
+		.blog .main-content {
+			border-radius: 0 !important;
+			box-shadow: none !important;
+		}
+
+	</style>
+	<style>
+		/* Minimal styles for the GT blog wrapper */
+		.gt-page-wrapper {
+			position: relative;
+			padding: 120px 0;
+			background-color: #FFFFFF;
+		}
+	</style>
+	<style id="gt-blog-styles">
+		:root { --gt-accent: #D4A574; --gt-text-color: #32455e; }
+
+        /* Layout: center content and separate right sidebar */
+		.gt-page-wrapper { padding: 80px 0; background: #fff; }
+        .gt-page-wrapper .gt-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) 360px; /* fixed sidebar width */
+            gap: 48px;
+            align-items: start;
+        }
+        /* Ensure left column content is visually centered in its track */
+        .gt-main { min-width: 0; }
+        .gt-right-sidebar { width: 100%; max-width: 360px; margin-left: auto; }
+
+		/* Left content (blog list) */
+		.gt-blog-list { display: block; }
+		.gt-blog-list-item { margin-bottom: 48px; }
+		.gt-blog-list-item .gt-img img { width: 100%; height: auto; display: block; }
+		.gt-content .gt-title { color: var(--gt-accent); font-size: 28px; font-weight: 600; margin: 24px 0 12px; line-height: 1.25; }
+		.gt-excerpt { color: #666; font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
+		.gt-comments a, .gt-date { color: var(--gt-accent); font-size: 12px; letter-spacing: .2px; }
+
+		/* Right sidebar */
+		.gt-right-sidebar .gt-widget { margin-bottom: 28px; }
+		.gt-right-sidebar .gt-widget-heading { border-top: 3px solid #111; padding-top: 12px; margin-bottom: 16px; }
+		.gt-right-sidebar .gt-widget-title { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+		/* Sidebar blog widget */
+		.gt-blog-widget ul { list-style: none; padding: 0; margin: 0; }
+		.gt-blog-widget li { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid #eee; }
+		.gt-blog-widget .gt-image img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; display: block; }
+		.gt-blog-widget .gt-content h2 { font-size: 14px; color: var(--gt-accent); margin: 0 0 6px; line-height: 1.35; }
+		.gt-blog-widget .gt-content span { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: .2px; }
+
+		/* Categories list in sidebar */
+		.widget_categories ul { list-style: none; padding: 0; margin: 0; }
+		.widget_categories ul li { padding: 10px 0; border-bottom: 1px solid #eee; color: var(--gt-text-color); }
+		.widget_categories ul li a { color: var(--gt-accent); text-decoration: none; }
+
+		/* Sticky behavior for sidebar */
+		.gt-sticky-sidebar .inner-wrapper-sticky { position: sticky; top: 100px; }
+
+		/* Pagination spacing */
+		.gt-pagination { margin-top: 24px; }
+
+		/* Responsive */
+		@media (max-width: 1024px) {
+			.gt-page-wrapper .gt-container { grid-template-columns: 1fr; gap: 32px; }
+		}
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
@@ -1060,128 +1164,62 @@ body { background: #ffffff; }
                     </header>
                 </div> <!-- .post-header .post-header-classic .archive-header -->
                 
-                <!-- Architecture Blog custom content (inserted under main title) -->
-                <div class="arch-container">
-                    <!-- Colonne gauche vide pour équilibrer -->
-                    <aside class="left-sidebar" aria-hidden="true"></aside>
-
-                    <!-- Contenu principal (au milieu) -->
-                    <main class="main-content">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop" alt="National Library of Moscow" class="article-image">
-                        
-                        <div class="article-content content-wrapper">
-                            <h2 class="article-title">National Library of Moscow is Completed</h2>
-                            
-                            <p class="article-text">
-                                Exciting news! The completion of the National Library of Moscow marks a significant milestone in architectural excellence. Discover the stunning design, innovative features, and cultural significance of this remarkable project.
-                            </p>
-                            
-                            <div class="article-meta">
-                                <span>6 Comments</span>
-                                <span>September 14, 2018</span>
+                <!-- GT Blog content (full) -->
+                <div class="gt-page-wrapper">
+                  <div class="gt-container gt-main-container">
+                    <div class="row gt-main-row">
+                      <!-- Left: content logic zone -->
+                      <main class="gt-main">
+                        <div class="gt-blog-list">
+                          <div class="gt-blog-list-item gt-style-2">
+                            <div class="gt-img">
+                              <a href="https://demo.gloriathemes.com/luxe/demo/national-library-of-moscow-is-completed/"><img fetchpriority="high" decoding="async" width="1110" height="620" src="https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-19-1110x620.jpg" class="attachment-luxe-post-3 size-luxe-post-3 wp-post-image" alt=""><div class="gt-overlay"><div class="gt-overlay-color"></div><div class="gt-overlay-icon"><svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div></a>
                             </div>
+                            <div class="gt-content">
+                              <div class="gt-line"></div>
+                              <h3 class="gt-title"><a href="https://demo.gloriathemes.com/luxe/demo/national-library-of-moscow-is-completed/">National Library of Moscow is Completed</a></h3>
+                              <p class="gt-excerpt">Exciting news! The completion of the National Library of Moscow marks a significant milestone in architectural excellence. Discover the stunning design, innovative features, and cultural significance of this remarkable project.</p>
+                              <span>
+                                <div class="gt-comments"><a href="https://demo.gloriathemes.com/luxe/demo/national-library-of-moscow-is-completed/#comments">2 Comments</a></div>
+                                <div class="gt-date">September 14, 2018</div>
+                              </span>
                         </div>
-                    </main>
-
-                    <!-- Catégories / Sidebar (à droite) -->
-                    <aside class="right-sidebar">
-                        <!-- Architecture Blog -->
-                        <div class="sidebar-section">
-                            <h3 class="sidebar-title">Architecture Blog</h3>
-                            
-                            <div class="recent-articles">
-                                <article class="recent-article">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=60&fit=crop" alt="Library" class="recent-article-image">
-                                    <div class="recent-article-content">
-                                        <h3>National Library of Moscow is Completed</h3>
-                                        <div class="recent-article-date">September 14, 2018</div>
                                     </div>
-                                </article>
-                                
-                                <article class="recent-article">
-                                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=80&h=60&fit=crop" alt="Hotel" class="recent-article-image">
-                                    <div class="recent-article-content">
-                                        <h3>We Completed Our New Hotel Project</h3>
-                                        <div class="recent-article-date">September 14, 2018</div>
                                     </div>
-                                </article>
-                                
-                                <article class="recent-article">
-                                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=80&h=60&fit=crop" alt="Office" class="recent-article-image">
-                                    <div class="recent-article-content">
-                                        <h3>We Are Building Global Company Offices</h3>
-                                        <div class="recent-article-date">September 14, 2018</div>
+                      </main>
+                      <!-- Right: sidebar zone -->
+                      <aside class="gt-right-sidebar">
+                        <div class="gt-sidebar">
+                          <div class="gt-sticky-sidebar">
+                            <div class="inner-wrapper-sticky" style="position: relative;">
+                              <div id="luxe_blog_widget-3" class="gt-widget widget_luxe_blog_widget">
+                                <div class="gt-widget-heading"><div class="gt-widget-title">Architecture Blog</div></div>
+                                <div class="gt-blog-widget">
+                                  <ul>
+                                    <li><div class="gt-image"><a href="https://demo.gloriathemes.com/luxe/demo/national-library-of-moscow-is-completed/"><img width="150" height="150" src="https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-19-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt=""></a></div><div class="gt-content"><h2><a href="https://demo.gloriathemes.com/luxe/demo/national-library-of-moscow-is-completed/">National Library of Moscow is Completed</a></h2><span>September 14, 2018</span></div></li>
+                                    <li><div class="gt-image"><a href="https://demo.gloriathemes.com/luxe/demo/we-completed-our-new-hotel-project/"><img width="150" height="150" src="https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-33-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt=""></a></div><div class="gt-content"><h2><a href="https://demo.gloriathemes.com/luxe/demo/we-completed-our-new-hotel-project/">We Completed Our New Hotel Project</a></h2><span>September 14, 2018</span></div></li>
+                                    <li><div class="gt-image"><a href="https://demo.gloriathemes.com/luxe/demo/we-are-building-global-company-offices/"><img width="150" height="150" src="https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/08/project-1-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt=""></a></div><div class="gt-content"><h2><a href="https://demo.gloriathemes.com/luxe/demo/we-are-building-global-company-offices/">We Are Building Global Company Offices</a></h2><span>September 14, 2018</span></div></li>
+                                    <li><div class="gt-image"><a href="https://demo.gloriathemes.com/luxe/demo/we-will-meet-in-xtra-center/"><img width="150" height="150" src="https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-34-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt=""></a></div><div class="gt-content"><h2><a href="https://demo.gloriathemes.com/luxe/demo/we-will-meet-in-xtra-center/">We Will Meet in Xtra Center</a></h2><span>September 14, 2018</span></div></li>
+                                    <li><div class="gt-image"><a href="https://demo.gloriathemes.com/luxe/demo/about-our-board-of-directors/"><img width="150" height="150" src="https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-50-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt=""></a></div><div class="gt-content"><h2><a href="https://demo.gloriathemes.com/luxe/demo/about-our-board-of-directors/">About Our Board of Directors</a></h2><span>September 14, 2018</span></div></li>
+                                  </ul>
                                     </div>
-                                </article>
-                                
-                                <article class="recent-article">
-                                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=80&h=60&fit=crop" alt="Center" class="recent-article-image">
-                                    <div class="recent-article-content">
-                                        <h3>We Will Meet in Xtra Center</h3>
-                                        <div class="recent-article-date">September 14, 2018</div>
                                     </div>
-                                </article>
-                                
-                                <article class="recent-article">
-                                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=80&h=60&fit=crop" alt="Board" class="recent-article-image">
-                                    <div class="recent-article-content">
-                                        <h3>About Our Board of Directors</h3>
-                                        <div class="recent-article-date">September 14, 2018</div>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-
-                        <!-- Catégories -->
-                        <div class="sidebar-section">
-                            <h3 class="sidebar-title">Categories</h3>
-                            <ul class="category-list">
-                                <li class="category-item">
-                                    <a href="#">Global</a> <span class="count">(1)</span>
-                                </li>
-                                <li class="category-item">
-                                    <a href="#">Meetings</a> <span class="count">(1)</span>
-                                </li>
-                                <li class="category-item">
-                                    <a href="#">News</a> <span class="count">(1)</span>
-                                </li>
-                                <li class="category-item">
-                                    <a href="#">Projects</a> <span class="count">(3)</span>
-                                </li>
+                              <div id="categories-3" class="gt-widget widget_categories">
+                                <div class="gt-widget-heading"><div class="gt-widget-title">Categories</div></div>
+                                <ul>
+                                  <li class="cat-item cat-item-107"><a href="#">Global</a> (1)</li>
+                                  <li class="cat-item cat-item-106"><a href="#">Meetings</a> (1)</li>
+                                  <li class="cat-item cat-item-1"><a href="#">News</a> (1)</li>
+                                  <li class="cat-item cat-item-105"><a href="#">Projects</a> (3)</li>
                             </ul>
                         </div>
-
-                        <!-- Tags -->
-                        <div class="sidebar-section">
-                            <h3 class="sidebar-title">Tags</h3>
-                            <div class="tags-list">
-                                <a href="#" class="tag">Architecture</a>
-                                <a href="#" class="tag">Build</a>
-                                <a href="#" class="tag">Construction</a>
-                                <a href="#" class="tag">Design</a>
-                                <a href="#" class="tag">Hotel</a>
-                                <a href="#" class="tag">Idea</a>
-                                <a href="#" class="tag">Interior</a>
-                                <a href="#" class="tag">Luxe</a>
-                                <a href="#" class="tag">Project</a>
                             </div>
                         </div>
-
-                        <!-- Newsletter -->
-                        <div class="sidebar-section">
-                            <h3 class="sidebar-title">Newsletter</h3>
-                            <form class="newsletter-form">
-                                <input type="email" placeholder="Your email address" class="newsletter-input">
-                                <label class="newsletter-checkbox">
-                                    <input type="checkbox" required>
-                                    <span>I have agreed to the terms and conditions.</span>
-                                </label>
-                                <button type="submit" class="newsletter-submit">Sign Up</button>
-                            </form>
                         </div>
                     </aside>
                 </div>
-                <!-- /Architecture Blog custom content -->
+                  </div>
+                </div>
 							</div> <!-- #content .site-content -->
 		</div> <!-- #primary .content-area -->
 			</div> <!-- .layout-medium -->
