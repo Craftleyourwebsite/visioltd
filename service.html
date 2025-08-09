@@ -407,41 +407,44 @@
 			z-index: 1000 !important;
 		}
 
-        /* === Base hamburger styles (aligné sur aboutus) === */
+        /* === Base hamburger styles (copie exacte du comportement aboutus) === */
         .menu-toggle {
-            position: relative;
-            cursor: pointer;
-            z-index: 1000;
-            display: block;
-            width: 30px;
-            height: 30px;
+            position: relative !important;
+            cursor: pointer !important;
+            z-index: 1000 !important;
+            display: block !important;
+            width: 30px !important;
+            height: 30px !important;
         }
         .menu-toggle .lines {
-            display: block;
-            width: 26px;
-            height: 2px;
-            background-color: #ffffff;
-            border-radius: 1px;
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            transition: all 0.25s ease;
+            display: block !important;
+            width: 28px !important; /* slightly larger than aboutus per your request */
+            height: 2px !important;
+            background-color: #ffffff !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            transition: all 0.3s ease !important;
         }
         .menu-toggle .lines:before,
         .menu-toggle .lines:after {
-            content: '';
-            position: absolute;
-            width: 26px;
-            height: 2px;
-            background-color: #ffffff;
-            transition: all 0.25s ease;
+            content: '' !important;
+            position: absolute !important;
+            width: 28px !important;
+            height: 2px !important;
+            background-color: #ffffff !important;
+            transition: all 0.3s ease !important;
         }
-        .menu-toggle .lines:before { top: -7px; }
-        .menu-toggle .lines:after { top: 7px; }
+        .menu-toggle .lines:before { top: -8px !important; bottom: auto !important; }
+        .menu-toggle .lines:after { bottom: -8px !important; top: auto !important; }
         .is-menu-toggled-on .menu-toggle .lines { background-color: transparent !important; }
-        .is-menu-toggled-on .menu-toggle .lines:before { top: 0 !important; transform: rotate(45deg) !important; background-color: #ffffff !important; }
-        .is-menu-toggled-on .menu-toggle .lines:after { top: 0 !important; transform: rotate(-45deg) !important; background-color: #ffffff !important; }
+        .is-menu-toggled-on .menu-toggle .lines:before {
+            top: 0 !important; bottom: auto !important; transform: rotate(45deg) !important; background-color: #ffffff !important;
+        }
+        .is-menu-toggled-on .menu-toggle .lines:after {
+            bottom: 0 !important; top: auto !important; transform: rotate(-45deg) !important; background-color: #ffffff !important;
+        }
 
         /* === Normalisation de l'espacement haut (suppression du gap) === */
         .site { margin-top: 0 !important; margin-bottom: 0 !important; }
@@ -454,14 +457,14 @@
 
     /* === Hauteur/centrage du header en mobile (évite l'écrasement et aligne le burger) === */
     .site-header .header-wrap-inner {
-        min-height: 60px !important;
+        min-height: 56px !important; /* aboutus mobile height */
         display: flex !important;
         align-items: center !important;
         padding-top: 0 !important;
         padding-bottom: 0 !important;
     }
     .site-header .site-branding {
-        max-height: 60px !important;
+        max-height: 56px !important; /* match header-wrap-inner */
         display: flex !important;
         align-items: center !important;
         padding-top: 0 !important;
@@ -470,10 +473,12 @@
     .site-title img.logo-image,
     .site-header:not(.clone) .logo-image,
     .site-header.clone .logo-image {
-        max-height: 32px !important;
+        max-height: 24px !important; /* aboutus max on mobile */
+        width: auto !important;
     }
-        .menu-toggle { height: 40px !important; width: 40px !important; display: flex !important; align-items: center !important; justify-content: flex-end !important; }
-        .menu-wrap { padding-top: 0 !important; padding-bottom: 0 !important; min-height: 60px !important; display: flex !important; align-items: center !important; }
+        /* Position identique à aboutus: pousse à droite dans la ligne du header */
+        .menu-toggle { height: 30px !important; width: 30px !important; display: block !important; order: 1 !important; margin-left: auto !important; }
+        .menu-wrap { padding-top: 0 !important; padding-bottom: 0 !important; min-height: 56px !important; display: flex !important; align-items: center !important; }
     .site-header .nav-menu > ul#menu-mymenu { transform: none !important; }
     .site-header .header-wrap:before { opacity: 1 !important; }
     .site-header.clone .header-wrap:before { opacity: 1 !important; }
