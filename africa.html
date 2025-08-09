@@ -1510,17 +1510,19 @@ body { background: #ffffff; }
 				</div>
 				</div>
 				</div>
-		<div class="elementor-element elementor-element-1bbe67d4 e-con-full e-flex e-con e-child" data-id="1bbe67d4" data-element_type="container" style="width: 100%; border-top: 1px solid #000000; border-bottom: 1px solid #000000; padding: 40px 0; margin-left: -50px;">
+        <div class="elementor-element elementor-element-1bbe67d4 e-con-full e-flex e-con e-child" data-id="1bbe67d4" data-element_type="container" style="width: 100%; border-top: 1px solid #000000; border-bottom: 1px solid #000000; padding: 40px 0; margin-left: 0;">
 				<div class="elementor-element elementor-element-3a4a2b96 animated-slow elementor-invisible elementor-widget elementor-widget-qi_addons_for_elementor_tabs_horizontal" data-id="3a4a2b96" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="qi_addons_for_elementor_tabs_horizontal.default">
 				<div class="elementor-widget-container">
-					<div class="qodef-shortcode qodef-m qodef-qi-tabs-horizontal qodef-qi-clear qodef-layout--simple qodef-title-hover--underline-draw qodef-title-underline-from-left" style="max-width: 100%; margin: 0 auto;">
-					<style>
+                    <div class="qodef-shortcode qodef-m qodef-qi-tabs-horizontal qodef-qi-clear qodef-layout--simple qodef-title-hover--underline-draw qodef-title-underline-from-left" style="max-width: 100%; margin: 0 auto;">
+                    <style>
+                        /* Ensure left alignment consistency between tab titles and content */
+                        .elementor-element-1bbe67d4 { margin-left: 0 !important; }
 						/* Styles de base avec sélecteurs plus spécifiques */
-						.qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tabs-horizontal-navigation {
+                        .qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tabs-horizontal-navigation {
 							display: flex !important;
 							justify-content: flex-start !important;
-							gap: 60px !important;
-							margin-left: 50px !important;
+                            gap: 30px !important;
+                            margin-left: 0 !important; /* align with content */
 						}
 						.qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tab-title {
 							white-space: nowrap !important;
@@ -1618,27 +1620,30 @@ body { background: #ffffff; }
 					</style>
 					<script>
 						// Script pour forcer le centrage en mobile - EXÉCUTION IMMÉDIATE
-						function adjustMobileTabs() {
-							const tabsNav = document.querySelector('.qodef-tabs-horizontal-navigation');
-							if (tabsNav) {
-								if (window.innerWidth <= 768) {
-									tabsNav.style.setProperty('justify-content', 'center', 'important');
-									tabsNav.style.setProperty('margin-left', '0', 'important');
-									tabsNav.style.setProperty('gap', '20px', 'important');
-									tabsNav.style.setProperty('flex-wrap', 'wrap', 'important');
-								} else if (window.innerWidth <= 480) {
-									tabsNav.style.setProperty('justify-content', 'center', 'important');
-									tabsNav.style.setProperty('margin-left', '0', 'important');
-									tabsNav.style.setProperty('gap', '15px', 'important');
-									tabsNav.style.setProperty('flex-wrap', 'wrap', 'important');
-								} else {
-									tabsNav.style.setProperty('justify-content', 'flex-start', 'important');
-									tabsNav.style.setProperty('margin-left', '50px', 'important');
-									tabsNav.style.setProperty('gap', '60px', 'important');
-									tabsNav.style.setProperty('flex-wrap', 'nowrap', 'important');
-								}
-							}
-						}
+                        function adjustMobileTabs() {
+                            const tabsNav = document.querySelector('.qodef-tabs-horizontal-navigation');
+                            if (!tabsNav) return;
+
+                            if (window.innerWidth <= 480) {
+                                // Very small screens
+                                tabsNav.style.setProperty('justify-content', 'center', 'important');
+                                tabsNav.style.setProperty('margin-left', '0', 'important');
+                                tabsNav.style.setProperty('gap', '15px', 'important');
+                                tabsNav.style.setProperty('flex-wrap', 'wrap', 'important');
+                            } else if (window.innerWidth <= 768) {
+                                // Mobile / tablet
+                                tabsNav.style.setProperty('justify-content', 'center', 'important');
+                                tabsNav.style.setProperty('margin-left', '0', 'important');
+                                tabsNav.style.setProperty('gap', '20px', 'important');
+                                tabsNav.style.setProperty('flex-wrap', 'wrap', 'important');
+                            } else {
+                                // Desktop: align titles with content (no left offset)
+                                tabsNav.style.setProperty('justify-content', 'flex-start', 'important');
+                                tabsNav.style.setProperty('margin-left', '0', 'important');
+                                tabsNav.style.setProperty('gap', '30px', 'important');
+                                tabsNav.style.setProperty('flex-wrap', 'nowrap', 'important');
+                            }
+                        }
 						
 						// Exécuter immédiatement et à plusieurs moments
 						adjustMobileTabs();
@@ -1651,7 +1656,7 @@ body { background: #ffffff; }
 						setTimeout(adjustMobileTabs, 500);
 						setTimeout(adjustMobileTabs, 1000);
 					</script>
-	<ul class="qodef-tabs-horizontal-navigation" style="display: flex; justify-content: flex-start; gap: 60px; margin-left: 50px;">
+    <ul class="qodef-tabs-horizontal-navigation" style="display: flex; justify-content: flex-start; gap: 30px; margin-left: 0;">
 		<li>
 	<h3 class="qodef-tab-title" role="tab">
 		<a href="#qodef-tab-de6d4f0">

@@ -1009,7 +1009,39 @@
         /* Remove top border/padding on first widget so it aligns with main image top */
         .gt-right-sidebar .gt-widget:first-child .gt-widget-heading { border-top: none; padding-top: 0; margin-top: 0; }
 		.gt-right-sidebar .gt-widget-heading { border-top: 3px solid #111; padding-top: 12px; margin-bottom: 16px; }
-		.gt-right-sidebar .gt-widget-title { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        .gt-right-sidebar .gt-widget-title { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* Image hover overlay and arrow appearance */
+        .gt-blog-list-item .gt-img { position: relative; overflow: hidden; }
+        .gt-blog-list-item .gt-img img { transition: transform .4s ease, filter .3s ease, opacity .3s ease; }
+        .gt-blog-list-item .gt-img .gt-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+        .gt-blog-list-item .gt-img .gt-overlay-color { position: absolute; inset: 0; background: rgba(0,0,0,0.25); opacity: 0; transition: opacity .3s ease; }
+        .gt-blog-list-item .gt-img .gt-overlay-icon { position: relative; z-index: 1; color: #ffffff; opacity: 0; transform: translateX(-6px); transition: all .35s ease; }
+        .gt-blog-list-item .gt-img .gt-overlay-icon svg { width: 40px; height: 40px; display: block; }
+        .gt-blog-list-item .gt-img:hover .gt-overlay { opacity: 1; }
+        .gt-blog-list-item .gt-img:hover .gt-overlay-color { opacity: 1; }
+        .gt-blog-list-item .gt-img:hover .gt-overlay-icon { opacity: 1; transform: translateX(0); }
+        .gt-blog-list-item .gt-img:hover img { transform: scale(1.02); filter: blur(1.5px) brightness(0.9); }
+
+        /* Put divider under 'Architecture Blog' heading (underline) */
+        #luxe_blog_widget-3 .gt-widget-heading {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+            border-bottom: 3px solid #111;
+            padding-bottom: 12px;
+        }
+
+        /* Enlarge headings inside sidebar widgets */
+        .gt-right-sidebar .gt-widget-heading,
+        .gt-right-sidebar .gt-widget-heading .gt-widget-title {
+            font-size: 16px;
+        }
+
+        /* Categories usability */
+        .gt-right-sidebar .widget_categories ul li a { cursor: pointer; }
+        .gt-right-sidebar .widget_categories ul li a.gt-cat-active { color: #111; font-weight: 700; }
+        .gt-right-sidebar .widget_categories ul li .gt-count { color: #999; }
 
 		/* Sidebar blog widget */
 		.gt-blog-widget ul { list-style: none; padding: 0; margin: 0; }
@@ -1033,8 +1065,15 @@
             .site-header.clone ~ .site-main .gt-sticky-sidebar .inner-wrapper-sticky { top: 10px; }
         }
 
-		/* Pagination spacing */
-		.gt-pagination { margin-top: 24px; }
+        /* Pagination spacing */
+        .gt-pagination { margin-top: 24px; }
+
+        /* Reduce bottom spacing on blog page (strong overrides) */
+        .gt-page-wrapper { padding: 24px 0 0 !important; margin-bottom: 0 !important; }
+        .gt-main .gt-blog-list { margin-bottom: 0 !important; }
+        .gt-main .gt-blog-list-item { margin-bottom: 32px; }
+        .gt-main .gt-blog-list-item:last-child { margin-bottom: 0 !important; }
+        .site, .site-main, .content-area, .site-content, #content.site-content, #primary.content-area, .layout-medium:last-child { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 
 		/* Responsive */
         @media (max-width: 1024px) {
@@ -1382,12 +1421,11 @@ body { background: #ffffff; }
                       <!-- Left: content logic zone -->
                       <main class="gt-main">
                         <div class="gt-blog-list">
-                          <div class="gt-blog-list-item gt-style-2">
+                          <div class="gt-blog-list-item gt-style-2" data-title="National Library of Moscow is Completed" data-date="September 14, 2018">
                             <div class="gt-img">
                               <a href="https://demo.gloriathemes.com/luxe/demo/national-library-of-moscow-is-completed/"><img fetchpriority="high" decoding="async" width="1110" height="620" src="https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-19-1110x620.jpg" class="attachment-luxe-post-3 size-luxe-post-3 wp-post-image" alt=""><div class="gt-overlay"><div class="gt-overlay-color"></div><div class="gt-overlay-icon"><svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div></a>
                             </div>
-                            <div class="gt-content">
-                              <div class="gt-line"></div>
+                              <div class="gt-content">
                               <h3 class="gt-title"><a href="https://demo.gloriathemes.com/luxe/demo/national-library-of-moscow-is-completed/">National Library of Moscow is Completed</a></h3>
                               <p class="gt-excerpt">Exciting news! The completion of the National Library of Moscow marks a significant milestone in architectural excellence. Discover the stunning design, innovative features, and cultural significance of this remarkable project.</p>
                               <span>
@@ -1417,12 +1455,7 @@ body { background: #ffffff; }
                                     </div>
                               <div id="categories-3" class="gt-widget widget_categories">
                                 <div class="gt-widget-heading"><div class="gt-widget-title">Categories</div></div>
-                                <ul>
-                                  <li class="cat-item cat-item-107"><a href="#">Global</a> (1)</li>
-                                  <li class="cat-item cat-item-106"><a href="#">Meetings</a> (1)</li>
-                                  <li class="cat-item cat-item-1"><a href="#">News</a> (1)</li>
-                                  <li class="cat-item cat-item-105"><a href="#">Projects</a> (3)</li>
-                            </ul>
+                                <ul id="gt-categories-list"></ul>
                         </div>
                             </div>
                         </div>
@@ -1498,6 +1531,85 @@ function toggleLanguage() {
 
 document.addEventListener('DOMContentLoaded', function() {
     updateLanguageUI();
+});
+
+// ===== Dynamic Categories & Filtering =====
+document.addEventListener('DOMContentLoaded', function() {
+  const posts = Array.from(document.querySelectorAll('.gt-blog-list .gt-blog-list-item'));
+  if (!posts.length) return;
+
+  // Example pool of random categories
+  const pool = ['Global', 'Meetings', 'News', 'Projects', 'Design', 'Awards', 'Events'];
+
+  // Assign 1-2 random categories per post (and store on dataset)
+  posts.forEach(post => {
+    if (!post.dataset.categories) {
+      const shuffled = pool.slice().sort(() => Math.random() - 0.5);
+      const count = Math.random() > 0.6 ? 2 : 1;
+      const selected = shuffled.slice(0, count);
+      post.dataset.categories = selected.join(',');
+    }
+  });
+
+  // Build categories map with counts
+  const catToCount = new Map();
+  posts.forEach(post => {
+    const cats = post.dataset.categories.split(',').map(s => s.trim()).filter(Boolean);
+    cats.forEach(c => catToCount.set(c, (catToCount.get(c) || 0) + 1));
+  });
+
+  // Render list in sidebar
+  const ul = document.getElementById('gt-categories-list');
+  if (!ul) return;
+  ul.innerHTML = '';
+
+  // Add an "All" item
+  const allLi = document.createElement('li');
+  const allA = document.createElement('a');
+  allA.textContent = 'All';
+  allA.href = '#';
+  allA.classList.add('gt-cat-active');
+  const allCount = document.createElement('span');
+  allCount.textContent = ` (${posts.length})`;
+  allCount.className = 'gt-count';
+  allLi.appendChild(allA);
+  allLi.appendChild(allCount);
+  ul.appendChild(allLi);
+
+  Array.from(catToCount.keys()).sort().forEach(cat => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.textContent = cat;
+    a.href = '#';
+    const count = document.createElement('span');
+    count.textContent = ` (${catToCount.get(cat)})`;
+    count.className = 'gt-count';
+    li.appendChild(a);
+    li.appendChild(count);
+    ul.appendChild(li);
+  });
+
+  function setActive(link) {
+    ul.querySelectorAll('a').forEach(a => a.classList.remove('gt-cat-active'));
+    link.classList.add('gt-cat-active');
+  }
+
+  function filterPosts(category) {
+    posts.forEach(post => {
+      const cats = post.dataset.categories.split(',').map(s => s.trim());
+      const show = category === 'All' || cats.includes(category);
+      post.style.display = show ? '' : 'none';
+    });
+  }
+
+  ul.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (!link) return;
+    e.preventDefault();
+    const category = link.textContent.trim();
+    setActive(link);
+    filterPosts(category);
+  });
 });
 
                 const lazyloadRunObserver = () => {
