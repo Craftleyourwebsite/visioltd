@@ -8,858 +8,23 @@
 	<link rel="icon" type="image/jpeg" href="public/favicon.jpeg">
 	<link rel="shortcut icon" type="image/jpeg" href="public/favicon.jpeg">
 	<title>Viseo Architecture Ltd</title>
-	<style>
-
-		/* STYLE DE TITRE */
-		/* --- AJOUT POUR LE TITRE SERVICES (identique à africa.html) --- */
-		.qodef-m-title {
-			font-size: 7vw; /* Responsive, s'adapte à la largeur de l'écran */
-			white-space: nowrap;
-			overflow-wrap: break-word;
-			word-break: break-word;
-			text-align: center;
-			width: 110%;
-			max-width: 100vw;
-			overflow: visible;
-		}
-		.qodef-e-word-holder {
-			display: inline-block;
-			width: auto;
-			max-width: 100vw;
-			overflow: visible;
-		}
-		@media (max-width: 600px) {
-			.qodef-m-title {
-				font-size: 10vw;
-			}
-		}
-
-		.site-branding-center {
-		text-align: center;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-		}
-		
-		/* S'assurer que le logo est toujours visible */
-		.site-title a {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-		
-		.site-title a img {
-			display: block !important;
-			opacity: 1 !important;
-			visibility: visible !important;
-		}
-		
-		/* Styles pour l'image du logo */
-		.logo-image {
-		max-height: 50px;
-		width: auto;
-		display: block;
-		margin: 0 auto;
-		opacity: 1;
-		visibility: visible;
-		transition: all 0.3s ease;
-		}
-		
-		/* Logo en mode normal (header transparent) */
-		.site-header:not(.clone) .logo-image {
-			max-height: 50px;
-			opacity: 1;
-			visibility: visible;
-		}
-		
-		/* Logo en mode scroll (header clone) */
-		.site-header.clone .logo-image {
-			max-height: 45px;
-			opacity: 1;
-			visibility: visible;
-		}
-		
-		/* Surcharger les limitations de hauteur du thème */
-		.site-branding {
-			max-height: none !important;
-			display: flex !important;
-			align-items: center !important;
-		}
-		
-		.site-branding-center {
-			display: flex !important;
-			align-items: center !important;
-			justify-content: center !important;
-			height: auto !important;
-			min-height: 80px !important;
-		}
-		
-		.site-header.clone .site-branding-center {
-			min-height: 60px !important;
-		}
-	
-		
-		/* Responsive pour mobile */
-		@media screen and (max-width: 991px) {
-			.site-title img.logo-image {
-				max-height: 35px !important;
-			}
-			
-			.site-header:not(.clone) .logo-image {
-				max-height: 35px !important;
-			}
-			
-			.site-header.clone .logo-image {
-				max-height: 30px !important;
-			}
-			
-			.site-branding-center {
-				min-height: 60px !important;
-			}
-			
-			.site-header.clone .site-branding-center {
-				min-height: 50px !important;
-			}
-		}
-
-		/* --- STYLES POUR LE BOUTON DE LANGUE --- */
-		.language-switcher {
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-			margin-left: auto;
-			position: relative;
-			z-index: 100;
-		}
-
-		/* --- STYLES POUR L'ALIGNEMENT DU FOOTER --- */
-		/* Aligner les titres CONTACT US et LINKS avec leur contenu */
-		.elementor-element-f055c35 .qodef-m-title,
-		.elementor-element-d726f80 .qodef-m-title {
-			text-align: left !important;
-			margin-left: 0 !important;
-			padding-left: 0 !important;
-		}
-
-		/* S'assurer que les conteneurs des titres sont alignés à gauche */
-		.elementor-element-f055c35 .elementor-widget-container,
-		.elementor-element-d726f80 .elementor-widget-container {
-			text-align: left !important;
-		}
-
-		/* Aligner spécifiquement les mots animés */
-		.elementor-element-f055c35 .qodef-e-word,
-		.elementor-element-d726f80 .qodef-e-word {
-			text-align: left !important;
-			display: inline-block !important;
-		}
-
-		/* Styles pour le header - texte blanc par défaut */
-		.site-header:not(.clone) .nav-menu a,
-		.site-header:not(.clone) .menu-toggle .lines,
-		.site-header:not(.clone) .menu-toggle .lines:before,
-		.site-header:not(.clone) .menu-toggle .lines:after {
-			color: #ffffff !important;
-		}
-
-		.site-header:not(.clone) .nav-menu a:hover {
-			color: #ffffff !important;
-		}
-
-		/* Styles pour le bouton de langue - blanc par défaut */
-		.language-btn {
-			background: none;
-			border: none;
-			color: #ffffff;
-			font-weight: bold;
-			font-size: 14px;
-			padding: 8px 16px;
-			cursor: pointer;
-			transition: all 0.3s ease;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-			min-width: 40px;
-			text-align: center;
-			white-space: nowrap;
-		}
-
-		.language-btn:hover {
-			background: none;
-			color: #ffffff;
-			transform: none;
-		}
-
-		.language-btn.active {
-			background: none;
-			color: #ffff;
-		}
-
-		/* Lang toggle showing both EN-FR with active highlight */
-		.language-btn .lang-part,
-		.menu-item-language .lang-part {
-			opacity: 0.6;
-			transition: color 0.2s ease, opacity 0.2s ease;
-		}
-		.language-btn .lang-part.active,
-		.menu-item-language .lang-part.active {
-			opacity: 1;
-			color: #d4af37; /* highlight active language */
-			font-weight: 700;
-		}
-		.language-btn .lang-sep,
-		.menu-item-language .lang-sep {
-			display: inline-block;
-			margin: 0 8px; /* spacing around dash */
-			opacity: 0.6;
-		}
-
-		/* Styles pour le header en mode scroll - texte blanc, header noir */
-		.site-header.clone .header-wrap:before {
-			background: #000000 !important;
-			opacity: 1 !important;
-		}
-
-		.site-header.clone .nav-menu a,
-		.site-header.clone .menu-toggle .lines,
-		.site-header.clone .menu-toggle .lines:before,
-		.site-header.clone .menu-toggle .lines:after {
-			color: #ffffff !important;
-		}
-
-		.site-header.clone .nav-menu a:hover {
-			color: #ffffff !important;
-		}
-
-		/* Style pour le bouton quand on scrolle - blanc */
-		.site-header.clone .language-btn {
-			color: #ffffff !important;
-		}
-
-		.site-header.clone .language-btn:hover {
-			color: #ffffff !important;
-		}
-
-		.site-header.clone .language-btn.active {
-			color: #ffffff !important;
-		}
-
-		/* S'assurer que le logo reste blanc dans tous les cas */
-		.site-header:not(.clone) .logo-image,
-		.site-header.clone .logo-image {
-			filter: brightness(0) invert(1) !important;
-		}
-
-		/* Styles pour le hover fixe - élément actif (comme aboutus.html) */
-		.site-header .nav-menu .current-menu-item a,
-		.site-header.clone .nav-menu .current-menu-item a {
-			color: #000000 !important;
-		}
-
-		.site-header .nav-menu .current-menu-item a:hover,
-		.site-header.clone .nav-menu .current-menu-item a:hover {
-			color: #000000 !important;
-		}
-
-		/* Forcer le positionnement à droite dans le header */
-		.layout-medium {
-			display: flex !important;
-			align-items: center !important;
-			justify-content: space-between !important;
-		}
-
-		.nav-menu {
-			flex: 1;
-			display: flex;
-			justify-content: center;
-		}
-
-		.language-switcher {
-			flex-shrink: 0;
-		}
-
-		/* Décalage de 90px vers la droite pour les titres du menu (desktop uniquement) */
-		@media screen and (min-width: 992px) {
-			.site-header .nav-menu > ul#menu-mymenu {
-				transform: translateX(90px);
-			}
-		}
-
-		/* Styles spécifiques pour index.html - Menu burger à droite */
-		.menu-toggle {
-			order: 1 !important;
-			margin-left: auto !important;
-		}
-
-		.nav-menu {
-			order: 2 !important;
-		}
-
-		.language-switcher {
-			order: 3 !important;
-		}
-
-		/* Styles pour le header quand le menu est ouvert - Header noir */
-		.is-menu-toggled-on .site-header:not(.clone) .header-wrap:before {
-			background: #000000 !important;
-			opacity: 1 !important;
-		}
-
-		/* Styles pour le hamburger quand le menu est ouvert - Texte blanc */
-		.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines,
-		.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:before,
-		.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:after {
-			background-color: #ffffff !important;
-		}
-
-		/* Ajustements spécifiques du bouton hamburger lorsque le menu est ouvert */
-		.is-menu-toggled-on .menu-toggle {
-			pointer-events: auto; /* explicite: le bouton reste interactif */
-		}
-
-		.is-menu-toggled-on .menu-toggle .lines {
-			/* Animation spécifique au hamburger uniquement */
-			background-color: transparent !important;
-		}
-
-		.is-menu-toggled-on .menu-toggle .lines:before {
-			/* Animation spécifique au hamburger uniquement */
-			top: 0 !important;
-			transform: rotate(45deg) !important;
-			background-color: #ffffff !important;
-		}
-
-		.is-menu-toggled-on .menu-toggle .lines:after {
-			/* Animation spécifique au hamburger uniquement */
-			bottom: 0 !important;
-			transform: rotate(-45deg) !important;
-			background-color: #ffffff !important;
-		}
-
-		/* Styles pour le language switcher quand le menu est ouvert */
-		.is-menu-toggled-on .site-header:not(.clone) .language-btn {
-			color: #ffffff !important;
-		}
-
-		.is-menu-toggled-on .site-header:not(.clone) .language-btn:hover {
-			color: #ffffff !important;
-		}
-
-		/* S'assurer que le header reste noir quand le menu est ouvert, même en mode scroll */
-		.is-menu-toggled-on .site-header.clone .header-wrap:before {
-			background: #000000 !important;
-			opacity: 1 !important;
-		}
-
-		/* Styles pour le hamburger en mode scroll quand le menu est ouvert */
-		.is-menu-toggled-on .site-header.clone .menu-toggle .lines,
-		.is-menu-toggled-on .site-header.clone .menu-toggle .lines:before,
-		.is-menu-toggled-on .site-header.clone .menu-toggle .lines:after {
-			background-color: #ffffff !important;
-		}
-
-		/* S'assurer que le menu lui-même n'est pas affecté par l'animation du hamburger */
-		.is-menu-toggled-on .nav-menu {
-			/* Le menu garde son comportement normal */
-			display: block !important;
-		}
-
-		.is-menu-toggled-on .nav-menu ul {
-			/* La liste du menu garde son comportement normal */
-			display: block !important;
-		}
-
-		.is-menu-toggled-on .nav-menu li {
-			/* Les éléments du menu gardent leur comportement normal */
-			display: block !important;
-		}
-
-		.is-menu-toggled-on .nav-menu a {
-			/* Les liens du menu gardent leur comportement normal */
-			display: block !important;
-		}
-
-		/* Styles de base pour le hamburger - Adapté de l'exemple */
-		.menu-toggle {
-			position: relative;
-			cursor: pointer;
-			z-index: 1000;
-			display: block;
-			width: 30px;
-			height: 30px;
-		}
-
-		.menu-toggle .lines {
-			display: block;
-			width: 25px;
-			height: 2px;
-			background-color: #ffffff;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			transition: all 0.3s ease;
-		}
-
-		.menu-toggle .lines:before,
-		.menu-toggle .lines:after {
-			content: '';
-			position: absolute;
-			width: 25px;
-			height: 2px;
-			background-color: #ffffff;
-			transition: all 0.3s ease;
-		}
-
-		.menu-toggle .lines:before {
-			top: -8px;
-		}
-
-		.menu-toggle .lines:after {
-			bottom: -8px;
-		}
-
-		/* Animation du hamburger pour fermer (X) - Version corrigée selon l'exemple */
-		.is-menu-toggled-on .menu-toggle .lines {
-			background-color: transparent !important;
-		}
-
-		.is-menu-toggled-on .menu-toggle .lines:before {
-			top: 0 !important;
-			transform: rotate(45deg) !important;
-			background-color: #ffffff !important;
-		}
-
-		.is-menu-toggled-on .menu-toggle .lines:after {
-			bottom: 0 !important;
-			transform: rotate(-45deg) !important;
-			background-color: #ffffff !important;
-		}
-
-		@media screen and (max-width: 991px) {
-			.language-switcher {
-				margin-left: 10px;
-			}
-			
-			.language-btn {
-				font-size: 12px;
-				padding: 6px 12px;
-				min-width: 35px;
-			}
-
-			/* Masquer le language switcher sur mobile et afficher l'option dans le menu */
-			.language-switcher {
-				display: none !important;
-			}
-			
-			.menu-item-language {
-				display: block !important;
-			}
-
-			/* Styles pour le texte du header en mobile - Texte blanc pour être visible */
-			.site-header:not(.clone) .nav-menu a,
-			.site-header:not(.clone) .menu-toggle .lines,
-			.site-header:not(.clone) .menu-toggle .lines:before,
-			.site-header:not(.clone) .menu-toggle .lines:after {
-				color: #ffffff !important;
-			}
-
-			.site-header:not(.clone) .menu-toggle .lines,
-			.site-header:not(.clone) .menu-toggle .lines:before,
-			.site-header:not(.clone) .menu-toggle .lines:after {
-				background-color: #ffffff !important;
-			}
-
-			/* Quand le menu est ouvert en mobile - Texte blanc */
-			.is-menu-toggled-on .site-header:not(.clone) .nav-menu a,
-			.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines,
-			.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:before,
-			.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:after {
-				color: #ffffff !important;
-			}
-
-			.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines,
-			.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:before,
-			.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:after {
-				background-color: #ffffff !important;
-			}
-
-			/* Animation d'entrée du menu - slide depuis la droite */
-			.nav-menu {
-				transform: translateX(100%);
-				transition: transform 0.3s ease-in-out;
-			}
-
-			.is-menu-toggled-on .nav-menu {
-				transform: translateX(0);
-			}
-
-			/* Overlay pour assombrir le contenu derrière le menu */
-			.is-menu-toggled-on::before {
-				content: '';
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100vh;
-				background: rgba(0, 0, 0, 0.5);
-				z-index: 998;
-			}
-
-			/* Styles pour le menu mobile quand il est ouvert - Demi-écran comme l'exemple */
-			.is-menu-toggled-on .nav-menu {
-				position: fixed;
-				top: 0;
-				right: 0;
-				width: 50%;
-				height: 100vh;
-				background: #000000;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				z-index: 999;
-				transform: translateX(0);
-				transition: transform 0.3s ease;
-			}
-
-			.is-menu-toggled-on .nav-menu ul {
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-				gap: 20px;
-				padding: 0 40px;
-				width: 100%;
-			}
-
-			.is-menu-toggled-on .nav-menu li {
-				display: block;
-				width: 100%;
-			}
-
-			.is-menu-toggled-on .nav-menu a {
-				color: #ffffff !important;
-				font-size: 18px;
-				font-weight: 400;
-				text-decoration: none;
-				transition: all 0.3s ease;
-				display: block;
-				padding: 10px 0;
-				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-			}
-
-			.is-menu-toggled-on .nav-menu a:hover {
-				color: #ffffff !important;
-				opacity: 0.8;
-				padding-left: 10px;
-			}
-
-			/* Style spécial pour l'élément language dans le menu */
-			.is-menu-toggled-on .menu-item-language a {
-				border-bottom: none;
-				font-weight: 600;
-				color: #cccccc !important;
-			}
-
-			/* Animation des éléments du menu - apparition progressive */
-			.is-menu-toggled-on .nav-menu li {
-				opacity: 0;
-				transform: translateX(20px);
-				animation: slideInMenu 0.3s ease forwards;
-			}
-
-			.is-menu-toggled-on .nav-menu li:nth-child(1) { animation-delay: 0.1s; }
-			.is-menu-toggled-on .nav-menu li:nth-child(2) { animation-delay: 0.2s; }
-			.is-menu-toggled-on .nav-menu li:nth-child(3) { animation-delay: 0.3s; }
-			.is-menu-toggled-on .nav-menu li:nth-child(4) { animation-delay: 0.4s; }
-			.is-menu-toggled-on .nav-menu li:nth-child(5) { animation-delay: 0.5s; }
-			.is-menu-toggled-on .nav-menu li:nth-child(6) { animation-delay: 0.6s; }
-			.is-menu-toggled-on .nav-menu li:nth-child(7) { animation-delay: 0.7s; }
-			.is-menu-toggled-on .nav-menu li:nth-child(8) { animation-delay: 0.8s; }
-
-			@keyframes slideInMenu {
-				to {
-					opacity: 1;
-					transform: translateX(0);
-				}
-			}
-		}
-
-		/* Afficher le language switcher sur desktop et masquer l'option dans le menu */
-		@media screen and (min-width: 992px) {
-			.language-switcher {
-				display: flex !important;
-			}
-			
-			.menu-item-language {
-				display: none !important;
-			}
-		}
-
-		/* --- STYLES POUR L'ALIGNEMENT DE LA SECTION TEAM --- */
-		/* Conteneur principal de la section team */
-		.elementor-element-af195fa {
-			display: flex !important;
-			flex-wrap: wrap !important;
-			justify-content: center !important;
-			gap: 30px !important;
-			align-items: stretch !important;
-		}
-
-		/* Conteneurs individuels des membres de l'équipe */
-		.elementor-element-af195fa > .elementor-element {
-			flex: 1 1 250px !important;
-			max-width: 300px !important;
-			min-width: 250px !important;
-			display: flex !important;
-			flex-direction: column !important;
-		}
-
-		/* Conteneurs des widgets team member */
-		.elementor-widget-qi_addons_for_elementor_team_member {
-			height: 100% !important;
-			display: flex !important;
-			flex-direction: column !important;
-		}
-
-		.elementor-widget-qi_addons_for_elementor_team_member .elementor-widget-container {
-			height: 100% !important;
-			display: flex !important;
-			flex-direction: column !important;
-		}
-
-		/* Conteneur interne du team member */
-		.qodef-qi-team-member {
-			height: 100% !important;
-			display: flex !important;
-			flex-direction: column !important;
-		}
-
-		.qodef-qi-team-member .qodef-m-inner {
-			height: 100% !important;
-			display: flex !important;
-			flex-direction: column !important;
-		}
-
-		/* Section image */
-		.qodef-qi-team-member .qodef-m-image {
-			flex: 1 !important;
-			display: flex !important;
-			align-items: center !important;
-			justify-content: center !important;
-			overflow: hidden !important;
-		}
-
-		.qodef-qi-team-member .qodef-m-media-image {
-			width: 100% !important;
-			height: 100% !important;
-			display: flex !important;
-			align-items: center !important;
-			justify-content: center !important;
-		}
-
-		/* Images des membres de l'équipe */
-		.qodef-qi-team-member .qodef-m-media-image img {
-			width: 100% !important;
-			height: 100% !important;
-			object-fit: cover !important;
-			object-position: center top !important;
-			max-height: 400px !important;
-			min-height: 350px !important;
-		}
-
-		/* Section contenu */
-		.qodef-qi-team-member .qodef-m-content {
-			flex-shrink: 0 !important;
-			padding: 20px !important;
-			background: #fff !important;
-			text-align: center !important;
-		}
-
-		/* Centrage des titres des membres de l'équipe */
-		.qodef-qi-team-member .qodef-m-title {
-			text-align: center !important;
-			justify-content: center !important;
-			display: flex !important;
-			align-items: center !important;
-			margin: 0 auto !important;
-			width: 100% !important;
-		}
-
-		.qodef-qi-team-member .qodef-m-role {
-			text-align: center !important;
-			justify-content: center !important;
-			display: flex !important;
-			align-items: center !important;
-			margin: 10px auto 0 auto !important;
-			width: 100% !important;
-		}
-
-		/* Centrage des icônes sociales */
-		.qodef-qi-team-member .qodef-m-social-icons {
-			text-align: center !important;
-			justify-content: center !important;
-			display: flex !important;
-			align-items: center !important;
-			margin: 15px auto 0 auto !important;
-			gap: 10px !important;
-		}
-
-		/* Gestion des titres longs pour éviter l'overlap */
-		.qodef-qi-team-member .qodef-m-title {
-			word-wrap: break-word !important;
-			hyphens: auto !important;
-			line-height: 1.2 !important;
-			margin-bottom: 8px !important;
-			font-size: 1.1em !important;
-		}
-
-		.qodef-qi-team-member .qodef-m-role {
-			word-wrap: break-word !important;
-			hyphens: auto !important;
-			line-height: 1.3 !important;
-			font-size: 0.9em !important;
-			padding: 0 10px !important;
-			max-width: 100% !important;
-		}
-
-		/* Espacement supplémentaire pour les cartes avec des titres longs */
-		.qodef-qi-team-member .qodef-m-content {
-			min-height: 120px !important;
-			display: flex !important;
-			flex-direction: column !important;
-			justify-content: space-between !important;
-		}
-
-		/* Responsive pour les titres longs */
-		@media screen and (max-width: 768px) {
-			.qodef-qi-team-member .qodef-m-title {
-				font-size: 1em !important;
-				line-height: 1.1 !important;
-			}
-
-			.qodef-qi-team-member .qodef-m-role {
-				font-size: 0.85em !important;
-				line-height: 1.2 !important;
-			}
-		}
-
-		/* Responsive pour mobile */
-		@media screen and (max-width: 768px) {
-			/* Conteneur principal en grille 2x2 */
-			.elementor-element-af195fa {
-				display: grid !important;
-				grid-template-columns: 1fr 1fr !important;
-				gap: 20px !important;
-				padding: 0 15px !important;
-			}
-
-			/* Conteneurs individuels des membres de l'équipe */
-			.elementor-element-af195fa > .elementor-element {
-				flex: none !important;
-				max-width: none !important;
-				min-width: auto !important;
-				width: 100% !important;
-			}
-
-			/* Images des membres de l'équipe - taille uniforme */
-			.qodef-qi-team-member .qodef-m-media-image img {
-				max-height: 280px !important;
-				min-height: 280px !important;
-				width: 100% !important;
-				object-fit: cover !important;
-				object-position: center top !important;
-			}
-
-			/* Contenu des cartes - hauteur uniforme */
-			.qodef-qi-team-member .qodef-m-content {
-				min-height: 140px !important;
-				padding: 15px !important;
-			}
-
-			/* Titres des membres - taille uniforme */
-			.qodef-qi-team-member .qodef-m-title {
-				font-size: 1em !important;
-				line-height: 1.2 !important;
-				margin-bottom: 8px !important;
-			}
-
-			/* Rôles des membres - taille uniforme */
-			.qodef-qi-team-member .qodef-m-role {
-				font-size: 0.85em !important;
-				line-height: 1.3 !important;
-				padding: 0 5px !important;
-			}
-
-			/* Icônes sociales - centrage */
-			.qodef-qi-team-member .qodef-m-social-icons {
-				margin-top: 12px !important;
-				gap: 8px !important;
-			}
-		}
-
-		/* Responsive pour très petits écrans */
-		@media screen and (max-width: 480px) {
-			.elementor-element-af195fa {
-				grid-template-columns: 1fr 1fr !important;
-				gap: 15px !important;
-				padding: 0 10px !important;
-			}
-
-			.qodef-qi-team-member .qodef-m-media-image img {
-				max-height: 250px !important;
-				min-height: 250px !important;
-			}
-
-			.qodef-qi-team-member .qodef-m-content {
-				min-height: 130px !important;
-				padding: 12px !important;
-			}
-
-			.qodef-qi-team-member .qodef-m-title {
-				font-size: 0.95em !important;
-			}
-
-			.qodef-qi-team-member .qodef-m-role {
-				font-size: 0.8em !important;
-			}
-		}
-	</style>
+	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/language.css">
+	<link rel="stylesheet" href="css/footer.css">
+	<link rel="stylesheet" href="css/nav.css">
+	<link rel="stylesheet" href="css/team.css">
+	<link rel="stylesheet" href="css/custom-inline.css">
+ 	<link rel="stylesheet" href="css/history-mission-visio.css">
+	<link rel="stylesheet" href="css/utilities.css">
 <meta name='robots' content='max-image-preview:large' />
-	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="stylesheet" href="css/img-auto-size.css">
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Arkiz. &raquo; Feed" href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
 <link rel="alternate" type="application/rss+xml" title="Arkiz. &raquo; Comments Feed" href="https://themes.pixelwars.org/arkiz/demo-01/comments/feed/" />
-<script type="text/javascript">
-/* <![CDATA[ */
-window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.2"}};
-/*! This file is auto-generated */
-!function(s,n){var o,i,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),a=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===a[t]})}function u(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);for(var n=e.getImageData(16,16,1,1),a=0;a<n.data.length;a++)if(0!==n.data[a])return!1;return!0}function f(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\udedf")}return!1}function g(e,t,n,a){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):s.createElement("canvas"),o=r.getContext("2d",{willReadFrequently:!0}),i=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(function(e){i[e]=t(o,e,n,a)}),i}function t(e){var t=s.createElement("script");t.src=e,t.defer=!0,s.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",i=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){s.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+g.toString()+"("+[JSON.stringify(i),f.toString(),p.toString(),u.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"}),r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=function(e){c(n=e.data),r.terminate(),t(n)})}catch(e){}c(n=g(i,f,p,u))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
-/* ]]> */
-</script>
-<style id='wp-emoji-styles-inline-css' type='text/css'>
-
-	img.wp-smiley, img.emoji {
-		display: inline !important;
-		border: none !important;
-		box-shadow: none !important;
-		height: 1em !important;
-		width: 1em !important;
-		margin: 0 0.07em !important;
-		vertical-align: -0.1em !important;
-		background: none !important;
-		padding: 0 !important;
-	}
-</style>
-<style id='classic-theme-styles-inline-css' type='text/css'>
-/*! This file is auto-generated */
-.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
-</style>
-<style id='global-styles-inline-css' type='text/css'>
-:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
-:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
-:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
-:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
-</style>
+<script src="js/wp-emoji-init.js"></script>
+<link rel="stylesheet" href="css/wp-emoji.css">
+<link rel="stylesheet" href="css/classic-theme.css">
+<link rel="stylesheet" href="css/global-styles.css">
 <link rel='stylesheet' id='fontello-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/pixelwars-core/themes/global/css/fonts/fontello/css/fontello.css' type='text/css' media='all' />
 <link rel='stylesheet' id='pixelwars-core-shortcodes-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/pixelwars-core/themes/global/css/shortcodes.css' type='text/css' media='all' />
 <link rel='stylesheet' id='qi-addons-for-elementor-grid-style-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/css/grid.min.css?ver=1.8.9' type='text/css' media='all' />
@@ -877,191 +42,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 <link rel='stylesheet' id='arkiz-768-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/css/768.css?ver=6.8.2' type='text/css' media='all' />
 <link rel='stylesheet' id='arkiz-992-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/css/992.css?ver=6.8.2' type='text/css' media='all' />
 <link rel='stylesheet' id='arkiz-style-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/style.css?ver=6.8.2' type='text/css' media='all' />
-<style id='arkiz-style-inline-css' type='text/css'>
-.site-title { font-family: 'Onest'; }
-
-.nav-menu, .entry-meta, .owl-nav, label, .page-links, .navigation, .entry-title i, .site-info, .filters { font-family: 'Jost'; }
-
-.widget-title { font-family: 'TeXGyreAdventor', sans-serif; }
-
-h1, .entry-title, .footer-subscribe h3, .widget_categories ul li, .widget_recent_entries ul li a, .widget_pages ul li, .widget_nav_menu ul li, .widget_archive ul li, .widget_most_recommended_posts ul li a, .widget_calendar table caption, .tptn_title, .nav-single a, .widget_recent_comments ul li, .widget_product_categories ul li, .widget_meta ul li, .widget_rss ul a.rsswidget { font-family: 'Onest'; }
-
-h2, h3, h4, h5, h6, blockquote, .tab-titles { font-family: 'Onest'; }
-
-.slider-box .entry-title { font-family: 'Now', sans-serif; }
-
-body { font-family: 'Onest'; }
-
-.link-box .entry-title { font-family: 'Now', sans-serif; }
-
-.button, button, html .elementor-button, html .ekit-wid-con .elementskit-btn, html .ekit-wid-con .ekit_creative_button, .more-link { font-family: 'Jost'; }
-
-.top-bar { font-family: 'Jost'; }
-
-@media screen and (min-width: 992px) { .site-header .site-title { font-size: 22px; } }
-
-@media screen and (min-width: 992px) { .is-header-smaller .site-header.clone .site-title { font-size: 20px; } }
-
-@media screen and (max-width: 991px) { .site-header .site-title { font-size: 14px; } }
-
-@media screen and (min-width: 992px) { .blog-small .entry-title { font-size: 19px; } }
-
-@media screen and (min-width: 992px) { h1 { font-size: 98px; } }
-
-@media screen and (min-width: 992px) { html { font-size: 16px; } }
-
-@media screen and (max-width: 991px) { html { font-size: 15px; } }
-
-@media screen and (min-width: 992px) { .nav-menu > ul { font-size: 13px; } }
-
-@media screen and (min-width: 992px) { .blog-stream .entry-content { font-size: 16px; } }
-
-@media screen and (min-width: 992px) { .blog-stream.blog-small .entry-content { font-size: 15px; } }
-
-.widget-title { font-size: 13px; }
-
-@media screen and (min-width: 992px) { .nav-menu ul ul { font-size: 12px; } }
-
-.top-bar { font-size: 12px; }
-
-.site-footer .site-info { font-size: 12px; }
-
-.site-title { font-weight: 700; }
-
-h1, .entry-title, .footer-subscribe h3 { font-weight: 900; }
-
-h2, h3, h4, h5, h6, blockquote, .comment-meta .fn { font-weight: 500; }
-
-.slider-box .entry-title { font-weight: 700; }
-
-.widget-title { font-weight: 700; }
-
-@media screen and (min-width: 992px) { .nav-menu > ul { font-weight: 500; } }
-
-@media screen and (min-width: 992px) { .nav-menu ul ul { font-weight: 500; } }
-
-.link-box .entry-title { font-weight: 700; }
-
-.top-bar { font-weight: 500; }
-
-.site-footer .site-info { font-weight: 500; }
-
-.entry-meta { font-weight: 500; }
-
-@media screen and (min-width: 992px) { .nav-menu > ul { letter-spacing: 0px; } }
-
-@media screen and (min-width: 992px) { .nav-menu ul ul { letter-spacing: 0px; } }
-
-.widget-title { letter-spacing: 3px; }
-
-.site-footer .site-info { letter-spacing: 3px; }
-
-h1, .entry-title, .footer-subscribe h3, .widget_categories ul li, .widget_recent_entries ul li, .widget_pages ul li, .widget_archive ul li, .widget_calendar table caption, .tptn_title, .nav-single a { text-transform: uppercase; }
-
-@media screen and (min-width: 992px) { html { line-height: 1.7; } }
-
-@media screen and (min-width: 992px) { .header-bg-shape { height: 50px; } }
-
-.header-wrap:after { bottom: -1px; }
-
-
-
-.top-bar { line-height: 36px; }
-
-html .site-header .site-title a { padding: 12px 24px; }
-
-@media screen and (min-width: 992px) { .site { margin-top: 0px; margin-bottom: 0px; } }
-
-.layout-medium, .is-header-row .header-wrap-inner, .is-header-small .header-wrap-inner, .is-menu-bar.is-menu-fixed-bg .menu-wrap, .is-header-fixed-width .header-wrap, .is-header-fixed-width.is-menu-bar .site-navigation, .is-header-float-box:not(.is-header-float-box-menu) .site-header:not(.clone) .header-wrap, .is-header-float-box.is-menu-bar .site-header:not(.clone) .site-navigation:not(.clone), .is-body-boxed .site, .is-body-boxed .header-wrap, .is-body-boxed.is-menu-bar .site-navigation, .is-body-boxed:not(.is-menu-bar) .site-header, .is-middle-boxed .site-main, .intro-content, .is-footer-boxed .site-footer, .is-content-boxed .site-main .layout-fixed, .top-bar .top-bar-wrap, .is-top-bar-fixed .top-bar, .is-top-bar-fixed-bg .top-bar, .is-menu-bottom.is-menu-bottom-overflow .site-header:not(.clone) .site-navigation:not(.clone) .menu-wrap, .site-branding-wrap, .is-header-border-fixed .header-wrap:after, .is-header-border-fixed .menu-wrap:after, html .tutor-container, html .lp-content-area, html .learn-press-breadcrumb { max-width: 1140px; margin-left: auto; margin-right: auto; }
-
-.layout-fixed, .blog-list, .blog-regular, .is-content-boxed .single .site-content, .is-content-boxed .page .site-content { max-width: 800px; }
-
-@media screen and (min-width: 992px) {
-
-.is-header-small .header-wrap, .is-menu-bar .nav-menu > ul > li, .is-header-vertical .nav-menu > ul > li { line-height: 80px; }
-
-.is-header-small .site-branding { max-height: 80px; }
-
-}
-
-@media screen and (min-width: 992px) {
-
-.is-header-small.is-header-smaller .site-header.clone .header-wrap, .is-header-row.is-header-smaller .site-header.clone .nav-menu > ul > li, .is-menu-bar.is-header-smaller .site-navigation.clone .nav-menu > ul > li, .is-menu-bar.is-header-smaller .site-header.clone .site-navigation .nav-menu > ul > li { line-height: 60px; }
-
-.is-header-small.is-header-smaller .site-header.clone .site-branding { max-height: 60px; }
-
-}
-
-.button.is-primary, .button.is-primary:after, html .elementor-button, .elementor-button.elementor-size-xs, .elementor-button.elementor-size-sm, .elementor-button.elementor-size-md, .elementor-button.elementor-size-lg, .elementor-button.elementor-size-xl, html .ekit-wid-con .elementskit-btn, html .ekit-wid-con .ekit_creative_button { border-radius: 0px; }
-
-.button.is-secondary, .button.is-secondary:after, .elementor-element.elementor-button-info .elementor-button { border-radius: 30px; }
-
-a { color: #d84156; }
-
-a:hover { color: #c60035; }
-
-.header-wrap:before { background: #262100; }
-
-.is-header-half-transparent:not(.is-menu-toggled-on) .site-header:not(.clone) .header-wrap:before { opacity: 0.45; }
-
-.header-wrap:after { opacity: 0.08; }
-
-@media screen and (min-width: 992px) { .nav-menu > ul > li.current-menu-item > a { color: #000000 !important; } }
-
-@media screen and (min-width: 992px) { .nav-menu li.current-menu-item > a .link-text:before { background-color: #0a0000 !important; border-color: #0a0000 !important; } }
-
-@media screen and (min-width: 992px) { html .nav-menu > ul > li > a:hover, .nav-menu > ul > li.has-submenu:hover > a { color: #000000 !important; } }
-
-@media screen and (min-width: 992px) { html.loaded .nav-menu ul li a .link-text:before, .nav-menu li.has-submenu:hover > a .link-text:before { background-color: #ffffff !important; border-color: #ffffff !important; } }
-
-@media screen and (min-width: 992px) { .nav-menu  ul ul li.current-menu-item > a .link-text { color: #b79f8a !important; } }
-
-@media screen and (min-width: 992px) { html .nav-menu ul ul li a:hover .link-text, .nav-menu ul ul li.has-submenu:hover > a .link-text { color: #111111; } }
-
-h1, h2, h3, h4, h5, h6, blockquote, .tab-titles { color: #020014; }
-
-body { color: #32455e; }
-
-body { background: #ffffff; }
-
-.site .footer-subscribe { background: #ebe6da; }
-
-.site-footer .site-info { background-color: #ffffff; }
-
-.site-footer .site-info { color: #0a0a0a; }
-
-.button.is-primary { color: #222222; }
-
-.button.is-primary.is-shadow, .button.is-primary.is-solid, .button.is-primary.is-solid-light, html .elementor-button, html .ekit-wid-con .elementskit-btn { background-color: #222222; }
-
-.button.is-primary.is-shadow { box-shadow: 0px 18px 23px -6px #222222; }
-
-.button.is-primary:hover { color: #215aed; }
-
-.button.is-primary.is-shadow:hover, .button.is-primary.is-solid:hover, .button.is-primary.is-solid-light:hover, .button.is-primary.is-shift:after, .button.is-primary.is-circle:before, html .elementor-button:hover, html .ekit-wid-con .elementskit-btn:hover { background-color: #215aed; }
-
-.button.is-primary.is-shadow:hover { box-shadow: 0px 2px 10px -5px #215aed; }
-
-.button.is-secondary { color: #f22000; }
-
-.button.is-secondary.is-shadow, .button.is-secondary.is-solid, .button.is-secondary.is-solid-light, .elementor-element.elementor-button-info .elementor-button { background-color: #f22000; }
-
-.button.is-secondary.is-shadow { box-shadow: 0px 18px 23px -6px #f22000; }
-
-.button.is-secondary:hover { color: #0026ff; }
-
-.button.is-secondary.is-shadow:hover, .button.is-secondary.is-solid:hover, .button.is-secondary.is-solid-light:hover, .button.is-secondary.is-shift:after, .button.is-secondary.is-circle:before, .elementor-element.elementor-button-info .elementor-button:hover { background-color: #0026ff; }
-
-.button.is-secondary.is-shadow:hover { box-shadow: 0px 2px 10px -5px #0026ff; }
-
-.top-bar, .top-bar select option { background-color: #262251; }
-
-.top-bar { background: linear-gradient(90deg, #262251 30%, #d10600 100%); }
-
-.header-wrap:after { color: #222222; }
-
-.is-menu-bar .menu-wrap:after { color: #222222; }
-</style>
+<link rel="stylesheet" href="css/arkiz-style.css">
 <link rel='stylesheet' id='swiper-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/plugins/swiper/8.4.5/swiper.min.css?ver=8.4.5' type='text/css' media='all' />
 <link rel='stylesheet' id='elementor-frontend-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=3.27.7' type='text/css' media='all' />
 <link rel='stylesheet' id='elementor-post-11-css' href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/elementor/css/post-11.css?ver=1746007048' type='text/css' media='all' />
@@ -1086,24 +67,7 @@ body { background: #ffffff; }
 <link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthemes.pixelwars.org%2Farkiz%2Fdemo-01%2Fhome-05%2F" />
 <link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthemes.pixelwars.org%2Farkiz%2Fdemo-01%2Fhome-05%2F&#038;format=xml" />
 <meta name="generator" content="Elementor 3.27.7; features: e_font_icon_svg, additional_custom_breakpoints, e_element_cache; settings: css_print_method-external, google_font-enabled, font_display-swap">
-			<style>
-				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
-				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
-					background-image: none !important;
-				}
-				@media screen and (max-height: 1024px) {
-					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
-					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
-						background-image: none !important;
-					}
-				}
-				@media screen and (max-height: 640px) {
-					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
-					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
-						background-image: none !important;
-					}
-				}
-			</style>
+			<link rel="stylesheet" href="css/elementor-lazyload.css">
 			</head>
 
 <body class="wp-singular page-template page-template-elementor_header_footer page page-id-18735 wp-theme-arkiz qodef-qi--no-touch qi-addons-for-elementor-1.8.9 elementor-default elementor-template-full-width elementor-kit-11 elementor-page elementor-page-18735">
@@ -1146,34 +110,33 @@ body { background: #ffffff; }
   <li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-blog"><a href="blog.html">Blog</a></li>
   <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
   <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
-  <li id="menu-item-language" class="menu-item menu-item-language"><a href="#" onclick="toggleLanguage(); return false;">Language: <span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span></a></li>
-</ul></div>											
-											
-									<div class="language-switcher">
-										<button id="language-btn" class="language-btn" onclick="toggleLanguage()"><span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span></button>
-									</div> <!-- .language-switcher -->
-																	</div> <!-- .layout-medium -->
-						</div> <!-- .menu-wrap -->
-					</nav> <!-- #site-navigation .main-navigation .site-navigation -->
-				</div> <!-- .header-wrap-inner -->
-			</div> <!-- .header-wrap -->
+  <li id="menu-item-language" class="menu-item menu-item-language"><a href="#">Language: <span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span></a></li>
+</ul></div>
+  <div class="language-switcher">
+    <button id="language-btn" class="language-btn"><span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span></button>
+  </div> <!-- .language-switcher -->
+  </div> <!-- .layout-medium -->
+  </div> <!-- .menu-wrap -->
+  </nav> <!-- #site-navigation .main-navigation .site-navigation -->
+  </div> <!-- .header-wrap-inner -->
+  </div> <!-- .header-wrap -->
         </header> <!-- #masthead .site-header -->
 		<div data-elementor-type="wp-page" data-elementor-id="18735" class="elementor elementor-18735">
 				<div class="elementor-element elementor-element-bbfdead e-con-full e-flex e-con e-parent" data-id="bbfdead" data-element_type="container">
-                <div class="elementor-element elementor-element-180c406 elementor-widget-tablet__width-inherit full elementor-widget elementor-widget-prime-slider-general" data-id="180c406" data-element_type="widget" data-widget_type="prime-slider-general.slide" style="width: 100vw !important; max-width: 100vw !important; margin-left: calc(-50vw + 50%) !important; margin-right: calc(-50vw + 50%) !important; position: relative !important; left: 50% !important; transform: translateX(-50%) !important; overflow: hidden !important;">
-                <div class="elementor-widget-container" style="width: 100vw !important; max-width: 100vw !important; margin: 0 !important; padding: 0 !important;">
-                                <div class="bdt-prime-slider" style="width: 100vw !important; max-width: 100vw !important; margin: 0 !important; padding: 0 !important;">
-                <div class="bdt-prime-slider-skin-slide" style="width: 100vw !important; max-width: 100vw !important; margin: 0 !important; padding: 0 !important;">
+                <div class="elementor-element elementor-element-180c406 elementor-widget-tablet__width-inherit full elementor-widget elementor-widget-prime-slider-general full-viewport full-bleed-center overflow-hidden" data-id="180c406" data-element_type="widget" data-widget_type="prime-slider-general.slide">
+                <div class="elementor-widget-container full-viewport no-margin no-padding">
+                                <div class="bdt-prime-slider full-viewport no-margin no-padding">
+                <div class="bdt-prime-slider-skin-slide full-viewport no-margin no-padding">
 
-                <div class="bdt-position-relative bdt-visible-toggle" bdt-slideshow="{&quot;animation&quot;:&quot;fade&quot;,&quot;ratio&quot;:&quot;32:14&quot;,&quot;min-height&quot;:650,&quot;autoplay&quot;:true,&quot;autoplay-interval&quot;:&quot;5000&quot;,&quot;pause-on-hover&quot;:true,&quot;velocity&quot;:1,&quot;finite&quot;:false}" data-settings="{&quot;id&quot;:&quot;#bdt-180c406&quot;,&quot;animation_status&quot;:&quot;no&quot;}" id="bdt-180c406" style="width: 100vw !important; height: 100% !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important;">
+                <div class="bdt-position-relative bdt-visible-toggle full-viewport h-100 overflow-hidden no-margin no-padding" bdt-slideshow="{&quot;animation&quot;:&quot;fade&quot;,&quot;ratio&quot;:&quot;32:14&quot;,&quot;min-height&quot;:650,&quot;autoplay&quot;:true,&quot;autoplay-interval&quot;:&quot;5000&quot;,&quot;pause-on-hover&quot;:true,&quot;velocity&quot;:1,&quot;finite&quot;:false}" data-settings="{&quot;id&quot;:&quot;#bdt-180c406&quot;,&quot;animation_status&quot;:&quot;no&quot;}" id="bdt-180c406">
 
-        <ul class="bdt-slideshow-items" style="width: 100vw !important; margin: 0 !important; padding: 0 !important;">
+        <ul class="bdt-slideshow-items full-viewport no-margin no-padding">
 		                    
             <li class="bdt-slideshow-item bdt-flex bdt-flex-middle bdt-flex-center elementor-repeater-item-36a678d">
                                     <div class="bdt-position-cover bdt-animation-kenburns bdt-transform-origin-center-left">
                 
                                             
-        <div class="bdt-ps-slide-img" style="background-image: url('public/1.jpeg'); width: 100vw !important; height: 100% !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;"></div>
+        <div class="bdt-ps-slide-img bg-cover-center full-viewport h-100" style="background-image: url('public/1.jpeg');"></div>
 
 		                    
                                     </div>
@@ -1260,7 +223,7 @@ body { background: #ffffff; }
                                     <div class="bdt-position-cover bdt-animation-kenburns bdt-transform-origin-center-left">
                 
                                             
-        <div class="bdt-ps-slide-img" style="background-image: url('public/2.jpeg'); width: 100vw !important; height: 100% !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;"></div>
+        <div class="bdt-ps-slide-img bg-cover-center full-viewport h-100" style="background-image: url('public/2.jpeg');"></div>
 
 		                    
                                     </div>
@@ -1347,7 +310,7 @@ body { background: #ffffff; }
                                     <div class="bdt-position-cover bdt-animation-kenburns bdt-transform-origin-center-left">
                 
                                             
-        <div class="bdt-ps-slide-img" style="background-image: url('public/3.jpeg'); width: 100vw !important; height: 100% !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;"></div>
+        <div class="bdt-ps-slide-img bg-cover-center full-viewport h-100" style="background-image: url('public/3.jpeg');"></div>
 
 		                    
                                     </div>
@@ -1434,7 +397,7 @@ body { background: #ffffff; }
                                     <div class="bdt-position-cover bdt-animation-kenburns bdt-transform-origin-center-left">
                 
                                             
-        <div class="bdt-ps-slide-img" style="background-image: url('public/4.jpeg'); width: 100vw !important; height: 100% !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;"></div>
+        <div class="bdt-ps-slide-img bg-cover-center full-viewport h-100" style="background-image: url('public/4.jpeg');"></div>
 
 		                    
                                     </div>
@@ -1598,26 +561,26 @@ body { background: #ffffff; }
 				
 <!-- Mission history iciiiiiiiii-->
 <!-- Full-width wrapper for Mission/History -->
-<div id="mission-history-fullwidth" class="fullwidth-section" style="width: 100vw !important; max-width: 100vw !important; margin-left: calc(-50vw + 50%) !important; margin-right: calc(-50vw + 50%) !important; position: relative !important; overflow: hidden !important; padding: 0 !important;">
-	<div class="elementor-element elementor-element-carousel-copy e-con-full e-flex e-con e-child" data-id="carousel-copy" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" style="width: 100% !important; max-width: 100% !important; margin: 0 !important; position: relative !important; left: 0 !important; transform: none !important; box-sizing: border-box !important; padding: 0 !important;">
-	<div class="elementor-element elementor-element-carousel-copy-widget elementor-widget elementor-widget-prime-slider-blog elementor-widget-tablet__width-inherit elementor-widget-mobile__width-inherit" data-id="carousel-copy-widget" data-element_type="widget" data-widget_type="prime-slider-blog.coral" style="width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important; position: relative !important; left: 0 !important; transform: none !important;">
-	<div class="elementor-widget-container" style="width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important;">
-    <div class="bdt-prime-slider" style="width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important;">
-<div class="bdt-prime-slider-skin-coral" style="width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important;">
-    <div class="bdt-position-relative bdt-visible-toggle" data-settings="{&quot;id&quot;:&quot;#bdt-carousel-copy&quot;,&quot;animation_status&quot;:&quot;no&quot;}" id="bdt-carousel-copy" bdt-slideshow="{&quot;animation&quot;:&quot;fade&quot;,&quot;ratio&quot;:&quot;1400:350&quot;,&quot;min-height&quot;:500,&quot;autoplay&quot;:true,&quot;autoplay-interval&quot;:7000,&quot;pause-on-hover&quot;:true,&quot;velocity&quot;:1,&quot;finite&quot;:false}" style="width: 100% !important; height: 100% !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important;">
-		<ul class="bdt-slideshow-items" style="width: 100% !important; margin: 0 !important; padding: 0 !important;">
+<div id="mission-history-fullwidth" class="fullwidth-section full-viewport full-bleed-center overflow-hidden no-padding">
+	<div class="elementor-element elementor-element-carousel-copy e-con-full e-flex e-con e-child full-width no-margin pos-relative no-padding" data-id="carousel-copy" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+	<div class="elementor-element elementor-element-carousel-copy-widget elementor-widget elementor-widget-prime-slider-blog elementor-widget-tablet__width-inherit elementor-widget-mobile__width-inherit full-width no-margin no-padding pos-relative" data-id="carousel-copy-widget" data-element_type="widget" data-widget_type="prime-slider-blog.coral">
+	<div class="elementor-widget-container full-width no-margin no-padding">
+	<div class="bdt-prime-slider full-width no-margin no-padding">
+	<div class="bdt-prime-slider-skin-coral full-width no-margin no-padding">
+	<div class="bdt-position-relative bdt-visible-toggle w-100 h-100 overflow-hidden no-margin no-padding" data-settings="{&quot;id&quot;:&quot;#bdt-carousel-copy&quot;,&quot;animation_status&quot;:&quot;no&quot;}" id="bdt-carousel-copy" bdt-slideshow="{&quot;animation&quot;:&quot;fade&quot;,&quot;ratio&quot;:&quot;1400:350&quot;,&quot;min-height&quot;:500,&quot;autoplay&quot;:true,&quot;autoplay-interval&quot;:7000,&quot;pause-on-hover&quot;:true,&quot;velocity&quot;:1,&quot;finite&quot;:false}">
+		<ul class="bdt-slideshow-items w-100 no-margin no-padding">
 			
 <li class="bdt-slideshow-item bdt-flex bdt-flex-middle elementor-repeater-item-23017">
 
-						<div class="bdt-position-cover bdt-animation-kenburns bdt-animation-reverse bdt-transform-origin-center-left" style="width: 100% !important; height: 100% !important; position: absolute !important; top: 0 !important; left: 0 !important; animation-duration: 20s !important; animation-timing-function: ease-in-out !important;">
+						<div class="bdt-position-cover bdt-animation-kenburns bdt-animation-reverse bdt-transform-origin-center-left w-100 h-100 pos-absolute top-0 left-0 anim-duration-20s anim-ease-in-out">
 		
 		
-<div class="bdt-ps-slide-img" style="background-image: url('public/section/1.jpeg'); width: 100% !important; height: 100% !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;"></div>
+<div class="bdt-ps-slide-img bg-cover-center w-100 h-100" style="background-image: url('public/section/1.jpeg');"></div>
 
 
 							</div>
 	
-						<div class="bdt-overlay-default bdt-position-cover" style="width: 100% !important; height: 100% !important; position: absolute !important; top: 0 !important; left: 0 !important;"></div>
+						<div class="bdt-overlay-default bdt-position-cover w-100 h-100 pos-absolute top-0 left-0"></div>
 	
 	
 
@@ -1632,264 +595,58 @@ body { background: #ffffff; }
 
 
 	<!-- History Mission Visio Card -->
-	<div class="history-mission-visio-card" style="position: absolute !important; top: 50% !important; right: max(calc(50% - 570px), 24px) !important; left: auto !important; transform: translateY(-50%) !important; background: rgba(0, 0, 0, 0.95) !important; padding: 50px !important; border-radius: 0 !important; width: 500px !important; height: 450px !important; text-align: left !important; z-index: 10 !important; backdrop-filter: blur(20px) !important; box-shadow: 0 25px 50px rgba(0,0,0,0.5) !important; overflow: hidden !important;">
+	<div class="history-mission-visio-card">
 
-					<style>
-		/* Responsive pour mobile */
-		@media (max-width: 768px) {
-			.history-mission-visio-card {
-				position: relative !important;
-				top: auto !important;
-				left: auto !important;
-				right: auto !important;
-				transform: none !important;
-				width: 90% !important;
-				max-width: 400px !important;
-				height: auto !important;
-				min-height: 350px !important;
-				margin: 10px auto !important;
-				padding: 30px 25px !important;
-				border-radius: 12px !important;
-				box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
-				z-index: 1000 !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-navigation {
-				display: flex !important;
-				justify-content: space-between !important;
-				margin-bottom: 20px !important;
-				border-bottom: 1px solid rgba(255,255,255,0.3) !important;
-				padding-bottom: 10px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-navigation li {
-				margin: 0 !important;
-				flex: 1 !important;
-				text-align: center !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-navigation a {
-				font-size: 1em !important;
-				padding: 8px 4px !important;
-				display: block !important;
-				border-radius: 6px !important;
-				font-weight: 500 !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content {
-				min-height: 150px !important;
-				max-height: 200px !important;
-				overflow-y: auto !important;
-				overflow-x: hidden !important;
-				padding-right: 10px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar {
-				width: 6px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-track {
-				background: rgba(255,255,255,0.1) !important;
-				border-radius: 3px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-thumb {
-				background: rgba(255,255,255,0.3) !important;
-				border-radius: 3px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content p {
-				font-size: 0.95em !important;
-				line-height: 1.6 !important;
-				margin-bottom: 10px !important;
-			}
-		}
-		
-		/* Responsive pour très petits écrans */
-		@media (max-width: 480px) {
-			.history-mission-visio-card {
-				width: 92% !important;
-				max-width: 350px !important;
-				padding: 25px 20px !important;
-				min-height: 300px !important;
-				margin: 30px auto !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-navigation a {
-				font-size: 0.9em !important;
-				padding: 6px 3px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content {
-				max-height: 180px !important;
-				overflow-y: auto !important;
-				overflow-x: hidden !important;
-				padding-right: 8px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar {
-				width: 5px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-track {
-				background: rgba(255,255,255,0.1) !important;
-				border-radius: 2px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-thumb {
-				background: rgba(255,255,255,0.3) !important;
-				border-radius: 2px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content p {
-				font-size: 0.9em !important;
-				line-height: 1.5 !important;
-			}
-		}
-		
-		/* Responsive pour très petits écrans */
-		@media (max-width: 360px) {
-			.history-mission-visio-card {
-				width: 95% !important;
-				max-width: 320px !important;
-				padding: 20px 15px !important;
-				min-height: 280px !important;
-				margin: 20px auto !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-navigation a {
-				font-size: 0.85em !important;
-				padding: 5px 2px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content {
-				max-height: 160px !important;
-				overflow-y: auto !important;
-				overflow-x: hidden !important;
-				padding-right: 6px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar {
-				width: 4px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-track {
-				background: rgba(255,255,255,0.1) !important;
-				border-radius: 2px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-thumb {
-				background: rgba(255,255,255,0.3) !important;
-				border-radius: 2px !important;
-			}
-			
-			.history-mission-visio-card .qodef-tabs-horizontal-content p {
-				font-size: 0.85em !important;
-				line-height: 1.4 !important;
-			}
-		}
-		
-		/* Alignement des titres du footer */
-		.elementor-element-f055c35 .qodef-m-title,
-		.elementor-element-d726f80 .qodef-m-title,
-		.elementor-element-701fde8 .qodef-m-title {
-			text-align: left !important;
-			margin-left: 0 !important;
-			padding-left: 0 !important;
-		}
-		
-		.elementor-element-f055c35 .elementor-widget-container,
-		.elementor-element-d726f80 .elementor-widget-container,
-		.elementor-element-701fde8 .elementor-widget-container {
-			text-align: left !important;
-		}
-		
-		.elementor-element-f055c35 .qodef-e-word,
-		.elementor-element-d726f80 .qodef-e-word,
-		.elementor-element-701fde8 .qodef-e-word {
-			text-align: left !important;
-			display: inline-block !important;
-		}
-	</style>
-		<div class="qodef-shortcode qodef-m qodef-qi-tabs-horizontal qodef-qi-clear qodef-layout--simple qodef-title-hover--underline-draw qodef-title-underline-from-left" style="color: white !important;">
-			<ul class="qodef-tabs-horizontal-navigation" style="display: flex !important; list-style: none !important; margin: 0 !important; padding: 0 !important; border-bottom: 2px solid rgba(255,255,255,0.3) !important; margin-bottom: 30px !important;">
-				<li style="margin-right: 30px !important;">
-					<h3 class="qodef-tab-title" role="tab" style="margin: 0 !important;">
-						<a href="#qodef-tab-de6d4f0" onclick="showTab('history')" style="color: white !important; text-decoration: none !important; font-size: 1.1em !important; font-weight: bold !important; padding: 10px 0 !important; border-bottom: 3px solid white !important; transition: all 0.3s ease !important; cursor: pointer !important;">
+		<div class="qodef-shortcode qodef-m qodef-qi-tabs-horizontal qodef-qi-clear qodef-layout--simple qodef-title-hover--underline-draw qodef-title-underline-from-left">
+			<ul class="qodef-tabs-horizontal-navigation tab-navigation">
+				<li>
+					<h3 class="qodef-tab-title" role="tab">
+						<a href="#qodef-tab-de6d4f0" data-tab="history" class="tab-link tab-link--active">
 							<span class="q-text">History</span>
-		</a>
-	</h3>
-</li>
-				<li style="margin-right: 30px !important;">
-					<h3 class="qodef-tab-title" role="tab" style="margin: 0 !important;">
-						<a href="#qodef-tab-0927390" onclick="showTab('mission')" style="color: rgba(255,255,255,0.7) !important; text-decoration: none !important; font-size: 1.1em !important; font-weight: bold !important; padding: 10px 0 !important; transition: all 0.3s ease !important; cursor: pointer !important;">
+				</a>
+			</h3>
+		</li>
+				<li>
+					<h3 class="qodef-tab-title" role="tab">
+						<a href="#qodef-tab-0927390" data-tab="mission" class="tab-link">
 							<span class="q-text">Mission</span>
-		</a>
-	</h3>
-</li>
-<li>
-					<h3 class="qodef-tab-title" role="tab" style="margin: 0 !important;">
-						<a href="#qodef-tab-b0d90cc" onclick="showTab('visio')" style="color: rgba(255,255,255,0.7) !important; text-decoration: none !important; font-size: 1.1em !important; font-weight: bold !important; padding: 10px 0 !important; transition: all 0.3s ease !important; cursor: pointer !important;">
+				</a>
+			</h3>
+		</li>
+		<li>
+					<h3 class="qodef-tab-title" role="tab">
+						<a href="#qodef-tab-b0d90cc" data-tab="visio" class="tab-link">
 							<span class="q-text">Visio</span>
-		</a>
-	</h3>
-</li>
-	</ul>
-			<div class="qodef-tabs-horizontal-content" id="tab-history" style="display: block !important; opacity: 1 !important; transition: opacity 0.5s ease !important;">
-				<div style="display: flex; align-items: flex-start; gap: 30px; min-height: 200px;">
-					<div style="flex: 1; padding-right: 0;">
-						<p style="color: white !important; font-size: 1.05em !important; line-height: 1.7 !important; margin-bottom: 20px !important;">Welcome to Visio Architecture, where innovative design meets timeless functionality. With a passion for creating inspiring spaces, we specialize in crafting bespoke architectural solutions for residential, commercial, and urban projects.</p>
+				</a>
+			</h3>
+		</li>
+		</ul>
+			<div class="qodef-tabs-horizontal-content" id="tab-history">
+				<div class="tab-content-wrapper">
+					<div class="tab-content-column">
+						<p class="tab-content-text tab-content-text--mb">Welcome to Visio Architecture, where innovative design meets timeless functionality. With a passion for creating inspiring spaces, we specialize in crafting bespoke architectural solutions for residential, commercial, and urban projects.</p>
 						
+				</div>
+			</div>
+			</div>
+			<div class="qodef-tabs-horizontal-content" id="tab-mission">
+				<div class="tab-content-wrapper">
+					<div class="tab-content-column">
+						<p class="tab-content-text">Our mission at Visio Architecture is to design and deliver innovative, sustainable, and functional architectural solutions that transform arkizns into reality. We are committed to collaborating closely with clients, understanding their unique needs, and crafting spaces that inspire and endure. Through creative design, cutting-edge technology, and environmental stewardship, we aim to enhance the built environment, improve community living, and leave a lasting architectural legacy.</p>
+				</div>
+			</div>
+			</div>
+			<div class="qodef-tabs-horizontal-content" id="tab-visio">
+				<div class="tab-content-wrapper">
+					<div class="tab-content-column">
+						<p class="tab-content-text">At Visio Architecture, our visio is to redefine the future of architectural design by creating innovative, sustainable, and inspiring spaces that seamlessly blend form and function. We strive to be a leading force in shaping modern environments, crafting timeless structures that enhance communities, respect the environment, and elevate human experiences. Through creativity, technology, and a commitment to excellence, we aim to inspire meaningful connections between people and the spaces they inhabit.</p>
+				</div>
+			</div>
+			</div>
 		</div>
-	</div>
-	</div>
-			<div class="qodef-tabs-horizontal-content" id="tab-mission" style="display: none !important; opacity: 0 !important; transition: opacity 0.5s ease !important;">
-				<div style="display: flex; align-items: flex-start; gap: 30px; min-height: 200px;">
-					<div style="flex: 1; padding-right: 0;">
-						<p style="color: white !important; font-size: 1.05em !important; line-height: 1.7 !important;">Our mission at Visio Architecture is to design and deliver innovative, sustainable, and functional architectural solutions that transform arkizns into reality. We are committed to collaborating closely with clients, understanding their unique needs, and crafting spaces that inspire and endure. Through creative design, cutting-edge technology, and environmental stewardship, we aim to enhance the built environment, improve community living, and leave a lasting architectural legacy.</p>
-		</div>
-	</div>
-	</div>
-			<div class="qodef-tabs-horizontal-content" id="tab-visio" style="display: none !important; opacity: 0 !important; transition: opacity 0.5s ease !important;">
-				<div style="display: flex; align-items: flex-start; gap: 30px; min-height: 200px;">
-					<div style="flex: 1; padding-right: 0;">
-						<p style="color: white !important; font-size: 1.05em !important; line-height: 1.7 !important;">At Visio Architecture, our visio is to redefine the future of architectural design by creating innovative, sustainable, and inspiring spaces that seamlessly blend form and function. We strive to be a leading force in shaping modern environments, crafting timeless structures that enhance communities, respect the environment, and elevate human experiences. Through creativity, technology, and a commitment to excellence, we aim to inspire meaningful connections between people and the spaces they inhabit.</p>
-		</div>
-	</div>
-	</div>
-</div>
 				</div>
 
-	<script>
-		function showTab(tabName) {
-			// Masquer tous les contenus
-			document.getElementById('tab-history').style.display = 'none';
-			document.getElementById('tab-history').style.opacity = '0';
-			document.getElementById('tab-mission').style.display = 'none';
-			document.getElementById('tab-mission').style.opacity = '0';
-			document.getElementById('tab-visio').style.display = 'none';
-			document.getElementById('tab-visio').style.opacity = '0';
-			
-			// Réinitialiser tous les onglets
-			document.querySelectorAll('.qodef-tabs-horizontal-navigation a').forEach(link => {
-				link.style.color = 'rgba(255,255,255,0.7)';
-				link.style.borderBottom = 'none';
-			});
-			
-			// Afficher le contenu sélectionné
-			setTimeout(() => {
-				document.getElementById('tab-' + tabName).style.display = 'block';
-				setTimeout(() => {
-					document.getElementById('tab-' + tabName).style.opacity = '1';
-				}, 50);
-			}, 250);
-			
-			// Activer l'onglet sélectionné
-			const activeLink = document.querySelector(`[onclick="showTab('${tabName}')"]`);
-			activeLink.style.color = 'white';
-			activeLink.style.borderBottom = '3px solid white';
-		}
-	</script>
+	<script src="js/tabs.js"></script>
 
 
 
@@ -2081,20 +838,20 @@ body { background: #ffffff; }
 					</div>
 				</div>
 		<div class="elementor-element elementor-element-6ea4c584 e-con-full e-flex e-con e-child" data-id="6ea4c584" data-element_type="container">
-        <div class="elementor-element elementor-element-537e2745 e-con-full e-flex e-con e-child" data-id="537e2745" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" style="width: 100vw !important; max-width: 100vw !important; margin-left: calc(-50vw + 50%) !important; margin-right: calc(-50vw + 50%) !important; position: relative !important; left: 50% !important; transform: translateX(-50%) !important; overflow: hidden !important;">
-                <div class="elementor-element elementor-element-7a0efb4c elementor-widget elementor-widget-prime-slider-blog" data-id="7a0efb4c" data-element_type="widget" data-widget_type="prime-slider-blog.coral" style="width: 100vw !important; max-width: 100vw !important;">
-                <div class="elementor-widget-container" style="width: 100vw !important; max-width: 100vw !important; margin: 0 !important; padding: 0 !important;">
-                            <div class="bdt-prime-slider" style="width: 100vw !important; max-width: 100vw !important; margin: 0 !important; padding: 0 !important;">
-            <div class="bdt-prime-slider-skin-coral" style="width: 100vw !important; max-width: 100vw !important; margin: 0 !important; padding: 0 !important;">
-                <div class="bdt-position-relative bdt-visible-toggle" data-settings="{&quot;id&quot;:&quot;#bdt-7a0efb4c&quot;,&quot;animation_status&quot;:&quot;no&quot;}" id="bdt-7a0efb4c" bdt-slideshow="{&quot;animation&quot;:&quot;fade&quot;,&quot;ratio&quot;:&quot;1400:350&quot;,&quot;min-height&quot;:800,&quot;autoplay&quot;:true,&quot;autoplay-interval&quot;:7000,&quot;pause-on-hover&quot;:true,&quot;velocity&quot;:1,&quot;finite&quot;:false}" style="width: 100vw !important; height: 100% !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important;">
-                    <ul class="bdt-slideshow-items" style="width: 100vw !important; margin: 0 !important; padding: 0 !important;">
+		<div class="elementor-element elementor-element-537e2745 e-con-full e-flex e-con e-child full-viewport full-bleed-center overflow-hidden" data-id="537e2745" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-7a0efb4c elementor-widget elementor-widget-prime-slider-blog" data-id="7a0efb4c" data-element_type="widget" data-widget_type="prime-slider-blog.coral">
+				<div class="elementor-widget-container full-viewport no-margin no-padding">
+								<div class="bdt-prime-slider full-viewport no-margin no-padding">
+				<div class="bdt-prime-slider-skin-coral full-viewport no-margin no-padding">
+					<div class="bdt-position-relative bdt-visible-toggle full-viewport h-100 no-margin no-padding overflow-hidden" data-settings="{&quot;id&quot;:&quot;#bdt-7a0efb4c&quot;,&quot;animation_status&quot;:&quot;no&quot;}" id="bdt-7a0efb4c" bdt-slideshow="{&quot;animation&quot;:&quot;fade&quot;,&quot;ratio&quot;:&quot;1400:350&quot;,&quot;min-height&quot;:800,&quot;autoplay&quot;:true,&quot;autoplay-interval&quot;:7000,&quot;pause-on-hover&quot;:true,&quot;velocity&quot;:1,&quot;finite&quot;:false}">
+						<ul class="bdt-slideshow-items full-viewport no-margin no-padding">
 						
             <li class="bdt-slideshow-item bdt-flex bdt-flex-middle elementor-repeater-item-23017">
 
                                     <div class="bdt-position-cover bdt-animation-kenburns bdt-animation-reverse bdt-transform-origin-center-left">
                     
                     
-        <div class="bdt-ps-slide-img" style="background-image: url('public/section/1.jpeg'); width: 100vw !important; height: 100% !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;"></div>
+        		<div class="bdt-ps-slide-img full-viewport h-100 bg-cover-center" style="background-image: url('public/section/1.jpeg');"></div>
 
     
                                         </div>
@@ -2159,7 +916,7 @@ body { background: #ffffff; }
                                     <div class="bdt-position-cover bdt-animation-kenburns bdt-animation-reverse bdt-transform-origin-center-left">
                     
                     
-        <div class="bdt-ps-slide-img" style="background-image: url('public/section/2.jpeg'); width: 100vw !important; height: 100% !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;"></div>
+        <div class="bdt-ps-slide-img bg-cover-center full-viewport h-100" style="background-image: url('public/section/2.jpeg');"></div>
 
     
                                         </div>
@@ -2224,7 +981,7 @@ body { background: #ffffff; }
                                     <div class="bdt-position-cover bdt-animation-kenburns bdt-animation-reverse bdt-transform-origin-center-left">
                     
                     
-        <div class="bdt-ps-slide-img" style="background-image: url('public/section/3.jpeg'); width: 100vw !important; height: 100% !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;"></div>
+        <div class="bdt-ps-slide-img bg-cover-center full-viewport h-100" style="background-image: url('public/section/3.jpeg');"></div>
 
     
                                         </div>
@@ -2289,7 +1046,7 @@ body { background: #ffffff; }
                                     <div class="bdt-position-cover bdt-animation-kenburns bdt-animation-reverse bdt-transform-origin-center-left">
                     
                     
-        <div class="bdt-ps-slide-img" style="background-image: url('public/section/4.jpeg'); width: 100vw !important; height: 100% !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;"></div>
+        <div class="bdt-ps-slide-img bg-cover-center full-viewport h-100" style="background-image: url('public/section/4.jpeg');"></div>
 
     
                                         </div>
@@ -2354,7 +1111,7 @@ body { background: #ffffff; }
                                     <div class="bdt-position-cover bdt-animation-kenburns bdt-animation-reverse bdt-transform-origin-center-left">
                     
                     
-        <div class="bdt-ps-slide-img" style="background-image: url('public/section/5.jpeg'); width: 100vw !important; height: 100% !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;"></div>
+        <div class="bdt-ps-slide-img bg-cover-center full-viewport h-100" style="background-image: url('public/section/5.jpeg');"></div>
 
     
                                         </div>
@@ -2419,7 +1176,7 @@ body { background: #ffffff; }
                                     <div class="bdt-position-cover bdt-animation-kenburns bdt-animation-reverse bdt-transform-origin-center-left">
                     
                     
-        <div class="bdt-ps-slide-img" style="background-image: url('public/section/6.jpeg'); width: 100vw !important; height: 100% !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;"></div>
+        <div class="bdt-ps-slide-img bg-cover-center full-viewport h-100" style="background-image: url('public/section/6.jpeg');"></div>
 
     
                                         </div>
@@ -3256,8 +2013,8 @@ body { background: #ffffff; }
 </div>
 	</div>
 	</div>
-		<div class="swiper-button-prev swiper-button-outside swiper-button-prev-1"><svg class="qodef-swiper-arrow-left" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 34.2 32.3" xml:space="preserve" style="stroke-width: 2;"><line x1="0.5" y1="16" x2="33.5" y2="16"/><line x1="0.3" y1="16.5" x2="16.2" y2="0.7"/><line x1="0" y1="15.4" x2="16.2" y2="31.6"/></svg></div>
-	<div class="swiper-button-next swiper-button-outside swiper-button-next-1"><svg class="qodef-swiper-arrow-right" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 34.2 32.3" xml:space="preserve" style="stroke-width: 2;"><line x1="0" y1="16" x2="33" y2="16"/><line x1="17.3" y1="0.7" x2="33.2" y2="16.5"/><line x1="17.3" y1="31.6" x2="33.5" y2="15.4"/></svg></div>
+		<div class="swiper-button-prev swiper-button-outside swiper-button-prev-1"><svg class="qodef-swiper-arrow-left stroke-2" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 34.2 32.3" xml:space="preserve"><line x1="0.5" y1="16" x2="33.5" y2="16"/><line x1="0.3" y1="16.5" x2="16.2" y2="0.7"/><line x1="0" y1="15.4" x2="16.2" y2="31.6"/></svg></div>
+	<div class="swiper-button-next swiper-button-outside swiper-button-next-1"><svg class="qodef-swiper-arrow-right stroke-2" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 34.2 32.3" xml:space="preserve"><line x1="0" y1="16" x2="33" y2="16"/><line x1="17.3" y1="0.7" x2="33.2" y2="16.5"/><line x1="17.3" y1="31.6" x2="33.5" y2="15.4"/></svg></div>
 		<div class="swiper-pagination qodef-swiper-pagination-outside swiper-pagination-1"></div>
 				</div>
 				</div>
@@ -3321,7 +2078,7 @@ body { background: #ffffff; }
 					<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-word qodef--alignment-center qodef-qi--has-appear qodef--appear-from-top" data-appear-delay="100">
 						<div class="" data-appear-delay="100">
 							<!-- LOGO FOOTER -->
-							<img src="./public/logoblanc.png" alt="VISIO" style="max-width: 150px; height: auto; margin-bottom: 10px;">
+							<img src="./public/logoblanc.png" alt="VISIO" class="max-w-150 h-auto mb-10">
 						</div>
 </div>
 				</div>
@@ -3473,164 +2230,47 @@ mauritius</p>				</div>
 						</div> <!-- .site-info -->
 							</footer> <!-- #colophon .site-footer -->
 	</div>
-<script type="speculationrules">
-{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
-</script>
-			<script>
-				const lazyloadRunObserver = () => {
-					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
-					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
-						entries.forEach( ( entry ) => {
-							if ( entry.isIntersecting ) {
-								let lazyloadBackground = entry.target;
-								if( lazyloadBackground ) {
-									lazyloadBackground.classList.add( 'e-lazyloaded' );
-								}
-								lazyloadBackgroundObserver.unobserve( entry.target );
-							}
-						});
-					}, { rootMargin: '200px 0px 200px 0px' } );
-					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
-						lazyloadBackgroundObserver.observe( lazyloadBackground );
-					} );
-				};
-				const events = [
-					'DOMContentLoaded',
-					'elementor/lazyload/observe',
-				];
-				events.forEach( ( event ) => {
-					document.addEventListener( event, lazyloadRunObserver );
-				} );
-			</script>
-			<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js"></script>
-<script type="text/javascript" id="qi-addons-for-elementor-script-js-extra">
-/* <![CDATA[ */
-var qodefQiAddonsGlobal = {"vars":{"adminBarHeight":0,"iconArrowLeft":"<svg  xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewBox=\"0 0 34.2 32.3\" xml:space=\"preserve\" style=\"stroke-width: 2;\"><line x1=\"0.5\" y1=\"16\" x2=\"33.5\" y2=\"16\"\/><line x1=\"0.3\" y1=\"16.5\" x2=\"16.2\" y2=\"0.7\"\/><line x1=\"0\" y1=\"15.4\" x2=\"16.2\" y2=\"31.6\"\/><\/svg>","iconArrowRight":"<svg  xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewBox=\"0 0 34.2 32.3\" xml:space=\"preserve\" style=\"stroke-width: 2;\"><line x1=\"0\" y1=\"16\" x2=\"33\" y2=\"16\"\/><line x1=\"17.3\" y1=\"0.7\" x2=\"33.2\" y2=\"16.5\"\/><line x1=\"17.3\" y1=\"31.6\" x2=\"33.5\" y2=\"15.4\"\/><\/svg>","iconClose":"<svg  xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewBox=\"0 0 9.1 9.1\" xml:space=\"preserve\"><g><path d=\"M8.5,0L9,0.6L5.1,4.5L9,8.5L8.5,9L4.5,5.1L0.6,9L0,8.5L4,4.5L0,0.6L0.6,0L4.5,4L8.5,0z\"\/><\/g><\/svg>"}};
-/* ]]> */
-</script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/js/main.min.js?ver=1.8.9" id="qi-addons-for-elementor-script-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery.fitvids.js" id="fitvids-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jarallax.min.js" id="jarallax-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jarallax-video.min.js" id="jarallax-video-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/fluidbox/jquery.fluidbox.min.js" id="fluidbox-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery-validation/jquery.validate.js" id="jqueryvalidation-js"></script>
-<script type="text/javascript" id="jqueryvalidation-js-after">
-/* <![CDATA[ */
-(function($) { "use strict";
-$.extend($.validator.messages, {
-required: "This field is required.",
-remote: "Please fix this field.",
-email: "Please enter a valid email address.",
-url: "Please enter a valid URL.",
-date: "Please enter a valid date.",
-dateISO: "Please enter a valid date ( ISO ).",
-number: "Please enter a valid number.",
-digits: "Please enter only digits.",
-equalTo: "Please enter the same value again.",
-maxlength: $.validator.format("Please enter no more than {0} characters."),
-minlength: $.validator.format("Please enter at least {0} characters."),
-rangelength: $.validator.format("Please enter a value between {0} and {1} characters long."),
-range: $.validator.format("Please enter a value between {0} and {1}."),
-max: $.validator.format("Please enter a value less than or equal to {0}."),
-min: $.validator.format("Please enter a value greater than or equal to {0}."),
-step: $.validator.format("Please enter a multiple of {0}.")
-});
-})(jQuery);
-/* ]]> */
-</script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/inc/masonry/assets/js/plugins/isotope.pkgd.min.js?ver=3.0.6" id="isotope-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery.magnific-popup/jquery.magnific-popup.min.js" id="magnific-popup-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/owl-carousel/owl.carousel.min.js" id="owl-carousel-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/imagesloaded.min.js?ver=5.0.0" id="imagesloaded-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery.collagePlus.min.js" id="collagePlus-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery.fittext.js" id="fittext-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/resize-sensor.js" id="resize-sensor-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery.sticky-sidebar.min.js" id="sticky-sidebar-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/main.js" id="arkiz-main-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/pixelwars-core/themes/global/js/shortcodes.js" id="pixelwars-core-shortcodes-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/jquery/ui/tabs.min.js?ver=1.13.3" id="jquery-ui-tabs-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/plugins/fslightbox/fslightbox.min.js?ver=6.8.2" id="fslightbox-js"></script>
-<script type="text/javascript" id="mediaelement-core-js-before">
-/* <![CDATA[ */
-var mejsL10n = {"language":"en","strings":{"mejs.download-file":"Download File","mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen":"Fullscreen","mejs.play":"Play","mejs.pause":"Pause","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.live-broadcast":"Live Broadcast","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
-/* ]]> */
-</script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.17" id="mediaelement-core-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=6.8.2" id="mediaelement-migrate-js"></script>
-<script type="text/javascript" id="mediaelement-js-extra">
-/* <![CDATA[ */
-var _wpmejsSettings = {"pluginPath":"\/arkiz\/demo-01\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive","audioShortcodeLibrary":"mediaelement","videoShortcodeLibrary":"mediaelement"};
-/* ]]> */
-</script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=6.8.2" id="wp-mediaelement-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/mediaelement/renderers/vimeo.min.js?ver=4.2.17" id="mediaelement-vimeo-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/inc/masonry/assets/js/plugins/packery-mode.pkgd.min.js?ver=2.0.1" id="packery-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/plugins/swiper/8.4.5/swiper.min.js?ver=8.4.5" id="swiper-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/bdthemes-prime-slider-lite/assets/js/prime-slider-site.min.js?ver=3.17.6" id="prime-slider-site-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.27.7" id="elementor-webpack-runtime-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.27.7" id="elementor-frontend-modules-js"></script>
-<script type="text/javascript" id="elementor-frontend-js-before">
-/* <![CDATA[ */
-var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"3.27.7","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"e_swiper_latest":true,"e_onboarding":true,"home_screen":true,"nested-elements":true,"e_element_cache":true,"link-in-bio":true,"floating-buttons":true,"launchpad-checklist":true},"urls":{"assets":"https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3"},"nonces":{"floatingButtonsClickTracking":"a4258c8f22"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description"},"post":{"id":18735,"title":"Home-05%20%E2%80%93%20Arkiz.","excerpt":"","featuredImage":false}};
-/* ]]> */
-</script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.27.7" id="elementor-frontend-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/dist/hooks.min.js?ver=4d63a3d491d11ffd8ac6" id="wp-hooks-js"></script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6" id="wp-i18n-js"></script>
-<script type="text/javascript" id="wp-i18n-js-after">
-/* <![CDATA[ */
-wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
-/* ]]> */
-</script>
-<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/inc/plugins/elementor/assets/js/elementor.js?ver=6.8.2" id="qi-addons-for-elementor-elementor-js"></script>
 
-<script>
-// Gestion de l'état de langue avec mise en évidence EN-FR (persistée)
-const LANGUAGE_STORAGE_KEY = 'currentLanguage';
-
-function getCurrentLanguage() {
-    try {
-        return localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'EN';
-    } catch (e) {
-        return 'EN';
-    }
-}
-
-function setCurrentLanguage(lang) {
-    try {
-        localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
-    } catch (e) {
-        // ignore
-    }
-}
-
-function updateLanguageUI() {
-    const lang = getCurrentLanguage();
-    const languageBtn = document.getElementById('language-btn');
-    const languageMenuItem = document.querySelector('.menu-item-language a');
-
-    const btnEn = languageBtn ? languageBtn.querySelector('.lang-en') : null;
-    const btnFr = languageBtn ? languageBtn.querySelector('.lang-fr') : null;
-    const menuEn = languageMenuItem ? languageMenuItem.querySelector('.lang-en') : null;
-    const menuFr = languageMenuItem ? languageMenuItem.querySelector('.lang-fr') : null;
-
-    [btnEn, menuEn].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'EN'); });
-    [btnFr, menuFr].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'FR'); });
-
-    if (languageBtn) {
-        languageBtn.classList.toggle('active', lang === 'FR');
-    }
-}
-
-function toggleLanguage() {
-    const next = getCurrentLanguage() === 'EN' ? 'FR' : 'EN';
-    setCurrentLanguage(next);
-    updateLanguageUI();
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    updateLanguageUI();
-});
-</script>
+<script src="js/speculationrules.js"></script>
+<script src="js/lazyload.js"></script>
+<script type="text/javascript" src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js"></script>
+<script src="js/vendor-config/qi-addons-extra.js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/js/main.min.js?ver=1.8.9" id="qi-addons-for-elementor-script-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery.fitvids.js" id="fitvids-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jarallax.min.js" id="jarallax-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jarallax-video.min.js" id="jarallax-video-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/fluidbox/jquery.fluidbox.min.js" id="fluidbox-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery-validation/jquery.validate.js" id="jqueryvalidation-js"></script>
+<script src="js/vendor-config/jqueryvalidation-after.js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/inc/masonry/assets/js/plugins/isotope.pkgd.min.js?ver=3.0.6" id="isotope-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery.magnific-popup/jquery.magnific-popup.min.js" id="magnific-popup-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/owl-carousel/owl.carousel.min.js" id="owl-carousel-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/imagesloaded.min.js?ver=5.0.0" id="imagesloaded-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery.collagePlus.min.js" id="collagePlus-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery.fittext.js" id="fittext-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/resize-sensor.js" id="resize-sensor-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery.sticky-sidebar.min.js" id="sticky-sidebar-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/main.js" id="arkiz-main-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/pixelwars-core/themes/global/js/shortcodes.js" id="pixelwars-core-shortcodes-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/jquery/ui/tabs.min.js?ver=1.13.3" id="jquery-ui-tabs-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/plugins/fslightbox/fslightbox.min.js?ver=6.8.2" id="fslightbox-js"></script>
+<script src="js/vendor-config/mediaelement-core-before.js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.17" id="mediaelement-core-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=6.8.2" id="mediaelement-migrate-js"></script>
+<script src="js/vendor-config/mediaelement-js-extra.js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=6.8.2" id="wp-mediaelement-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/mediaelement/renderers/vimeo.min.js?ver=4.2.17" id="mediaelement-vimeo-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/inc/masonry/assets/js/plugins/packery-mode.pkgd.min.js?ver=2.0.1" id="packery-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/plugins/swiper/8.4.5/swiper.min.js?ver=8.4.5" id="swiper-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/bdthemes-prime-slider-lite/assets/js/prime-slider-site.min.js?ver=3.17.6" id="prime-slider-site-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.27.7" id="elementor-webpack-runtime-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.27.7" id="elementor-frontend-modules-js"></script>
+<script src="js/vendor-config/elementor-frontend-before.js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.27.7" id="elementor-frontend-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/dist/hooks.min.js?ver=4d63a3d491d11ffd8ac6" id="wp-hooks-js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6" id="wp-i18n-js"></script>
+<script src="js/vendor-config/wp-i18n-after.js"></script>
+<script src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/inc/plugins/elementor/assets/js/elementor.js?ver=6.8.2" id="qi-addons-for-elementor-elementor-js"></script>
+<script src="js/language.js"></script>
 </body>
 </html>

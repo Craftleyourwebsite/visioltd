@@ -1,0 +1,2 @@
+/* Extracted from index.html: intrinsic size for auto-sized images */
+img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }

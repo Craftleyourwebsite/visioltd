@@ -1,0 +1,118 @@
+/* Header / Logo / Site Branding - moved from index.html */
+
+/* Conteneur centré pour le branding */
+.site-branding-center {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  /* valeurs renforcées depuis les surcharges plus bas */
+  height: auto !important;
+  min-height: 80px !important;
+}
+
+/* Header - texte blanc par défaut */
+.site-header:not(.clone) .nav-menu a,
+.site-header:not(.clone) .menu-toggle .lines,
+.site-header:not(.clone) .menu-toggle .lines:before,
+.site-header:not(.clone) .menu-toggle .lines:after {
+  color: #ffffff !important;
+}
+.site-header:not(.clone) .nav-menu a:hover { color: #ffffff !important; }
+
+/* Header en mode scroll - header noir, texte blanc */
+.site-header.clone .header-wrap:before { background: #000000 !important; opacity: 1 !important; }
+.site-header.clone .nav-menu a,
+.site-header.clone .menu-toggle .lines,
+.site-header.clone .menu-toggle .lines:before,
+.site-header.clone .menu-toggle .lines:after { color: #ffffff !important; }
+.site-header.clone .nav-menu a:hover { color: #ffffff !important; }
+
+/* Logo toujours blanc (inversé) */
+.site-header:not(.clone) .logo-image,
+.site-header.clone .logo-image { filter: brightness(0) invert(1) !important; }
+
+/* Élément de menu actif (comme aboutus.html) */
+.site-header .nav-menu .current-menu-item a,
+.site-header.clone .nav-menu .current-menu-item a { color: #000000 !important; }
+.site-header .nav-menu .current-menu-item a:hover,
+.site-header.clone .nav-menu .current-menu-item a:hover { color: #000000 !important; }
+
+/* Mise en page du header */
+.layout-medium { display: flex !important; align-items: center !important; justify-content: space-between !important; }
+.nav-menu { flex: 1; display: flex; justify-content: center; }
+.language-switcher { flex-shrink: 0; }
+
+/* S'assurer que le logo est toujours visible */
+.site-title a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-title a img {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Styles pour l'image du logo */
+.logo-image {
+  max-height: 50px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+}
+
+/* Logo en mode normal (header transparent) */
+.site-header:not(.clone) .logo-image {
+  max-height: 50px;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Logo en mode scroll (header clone) */
+.site-header.clone .logo-image {
+  max-height: 45px;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Surcharger les limitations de hauteur du thème */
+.site-branding {
+  max-height: none !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Hauteur réduite pour le header cloné */
+.site-header.clone .site-branding-center {
+  min-height: 60px !important;
+}
+
+/* Responsive pour mobile */
+@media screen and (max-width: 991px) {
+  .site-title img.logo-image {
+    max-height: 35px !important;
+  }
+
+  .site-header:not(.clone) .logo-image {
+    max-height: 35px !important;
+  }
+
+  .site-header.clone .logo-image {
+    max-height: 30px !important;
+  }
+
+  .site-branding-center {
+    min-height: 60px !important;
+  }
+
+  .site-header.clone .site-branding-center {
+    min-height: 50px !important;
+  }
+}

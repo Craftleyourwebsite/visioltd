@@ -1,0 +1,267 @@
+/* Extracted from index.html: styles for .history-mission-visio-card and footer title alignment */
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+	.history-mission-visio-card {
+		position: relative !important;
+		top: auto !important;
+		left: auto !important;
+		right: auto !important;
+		transform: none !important;
+		width: 90% !important;
+		max-width: 400px !important;
+		height: auto !important;
+		min-height: 350px !important;
+		margin: 10px auto !important;
+		padding: 30px 25px !important;
+		border-radius: 12px !important;
+		box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
+		z-index: 1000 !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-navigation {
+		display: flex !important;
+		justify-content: space-between !important;
+		margin-bottom: 20px !important;
+		border-bottom: 1px solid rgba(255,255,255,0.3) !important;
+		padding-bottom: 10px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-navigation li {
+		margin: 0 !important;
+		flex: 1 !important;
+		text-align: center !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-navigation a {
+		font-size: 1em !important;
+		padding: 8px 4px !important;
+		display: block !important;
+		border-radius: 6px !important;
+		font-weight: 500 !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content {
+		min-height: 150px !important;
+		max-height: 200px !important;
+		overflow-y: auto !important;
+		overflow-x: hidden !important;
+		padding-right: 10px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar {
+		width: 6px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-track {
+		background: rgba(255,255,255,0.1) !important;
+		border-radius: 3px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-thumb {
+		background: rgba(255,255,255,0.3) !important;
+		border-radius: 3px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content p {
+		font-size: 0.95em !important;
+		line-height: 1.6 !important;
+		margin-bottom: 10px !important;
+	}
+}
+
+/* Responsive pour très petits écrans */
+@media (max-width: 480px) {
+	.history-mission-visio-card {
+		width: 92% !important;
+		max-width: 350px !important;
+		padding: 25px 20px !important;
+		min-height: 300px !important;
+		margin: 30px auto !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-navigation a {
+		font-size: 0.9em !important;
+		padding: 6px 3px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content {
+		max-height: 180px !important;
+		overflow-y: auto !important;
+		overflow-x: hidden !important;
+		padding-right: 8px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar {
+		width: 5px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-track {
+		background: rgba(255,255,255,0.1) !important;
+		border-radius: 2px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-thumb {
+		background: rgba(255,255,255,0.3) !important;
+		border-radius: 2px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content p {
+		font-size: 0.9em !important;
+		line-height: 1.5 !important;
+	}
+}
+
+/* Responsive pour très petits écrans */
+@media (max-width: 360px) {
+	.history-mission-visio-card {
+		width: 95% !important;
+		max-width: 320px !important;
+		padding: 20px 15px !important;
+		min-height: 280px !important;
+		margin: 20px auto !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-navigation a {
+		font-size: 0.85em !important;
+		padding: 5px 2px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content {
+		max-height: 160px !important;
+		overflow-y: auto !important;
+		overflow-x: hidden !important;
+		padding-right: 6px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-track {
+		background: rgba(255,255,255,0.1) !important;
+		border-radius: 2px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-thumb {
+		background: rgba(255,255,255,0.3) !important;
+		border-radius: 2px !important;
+	}
+	
+	.history-mission-visio-card .qodef-tabs-horizontal-content p {
+		font-size: 0.85em !important;
+		line-height: 1.4 !important;
+	}
+}
+
+/* Alignement des titres du footer */
+.elementor-element-f055c35 .qodef-m-title,
+.elementor-element-d726f80 .qodef-m-title,
+.elementor-element-701fde8 .qodef-m-title {
+	text-align: left !important;
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+}
+
+.elementor-element-f055c35 .elementor-widget-container,
+.elementor-element-d726f80 .elementor-widget-container,
+.elementor-element-701fde8 .elementor-widget-container {
+	text-align: left !important;
+}
+
+.elementor-element-f055c35 .qodef-e-word,
+.elementor-element-d726f80 .qodef-e-word,
+.elementor-element-701fde8 .qodef-e-word {
+	text-align: left !important;
+	display: inline-block !important;
+}
+
+/* Base desktop styles for the History/Mission/Visio card */
+.history-mission-visio-card {
+	position: absolute !important;
+	top: 50% !important;
+	right: max(calc(50% - 570px), 24px) !important;
+	left: auto !important;
+	transform: translateY(-50%) !important;
+	background: rgba(0, 0, 0, 0.95) !important;
+	padding: 50px !important;
+	border-radius: 0 !important;
+	width: 500px !important;
+	height: 450px !important;
+	text-align: left !important;
+	z-index: 10 !important;
+	backdrop-filter: blur(20px) !important;
+	box-shadow: 0 25px 50px rgba(0,0,0,0.5) !important;
+	overflow: hidden !important;
+}
+
+/* Ensure text inside shortcode is white */
+.history-mission-visio-card .qodef-shortcode {
+	color: white !important;
+}
+
+/* Tabs header styling */
+.history-mission-visio-card .qodef-tabs-horizontal-navigation {
+	display: flex !important;
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	border-bottom: 2px solid rgba(255,255,255,0.3) !important;
+	margin-bottom: 30px !important;
+}
+
+.history-mission-visio-card .qodef-tabs-horizontal-navigation li {
+	margin-right: 30px !important;
+}
+
+.history-mission-visio-card .qodef-tab-title {
+	margin: 0 !important;
+}
+
+.history-mission-visio-card .tab-link {
+	color: rgba(255,255,255,0.7) !important;
+	text-decoration: none !important;
+	font-size: 1.1em !important;
+	font-weight: bold !important;
+	padding: 10px 0 !important;
+	transition: all 0.3s ease !important;
+	cursor: pointer !important;
+}
+
+.history-mission-visio-card .tab-link--active {
+	color: white !important;
+	border-bottom: 3px solid white !important;
+}
+
+/* Tab content layout */
+.history-mission-visio-card .tab-content-wrapper {
+	display: flex;
+	align-items: flex-start;
+	gap: 30px;
+	min-height: 200px;
+}
+
+.history-mission-visio-card .tab-content-column {
+	flex: 1;
+	padding-right: 0;
+}
+
+.history-mission-visio-card .tab-content-text {
+	color: white !important;
+	font-size: 1.05em !important;
+	line-height: 1.7 !important;
+}
+
+.history-mission-visio-card .tab-content-text--mb {
+	margin-bottom: 20px !important;
+}
+
+/* Default tab visibility */
+#tab-history {
+	display: block !important;
+	opacity: 1 !important;
+	transition: opacity 0.5s ease !important;
+}
+
+#tab-mission,
+#tab-visio {
+	display: none !important;
+	opacity: 0 !important;
+	transition: opacity 0.5s ease !important;
+}
