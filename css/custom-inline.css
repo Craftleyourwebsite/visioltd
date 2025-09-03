@@ -129,3 +129,23 @@
 		font-size: 0.8em !important;
 	}
 }
+
+/* Fix pour les boutons du slider - s'assurer qu'ils sont cliquables */
+.bdt-slide-btn {
+	position: relative !important;
+	z-index: 1000 !important;
+	pointer-events: auto !important;
+	cursor: pointer !important;
+}
+
+.bdt-prime-slider-arrow-button {
+	position: relative !important;
+	z-index: 1000 !important;
+	pointer-events: auto !important;
+}
+
+.bdt-prime-slider-button-wrapper {
+	position: relative !important;
+	z-index: 1001 !important;
+	pointer-events: auto !important;
+}
