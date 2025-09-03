@@ -5,8 +5,8 @@
     ids.forEach((name) => {
       const el = document.getElementById('tab-' + name);
       if (el) {
-        el.style.display = 'none';
-        el.style.opacity = '0';
+        el.style.setProperty('display', 'none', 'important');
+        el.style.setProperty('opacity', '0', 'important');
       }
     });
   }
@@ -27,9 +27,9 @@
     setTimeout(() => {
       const target = document.getElementById('tab-' + tabName);
       if (target) {
-        target.style.display = 'block';
+        target.style.setProperty('display', 'block', 'important');
         setTimeout(() => {
-          target.style.opacity = '1';
+          target.style.setProperty('opacity', '1', 'important');
         }, 50);
       }
     }, 250);
@@ -51,6 +51,16 @@
     // Ensure initial state consistent with CSS defaults
     // History should be visible by default per CSS; ensure classes match
     setActiveLink('history');
+    
+    // Force initial state to match CSS
+    hideAll();
+    setTimeout(() => {
+      const historyTab = document.getElementById('tab-history');
+      if (historyTab) {
+        historyTab.style.setProperty('display', 'block', 'important');
+        historyTab.style.setProperty('opacity', '1', 'important');
+      }
+    }, 100);
   }
 
   if (document.readyState === 'loading') {
