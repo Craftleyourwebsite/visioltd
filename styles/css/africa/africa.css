@@ -884,3 +884,23 @@ html .site-header .site-title a { padding: 12px 24px; }
     .qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tabs-horizontal-content { margin-left: 10px !important; }
     .qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tabs-horizontal-content p { font-size: 13px !important; line-height: 1.5 !important; }
 }
+
+/* Fix pour les boutons du slider - s'assurer qu'ils sont cliquables */
+.bdt-slide-btn {
+	position: relative !important;
+	z-index: 1000 !important;
+	pointer-events: auto !important;
+	cursor: pointer !important;
+}
+
+.bdt-prime-slider-arrow-button {
+	position: relative !important;
+	z-index: 1000 !important;
+	pointer-events: auto !important;
+}
+
+.bdt-prime-slider-button-wrapper {
+	position: relative !important;
+	z-index: 1001 !important;
+	pointer-events: auto !important;
+}
