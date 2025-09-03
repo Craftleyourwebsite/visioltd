@@ -463,19 +463,7 @@
         padding-top: 0 !important;
         padding-bottom: 0 !important;
     }
-    .site-header .site-branding {
-        max-height: 56px !important; /* match header-wrap-inner */
-        display: flex !important;
-        align-items: center !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-    }
-    .site-title img.logo-image,
-    .site-header:not(.clone) .logo-image,
-    .site-header.clone .logo-image {
-        max-height: 24px !important; /* aboutus max on mobile */
-        width: auto !important;
-    }
+
         /* Position identique à aboutus: pousse à droite dans la ligne du header */
         .menu-toggle { height: 30px !important; width: 30px !important; display: block !important; order: 1 !important; margin-left: auto !important; }
         .menu-wrap { padding-top: 0 !important; padding-bottom: 0 !important; min-height: 56px !important; display: flex !important; align-items: center !important; }
@@ -811,6 +799,7 @@ h1, .entry-title, .footer-subscribe h3, .widget_categories ul li, .widget_recent
 
 @media screen and (min-width: 992px) { .site-title img { max-height: 44px; } }
 
+@media screen and (max-width: 991px) { .site-title img { max-height: 24px; } }
 
 /* Remove extra padding on logo link to eliminate header vertical offset */
 html .site-header .site-title a { padding: 0 !important; }
@@ -1053,7 +1042,7 @@ body { background: #ffffff; }
 <li id="menu-item-23186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23186"><a href="aboutus.html">About Us</a></li>
 <li id="menu-item-23188" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-23123 current_page_item menu-item-23188"><a href="service.html" aria-current="page">Services</a></li>
 <li id="menu-item-15520" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15520"><a href="project.html">Projects</a></li>
-<li id="menu-item-blog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-blog"><a href="blog.html">Blog</a></li>
+<li id="menu-item-news" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-news"><a href="news.html">News</a></li>
 <!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 <li id="menu-item-23184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184"><a href="contact.html">Contact</a></li>
 <li id="menu-item-language" class="menu-item menu-item-language"><a href="#" onclick="toggleLanguage(); return false;">Language: <span class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span class="lang-part lang-fr">FR</span></a></li>
