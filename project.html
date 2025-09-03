@@ -403,6 +403,22 @@
     }
 
     /* === HEADER MOBILE – aligné sur Services === */
+    /* Force hide mobile drawer on desktop */
+    @media screen and (min-width: 992px) {
+        #mobile-drawer {
+            display: none !important;
+            visibility: hidden !important;
+            transform: translateX(100%) !important;
+        }
+        #menu-backdrop {
+            display: none !important;
+            visibility: hidden !important;
+        }
+        body.is-menu-toggled-on {
+            overflow: auto !important;
+        }
+    }
+
     @media screen and (max-width: 991px) {
         :root { --projectHeaderH: 64px; }
         /* Header fixé */
@@ -1103,12 +1119,13 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!siteHeader || !menuToggle || !navMenu) return;
 
   function ensureMobileDrawer() {
-    if (!mobileDrawer) {
+    // Check if drawer exists in DOM, if not recreate it
+    var existingDrawer = document.getElementById('mobile-drawer');
+    if (!existingDrawer) {
       mobileDrawer = document.createElement('nav');
       mobileDrawer.id = 'mobile-drawer';
       mobileDrawer.setAttribute('aria-label', 'Mobile Navigation');
-    }
-    if (!document.getElementById('mobile-drawer')) {
+      
       // Build drawer content mirroring the desktop menu
       var list = document.createElement('ul');
       var sourceList = navMenu ? navMenu.querySelector('ul') : null;
@@ -1121,41 +1138,65 @@ document.addEventListener('DOMContentLoaded', function() {
           list.appendChild(clone);
         });
       }
-      mobileDrawer.innerHTML = '';
+      
       // Close button inside drawer
       var closeBtn = document.createElement('button');
       closeBtn.type = 'button';
       closeBtn.className = 'drawer-close';
       closeBtn.setAttribute('aria-label', 'Close menu');
       closeBtn.innerHTML = '&times;';
+      
       mobileDrawer.appendChild(closeBtn);
       mobileDrawer.appendChild(list);
       document.body.appendChild(mobileDrawer);
-      closeBtn.addEventListener('click', function(e){ e.preventDefault(); closeMenu(); });
+      
+      // Add event listener to close button
+      closeBtn.addEventListener('click', function(e){ 
+        e.preventDefault(); 
+        closeMenu(); 
+      });
+      
+      // Add event listeners to menu items
+      var menuItems = mobileDrawer.querySelectorAll('a');
+      menuItems.forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          closeMenu();
+        });
+      });
+    } else {
+      mobileDrawer = existingDrawer;
     }
   }
 
   function openMenu() {
     ensureMobileDrawer();
+    
+    // Ensure mobile drawer is visible and positioned correctly
+    if (mobileDrawer) {
+      mobileDrawer.style.transform = 'translateX(0)';
+      mobileDrawer.setAttribute('aria-hidden', 'false');
+    }
+    
     document.body.classList.add('is-menu-toggled-on');
     root.classList.add('is-menu-toggled-on');
+    
     // Empêcher le scroll sur html aussi (certains navigateurs ignorent body)
     document.documentElement.style.overflow = 'hidden';
     document.documentElement.style.height = '100vh';
     document.body.style.height = '100vh';
+    
     // Ajouter un backdrop cliquable
-    if (!backdrop) {
+    var existingBackdrop = document.getElementById('menu-backdrop');
+    if (!existingBackdrop) {
       backdrop = document.createElement('div');
       backdrop.id = 'menu-backdrop';
       backdrop.setAttribute('aria-hidden', 'true');
-    }
-    if (!document.getElementById('menu-backdrop')) {
       document.body.appendChild(backdrop);
     }
+    
     // Accessibilité
     menuToggle.setAttribute('aria-expanded', 'true');
     if (navMenu) navMenu.setAttribute('aria-hidden', 'false');
-    if (mobileDrawer) mobileDrawer.setAttribute('aria-hidden', 'false');
   }
   function closeMenu() {
     document.body.classList.remove('is-menu-toggled-on');
@@ -1163,17 +1204,31 @@ document.addEventListener('DOMContentLoaded', function() {
     document.documentElement.style.overflow = '';
     document.documentElement.style.height = '';
     document.body.style.height = '';
+    
     // Retirer le backdrop
     var existing = document.getElementById('menu-backdrop');
     if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+    
+    // Hide mobile drawer but don't remove it from DOM
+    if (mobileDrawer) {
+      mobileDrawer.style.transform = 'translateX(100%)';
+      mobileDrawer.setAttribute('aria-hidden', 'true');
+    }
+    
     // Accessibilité
     menuToggle.setAttribute('aria-expanded', 'false');
     if (navMenu) navMenu.setAttribute('aria-hidden', 'true');
-    if (mobileDrawer) mobileDrawer.setAttribute('aria-hidden', 'true');
   }
   function toggleMenu(e) {
     e && e.preventDefault();
-    if (document.body.classList.contains('is-menu-toggled-on')) closeMenu(); else openMenu();
+    console.log('Toggle menu called, current state:', document.body.classList.contains('is-menu-toggled-on'));
+    if (document.body.classList.contains('is-menu-toggled-on')) {
+      console.log('Closing menu');
+      closeMenu(); 
+    } else {
+      console.log('Opening menu');
+      openMenu();
+    }
   }
 
   if (navMenu && !navMenu.id) { navMenu.id = 'primary-nav'; }
@@ -1185,20 +1240,40 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   if (navMenu) { navMenu.setAttribute('aria-hidden', 'true'); }
 
-  var onToggle = function(e){ e.preventDefault(); e.stopPropagation(); if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation(); toggleMenu(e); };
+  var onToggle = function(e){ 
+    e.preventDefault(); 
+    e.stopPropagation(); 
+    if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation(); 
+    console.log('Menu toggle clicked');
+    toggleMenu(e); 
+  };
+  
+  // Remove any existing listeners first
+  menuToggle.removeEventListener('click', onToggle, true);
+  menuToggle.removeEventListener('touchend', onToggle, true);
+  
+  // Add fresh listeners
   menuToggle.addEventListener('click', onToggle, true);
   // Improve responsiveness on some mobile devices (only once)
   menuToggle.addEventListener('touchend', onToggle, { passive: false, capture: true });
 
-  // Close when clicking a link
+  // Close when clicking a link in the original nav menu
   if (navMenu) {
-  navMenu.addEventListener('click', function(e){
-    var target = e.target;
-    if (target && target.tagName === 'A') closeMenu();
+    navMenu.addEventListener('click', function(e){
+      var target = e.target;
+      if (target && target.tagName === 'A') {
+        console.log('Link clicked in nav menu, closing menu');
+        closeMenu();
+      }
     });
   }
+  
+  // Close when clicking a link in the mobile drawer
   document.addEventListener('click', function(e){
-    if (mobileDrawer && mobileDrawer.contains(e.target) && e.target.tagName === 'A') closeMenu();
+    if (mobileDrawer && mobileDrawer.contains(e.target) && e.target.tagName === 'A') {
+      console.log('Link clicked in mobile drawer, closing menu');
+      closeMenu();
+    }
   });
 
   // Close when clicking on backdrop or outside panel
@@ -1218,16 +1293,53 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.key === 'Escape') closeMenu();
   });
 
-  // Close on resize to desktop
-  window.addEventListener('resize', function(){
-    if (window.innerWidth > 991) closeMenu();
-    updateMobileHeaderOffset();
-  });
+
   // Initial update on load
   updateMobileHeaderOffset();
   // Force closed state on load to ensure burger is visible
   try { closeMenu(); } catch(e) {}
   setTimeout(function(){ try { closeMenu(); } catch(e) {} }, 0);
+
+  // Additional listener for orientation change and rapid resize
+  window.addEventListener('orientationchange', function(){
+    setTimeout(function(){
+      if (window.innerWidth > 991) {
+        closeMenu();
+        // Force close any remaining mobile drawer elements
+        var drawer = document.getElementById('mobile-drawer');
+        if (drawer) {
+          drawer.style.transform = 'translateX(100%)';
+        }
+        // Remove any backdrop
+        var backdrop = document.getElementById('menu-backdrop');
+        if (backdrop && backdrop.parentNode) {
+          backdrop.parentNode.removeChild(backdrop);
+        }
+      }
+    }, 100);
+  });
+
+  // Debounced resize handler for better performance
+  var resizeTimeout;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function(){
+      if (window.innerWidth > 991) {
+        closeMenu();
+        // Force close any remaining mobile drawer elements
+        var drawer = document.getElementById('mobile-drawer');
+        if (drawer) {
+          drawer.style.transform = 'translateX(100%)';
+        }
+        // Remove any backdrop
+        var backdrop = document.getElementById('menu-backdrop');
+        if (backdrop && backdrop.parentNode) {
+          backdrop.parentNode.removeChild(backdrop);
+        }
+      }
+      updateMobileHeaderOffset();
+    }, 150);
+  });
 });
 // === Projects filter (bottom bar) ===
 document.addEventListener('DOMContentLoaded', function() {
