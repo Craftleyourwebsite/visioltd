@@ -10,6 +10,17 @@
 <meta name='robots' content='max-image-preview:large' />
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }
 	
+	/* --- STYLES SPÉCIFIQUES POUR LE HEADER PROJECT - NOIR EN PERMANENCE --- */
+	.header--project .header-wrap:before,
+	.header--project.clone .header-wrap:before,
+	.header--project .header-wrap,
+	.header--project.clone .header-wrap,
+	.header--project .header-wrap-inner,
+	.header--project.clone .header-wrap-inner { 
+		background: #000 !important; 
+		opacity: 1 !important; 
+	}
+
 	/* Centrage du logo */
 	.site-branding-wrap {
 		display: flex;
@@ -171,13 +182,31 @@
 		margin: 0 8px; /* spacing around dash */
 		opacity: 0.6;
 	}
-
-	/* S'assurer que le logo reste blanc (car c'est logoblanc.png) */
-	.site-header .logo-image,
+/* S'assurer que le logo reste blanc (car c'est logoblanc.png) */
+.site-header .logo-image,
 	.site-header.clone .logo-image {
 		filter: brightness(0) invert(1) !important;
 		opacity: 1 !important;
 		visibility: visible !important;
+	}
+
+	/* Surcharger les styles génériques pour le logo */
+	.site-header .site-title img,
+	.site-header.clone .site-title img {
+		max-height: 50px !important;
+		width: auto !important;
+		display: block !important;
+		margin: 0 auto !important;
+		transform: translateY(12px) !important;
+	}
+
+	@media screen and (max-width: 991px) {
+		.site-header .logo-image,
+		.site-header.clone .logo-image,
+		.site-header .site-title img,
+		.site-header.clone .site-title img {
+			max-height: 30px !important;
+		}
 	}
 
 	.aboutus-language-btn:hover {
@@ -801,8 +830,8 @@ h1, .entry-title, .footer-subscribe h3, .widget_categories ul li, .widget_recent
 
 @media screen and (max-width: 991px) { .site-title img { max-height: 24px; } }
 
-/* Remove extra padding on logo link to eliminate header vertical offset */
-html .site-header .site-title a { padding: 0 !important; }
+/* Padding du logo identique à project.html */
+html .site-header .site-title a { padding: 12px 24px; }
 
 @media screen and (min-width: 992px) { .site { margin-top: 0px; margin-bottom: 0px; } }
 
@@ -1005,7 +1034,7 @@ body { background: #ffffff; }
             </head>
 <body class="wp-singular page-template page-template-elementor_header_footer page page-id-23123 wp-theme-arkiz qodef-qi--no-touch qi-addons-for-elementor-1.8.9 elementor-default elementor-template-full-width elementor-kit-11 elementor-page elementor-page-23123">
 		    <div id="page" class="hfeed site">
-		        <header id="masthead" class="site-header" role="banner">
+		        <header id="masthead" class="site-header header--project" role="banner">
 						<div class="header-wrap" data-parallax-video="">
 				<div class="header-wrap-inner">
 					<div class="site-branding">
