@@ -47,7 +47,7 @@
 	}
 	
 	.logo-image {
-		max-height: 20px;
+		max-height: 30px;
 		width: auto;
 		display: block;
 		margin: 0 auto;
@@ -75,9 +75,9 @@
 		/* Centrer verticalement la marque et ajuster le logo */
 		.site-branding { max-height: 64px !important; display: flex; align-items: center; }
 		.site-title a { display: flex; align-items: center; }
-		.logo-image { max-height: 20px !important; }
+		.logo-image { max-height: 30px !important; }
 		.logo-image {
-			max-height: 16px;
+			max-height: 24px;
 		}
 	}
 	
@@ -205,6 +205,17 @@
 		filter: brightness(0) invert(1) !important;
 		opacity: 1 !important;
 		visibility: visible !important;
+	}
+
+	/* Logo en mobile - décalé de 14px vers le bas */
+	@media screen and (max-width: 991px) {
+		.site-header .site-title img {
+			max-height: 30px !important;
+			width: auto !important;
+			display: block !important;
+			margin: 0 auto !important;
+			transform: translateY(14px) !important;
+		}
 	}
 
 	.blog-language-btn:hover {
@@ -448,9 +459,9 @@
 		height: 30px;
 		cursor: pointer;
 	}
-	.menu-toggle .lines { display: block; width: 25px; height: 2px; background: #ffffff; position: relative; top: 50%; transform: translateY(-50%); transition: all 0.3s ease; }
+	.menu-toggle .lines { display: block; width: 30px; height: 3px; background: #ffffff; position: relative; top: 50%; transform: translateY(-50%); transition: all 0.3s ease; }
 	.menu-toggle .lines:before,
-	.menu-toggle .lines:after { content: ''; position: absolute; left: 0; width: 25px; height: 2px; background: #ffffff; transition: all 0.3s ease; }
+	.menu-toggle .lines:after { content: ''; position: absolute; left: 0; width: 30px; height: 3px; background: #ffffff; transition: all 0.3s ease; }
 	.menu-toggle .lines:before { top: -8px; }
 	.menu-toggle .lines:after { bottom: -8px; }
 	.nav-menu { order: 2 !important; }
@@ -460,7 +471,7 @@
 	@media screen and (max-width: 991px) {
 		/* Positionner le hamburger en haut à droite du header */
 		.site-header .header-wrap-inner { position: relative; }
-		.site-header .menu-toggle { position: absolute; right: 16px; top: 18px; margin-left: 0 !important; z-index: 1001; }
+		.site-header .menu-toggle { position: absolute; right: 16px; top: 6px; margin-left: 0 !important; z-index: 1001; }
 
 		.language-switcher { display: none !important; }
 		.menu-item-language { display: block !important; }

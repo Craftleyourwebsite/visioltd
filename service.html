@@ -36,6 +36,13 @@
 		align-items: center;
 		flex: 1;
 	}
+
+	.site-title a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-decoration: none;
+	}
 	
 	
 	
@@ -190,14 +197,48 @@
 		visibility: visible !important;
 	}
 
-	/* Surcharger les styles génériques pour le logo */
-	.site-header .site-title img,
-	.site-header.clone .site-title img {
-		max-height: 46px !important;
-		width: auto !important;
-		display: block !important;
-		margin: 0 auto !important;
-		transform: translateY(15px) !important;
+	/* Surcharger les styles génériques pour le logo - desktop uniquement */
+	@media screen and (min-width: 992px) {
+		.site-header .site-title img {
+			max-height: 46px !important;
+			width: auto !important;
+			display: block !important;
+			margin: 0 auto !important;
+			transform: translateY(14px) !important;
+		}
+	}
+
+	/* Logo en mobile - décalé de 14px vers le bas */
+	@media screen and (max-width: 991px) {
+		.site-header .site-title img {
+			max-height: 46px !important;
+			width: auto !important;
+			display: block !important;
+			margin: 0 auto !important;
+			transform: translateY(14px) !important;
+		}
+	}
+
+	/* Logo en mode scroll (clone) - décalé de 3px vers le bas en desktop */
+	@media screen and (min-width: 992px) {
+		.site-header.clone .site-title img {
+			max-height: 46px !important;
+			width: auto !important;
+			display: block !important;
+			margin: 0 auto !important;
+			transform: translateY(3px) !important;
+		}
+	}
+
+	/* Logo en mode scroll (clone) - centré normalement en mobile */
+	@media screen and (max-width: 991px) {
+		.site-header.clone .site-title img {
+			max-height: 46px !important;
+			width: auto !important;
+			display: block !important;
+			margin: 0 auto !important;
+			transform: none !important;
+		}
 	}
 
 	@media screen and (max-width: 991px) {
@@ -484,13 +525,18 @@
         padding-top: 0 !important;
     }
 
-    /* === Hauteur/centrage du header en mobile (évite l'écrasement et aligne le burger) === */
+    /* === Centrage du header - identique à aboutus.html === */
     .site-header .header-wrap-inner {
-        min-height: 56px !important; /* aboutus mobile height */
         display: flex !important;
         align-items: center !important;
         padding-top: 0 !important;
         padding-bottom: 0 !important;
+    }
+
+    /* Centrage vertical du site-branding */
+    .site-header .site-branding {
+        display: flex !important;
+        align-items: center !important;
     }
 
         /* Position identique à aboutus: pousse à droite dans la ligne du header */
