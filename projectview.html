@@ -1067,6 +1067,62 @@
 			}
 		}
 	</style>
+	<style>
+		/* Project Gallery Grid - 3x3 Centered */
+		#project-gallery-grid {
+			display: grid !important;
+			grid-template-columns: repeat(3, 1fr) !important;
+			gap: 20px !important;
+			width: 100% !important;
+			max-width: 1200px !important;
+			margin: 0 auto !important;
+			position: relative !important;
+			padding: 20px 0 !important;
+		}
+
+		#project-gallery-grid .qodef-grid-item {
+			width: 100% !important;
+			padding: 0 !important;
+			box-sizing: border-box !important;
+			position: static !important;
+			opacity: 1 !important;
+			visibility: visible !important;
+			display: block !important;
+		}
+
+		#project-gallery-grid .qodef-grid-item img {
+			width: 100% !important;
+			height: auto !important;
+			display: block !important;
+			border-radius: 4px;
+			transition: transform 0.3s ease;
+		}
+
+		#project-gallery-grid .qodef-grid-item img:hover {
+			transform: scale(1.02);
+		}
+
+		/* Tablet - 2 Columns */
+		@media (max-width: 1024px) {
+			#project-gallery-grid {
+				grid-template-columns: repeat(2, 1fr) !important;
+				padding: 20px !important;
+			}
+		}
+
+		/* Mobile - 1 Column */
+		@media (max-width: 680px) {
+			#project-gallery-grid {
+				grid-template-columns: 1fr !important;
+				padding: 20px !important;
+			}
+		}
+
+		/* Disable Masonry Sizer in simple grid mode */
+		.qodef-qi-grid-masonry-sizer {
+			display: none !important;
+		}
+	</style>
 </head>
 
 <body
@@ -1347,76 +1403,27 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="elementor-element elementor-element-5818de5 -bg-dark e-flex e-con-boxed e-con e-parent"
-				data-element_type="container" data-id="5818de5"
-				data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-				<div class="e-con-inner">
-					<div class="elementor-element elementor-element-1343493 e-con-full e-flex e-con e-child"
-						data-element_type="container" data-id="1343493">
-						<div class="elementor-element elementor-element-2e2c56c e-con-full e-flex e-con e-child"
-							data-element_type="container" data-id="2e2c56c">
-							<div class="elementor-element elementor-element-d638e9d e-con-full e-flex e-con e-child"
-								data-element_type="container" data-id="d638e9d">
-								<div class="elementor-element elementor-element-ce90da6 elementor-widget elementor-widget-heading"
-									data-element_type="widget" data-id="ce90da6" data-widget_type="heading.default">
-									<div class="elementor-widget-container">
-										<h4 class="elementor-heading-title elementor-size-default">— Collaboration</h4>
-									</div>
-								</div>
+				<div class="elementor-element e-flex e-con-boxed e-con e-parent" data-element_type="container"
+					id="project-gallery-section"
+					style="display: block !important; padding: 100px 0; background: #fff; position: relative; z-index: 10;">
+					<div class="e-con-inner">
+						<div class="elementor-element elementor-widget elementor-widget-heading"
+							data-element_type="widget" data-widget_type="heading.default">
+							<div class="elementor-widget-container">
+								<h4 class="elementor-heading-title elementor-size-default">— Project Gallery</h4>
 							</div>
-							<div class="elementor-element elementor-element-3d40624 e-con-full e-flex e-con e-child"
-								data-element_type="container" data-id="3d40624"></div>
 						</div>
-						<div class="elementor-element elementor-element-6622792 e-con-full e-flex e-con e-child"
-							data-element_type="container" data-id="6622792">
-							<div class="elementor-element elementor-element-07a9aeb e-con-full e-flex e-con e-child"
-								data-element_type="container" data-id="07a9aeb">
-								<div class="elementor-element elementor-element-a1c9678 elementor-invisible elementor-widget elementor-widget-qi_addons_for_elementor_animated_text"
-									data-element_type="widget" data-id="a1c9678"
-									data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
-									data-widget_type="qi_addons_for_elementor_animated_text.default">
-									<div class="elementor-widget-container">
-										<div
-											class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-letter qodef-qi--has-appear qodef--appear-fade">
-											<h1 class="qodef-m-title"><span class="qodef-e-word-holder">Let's</span>
-												<span class="qodef-e-word-holder">work</span> <span
-													class="qodef-e-word-holder">together.</span>
-											</h1>
+						<div class="elementor-element e-con-full e-flex e-con e-child" data-element_type="container">
+							<div class="elementor-element elementor-widget elementor-widget-qi_addons_for_elementor_image_gallery_masonry"
+								data-element_type="widget"
+								data-widget_type="qi_addons_for_elementor_image_gallery_masonry.default">
+								<div class="elementor-widget-container">
+									<div
+										class="qodef-shortcode qodef-m qodef-qi-image-gallery-masonry qodef-qi-fslightbox-popup qodef-popup-gallery qodef-image--hover-zoom qodef-image--hover-from-top qodef-qi-grid qodef-layout--qi-masonry qodef-items--fixed qodef-col-num--3 qodef-responsive--custom qodef-col-num--1680--3 qodef-col-num--1440--3 qodef-col-num--1366--3 qodef-col-num--1024--3 qodef-col-num--768--3 qodef-col-num--680--2 qodef-col-num--480--2">
+										<div class="qodef-grid-inner" id="project-gallery-grid">
+											<div class="qodef-qi-grid-masonry-sizer"></div>
+											<!-- Images injected here -->
 										</div>
-									</div>
-								</div>
-							</div>
-							<div class="elementor-element elementor-element-b8bea63 e-con-full e-flex e-con e-child"
-								data-element_type="container" data-id="b8bea63">
-								<div class="elementor-element elementor-element-95e36f1 elementor-widget elementor-widget-heading"
-									data-element_type="widget" data-id="95e36f1" data-widget_type="heading.default">
-									<div class="elementor-widget-container">
-										<h4 class="elementor-heading-title elementor-size-default"
-											id="project-collaboration-quote">The plans you refer to <b>will soon</b> be
-											back in our hands. Alderaan? I'm not going to Alderaan. I've got to <u>go
-												home</u>.</h4>
-									</div>
-								</div>
-							</div>
-							<div class="elementor-element elementor-element-fdac47a e-con-full e-flex e-con e-child"
-								data-element_type="container" data-id="fdac47a">
-								<div class="elementor-element elementor-element-583c066 elementor-widget elementor-widget-qi_addons_for_elementor_button"
-									data-element_type="widget" data-id="583c066"
-									data-widget_type="qi_addons_for_elementor_button.default">
-									<div class="elementor-widget-container">
-										<a class="qodef-shortcode qodef-m qodef-qi-button qodef-html--link qodef-layout--outlined qodef-type--standard qodef-size--large qodef-icon--right qodef-hover--icon-move-horizontal-short"
-											href="contact.html" target="_self"><span class="qodef-m-text">Let&#039;s
-												Talk</span> <span class="qodef-m-icon"><span
-													class="qodef-m-icon-inner"><svg height="21" viewbox="0 0 21 21"
-														width="21" xmlns="http://www.w3.org/2000/svg">
-														<g fill="none" fill-rule="evenodd" stroke="currentColor"
-															stroke-linecap="round" stroke-linejoin="round"
-															transform="translate(6 6)">
-															<path d="m8.5 7.5v-7h-7"></path>
-															<path d="m8.5.5-8 8"></path>
-														</g>
-													</svg></span></span></a>
 									</div>
 								</div>
 							</div>
@@ -1424,55 +1431,61 @@
 					</div>
 				</div>
 			</div>
+			<footer class="site-footer" id="colophon" role="contentinfo">
+				<div class="site-info">
+					<p>© 2025 Visio. All Rights Reserved.</p>
+				</div><!-- .site-info -->
+			</footer><!-- #colophon .site-footer -->
+		</div>
+
+		<script id="fslightbox-js"
+			src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/plugins/fslightbox/fslightbox.min.js?ver=6.8.3"
+			type="text/javascript">
 			</script>
-			<script id="fslightbox-js"
-				src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/plugins/fslightbox/fslightbox.min.js?ver=6.8.3"
-				type="text/javascript">
-				</script>
-			<script id="swiper-js"
-				src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/plugins/swiper/8.4.5/swiper.min.js?ver=8.4.5"
-				type="text/javascript">
-				</script>
-			<script id="prime-slider-site-js"
-				src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/bdthemes-prime-slider-lite/assets/js/prime-slider-site.min.js?ver=3.17.6"
-				type="text/javascript">
-				</script>
-			<script id="elementor-webpack-runtime-js"
-				src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.27.7"
-				type="text/javascript">
-				</script>
-			<script id="elementor-frontend-modules-js"
-				src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.27.7"
-				type="text/javascript">
-				</script>
-			<script id="elementor-frontend-js-before" type="text/javascript">
-				/* <![CDATA[ */
-				var elementorFrontendConfig = { "environmentMode": { "edit": false, "wpPreview": false, "isScriptDebug": false }, "i18n": { "shareOnFacebook": "Share on Facebook", "shareOnTwitter": "Share on Twitter", "pinIt": "Pin it", "download": "Download", "downloadImage": "Download image", "fullscreen": "Fullscreen", "zoom": "Zoom", "share": "Share", "playVideo": "Play Video", "previous": "Previous", "next": "Next", "close": "Close", "a11yCarouselPrevSlideMessage": "Previous slide", "a11yCarouselNextSlideMessage": "Next slide", "a11yCarouselFirstSlideMessage": "This is the first slide", "a11yCarouselLastSlideMessage": "This is the last slide", "a11yCarouselPaginationBulletMessage": "Go to slide" }, "is_rtl": false, "breakpoints": { "xs": 0, "sm": 480, "md": 768, "lg": 1025, "xl": 1440, "xxl": 1600 }, "responsive": { "breakpoints": { "mobile": { "label": "Mobile Portrait", "value": 767, "default_value": 767, "direction": "max", "is_enabled": true }, "mobile_extra": { "label": "Mobile Landscape", "value": 880, "default_value": 880, "direction": "max", "is_enabled": false }, "tablet": { "label": "Tablet Portrait", "value": 1024, "default_value": 1024, "direction": "max", "is_enabled": true }, "tablet_extra": { "label": "Tablet Landscape", "value": 1200, "default_value": 1200, "direction": "max", "is_enabled": false }, "laptop": { "label": "Laptop", "value": 1366, "default_value": 1366, "direction": "max", "is_enabled": false }, "widescreen": { "label": "Widescreen", "value": 2400, "default_value": 2400, "direction": "min", "is_enabled": false } }, "hasCustomBreakpoints": false }, "version": "3.27.7", "is_static": false, "experimentalFeatures": { "e_font_icon_svg": true, "additional_custom_breakpoints": true, "container": true, "e_swiper_latest": true, "e_onboarding": true, "home_screen": true, "nested-elements": true, "e_element_cache": true, "link-in-bio": true, "floating-buttons": true, "launchpad-checklist": true }, "urls": { "assets": "https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-content\/plugins\/elementor\/assets\/", "ajaxurl": "https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-admin\/admin-ajax.php", "uploadUrl": "https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3" }, "nonces": { "floatingButtonsClickTracking": "00524585d9" }, "swiperClass": "swiper", "settings": { "page": [], "editorPreferences": [] }, "kit": { "active_breakpoints": ["viewport_mobile", "viewport_tablet"], "global_image_lightbox": "yes", "lightbox_enable_counter": "yes", "lightbox_enable_fullscreen": "yes", "lightbox_enable_zoom": "yes", "lightbox_enable_share": "yes", "lightbox_title_src": "title", "lightbox_description_src": "description" }, "post": { "id": 10458, "title": "Urban%20Vista%20Tower%20%E2%80%93%20Arkiz.", "excerpt": "", "featuredImage": "https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/2025\/01\/beautiful-view-empire-states-skyscrapers-new-york-city-Custom-1024x683.jpg" } };
-				/* ]]> */
+		<script id="swiper-js"
+			src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/plugins/swiper/8.4.5/swiper.min.js?ver=8.4.5"
+			type="text/javascript">
 			</script>
-			<script id="elementor-frontend-js"
-				src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.27.7"
-				type="text/javascript">
-				</script>
-			<script id="wp-hooks-js"
-				src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/dist/hooks.min.js?ver=4d63a3d491d11ffd8ac6"
-				type="text/javascript">
-				</script>
-			<script id="wp-i18n-js"
-				src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6"
-				type="text/javascript">
-				</script>
-			<script id="wp-i18n-js-after" type="text/javascript">
-				/* <![CDATA[ */
-				wp.i18n.setLocaleData({ 'text direction\u0004ltr': ['ltr'] });
-				/* ]]> */
+		<script id="prime-slider-site-js"
+			src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/bdthemes-prime-slider-lite/assets/js/prime-slider-site.min.js?ver=3.17.6"
+			type="text/javascript">
 			</script>
-			<script id="qi-addons-for-elementor-elementor-js"
-				src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/inc/plugins/elementor/assets/js/elementor.js?ver=6.8.3"
-				type="text/javascript">
-				</script>
-			<script src="js/config.js"></script>
-			<script src="js/project-detail-loader.js"></script>
+		<script id="elementor-webpack-runtime-js"
+			src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.27.7"
+			type="text/javascript">
+			</script>
+		<script id="elementor-frontend-modules-js"
+			src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.27.7"
+			type="text/javascript">
+			</script>
+		<script id="elementor-frontend-js-before" type="text/javascript">
+			/* <![CDATA[ */
+			var elementorFrontendConfig = { "environmentMode": { "edit": false, "wpPreview": false, "isScriptDebug": false }, "i18n": { "shareOnFacebook": "Share on Facebook", "shareOnTwitter": "Share on Twitter", "pinIt": "Pin it", "download": "Download", "downloadImage": "Download image", "fullscreen": "Fullscreen", "zoom": "Zoom", "share": "Share", "playVideo": "Play Video", "previous": "Previous", "next": "Next", "close": "Close", "a11yCarouselPrevSlideMessage": "Previous slide", "a11yCarouselNextSlideMessage": "Next slide", "a11yCarouselFirstSlideMessage": "This is the first slide", "a11yCarouselLastSlideMessage": "This is the last slide", "a11yCarouselPaginationBulletMessage": "Go to slide" }, "is_rtl": false, "breakpoints": { "xs": 0, "sm": 480, "md": 768, "lg": 1025, "xl": 1440, "xxl": 1600 }, "responsive": { "breakpoints": { "mobile": { "label": "Mobile Portrait", "value": 767, "default_value": 767, "direction": "max", "is_enabled": true }, "mobile_extra": { "label": "Mobile Landscape", "value": 880, "default_value": 880, "direction": "max", "is_enabled": false }, "tablet": { "label": "Tablet Portrait", "value": 1024, "default_value": 1024, "direction": "max", "is_enabled": true }, "tablet_extra": { "label": "Tablet Landscape", "value": 1200, "default_value": 1200, "direction": "max", "is_enabled": false }, "laptop": { "label": "Laptop", "value": 1366, "default_value": 1366, "direction": "max", "is_enabled": false }, "widescreen": { "label": "Widescreen", "value": 2400, "default_value": 2400, "direction": "min", "is_enabled": false } }, "hasCustomBreakpoints": false }, "version": "3.27.7", "is_static": false, "experimentalFeatures": { "e_font_icon_svg": true, "additional_custom_breakpoints": true, "container": true, "e_swiper_latest": true, "e_onboarding": true, "home_screen": true, "nested-elements": true, "e_element_cache": true, "link-in-bio": true, "floating-buttons": true, "launchpad-checklist": true }, "urls": { "assets": "https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-content\/plugins\/elementor\/assets\/", "ajaxurl": "https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-admin\/admin-ajax.php", "uploadUrl": "https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3" }, "nonces": { "floatingButtonsClickTracking": "00524585d9" }, "swiperClass": "swiper", "settings": { "page": [], "editorPreferences": [] }, "kit": { "active_breakpoints": ["viewport_mobile", "viewport_tablet"], "global_image_lightbox": "yes", "lightbox_enable_counter": "yes", "lightbox_enable_fullscreen": "yes", "lightbox_enable_zoom": "yes", "lightbox_enable_share": "yes", "lightbox_title_src": "title", "lightbox_description_src": "description" }, "post": { "id": 10458, "title": "Urban%20Vista%20Tower%20%E2%80%93%20Arkiz.", "excerpt": "", "featuredImage": "https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/2025\/01\/beautiful-view-empire-states-skyscrapers-new-york-city-Custom-1024x683.jpg" } };
+			/* ]]> */
+		</script>
+		<script id="elementor-frontend-js"
+			src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.27.7"
+			type="text/javascript">
+			</script>
+		<script id="wp-hooks-js"
+			src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/dist/hooks.min.js?ver=4d63a3d491d11ffd8ac6"
+			type="text/javascript">
+			</script>
+		<script id="wp-i18n-js"
+			src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6"
+			type="text/javascript">
+			</script>
+		<script id="wp-i18n-js-after" type="text/javascript">
+			/* <![CDATA[ */
+			wp.i18n.setLocaleData({ 'text direction\u0004ltr': ['ltr'] });
+			/* ]]> */
+		</script>
+		<script id="qi-addons-for-elementor-elementor-js"
+			src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/inc/plugins/elementor/assets/js/elementor.js?ver=6.8.3"
+			type="text/javascript">
+			</script>
+		<script src="js/config.js"></script>
+		<script src="js/project-detail-loader.js"></script>
 </body>
 
 </html>

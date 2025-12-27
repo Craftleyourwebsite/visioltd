@@ -1,5 +1,5 @@
 /**
- * PROJECT DETAIL LOADER - RESTORED DESIGN VERSION
+ * PROJECT DETAIL LOADER - PRODUCTION VERSION
  * Injects Strapi data into the existing HTML structure by targeting specific IDs.
  */
 
@@ -20,11 +20,18 @@ async function initProjectDetail() {
     const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
 
     try {
-        // Fetch project data
-        const response = await fetch(`${CONFIG.API_URL}/projects?filters[slug][$eq]=${slug}&locale=${lang}&populate=*`, {
+        // Use simpler populate to ensure reliability
+        const apiUrl = `${CONFIG.API_URL}/projects?filters[slug][$eq]=${slug}&locale=${lang}&populate=*`;
+
+        const response = await fetch(apiUrl, {
             mode: 'cors',
             credentials: 'omit'
         });
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
         const json = await response.json();
         const data = CONFIG.flatten(json);
         const project = Array.isArray(data) ? data[0] : data;
@@ -33,8 +40,7 @@ async function initProjectDetail() {
             injectProjectData(project);
             document.title = `${project.title} - Visio Architecture`;
         } else {
-            console.error('Project not found');
-            // Optional: Redirect or show simple alert
+            console.error('Project not found with slug:', slug);
         }
 
     } catch (error) {
@@ -43,9 +49,6 @@ async function initProjectDetail() {
 }
 
 function injectProjectData(project) {
-    // Debug: Log received data to help troubleshoot
-    console.log('Antigravity: Injecting Project Data', project);
-
     // Helper to safely set text content
     const setText = (id, content) => {
         const el = document.getElementById(id);
@@ -53,7 +56,6 @@ function injectProjectData(project) {
 
         // Handle Strapi v5 Rich Text (Blocks)
         if (Array.isArray(content)) {
-            // Simple extractor for Blocks: grab text from first paragraph
             const text = content
                 .filter(block => block.type === 'paragraph' || block.type === 'heading')
                 .map(block => block.children?.map(c => c.text).join('') || '')
@@ -68,45 +70,36 @@ function injectProjectData(project) {
     // Helper for images (handling both <img> src and background-image)
     const setImage = (id, content, isBackground = false) => {
         const el = document.getElementById(id);
-        // Debug
-        // console.log(`Setting Image ${id}:`, content);
 
         if (!el || !content?.url) {
-            // If content is missing, maybe hide the element or leave placeholder?
-            // Leaving placeholder (Loading...) might be confusing if data never comes.
-            // Let's clear the placeholder if no image.
-            if (el.tagName === 'IMG' && !content) el.style.opacity = '0.5';
+            if (el && el.tagName === 'IMG' && !content) el.style.opacity = '0.5';
             return;
         }
 
         const url = content.url.startsWith('http') ? content.url : CONFIG.STRAPI_URL + content.url;
 
         if (isBackground) {
-            // Safer style injection that preserves existing layout styles
-            // We use cssText to append or safely overwrite known properties
             el.style.backgroundImage = `url('${url}')`;
             el.style.backgroundSize = 'cover';
             el.style.backgroundPosition = 'center';
-            // Force it with !important using a trick if normal style assignment fails due to CSS specificity
             el.style.cssText += `background-image: url('${url}') !important; background-size: cover !important;`;
         } else {
-            // Standard <img> tags
             el.src = url;
             el.alt = content.alternativeText || project.title || 'Project Image';
-            el.srcset = ''; // Clear hardcoded srcset from Elementor if present
+            el.srcset = '';
         }
     };
 
     // --- INJECTION MAPPING ---
 
     // 1. Header / Hero
-    setText('project-subtitle', project.subtitle); // <h3>
-    setText('project-title', project.title);       // <h1>
-    setText('project-welcome', project.welcome_text); // <p>
+    setText('project-subtitle', project.subtitle);
+    setText('project-title', project.title);
+    setText('project-welcome', project.welcome_text);
 
     // 2. Meta Info
-    setText('project-client', project.client);     // <h4>
-    setText('project-date', project.date);         // <h4>
+    setText('project-client', project.client);
+    setText('project-date', project.date);
 
     // 3. Main Image (Background Parallax)
     setImage('project-main-image', project.main_image, true);
@@ -126,10 +119,51 @@ function injectProjectData(project) {
     setText('project-fundamentals-description', project.fundamentals_description);
     setImage('project-fundamentals-image', project.fundamentals_image);
 
-    // 7. Collaboration / Footer Quote
-    if (project.collaboration_quote) {
-        const quoteEl = document.getElementById('project-collaboration-quote');
-        // Handle potentially rich text quote or simple string
-        if (quoteEl) quoteEl.textContent = project.collaboration_quote;
+    // 7. Gallery
+    const galleryGrid = document.getElementById('project-gallery-grid');
+    const gallerySection = document.getElementById('project-gallery-section');
+
+    let galleryItems = [];
+    if (Array.isArray(project.gallery)) {
+        galleryItems = project.gallery;
+    } else if (project.gallery && project.gallery.data) {
+        galleryItems = Array.isArray(project.gallery.data) ? project.gallery.data : [project.gallery.data];
+    } else if (project.gallery) {
+        galleryItems = [project.gallery];
+    }
+
+    if (galleryGrid && galleryItems.length > 0) {
+        gallerySection.style.display = 'block';
+        galleryGrid.innerHTML = '';
+
+        galleryItems.forEach((img, index) => {
+            const item = img.attributes ? { ...img.attributes, id: img.id } : img;
+            const rawUrl = item.url || (item.data && item.data.attributes && item.data.attributes.url);
+
+            if (!rawUrl) return;
+
+            const imageUrl = rawUrl.startsWith('http') ? rawUrl : CONFIG.STRAPI_URL + rawUrl;
+
+            const itemHTML = `
+                <div class="qodef-e qodef-image-wrapper qodef-grid-item">
+                    <div class="qodef-e-inner">
+                        <a class="qodef-popup-item" data-fslightbox="project-gallery" data-type="image" href="${imageUrl}">
+                            <img src="${imageUrl}" alt="${item.alternativeText || ''}">
+                        </a>
+                    </div>
+                </div>
+            `;
+            galleryGrid.insertAdjacentHTML('beforeend', itemHTML);
+        });
+
+        setTimeout(() => {
+            if (typeof refreshFsLightbox === 'function') {
+                refreshFsLightbox();
+            } else if (window.refreshFsLightbox) {
+                window.refreshFsLightbox();
+            }
+        }, 500);
+    } else {
+        if (gallerySection) gallerySection.style.display = 'none';
     }
 }
