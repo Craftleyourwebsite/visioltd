@@ -12,6 +12,21 @@
 	<title>News &#8211; Visio Architecture Ltd</title>
 	<meta name='robots' content='max-image-preview:large' />
 	<style>
+		/* Sticky Footer logic */
+		#page {
+			display: flex !important;
+			flex-direction: column !important;
+			min-height: 100vh !important;
+		}
+
+		#main {
+			flex: 1 0 auto !important;
+		}
+
+		.site-footer {
+			flex-shrink: 0 !important;
+		}
+
 		img:is([sizes="auto" i], [sizes^="auto," i]) {
 			contain-intrinsic-size: 3000px 1500px
 		}
