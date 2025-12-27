@@ -1681,3 +1681,9 @@ html .learn-press-breadcrumb {
 	z-index: 1001 !important;
 	pointer-events: auto !important;
 }
+
+/* Force affichage des éléments animés */
+.elementor-invisible {
+	opacity: 1 !important;
+	visibility: visible !important;
+}

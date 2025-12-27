@@ -65,3 +65,11 @@
   text-align: left !important;
   display: inline-block !important;
 }
+
+/* Responsive mobile - aligner les icônes sociales à gauche */
+@media (max-width: 768px) {
+	.elementor-element-7dcf136,
+	.elementor-element-bdc324f {
+		justify-content: flex-start !important;
+	}
+}

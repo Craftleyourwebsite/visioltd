@@ -115,13 +115,14 @@
   .is-menu-toggled-on .nav-menu { transform: translateX(0); }
 
   /* Overlay pour assombrir le contenu derrière le menu */
-  .is-menu-toggled-on::before {
+  body.is-menu-toggled-on::before {
     content: '';
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100vh;
     background: rgba(0, 0, 0, 0.5);
     z-index: 998;
+    pointer-events: auto;
   }
 
   /* Styles pour le menu mobile quand il est ouvert - Demi-écran */
@@ -174,7 +175,18 @@
     transform: translateX(20px);
     animation: slideInMenu 0.3s ease forwards;
   }
-  .is-menu-toggled-on .nav-menu li:nth-child(1) { animation-delay: 0.1s; }
+  
+  /* Délais spécifiques pour chaque élément du menu */
+  #menu-item-africa {
+    animation-delay: 0.1s !important;
+  }
+  .is-menu-toggled-on #menu-item-africa {
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideInMenu 0.3s ease forwards;
+    animation-delay: 0.1s !important;
+  }
+  
   .is-menu-toggled-on .nav-menu li:nth-child(2) { animation-delay: 0.2s; }
   .is-menu-toggled-on .nav-menu li:nth-child(3) { animation-delay: 0.3s; }
   .is-menu-toggled-on .nav-menu li:nth-child(4) { animation-delay: 0.4s; }
