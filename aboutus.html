@@ -1886,6 +1886,43 @@
 			}
 		}
 	</style>
+	<style id="titles-position-fix">
+		/* Fix for Integrity and Showcase titles - Prevent cutting and shift left */
+		.elementor-element-053e7a1,
+		.elementor-element-3b97dd0,
+		.elementor-element-053e7a1 .elementor-widget-container,
+		.elementor-element-3b97dd0 .elementor-widget-container,
+		.elementor-element-053e7a1 .qodef-qi-animated-text,
+		.elementor-element-3b97dd0 .qodef-qi-animated-text {
+			overflow: visible !important;
+		}
+
+		.elementor-element-053e7a1 .qodef-m-title,
+		.elementor-element-3b97dd0 .qodef-m-title {
+			position: relative !important;
+			left: -12% !important;
+			white-space: nowrap !important;
+			width: max-content !important;
+		}
+
+		@media (max-width: 1024px) {
+
+			.elementor-element-053e7a1 .qodef-m-title,
+			.elementor-element-3b97dd0 .qodef-m-title {
+				left: -8% !important;
+				font-size: 0.9em !important;
+			}
+		}
+
+		@media (max-width: 768px) {
+
+			.elementor-element-053e7a1 .qodef-m-title,
+			.elementor-element-3b97dd0 .qodef-m-title {
+				left: -5% !important;
+				font-size: 0.8em !important;
+			}
+		}
+	</style>
 </head>
 
 <body
