@@ -10,7 +10,7 @@
 }
 
 /* Conteneurs individuels des membres de l'équipe */
-.elementor-element-af195fa > .elementor-element {
+.elementor-element-af195fa>.elementor-element {
   flex: 1 1 250px !important;
   max-width: 300px !important;
   min-width: 250px !important;
@@ -24,6 +24,7 @@
   display: flex !important;
   flex-direction: column !important;
 }
+
 .elementor-widget-qi_addons_for_elementor_team_member .elementor-widget-container {
   height: 100% !important;
   display: flex !important;
@@ -31,17 +32,45 @@
 }
 
 /* Conteneur interne du team member */
-.qodef-qi-team-member { height: 100% !important; display: flex !important; flex-direction: column !important; }
-.qodef-qi-team-member .qodef-m-inner { height: 100% !important; display: flex !important; flex-direction: column !important; }
-.qodef-qi-team-member .qodef-m-media { flex: 0 0 auto !important; }
-.qodef-qi-team-member .qodef-m-content { flex: 1 1 auto !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; }
+.qodef-qi-team-member {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.qodef-qi-team-member .qodef-m-inner {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.qodef-qi-team-member .qodef-m-media {
+  flex: 0 0 auto !important;
+}
+
+.qodef-qi-team-member .qodef-m-content {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
 
 /* Images des membres */
-.qodef-qi-team-member .qodef-m-media-image img { width: 100% !important; height: auto !important; object-fit: cover !important; object-position: center top !important; }
+.qodef-qi-team-member .qodef-m-media-image img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+}
 
 /* Titres et rôles */
-.qodef-qi-team-member .qodef-m-title { margin-bottom: 10px !important; }
-.qodef-qi-team-member .qodef-m-role { opacity: 0.9 !important; }
+.qodef-qi-team-member .qodef-m-title {
+  margin-bottom: 10px !important;
+}
+
+.qodef-qi-team-member .qodef-m-role {
+  opacity: 0.9 !important;
+}
 
 /* Section contenu */
 .qodef-qi-team-member .qodef-m-content {
@@ -64,8 +93,20 @@
   align-items: center !important;
   width: 100% !important;
 }
-.qodef-qi-team-member .qodef-m-title { margin: 0 auto 8px auto !important; font-size: 1.1em !important; line-height: 1.2 !important; }
-.qodef-qi-team-member .qodef-m-role { margin: 10px auto 0 auto !important; font-size: 0.9em !important; line-height: 1.3 !important; padding: 0 10px !important; max-width: 100% !important; }
+
+.qodef-qi-team-member .qodef-m-title {
+  margin: 0 auto 8px auto !important;
+  font-size: 1.1em !important;
+  line-height: 1.2 !important;
+}
+
+.qodef-qi-team-member .qodef-m-role {
+  margin: 10px auto 0 auto !important;
+  font-size: 0.9em !important;
+  line-height: 1.3 !important;
+  padding: 0 10px !important;
+  max-width: 100% !important;
+}
 
 /* Centrage des icônes sociales */
 .qodef-qi-team-member .qodef-m-social-icons {
@@ -79,25 +120,59 @@
 
 /* Responsive pour les titres longs */
 @media screen and (max-width: 768px) {
+
   /* Conteneur principal en grille 2x2 */
-  .elementor-element-af195fa { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 20px !important; padding: 0 15px !important; }
+  .elementor-element-af195fa {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+    padding: 0 15px !important;
+  }
+
   /* Conteneurs individuels */
-  .elementor-element-af195fa > .elementor-element { flex: none !important; max-width: none !important; min-width: auto !important; width: 100% !important; }
+  .elementor-element-af195fa>.elementor-element {
+    flex: none !important;
+    max-width: none !important;
+    min-width: auto !important;
+    width: 100% !important;
+  }
+
   /* Images - taille uniforme */
-  .qodef-qi-team-member .qodef-m-media-image img { max-height: 280px !important; min-height: 280px !important; width: 100% !important; object-fit: cover !important; object-position: center top !important; }
+  .qodef-qi-team-member .qodef-m-media-image img {
+    max-height: 280px !important;
+    min-height: 280px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+  }
+
   /* Contenu - hauteur uniforme */
-  .qodef-qi-team-member .qodef-m-content { min-height: 140px !important; padding: 15px !important; }
+  .qodef-qi-team-member .qodef-m-content {
+    min-height: 140px !important;
+    padding: 15px !important;
+  }
+
   /* Titres */
-  .qodef-qi-team-member .qodef-m-title { font-size: 1em !important; line-height: 1.2 !important; margin-bottom: 8px !important; }
+  .qodef-qi-team-member .qodef-m-title {
+    font-size: 1em !important;
+    line-height: 1.2 !important;
+    margin-bottom: 8px !important;
+  }
+
   /* Rôles */
-  .qodef-qi-team-member .qodef-m-role { font-size: 0.85em !important; line-height: 1.3 !important; padding: 0 5px !important; }
+  .qodef-qi-team-member .qodef-m-role {
+    font-size: 0.85em !important;
+    line-height: 1.3 !important;
+    padding: 0 5px !important;
+  }
 }
 
 /* Desktop: uniformiser la hauteur des images des membres avec un ratio fixe */
 @media screen and (min-width: 769px) {
   .qodef-qi-team-member .qodef-m-media-image {
     width: 100% !important;
-    aspect-ratio: 4 / 5 !important; /* proche des sources 1080x1215 */
+    aspect-ratio: 4 / 5 !important;
+    /* proche des sources 1080x1215 */
     overflow: hidden !important;
   }
 
@@ -142,8 +217,8 @@
 
 /* Extended Team Section */
 .extended-team-section {
-  margin-top: 20px;
-  padding: 20px 0;
+  margin-top: 0;
+  padding: 0;
   background: transparent;
   border-radius: 0;
   animation: fadeInUp 0.6s ease-out;
@@ -155,6 +230,7 @@
     opacity: 0;
     transform: translateY(20px) scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -187,35 +263,35 @@
 }
 
 /* Apply the same styles as base team member cards */
-.extended-team-section .qodef-qi-team-member { 
-  height: 100% !important; 
-  display: flex !important; 
-  flex-direction: column !important; 
+.extended-team-section .qodef-qi-team-member {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
-.extended-team-section .qodef-qi-team-member .qodef-m-inner { 
-  height: 100% !important; 
-  display: flex !important; 
-  flex-direction: column !important; 
+.extended-team-section .qodef-qi-team-member .qodef-m-inner {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
-.extended-team-section .qodef-qi-team-member .qodef-m-media { 
-  flex: 0 0 auto !important; 
+.extended-team-section .qodef-qi-team-member .qodef-m-media {
+  flex: 0 0 auto !important;
 }
 
-.extended-team-section .qodef-qi-team-member .qodef-m-content { 
-  flex: 1 1 auto !important; 
-  display: flex !important; 
-  flex-direction: column !important; 
-  justify-content: space-between !important; 
+.extended-team-section .qodef-qi-team-member .qodef-m-content {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
 }
 
 /* Images - same as base */
-.extended-team-section .qodef-qi-team-member .qodef-m-media-image img { 
-  width: 100% !important; 
-  height: auto !important; 
-  object-fit: cover !important; 
-  object-position: center top !important; 
+.extended-team-section .qodef-qi-team-member .qodef-m-media-image img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  object-position: center top !important;
 }
 
 /* Content section - same as base */
@@ -240,18 +316,18 @@
   width: 100% !important;
 }
 
-.extended-team-section .qodef-qi-team-member .qodef-m-title { 
-  margin: 0 auto 8px auto !important; 
-  font-size: 1.1em !important; 
-  line-height: 1.2 !important; 
+.extended-team-section .qodef-qi-team-member .qodef-m-title {
+  margin: 0 auto 8px auto !important;
+  font-size: 1.1em !important;
+  line-height: 1.2 !important;
 }
 
-.extended-team-section .qodef-qi-team-member .qodef-m-role { 
-  margin: 10px auto 0 auto !important; 
-  font-size: 0.9em !important; 
-  line-height: 1.3 !important; 
-  padding: 0 10px !important; 
-  max-width: 100% !important; 
+.extended-team-section .qodef-qi-team-member .qodef-m-role {
+  margin: 10px auto 0 auto !important;
+  font-size: 0.9em !important;
+  line-height: 1.3 !important;
+  padding: 0 10px !important;
+  max-width: 100% !important;
 }
 
 /* Social icons - same as base */
@@ -264,17 +340,32 @@
   gap: 10px !important;
 }
 
-.extended-team-section .team-member-card:nth-child(1) { animation-delay: 0.1s; }
-.extended-team-section .team-member-card:nth-child(2) { animation-delay: 0.15s; }
-.extended-team-section .team-member-card:nth-child(3) { animation-delay: 0.2s; }
-.extended-team-section .team-member-card:nth-child(4) { animation-delay: 0.25s; }
-.extended-team-section .team-member-card:nth-child(5) { animation-delay: 0.3s; }
+.extended-team-section .team-member-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.extended-team-section .team-member-card:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.extended-team-section .team-member-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.extended-team-section .team-member-card:nth-child(4) {
+  animation-delay: 0.25s;
+}
+
+.extended-team-section .team-member-card:nth-child(5) {
+  animation-delay: 0.3s;
+}
 
 @keyframes slideInUp {
   from {
     opacity: 0;
     transform: translateY(15px) scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -341,64 +432,64 @@
     gap: 20px;
     padding: 0 15px;
   }
-  
+
   .extended-team-section .team-member-card {
     flex: none;
     max-width: none;
     min-width: auto;
     width: 100%;
   }
-  
+
   /* Images - same as base mobile */
-  .extended-team-section .qodef-qi-team-member .qodef-m-media-image img { 
-    max-height: 280px !important; 
-    min-height: 280px !important; 
-    width: 100% !important; 
-    object-fit: cover !important; 
-    object-position: center top !important; 
+  .extended-team-section .qodef-qi-team-member .qodef-m-media-image img {
+    max-height: 280px !important;
+    min-height: 280px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
   }
-  
+
   /* Content - same as base mobile */
-  .extended-team-section .qodef-qi-team-member .qodef-m-content { 
-    min-height: 140px !important; 
-    padding: 15px !important; 
+  .extended-team-section .qodef-qi-team-member .qodef-m-content {
+    min-height: 140px !important;
+    padding: 15px !important;
   }
-  
+
   /* Titles - same as base mobile */
-  .extended-team-section .qodef-qi-team-member .qodef-m-title { 
-    font-size: 1em !important; 
-    line-height: 1.2 !important; 
-    margin-bottom: 8px !important; 
+  .extended-team-section .qodef-qi-team-member .qodef-m-title {
+    font-size: 1em !important;
+    line-height: 1.2 !important;
+    margin-bottom: 8px !important;
   }
-  
+
   /* Roles - same as base mobile */
-  .extended-team-section .qodef-qi-team-member .qodef-m-role { 
-    font-size: 0.85em !important; 
-    line-height: 1.3 !important; 
-    padding: 0 5px !important; 
+  .extended-team-section .qodef-qi-team-member .qodef-m-role {
+    font-size: 0.85em !important;
+    line-height: 1.3 !important;
+    padding: 0 5px !important;
   }
-  
+
   .extended-team-section {
     margin-top: 15px;
     padding: 15px 0;
   }
-  
+
   .team-pagination {
     gap: 10px;
     margin-top: 30px;
   }
-  
+
   .pagination-btn {
     min-width: 35px;
     height: 35px;
     font-size: 14px;
   }
-  
+
   .qodef-m-see-more {
     top: 10px;
     right: 10px;
   }
-  
+
   .qodef-see-more-link {
     padding: 6px 12px;
     font-size: 12px;
