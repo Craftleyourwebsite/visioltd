@@ -1485,8 +1485,17 @@
 
 		/* Reduce bottom spacing on blog page (strong overrides) */
 		.gt-page-wrapper {
-			padding: 24px 0 0 !important;
+
+			padding: 24px 0 100px !important;
 			margin-bottom: 0 !important;
+		}
+
+		/* Remove all bottom spacing from News title - ISOLATED */
+		#news-page-header,
+		#news-page-header .entry-header,
+		#news-page-header .entry-title {
+			margin-bottom: 0 !important;
+			padding-bottom: 0 !important;
 		}
 
 		.gt-main .gt-blog-list {
@@ -1517,6 +1526,80 @@
 			.gt-page-wrapper .gt-container .gt-main-row {
 				grid-template-columns: 1fr;
 				gap: 32px;
+			}
+		}
+
+		/* Mobile Layout - Sidebar at bottom & Horizontal Filters */
+		@media (max-width: 991px) {
+
+			/* Stack main content and sidebar (column layout) */
+			.gt-page-wrapper .gt-container .gt-main-row {
+				display: flex;
+				flex-direction: column;
+				gap: 40px;
+			}
+
+			/* Make sidebar full width and move to top */
+			.gt-right-sidebar {
+				order: -1;
+				width: 100%;
+				max-width: 100%;
+				margin-left: 0;
+				margin-top: 20px;
+				margin-bottom: 40px;
+				/* Add spacing between filters and news list */
+				border-top: 1px solid #eee;
+				padding-top: 30px;
+			}
+
+			/* Disable sticky on mobile */
+			.gt-sticky-sidebar .inner-wrapper-sticky {
+				position: static !important;
+				top: auto !important;
+
+				/* Horizontal layout container */
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				gap: 20px;
+				align-items: flex-start;
+			}
+
+			/* Widget containers */
+			.gt-widget {
+				flex: 1 1 300px;
+				/* Grow, shrink, base width */
+				width: 100%;
+				margin-bottom: 0 !important;
+				min-width: 250px;
+				/* Prevent being too squashed */
+			}
+
+			/* Ensure lists inside widgets display properly */
+			.gt-blog-widget ul,
+			.widget_categories ul {
+				width: 100%;
+			}
+
+			/* Special styling for horizontal list items if needed to save space */
+			.widget_categories ul {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 15px;
+			}
+
+			.widget_categories ul li {
+				width: auto;
+				border-bottom: none !important;
+				padding: 5px 10px !important;
+				background: #f5f5f5;
+				border-radius: 4px;
+				margin-bottom: 0 !important;
+			}
+
+			/* Adjust margins for widget headings */
+			.gt-right-sidebar .gt-widget-heading {
+				margin-bottom: 12px;
 			}
 		}
 	</style>
@@ -2286,11 +2369,11 @@
 		}
 
 		a {
-			color: #d84156;
+			color: #D4A574;
 		}
 
 		a:hover {
-			color: #c60035;
+			color: #bfa15f;
 		}
 
 		.header-wrap:before {
@@ -2571,27 +2654,33 @@
 									<ul id="menu-mymenu" class="">
 										<li id="menu-item-africa"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-africa">
-											<a href="africa.html">Africa</a></li>
+											<a href="africa.html">Africa</a>
+										</li>
 										<li id="menu-item-23651"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children menu-item-23651">
 											<a href="index.html">Home</a>
 										</li>
 										<li id="menu-item-23186"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23186">
-											<a href="aboutus.html">About Us</a></li>
+											<a href="aboutus.html">About Us</a>
+										</li>
 										<li id="menu-item-23188"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23188">
-											<a href="service.html">Services</a></li>
+											<a href="service.html">Services</a>
+										</li>
 										<li id="menu-item-15520"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15520">
-											<a href="project.html">Projects</a></li>
+											<a href="project.html">Projects</a>
+										</li>
 										<li id="menu-item-news"
 											class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14999 current_page_item current_page_parent menu-item-news">
-											<a href="news.html" aria-current="page">News</a></li>
+											<a href="news.html" aria-current="page">News</a>
+										</li>
 										<!-- <li id="menu-item-15519" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15519"><a href="news.html">News</a></li> -->
 										<li id="menu-item-23184"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184">
-											<a href="contact.html">Contact</a></li>
+											<a href="contact.html">Contact</a>
+										</li>
 										<li id="menu-item-language" class="menu-item menu-item-language"><a href="#"
 												onclick="toggleLanguage(); return false;">Language: <span
 													class="lang-part lang-en">EN</span><span class="lang-sep"> -
@@ -2619,7 +2708,7 @@
 			<div class="layout-medium">
 				<div id="primary" class="content-area ">
 					<div id="content" class="site-content" role="main">
-						<div class="post-header post-header-classic archive-header">
+						<div id="news-page-header" class="post-header post-header-classic archive-header">
 							<header class="entry-header">
 								<h1 class="entry-title">
 									<span class="cat-title">News</span> <!-- .cat-title -->
@@ -2634,49 +2723,8 @@
 								<div class="gt-main-row">
 									<!-- Left: content logic zone -->
 									<main class="gt-main">
-										<div class="gt-blog-list">
-											<div class="gt-blog-list-item gt-style-2"
-												data-title="National Library of Moscow is Completed"
-												data-date="September 14, 2018">
-												<div class="gt-img">
-													<a
-														href="newsopen.html">
-														<img fetchpriority="high" decoding="async" width="1110"
-															height="620"
-															src="https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-19-1110x620.jpg"
-															class="attachment-luxe-post-3 size-luxe-post-3 wp-post-image"
-															alt="">
-														<div class="gt-overlay">
-															<div class="gt-overlay-color"></div>
-															<div class="gt-overlay-icon">
-																<svg xmlns="https://www.w3.org/2000/svg" width="24"
-																	height="24" viewBox="0 0 24 24" fill="none"
-																	stroke="currentColor" stroke-width="1"
-																	stroke-linecap="round" stroke-linejoin="round"
-																	class="feather feather-arrow-right">
-																	<line x1="5" y1="12" x2="19" y2="12"></line>
-																	<polyline points="12 5 19 12 12 19"></polyline>
-																</svg>
-															</div>
-														</div>
-													</a>
-												</div>
-												<div class="gt-content">
-													<h3 class="gt-title"><a
-															href="newsopen.html">National
-															Library of Moscow is Completed</a></h3>
-													<p class="gt-excerpt">Exciting news! The completion of the National
-														Library of Moscow marks a significant milestone in architectural
-														excellence. Discover the stunning design, innovative features,
-														and cultural significance of this remarkable project.</p>
-													<span>
-														<div class="gt-comments"><a
-																href="newsopen.html">2
-																Comments</a></div>
-														<div class="gt-date">September 14, 2018</div>
-													</span>
-												</div>
-											</div>
+										<div class="gt-blog-list" id="news-container">
+											<!-- News items will be injected here -->
 										</div>
 									</main>
 									<!-- Right: sidebar zone -->
@@ -2690,78 +2738,8 @@
 															<div class="gt-widget-title">Architecture News</div>
 														</div>
 														<div class="gt-blog-widget">
-															<ul>
-																<li>
-																	<div class="gt-image"><a
-																			href="newsopen.html"><img
-																				width="150" height="150"
-																				src="https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-19-150x150.jpg"
-																				class="attachment-thumbnail size-thumbnail wp-post-image"
-																				alt=""></a></div>
-																	<div class="gt-content">
-																		<h2><a
-																				href="newsopen.html">National
-																				Library of Moscow is Completed</a></h2>
-																		<span>September 14, 2018</span>
-																	</div>
-																</li>
-																<li>
-																	<div class="gt-image"><a
-																			href="newsopen.html"><img
-																				width="150" height="150"
-																				src="https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-33-150x150.jpg"
-																				class="attachment-thumbnail size-thumbnail wp-post-image"
-																				alt=""></a></div>
-																	<div class="gt-content">
-																		<h2><a
-																				href="newsopen.html">We
-																				Completed Our New Hotel Project</a></h2>
-																		<span>September 14, 2018</span>
-																	</div>
-																</li>
-																<li>
-																	<div class="gt-image"><a
-																			href="newsopen.html"><img
-																				width="150" height="150"
-																				src="https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/08/project-1-150x150.jpg"
-																				class="attachment-thumbnail size-thumbnail wp-post-image"
-																				alt=""></a></div>
-																	<div class="gt-content">
-																		<h2><a
-																				href="newsopen.html">We
-																				Are Building Global Company Offices</a>
-																		</h2>
-																		<span>September 14, 2018</span>
-																	</div>
-																</li>
-																<li>
-																	<div class="gt-image"><a
-																			href="newsopen.html"><img
-																				width="150" height="150"
-																				src="https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-34-150x150.jpg"
-																				class="attachment-thumbnail size-thumbnail wp-post-image"
-																				alt=""></a></div>
-																	<div class="gt-content">
-																		<h2><a
-																				href="newsopen.html">We
-																				Will Meet in Xtra Center</a></h2>
-																		<span>September 14, 2018</span>
-																	</div>
-																</li>
-																<li>
-																	<div class="gt-image"><a
-																			href="newsopen.html"><img
-																				width="150" height="150"
-																				src="https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-50-150x150.jpg"
-																				class="attachment-thumbnail size-thumbnail wp-post-image"
-																				alt=""></a></div>
-																	<div class="gt-content">
-																		<h2><a
-																				href="newsopen.html">About
-																				Our Board of Directors</a></h2>
-																		<span>September 14, 2018</span>
-																	</div>
-																</li>
+															<ul id="news-sidebar-list">
+																<!-- Dynamic sidebar news -->
 															</ul>
 														</div>
 													</div>
@@ -2849,86 +2827,8 @@
 			updateLanguageUI();
 		});
 
-		// ===== Dynamic Categories & Filtering =====
-		document.addEventListener('DOMContentLoaded', function () {
-			const posts = Array.from(document.querySelectorAll('.gt-blog-list .gt-blog-list-item'));
-			if (!posts.length) return;
-
-			// Example pool of random categories
-			const pool = ['Global', 'Meetings', 'News', 'Projects', 'Design', 'Awards', 'Events'];
-
-			// Assign 1-2 random categories per post (and store on dataset)
-			posts.forEach(post => {
-				if (!post.dataset.categories) {
-					const shuffled = pool.slice().sort(() => Math.random() - 0.5);
-					const count = Math.random() > 0.6 ? 2 : 1;
-					const selected = shuffled.slice(0, count);
-					post.dataset.categories = selected.join(',');
-				}
-			});
-
-			// Build categories map with counts
-			const catToCount = new Map();
-			posts.forEach(post => {
-				const cats = post.dataset.categories.split(',').map(s => s.trim()).filter(Boolean);
-				cats.forEach(c => catToCount.set(c, (catToCount.get(c) || 0) + 1));
-			});
-
-			// Render list in sidebar
-			const ul = document.getElementById('gt-categories-list');
-			if (!ul) return;
-			ul.innerHTML = '';
-
-			// Add an "All" item
-			const allLi = document.createElement('li');
-			const allA = document.createElement('a');
-			allA.textContent = 'All';
-			allA.href = '#';
-			allA.classList.add('gt-cat-active');
-			const allCount = document.createElement('span');
-			allCount.textContent = ` (${posts.length})`;
-			allCount.className = 'gt-count';
-			allLi.appendChild(allA);
-			allLi.appendChild(allCount);
-			ul.appendChild(allLi);
-
-			Array.from(catToCount.keys()).sort().forEach(cat => {
-				const li = document.createElement('li');
-				const a = document.createElement('a');
-				a.textContent = cat;
-				a.href = '#';
-				const count = document.createElement('span');
-				count.textContent = ` (${catToCount.get(cat)})`;
-				count.className = 'gt-count';
-				li.appendChild(a);
-				li.appendChild(count);
-				ul.appendChild(li);
-			});
-
-			function setActive(link) {
-				ul.querySelectorAll('a').forEach(a => a.classList.remove('gt-cat-active'));
-				link.classList.add('gt-cat-active');
-			}
-
-			function filterPosts(category) {
-				posts.forEach(post => {
-					const cats = post.dataset.categories.split(',').map(s => s.trim());
-					const show = category === 'All' || cats.includes(category);
-					post.style.display = show ? '' : 'none';
-				});
-			}
-
-			ul.addEventListener('click', function (e) {
-				const link = e.target.closest('a');
-				if (!link) return;
-				e.preventDefault();
-				const category = link.textContent.trim();
-				setActive(link);
-				filterPosts(category);
-			});
-		});
-
 		const lazyloadRunObserver = () => {
+
 			const lazyloadBackgrounds = document.querySelectorAll(`.e-con.e-parent:not(.e-lazyloaded)`);
 			const lazyloadBackgroundObserver = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => {
@@ -3037,6 +2937,8 @@
 	<script type="text/javascript"
 		src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/bdthemes-prime-slider-lite/assets/js/prime-slider-site.min.js?ver=3.17.6"
 		id="prime-slider-site-js"></script>
+	<script src="js/config.js"></script>
+	<script src="js/news-loader.js"></script>
 </body>
 
 </html>

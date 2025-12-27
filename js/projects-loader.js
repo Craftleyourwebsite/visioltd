@@ -1,9 +1,12 @@
 /**
- * PROJECTS LIST LOADER - RESTORED DESIGN + FILTERS (V2)
- * Injects project items and rebuilds the filter bar dynamically.
+ * PROJECTS LIST LOADER - WITH CATEGORY API SUPPORT (V3)
+ * Fetches categories from Strapi API and rebuilds the filter bar.
  */
 
 document.addEventListener('DOMContentLoaded', loadProjects);
+
+// Global variable to store fetched categories
+let allCategories = [];
 
 async function loadProjects() {
     const container = document.getElementById('projects-container');
@@ -12,37 +15,45 @@ async function loadProjects() {
     const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
 
     try {
-        const response = await fetch(`${CONFIG.API_URL}/projects?locale=${lang}&populate=*`, {
-            mode: 'cors',
-            credentials: 'omit'
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
+        // Fetch both projects and categories in parallel
+        const [projectsResponse, categoriesResponse] = await Promise.all([
+            fetch(`${CONFIG.API_URL}/projects?locale=${lang}&populate=*`, {
+                mode: 'cors',
+                credentials: 'omit'
+            }),
+            fetch(`${CONFIG.API_URL}/categories?locale=${lang}&sort=order:asc`, {
+                mode: 'cors',
+                credentials: 'omit'
+            })
+        ]);
+
+        if (!projectsResponse.ok) {
+            throw new Error(`HTTP Error ${projectsResponse.status}: ${projectsResponse.statusText}`);
         }
 
-        const json = await response.json();
+        const projectsJson = await projectsResponse.json();
+        const projects = CONFIG.flatten(projectsJson);
 
-        // Debug
-        // console.log('Strapi raw response:', json);
-
-        const projects = CONFIG.flatten(json);
+        // Parse categories (may fail if not available yet)
+        if (categoriesResponse.ok) {
+            const categoriesJson = await categoriesResponse.json();
+            allCategories = CONFIG.flatten(categoriesJson) || [];
+            if (!Array.isArray(allCategories)) allCategories = [];
+        }
 
         // Robust check: projects must be an array
         if (!Array.isArray(projects)) {
-            // If flatten returned an object (e.g. error details or just meta), treat as empty/error
             console.warn('Projects data is not an array:', projects);
 
-            // If it contains error info, throw it
             if (projects && (projects.error || projects.message)) {
                 throw new Error(projects.error?.message || projects.message || 'Unknown API Error');
             }
 
-            // Otherwise empty
             container.innerHTML = `
                 <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: rgba(0,0,0,0.05); color: #000;">
                     <h3>Invalid Data Error</h3>
                     <p>Strapi returned valid JSON but not a list of projects.</p>
-                    <pre style="text-align:left; font-size:10px;">${JSON.stringify(json, null, 2).slice(0, 300)}...</pre>
+                    <pre style="text-align:left; font-size:10px;">${JSON.stringify(projectsJson, null, 2).slice(0, 300)}...</pre>
                 </div>`;
             return;
         }
@@ -58,7 +69,7 @@ async function loadProjects() {
             return;
         }
 
-        // Clear existing static items (important: do this before rebuilding filters)
+        // Clear existing static items
         container.innerHTML = '';
 
         projects.forEach(project => {
@@ -66,7 +77,7 @@ async function loadProjects() {
             container.insertAdjacentHTML('beforeend', html);
         });
 
-        // Re-initialize filters based on the new dynamic content
+        // Re-initialize filters with API categories
         initFilters();
 
     } catch (error) {
@@ -86,11 +97,11 @@ function createProjectCard(project) {
         ? (project.thumbnail.url.startsWith('http') ? project.thumbnail.url : CONFIG.STRAPI_URL + project.thumbnail.url)
         : 'public/section/1.jpeg'; // Fallback
 
-    // Ensure we have a category for filtering
-    const category = project.category || 'Architecture';
+    // Category is now a relation - get the name from the related object
+    const categoryName = project.category?.name || 'Architecture';
 
     return `
-        <div class="gt-grid-item gt-grid-item--h2" data-category="${category}" style="position: relative;">
+        <div class="gt-grid-item gt-grid-item--h2" data-category="${categoryName}" style="position: relative;">
             <div class="gt-img" style="background-image:url('${imgUrl}');"></div>
             <a href="projectview.html?project=${project.slug}" class="gt-content">
                 <span>
@@ -100,7 +111,7 @@ function createProjectCard(project) {
                     </ul>
                     <p class="gt-excerpt">${project.excerpt || ''}</p>
                     <ul class="gt-cat">
-                        <li>${category}</li>
+                        <li>${categoryName}</li>
                     </ul>
                 </span>
             </a>
@@ -115,24 +126,28 @@ function initFilters() {
     const items = Array.from(grid.querySelectorAll('.gt-grid-item'));
     const bar = document.getElementById('gt-filters');
 
-    if (!items.length || !bar) return;
+    if (!bar) return;
 
-    // Derive categories from items
-    const categories = new Set();
-    items.forEach(item => {
-        const cat = item.getAttribute('data-category');
-        if (cat) categories.add(cat);
-    });
+    // Build categories list: use API categories if available, else derive from projects
+    let categoryNames = [];
 
-    if (categories.size === 0) return;
+    if (allCategories.length > 0) {
+        // Use categories from API (already sorted by order)
+        categoryNames = allCategories.map(cat => cat.name);
+    } else {
+        // Fallback: derive from project items
+        const categoriesSet = new Set();
+        items.forEach(item => {
+            const cat = item.getAttribute('data-category');
+            if (cat) categoriesSet.add(cat);
+        });
+        categoryNames = Array.from(categoriesSet);
+    }
 
-    // Preferred order helps keeping consistency
-    const order = ['All', 'Residential', 'Workplace', 'Hotel', 'Sport', 'Cultural'];
-    const finalCats = ['All'].concat(
-        order.filter(c => categories.has(c))
-    ).concat(
-        Array.from(categories).filter(c => !order.includes(c) && c !== 'All')
-    );
+    if (categoryNames.length === 0) return;
+
+    // Add "All" at the beginning
+    const finalCats = ['All', ...categoryNames];
 
     // Build filter buttons
     bar.innerHTML = '';
@@ -153,7 +168,7 @@ function initFilters() {
                 const show = (cat === 'All') || (itemCat === cat);
 
                 item.classList.toggle('is-hidden', !show);
-                item.style.display = show ? '' : 'none'; // Ensure layout reflow
+                item.style.display = show ? '' : 'none';
             });
         });
 
