@@ -1,5 +1,50 @@
 /* Footer alignment - moved from index.html */
 
+/* --- STYLES POUR LES ICONES SOCIALES DU FOOTER --- */
+.elementor-element-7dcf136,
+.elementor-element-bdc324f {
+	gap: 10px !important;
+	column-gap: 10px !important;
+	justify-content: flex-end !important;
+	flex-wrap: wrap !important;
+}
+
+.elementor-element-7dcf136 .elementor-element,
+.elementor-element-bdc324f .elementor-element {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.elementor-element-fa10d37,
+.elementor-element-c4ca1c8,
+.elementor-element-a7d0713,
+.elementor-element-0a28e8d,
+.elementor-element-ab3a18e {
+	margin: 0 !important;
+	padding: 0 !important;
+	flex-grow: 0 !important;
+	flex-shrink: 0 !important;
+	min-width: auto !important;
+}
+
+.elementor-element-fa10d37 .elementor-widget-container,
+.elementor-element-c4ca1c8 .elementor-widget-container,
+.elementor-element-a7d0713 .elementor-widget-container,
+.elementor-element-0a28e8d .elementor-widget-container,
+.elementor-element-ab3a18e .elementor-widget-container {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.elementor-element-fa10d37 a,
+.elementor-element-c4ca1c8 a,
+.elementor-element-a7d0713 a,
+.elementor-element-0a28e8d a,
+.elementor-element-ab3a18e a {
+	margin: 0 2px !important;
+	padding: 0 !important;
+}
+
 /* Aligner les titres CONTACT US et LINKS avec leur contenu */
 .elementor-element-f055c35 .qodef-m-title,
 .elementor-element-d726f80 .qodef-m-title {

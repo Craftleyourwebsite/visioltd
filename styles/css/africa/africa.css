@@ -1,68 +1,111 @@
 /* Extracted styles from africa.html (first custom <style> block) */
 
-.site-branding-center {
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex: 1;
+/* --- STYLES POUR LES ICONES SOCIALES DU FOOTER --- */
+.elementor-element-7dcf136 {
+	gap: 10px !important;
+	column-gap: 10px !important;
+	justify-content: flex-end;
 }
 
-/* Styles pour l'image du logo */
-.logo-image {
-	max-height: 50px;
-	width: auto;
-	display: block;
-	margin: 0 auto;
-	opacity: 1;
-	visibility: visible;
-	transition: all 0.3s ease;
+.elementor-element-7dcf136 .elementor-element {
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
-/* Logo en mode normal (header transparent) */
-.site-header:not(.clone) .logo-image {
-	max-height: 50px;
-	opacity: 1;
-	visibility: visible;
+.elementor-element-fa10d37,
+.elementor-element-c4ca1c8,
+.elementor-element-a7d0713,
+.elementor-element-0a28e8d,
+.elementor-element-ab3a18e {
+	margin: 0 !important;
+	padding: 0 !important;
+	flex-grow: 0;
+	flex-shrink: 0;
 }
 
-/* Logo en mode scroll (header clone) */
-.site-header.clone .logo-image {
-	max-height: 45px;
-	opacity: 1;
-	visibility: visible;
+.elementor-element-fa10d37 .elementor-widget-container,
+.elementor-element-c4ca1c8 .elementor-widget-container,
+.elementor-element-a7d0713 .elementor-widget-container,
+.elementor-element-0a28e8d .elementor-widget-container,
+.elementor-element-ab3a18e .elementor-widget-container {
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
-/* Surcharger les limitations de hauteur du thème */
+/* === STYLES ISOLÉS DU LOGO - LOGO CENTERED === */
+
+/* Conteneur du branding - centré et avec hauteur fixe */
 .site-branding {
 	max-height: none !important;
 	display: flex !important;
 	align-items: center !important;
+	justify-content: center !important;
 }
 
 .site-branding-center {
 	display: flex !important;
 	align-items: center !important;
 	justify-content: center !important;
+	text-align: center;
 	height: auto !important;
 	min-height: 80px !important;
+	flex: 1;
+	padding: 10px 0;
 }
 
 .site-header.clone .site-branding-center {
 	min-height: 60px !important;
+	padding: 8px 0;
 }
 
-/* S'assurer que le logo est toujours visible */
+/* Styles pour l'image du logo - dimensions et positionnement */
+.logo-image {
+	max-height: 50px;
+	width: auto;
+	display: block !important;
+	margin: 0 auto !important;
+	opacity: 1 !important;
+	visibility: visible !important;
+	transition: all 0.3s ease;
+	object-fit: contain;
+}
+
+/* Logo en mode normal (header transparent) */
+.site-header:not(.clone) .logo-image {
+	max-height: 50px;
+	max-width: 100%;
+}
+
+/* Logo en mode scroll (header clone) */
+.site-header.clone .logo-image {
+	max-height: 45px;
+	max-width: 100%;
+}
+
+/* Conteneur du titre du site */
+.site-title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
 .site-title a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	text-decoration: none;
 }
 
 .site-title a img {
 	display: block !important;
 	opacity: 1 !important;
 	visibility: visible !important;
+	max-width: 100%;
+	height: auto;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 /* Masquer le texte du logo */
@@ -70,13 +113,45 @@
 	display: none !important;
 }
 
-/* S'assurer que l'image du logo s'affiche */
-.site-title img.logo-image {
-	display: block !important;
-	opacity: 1 !important;
-	visibility: visible !important;
-	max-width: 100%;
-	height: auto;
+/* === STYLES MOBILES - LOGO CENTRÉ === */
+@media screen and (max-width: 768px) {
+	.elementor-element-7dcf136 {
+		justify-content: flex-start !important;
+	}
+
+	.site-branding-center {
+		min-height: 70px !important;
+		padding: 0 0 !important;
+		margin-top: -10px !important;
+	}
+
+	.logo-image {
+		max-height: 45px;
+		max-width: 90%;
+		margin: 0 auto !important;
+	}
+
+	.site-title {
+		width: 100%;
+	}
+
+	.site-title a {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.site-branding-center {
+		min-height: 60px !important;
+		padding: 0 0 !important;
+		margin-top: -10px !important;
+	}
+
+	.logo-image {
+		max-height: 40px;
+		max-width: 85%;
+		margin: 0 auto !important;
+	}
 }
 
 /* STYLES FORCÉS POUR LES ONGLETS MOBILE - PRIORITÉ MAXIMALE */

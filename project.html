@@ -2281,221 +2281,6 @@
       transform: scale(.98);
     }
 
-    /* === PROJECT MODAL STYLES === */
-    .project-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10000;
-      display: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .project-modal.is-open {
-      display: flex;
-      opacity: 1;
-    }
-
-    .modal-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(2px);
-    }
-
-    .modal-content {
-      position: relative;
-      width: 90%;
-      max-width: 1200px;
-      max-height: 90vh;
-      margin: auto;
-      background: #ffffff;
-      border-radius: 0;
-      overflow: hidden;
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
-      transform: scale(0.9);
-      transition: transform 0.3s ease;
-    }
-
-    .project-modal.is-open .modal-content {
-      transform: scale(1);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
-      background: rgba(0, 0, 0, 0.8);
-      color: #ffffff;
-      border: none;
-      border-radius: 0;
-      font-size: 24px;
-      cursor: pointer;
-      z-index: 10001;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s ease;
-    }
-
-    .modal-close:hover {
-      background: rgba(0, 0, 0, 0.9);
-    }
-
-    .modal-image {
-      width: 100%;
-      height: 400px;
-      overflow: hidden;
-    }
-
-    .modal-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .modal-info {
-      padding: 30px;
-    }
-
-    .modal-info h2 {
-      margin: 0 0 15px 0;
-      font-family: 'Onest', sans-serif;
-      font-weight: 700;
-      font-size: 28px;
-      color: #020014;
-      text-transform: uppercase;
-    }
-
-    .modal-location {
-      margin-bottom: 15px;
-      font-size: 14px;
-      color: #666;
-      font-weight: 500;
-    }
-
-    .modal-info p {
-      margin: 0 0 20px 0;
-      font-size: 16px;
-      line-height: 1.6;
-      color: #32455e;
-    }
-
-    .modal-category {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .modal-category li {
-      display: inline-block;
-      background: #d84156;
-      color: #ffffff;
-      border-radius: 0;
-      padding: 8px 16px;
-      font-size: 12px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-
-    /* Responsive modal */
-    @media (max-width: 768px) {
-      .modal-content {
-        width: 95%;
-        max-height: 95vh;
-        margin: 20px auto;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .modal-image {
-        height: 250px;
-        flex-shrink: 0;
-      }
-
-      .modal-info {
-        padding: 20px;
-        flex: 1;
-        overflow-y: auto;
-      }
-
-      .modal-info h2 {
-        font-size: 24px;
-        margin-bottom: 12px;
-      }
-
-      .modal-close {
-        top: 15px;
-        right: 15px;
-        width: 35px;
-        height: 35px;
-        font-size: 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .modal-content {
-        width: 100%;
-        height: 100vh;
-        max-height: 100vh;
-        margin: 0;
-        border-radius: 0;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .modal-image {
-        height: 180px;
-        flex-shrink: 0;
-      }
-
-      .modal-info {
-        padding: 15px;
-        flex: 1;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .modal-info h2 {
-        font-size: 20px;
-        margin-bottom: 10px;
-        line-height: 1.2;
-      }
-
-      .modal-info p {
-        font-size: 14px;
-        line-height: 1.5;
-        margin-bottom: 15px;
-      }
-
-      .modal-location {
-        font-size: 13px;
-        margin-bottom: 12px;
-      }
-
-      .modal-category li {
-        padding: 6px 12px;
-        font-size: 11px;
-      }
-
-      .modal-close {
-        top: 10px;
-        right: 10px;
-        width: 32px;
-        height: 32px;
-        font-size: 18px;
-      }
-    }
   </style>
   <style id="footer-dark-override">
     /* Force dark footer across Projects */
@@ -2639,7 +2424,7 @@
                                         <div class="gt-img"
                                           style="background-image:url(https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-2-750x750.jpg);">
                                         </div>
-                                        <a href="#" class="gt-content"><span>
+                                        <a href="projectview.html" class="gt-content"><span>
                                             <h2>England Grand Mall</h2>
                                             <ul class="gt-location">
                                               <li>London, England</li>
@@ -2657,7 +2442,7 @@
                                         <div class="gt-img"
                                           style="background-image:url(https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-4-750x750.jpg);">
                                         </div>
-                                        <a href="#" class="gt-content"><span>
+                                        <a href="projectview.html" class="gt-content"><span>
                                             <h2>Fantastic Life Hotel &amp; Spa</h2>
                                             <ul class="gt-location">
                                               <li>Rome, Italy</li>
@@ -2675,7 +2460,7 @@
                                         <div class="gt-img"
                                           style="background-image:url(https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-3-750x750.jpg);">
                                         </div>
-                                        <a href="#" class="gt-content"><span>
+                                        <a href="projectview.html" class="gt-content"><span>
                                             <h2>Grand Tower</h2>
                                             <ul class="gt-location">
                                               <li>Istanbul, Turkey</li>
@@ -2693,7 +2478,7 @@
                                         <div class="gt-img"
                                           style="background-image:url(https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/08/project-1-750x750.jpg);">
                                         </div>
-                                        <a href="#" class="gt-content"><span>
+                                        <a href="projectview.html" class="gt-content"><span>
                                             <h2>Gloria Life Center</h2>
                                             <ul class="gt-location">
                                               <li>London, England</li>
@@ -2709,7 +2494,7 @@
                                       </div>
                                       <div class="gt-grid-item" style="position: relative;">
                                         <div class="gt-img" style="background-image:url(public/section/1.jpeg);"></div>
-                                        <a href="#" class="gt-content"><span>
+                                        <a href="projectview.html" class="gt-content"><span>
                                             <h2>Palm Resort</h2>
                                             <ul class="gt-location">
                                               <li>Abuja, Nigeria</li>
@@ -2723,7 +2508,7 @@
                                       </div>
                                       <div class="gt-grid-item" style="position: relative;">
                                         <div class="gt-img" style="background-image:url(public/section/2.jpeg);"></div>
-                                        <a href="#" class="gt-content"><span>
+                                        <a href="projectview.html" class="gt-content"><span>
                                             <h2>Urban Tech Hub</h2>
                                             <ul class="gt-location">
                                               <li>Lagos, Nigeria</li>
@@ -2737,7 +2522,7 @@
                                       </div>
                                       <div class="gt-grid-item" style="position: relative;">
                                         <div class="gt-img" style="background-image:url(public/section/3.jpeg);"></div>
-                                        <a href="#" class="gt-content"><span>
+                                        <a href="projectview.html" class="gt-content"><span>
                                             <h2>Coastal Arena</h2>
                                             <ul class="gt-location">
                                               <li>Accra, Ghana</li>
@@ -2751,7 +2536,7 @@
                                       </div>
                                       <div class="gt-grid-item" style="position: relative;">
                                         <div class="gt-img" style="background-image:url(public/section/4.jpeg);"></div>
-                                        <a href="#" class="gt-content"><span>
+                                        <a href="projectview.html" class="gt-content"><span>
                                             <h2>Horizon Pavilion</h2>
                                             <ul class="gt-location">
                                               <li>Nairobi, Kenya</li>
@@ -2776,22 +2561,7 @@
                     </div>
                   </div>
             </section>
-            <!-- Modal pour afficher les détails des projets -->
-            <div id="project-modal" class="project-modal">
-              <div class="modal-overlay"></div>
-              <div class="modal-content">
-                <button class="modal-close" aria-label="Fermer le modal">&times;</button>
-                <div class="modal-image">
-                  <img id="modal-project-image" src="" alt="">
-                </div>
-                <div class="modal-info">
-                  <h2 id="modal-project-title"></h2>
-                  <div class="modal-location" id="modal-project-location"></div>
-                  <p id="modal-project-description"></p>
-                  <div class="modal-category" id="modal-project-category"></div>
-                </div>
-              </div>
-            </div>
+
           </div> <!-- #content .site-content -->
         </div> <!-- #primary .content-area -->
       </div> <!-- layout -->
@@ -3158,143 +2928,8 @@
     });
 
     // === PROJECT MODAL FUNCTIONALITY ===
-    document.addEventListener('DOMContentLoaded', function () {
-      const modal = document.getElementById('project-modal');
-      const modalClose = document.querySelector('.modal-close');
-      const modalOverlay = document.querySelector('.modal-overlay');
-      const modalImage = document.getElementById('modal-project-image');
-      const modalTitle = document.getElementById('modal-project-title');
-      const modalLocation = document.getElementById('modal-project-location');
-      const modalDescription = document.getElementById('modal-project-description');
-      const modalCategory = document.getElementById('modal-project-category');
+    // Modales supprimées - les projets pointent maintenant directement vers projectview.html
 
-      // Données des projets
-      const projectsData = {
-        'england-grand-mall': {
-          image: 'https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-2-750x750.jpg',
-          title: 'England Grand Mall',
-          location: 'London, England',
-          description: 'A stunning commercial project combining modern design and functionality, England Grand Mall offers a luxurious shopping experience with its exquisite architecture and state-of-the-art facilities.',
-          category: 'Hotel'
-        },
-        'fantastic-life-hotel': {
-          image: 'https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-4-750x750.jpg',
-          title: 'Fantastic Life Hotel & Spa',
-          location: 'Rome, Italy',
-          description: 'With its striking design and serene ambiance, Fantastic Life Hotel & Spa creates an oasis of relaxation and luxury. This remarkable project showcases innovative architectural elements and indulgent amenities.',
-          category: 'Hotel'
-        },
-        'grand-tower': {
-          image: 'https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/09/project-3-750x750.jpg',
-          title: 'Grand Tower',
-          location: 'Istanbul, Turkey',
-          description: 'Grand Tower stands tall as a remarkable residential skyscraper, embodying elegance and sophistication. Its sleek design, panoramic views, and high-end amenities redefine modern living at its finest.',
-          category: 'Workplace'
-        },
-        'gloria-life-center': {
-          image: 'https://demo.gloriathemes.com/luxe/demo/wp-content/uploads/2018/08/project-1-750x750.jpg',
-          title: 'Gloria Life Center',
-          location: 'London, England',
-          description: 'The Gloria Life Center is a harmonious blend of wellness and architectural brilliance. Designed to provide a holistic approach to health, this project features serene spaces and cutting-edge facilities.',
-          category: 'Workplace'
-        },
-        'palm-resort': {
-          image: 'public/section/1.jpeg',
-          title: 'Palm Resort',
-          location: 'Abuja, Nigeria',
-          description: 'A contemporary residential complex surrounded by lush greenery and crafted for calm, everyday living.',
-          category: 'Residential'
-        },
-        'urban-tech-hub': {
-          image: 'public/section/2.jpeg',
-          title: 'Urban Tech Hub',
-          location: 'Lagos, Nigeria',
-          description: 'A vibrant workplace designed for collaboration, innovation, and a flexible future of work.',
-          category: 'Workplace'
-        },
-        'coastal-arena': {
-          image: 'public/section/3.jpeg',
-          title: 'Coastal Arena',
-          location: 'Accra, Ghana',
-          description: 'An energetic venue with coastal views, engineered for large-scale events and performances.',
-          category: 'Sport'
-        },
-        'horizon-pavilion': {
-          image: 'public/section/4.jpeg',
-          title: 'Horizon Pavilion',
-          location: 'Nairobi, Kenya',
-          description: 'A light-filled cultural space celebrating community, art, and the outdoors.',
-          category: 'Cultural'
-        }
-      };
-
-      // Fonction pour ouvrir le modal
-      function openModal(projectId) {
-        const project = projectsData[projectId];
-        if (!project) return;
-
-        // Remplir le modal avec les données du projet
-        modalImage.src = project.image;
-        modalImage.alt = project.title;
-        modalTitle.textContent = project.title;
-        modalLocation.textContent = project.location;
-        modalDescription.textContent = project.description;
-        modalCategory.innerHTML = `<li>${project.category}</li>`;
-
-        // Afficher le modal
-        modal.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
-      }
-
-      // Fonction pour fermer le modal
-      function closeModal() {
-        modal.classList.remove('is-open');
-        document.body.style.overflow = '';
-      }
-
-      // Ajouter les event listeners pour fermer le modal
-      if (modalClose) {
-        modalClose.addEventListener('click', closeModal);
-      }
-
-      if (modalOverlay) {
-        modalOverlay.addEventListener('click', closeModal);
-      }
-
-      // Fermer avec la touche Escape
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
-          closeModal();
-        }
-      });
-
-      // Ajouter les event listeners aux projets
-      const projectItems = document.querySelectorAll('.gt-grid-item .gt-content');
-      projectItems.forEach(function (item) {
-        item.addEventListener('click', function (e) {
-          e.preventDefault();
-
-          // Extraire l'ID du projet depuis le titre
-          const titleElement = item.querySelector('h2');
-          if (titleElement) {
-            const title = titleElement.textContent.toLowerCase();
-            let projectId = title.replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-
-            // Mapper les titres aux IDs corrects
-            if (title.includes('england grand mall')) projectId = 'england-grand-mall';
-            else if (title.includes('fantastic life')) projectId = 'fantastic-life-hotel';
-            else if (title.includes('grand tower')) projectId = 'grand-tower';
-            else if (title.includes('gloria life')) projectId = 'gloria-life-center';
-            else if (title.includes('palm resort')) projectId = 'palm-resort';
-            else if (title.includes('urban tech')) projectId = 'urban-tech-hub';
-            else if (title.includes('coastal arena')) projectId = 'coastal-arena';
-            else if (title.includes('horizon pavilion')) projectId = 'horizon-pavilion';
-
-            openModal(projectId);
-          }
-        });
-      });
-    });
     const lazyloadRunObserver = () => {
       const lazyloadBackgrounds = document.querySelectorAll(`.e-con.e-parent:not(.e-lazyloaded)`);
       const lazyloadBackgroundObserver = new IntersectionObserver((entries) => {
