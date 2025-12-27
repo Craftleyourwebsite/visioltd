@@ -1,6 +1,13 @@
 const CONFIG = {
-    STRAPI_URL: 'http://localhost:1337', // Update this with your actual Strapi URL
-    API_URL: 'http://localhost:1337/api',
+    // Determine the base URL based on the environment
+    STRAPI_URL: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:1337'
+        : 'https://visiostrapi-production.up.railway.app', // Production URL
+
+    get API_URL() {
+        return `${this.STRAPI_URL}/api`;
+    },
+
     // Helper to flatten Strapi v4/v5 nested data structure
     flatten(obj) {
         if (!obj) return null;

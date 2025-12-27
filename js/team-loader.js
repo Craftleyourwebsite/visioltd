@@ -19,7 +19,7 @@ function hideAllTeamSlots() {
 
 async function fetchTeamMembers() {
     try {
-        const response = await fetch('http://localhost:1337/api/team-members?populate=*&sort=order:asc');
+        const response = await fetch(`${CONFIG.API_URL}/team-members?populate=*&sort=order:asc`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -62,7 +62,7 @@ function updateMainTeam(members) {
                 // Update Image
                 const img = slot.querySelector('.qodef-m-media-image img');
                 if (img && attr.photo) {
-                    const photoUrl = `http://localhost:1337${attr.photo.url}`;
+                    const photoUrl = `${CONFIG.STRAPI_URL}${attr.photo.url}`;
                     img.src = photoUrl;
                     img.srcset = '';
                     img.alt = attr.name;
@@ -148,7 +148,7 @@ function updateExtendedTeam(members) {
 
     members.forEach(member => {
         const attr = member;
-        const photoUrl = (attr.photo) ? `http://localhost:1337${attr.photo.url}` : 'public/team/placeholder.jpeg'; // Fallback
+        const photoUrl = (attr.photo) ? `${CONFIG.STRAPI_URL}${attr.photo.url}` : 'public/team/placeholder.jpeg'; // Fallback
 
         const memberHTML = `
             <div class="team-member-card">
