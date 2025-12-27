@@ -28,7 +28,7 @@
 
 .language-btn:hover {
   background: none;
-  color: #ffffff;
+  color: #000000 !important;
   transform: none;
 }
 
@@ -43,29 +43,45 @@
   opacity: 0.6;
   transition: color 0.2s ease, opacity 0.2s ease;
 }
+
 .language-btn .lang-part.active,
 .menu-item-language .lang-part.active {
   opacity: 1;
-  color: #d4af37; /* highlight active language */
+  color: #d4af37;
+  /* highlight active language */
   font-weight: 700;
 }
+
 .language-btn .lang-sep,
 .menu-item-language .lang-sep {
   display: inline-block;
-  margin: 0 8px; /* spacing around dash */
+  margin: 0 8px;
+  /* spacing around dash */
   opacity: 0.6;
 }
 
 /* Language button color when mobile menu is open */
-.is-menu-toggled-on .site-header:not(.clone) .language-btn { color: #ffffff !important; }
+.is-menu-toggled-on .site-header:not(.clone) .language-btn {
+  color: #ffffff !important;
+}
 
 /* Language button when header is in clone (scrolled) state */
+.site-header.clone .language-btn:hover {
+  color: #000000 !important;
+}
+
 .site-header.clone .language-btn,
-.site-header.clone .language-btn:hover,
-.site-header.clone .language-btn.active { color: #ffffff !important; }
+.site-header.clone .language-btn.active {
+  color: #ffffff !important;
+}
 
 /* Desktop: show language switcher and hide menu language item */
 @media screen and (min-width: 992px) {
-  .language-switcher { display: flex !important; }
-  .menu-item-language { display: none !important; }
+  .language-switcher {
+    display: flex !important;
+  }
+
+  .menu-item-language {
+    display: none !important;
+  }
 }
