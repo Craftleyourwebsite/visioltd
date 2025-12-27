@@ -1,4 +1,4 @@
-(function(){
+(function () {
   const LANGUAGE_STORAGE_KEY = 'currentLanguage';
 
   function getCurrentLanguage() {
@@ -27,8 +27,8 @@
     const menuEn = languageMenuItem ? languageMenuItem.querySelector('.lang-en') : null;
     const menuFr = languageMenuItem ? languageMenuItem.querySelector('.lang-fr') : null;
 
-    [btnEn, menuEn].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'EN'); });
-    [btnFr, menuFr].forEach(function(el) { if (el) el.classList.toggle('active', lang === 'FR'); });
+    [btnEn, menuEn].forEach(function (el) { if (el) el.classList.toggle('active', lang === 'EN'); });
+    [btnFr, menuFr].forEach(function (el) { if (el) el.classList.toggle('active', lang === 'FR'); });
 
     if (languageBtn) {
       languageBtn.classList.toggle('active', lang === 'FR');
@@ -39,20 +39,22 @@
     const next = getCurrentLanguage() === 'EN' ? 'FR' : 'EN';
     setCurrentLanguage(next);
     updateLanguageUI();
+    // Dispatch event for other scripts (like projects loaders) to react
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: next } }));
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     updateLanguageUI();
 
     const languageBtn = document.getElementById('language-btn');
     if (languageBtn) {
-      languageBtn.addEventListener('click', function(e){
+      languageBtn.addEventListener('click', function (e) {
         toggleLanguage();
       });
     }
     const languageMenuItem = document.querySelector('.menu-item-language a');
     if (languageMenuItem) {
-      languageMenuItem.addEventListener('click', function(e){
+      languageMenuItem.addEventListener('click', function (e) {
         e.preventDefault();
         toggleLanguage();
       });
