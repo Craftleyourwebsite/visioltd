@@ -1122,6 +1122,49 @@
 		.qodef-qi-grid-masonry-sizer {
 			display: none !important;
 		}
+
+		/* Skeleton Loading */
+		.loading-skeleton {
+			background-color: #f0f0f0;
+			position: relative;
+			overflow: hidden;
+			color: transparent !important;
+			border-radius: 4px;
+			min-height: 1.2em;
+			display: inline-block;
+			width: 100%;
+		}
+
+		.loading-skeleton::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			transform: translateX(-100%);
+			background-image: linear-gradient(90deg,
+					rgba(255, 255, 255, 0) 0,
+					rgba(255, 255, 255, 0.2) 20%,
+					rgba(255, 255, 255, 0.5) 60%,
+					rgba(255, 255, 255, 0));
+			animation: shimmer 2s infinite;
+		}
+
+		@keyframes shimmer {
+			100% {
+				transform: translateX(100%);
+			}
+		}
+
+		.loading-skeleton img {
+			opacity: 0 !important;
+		}
+
+		#project-title,
+		#project-subtitle {
+			color: #000000 !important;
+		}
 	</style>
 </head>
 
@@ -1153,24 +1196,18 @@
 							<div class="elementor-widget-container">
 								<div
 									class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-letter qodef-qi--has-appear qodef--appear-fade">
-									<h3 class="qodef-m-title" id="project-subtitle"><span
-											class="qodef-e-word-holder">Where</span> <span
-											class="qodef-e-word-holder">Vision</span> <span
-											class="qodef-e-word-holder">Grows</span></h3>
+									<h3 class="qodef-m-title loading-skeleton" id="project-subtitle"></h3>
 								</div>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-d477cb9 elementor-invisible elementor-widget elementor-widget-qi_addons_for_elementor_animated_text"
+						<div class="elementor-element elementor-element-d477cb9 elementor-widget elementor-widget-qi_addons_for_elementor_animated_text"
 							data-element_type="widget" data-id="d477cb9"
 							data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 							data-widget_type="qi_addons_for_elementor_animated_text.default">
 							<div class="elementor-widget-container">
 								<div
 									class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-letter qodef-qi--has-appear qodef--appear-fade">
-									<h1 class="qodef-m-title" id="project-title"><span
-											class="qodef-e-word-holder">Urban</span> <span
-											class="qodef-e-word-holder">Vista</span> <span
-											class="qodef-e-word-holder">Tower</span></h1>
+									<h1 class="qodef-m-title loading-skeleton" id="project-title"></h1>
 								</div>
 							</div>
 						</div>
@@ -1182,14 +1219,13 @@
 								</div>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-c7ee2cb animated-slow elementor-invisible elementor-widget elementor-widget-heading"
+						<div class="elementor-element elementor-element-c7ee2cb animated-slow elementor-widget elementor-widget-heading"
 							data-element_type="widget" data-id="c7ee2cb"
 							data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:700}"
 							data-widget_type="heading.default">
 							<div class="elementor-widget-container">
-								<p class="elementor-heading-title elementor-size-default" id="project-welcome">Welcome
-									to Arkiz Architecture, where innovation meets elegance, crafting timeless spaces for
-									inspired living and working.</p>
+								<p class="elementor-heading-title elementor-size-default loading-skeleton"
+									id="project-welcome"></p>
 							</div>
 						</div>
 					</div>
@@ -1198,7 +1234,7 @@
 						<div class="elementor-element elementor-element-5b18f7d e-flex e-con-boxed e-con e-child"
 							data-element_type="container" data-id="5b18f7d">
 							<div class="e-con-inner">
-								<div class="elementor-element elementor-element-d3e451f elementor-invisible elementor-widget elementor-widget-heading"
+								<div class="elementor-element elementor-element-d3e451f elementor-widget elementor-widget-heading"
 									data-element_type="widget" data-id="d3e451f"
 									data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:200}"
 									data-widget_type="heading.default">
@@ -1206,13 +1242,13 @@
 										<h5 class="elementor-heading-title elementor-size-default">Client:</h5>
 									</div>
 								</div>
-								<div class="elementor-element elementor-element-6ed903c elementor-invisible elementor-widget elementor-widget-heading"
+								<div class="elementor-element elementor-element-6ed903c elementor-widget elementor-widget-heading"
 									data-element_type="widget" data-id="6ed903c"
 									data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:300}"
 									data-widget_type="heading.default">
 									<div class="elementor-widget-container">
-										<h4 class="elementor-heading-title elementor-size-default" id="project-client">
-											Warner Bros Inc.</h4>
+										<h4 class="elementor-heading-title elementor-size-default loading-skeleton"
+											id="project-client"></h4>
 									</div>
 								</div>
 								<div class="elementor-element elementor-element-a04c543 elementor-widget elementor-widget-spacer"
@@ -1223,7 +1259,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="elementor-element elementor-element-d402263 elementor-invisible elementor-widget elementor-widget-heading"
+								<div class="elementor-element elementor-element-d402263 elementor-widget elementor-widget-heading"
 									data-element_type="widget" data-id="d402263"
 									data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:400}"
 									data-widget_type="heading.default">
@@ -1231,13 +1267,13 @@
 										<h5 class="elementor-heading-title elementor-size-default">Date:</h5>
 									</div>
 								</div>
-								<div class="elementor-element elementor-element-b46b858 elementor-invisible elementor-widget elementor-widget-heading"
+								<div class="elementor-element elementor-element-b46b858 elementor-widget elementor-widget-heading"
 									data-element_type="widget" data-id="b46b858"
 									data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:500}"
 									data-widget_type="heading.default">
 									<div class="elementor-widget-container">
-										<h4 class="elementor-heading-title elementor-size-default" id="project-date">Jun
-											2025</h4>
+										<h4 class="elementor-heading-title elementor-size-default loading-skeleton"
+											id="project-date"></h4>
 									</div>
 								</div>
 							</div>
@@ -1247,7 +1283,8 @@
 			</div>
 			<div class="elementor-element elementor-element-a6716fd e-flex e-con-boxed e-con e-parent"
 				data-element_type="container" data-id="a6716fd"
-				data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" id="project-main-image">
+				data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" id="project-main-image"
+				class="loading-skeleton">
 				<div class="e-con-inner"></div>
 			</div>
 			<div class="elementor-element elementor-element-736d59a e-flex e-con-boxed e-con e-parent"
@@ -1259,36 +1296,28 @@
 							<div class="elementor-element elementor-element-9096e48 elementor-widget elementor-widget-heading"
 								data-element_type="widget" data-id="9096e48" data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<h4 class="elementor-heading-title elementor-size-default" id="project-idea-title">—
-										The Idea</h4>
+									<h4 class="elementor-heading-title elementor-size-default loading-skeleton"
+										id="project-idea-title"></h4>
 								</div>
 							</div>
-							<div class="elementor-element elementor-element-71be85d elementor-invisible elementor-widget elementor-widget-qi_addons_for_elementor_animated_text"
+							<div class="elementor-element elementor-element-71be85d elementor-widget elementor-widget-qi_addons_for_elementor_animated_text"
 								data-element_type="widget" data-id="71be85d"
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="qi_addons_for_elementor_animated_text.default">
 								<div class="elementor-widget-container">
 									<div
 										class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-letter qodef-qi--has-appear qodef--appear-fade">
-										<h1 class="qodef-m-title" id="project-idea-author"><span
-												class="qodef-e-word-holder">By</span> <span
-												class="qodef-e-word-holder">Arkiz</span> <span
-												class="qodef-e-word-holder">Architecture</span></h1>
+										<h1 class="qodef-m-title loading-skeleton" id="project-idea-author"></h1>
 									</div>
 								</div>
 							</div>
-							<div class="elementor-element elementor-element-cd86c77 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
+							<div class="elementor-element elementor-element-cd86c77 animated-slow elementor-widget elementor-widget-heading"
 								data-element_type="widget" data-id="cd86c77"
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"
-										id="project-idea-description">At Arkiz Architecture, we believe that great
-										design shapes the future, blending creativity, functionality, and
-										sustainability. Our architectural projects reflect our commitment to excellence,
-										innovation, and environmental responsibility. Whether designing residential
-										spaces, commercial buildings, or urban landmarks, we focus on creating
-										structures that enhance both aesthetics and usability.</p>
+									<p class="elementor-heading-title elementor-size-default loading-skeleton"
+										id="project-idea-description"></p>
 								</div>
 							</div>
 						</div>
@@ -1306,32 +1335,24 @@
 								<h4 class="elementor-heading-title elementor-size-default">— We started with</h4>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-e14e09c elementor-invisible elementor-widget elementor-widget-qi_addons_for_elementor_animated_text"
+						<div class="elementor-element elementor-element-e14e09c elementor-widget elementor-widget-qi_addons_for_elementor_animated_text"
 							data-element_type="widget" data-id="e14e09c"
 							data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 							data-widget_type="qi_addons_for_elementor_animated_text.default">
 							<div class="elementor-widget-container">
 								<div
 									class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-letter qodef-qi--has-appear qodef--appear-fade">
-									<h1 class="qodef-m-title" id="project-vision-title"><span
-											class="qodef-e-word-holder">Vision</span> <span
-											class="qodef-e-word-holder">&amp;</span> <span
-											class="qodef-e-word-holder">Concept</span> <span
-											class="qodef-e-word-holder">Development</span></h1>
+									<h1 class="qodef-m-title loading-skeleton" id="project-vision-title"></h1>
 								</div>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-50dbb7a animated-slow elementor-invisible elementor-widget elementor-widget-heading"
+						<div class="elementor-element elementor-element-50dbb7a animated-slow elementor-widget elementor-widget-heading"
 							data-element_type="widget" data-id="50dbb7a"
 							data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 							data-widget_type="heading.default">
 							<div class="elementor-widget-container">
-								<p class="elementor-heading-title elementor-size-default"
-									id="project-vision-description">Every architectural project starts with a strong
-									concept. We collaborate closely with clients to understand their aspirations, needs,
-									and site potential. Our team conducts in-depth research and feasibility studies to
-									develop a unique vision that aligns with modern architectural trends while
-									respecting historical and cultural contexts.</p>
+								<p class="elementor-heading-title elementor-size-default loading-skeleton"
+									id="project-vision-description"></p>
 							</div>
 						</div>
 					</div>
@@ -1339,12 +1360,9 @@
 						data-element_type="container" data-id="9b3f945">
 						<div class="elementor-element elementor-element-c7815b9 elementor-widget elementor-widget-image"
 							data-element_type="widget" data-id="c7815b9" data-widget_type="image.default">
-							<div class="elementor-widget-container"><img alt="" id="project-vision-image"
-									class="attachment-large size-large wp-image-15549" height="474"
-									sizes="(max-width: 710px) 100vw, 710px"
-									src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/modern-building-with-sky-background-Custom-1024x683.jpg"
-									srcset="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/modern-building-with-sky-background-Custom-1024x683.jpg 1024w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/modern-building-with-sky-background-Custom-300x200.jpg 300w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/modern-building-with-sky-background-Custom-768x512.jpg 768w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/modern-building-with-sky-background-Custom-825x550.jpg 825w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/modern-building-with-sky-background-Custom-1060x707.jpg 1060w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/modern-building-with-sky-background-Custom-1536x1024.jpg 1536w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/modern-building-with-sky-background-Custom-550x367.jpg 550w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/modern-building-with-sky-background-Custom-750x500.jpg 750w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/modern-building-with-sky-background-Custom.jpg 1620w"
-									width="710"></div>
+							<div class="elementor-widget-container loading-skeleton"><img alt=""
+									id="project-vision-image" class="attachment-large size-large wp-image-15549"
+									height="474" width="710"></div>
 						</div>
 					</div>
 				</div>
@@ -1356,12 +1374,9 @@
 						data-element_type="container" data-id="fd2e595">
 						<div class="elementor-element elementor-element-a7c2f7e elementor-widget elementor-widget-image"
 							data-element_type="widget" data-id="a7c2f7e" data-widget_type="image.default">
-							<div class="elementor-widget-container"><img alt="" id="project-fundamentals-image"
-									class="attachment-large size-large wp-image-15575" height="474"
-									sizes="(max-width: 710px) 100vw, 710px"
-									src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/cooling-pipes-with-sky-background-Custom-1024x683.jpg"
-									srcset="https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/cooling-pipes-with-sky-background-Custom-1024x683.jpg 1024w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/cooling-pipes-with-sky-background-Custom-300x200.jpg 300w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/cooling-pipes-with-sky-background-Custom-768x512.jpg 768w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/cooling-pipes-with-sky-background-Custom-825x550.jpg 825w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/cooling-pipes-with-sky-background-Custom-1060x707.jpg 1060w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/cooling-pipes-with-sky-background-Custom-1536x1024.jpg 1536w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/cooling-pipes-with-sky-background-Custom-550x367.jpg 550w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/cooling-pipes-with-sky-background-Custom-750x500.jpg 750w, https://themes.pixelwars.org/arkiz/demo-01/wp-content/uploads/sites/3/2025/01/cooling-pipes-with-sky-background-Custom.jpg 1620w"
-									width="710"></div>
+							<div class="elementor-widget-container loading-skeleton"><img alt=""
+									id="project-fundamentals-image" class="attachment-large size-large wp-image-15575"
+									height="474" width="710"></div>
 						</div>
 					</div>
 					<div class="elementor-element elementor-element-ae38e0a e-con-full e-flex e-con e-child"
@@ -1372,33 +1387,24 @@
 								<h4 class="elementor-heading-title elementor-size-default">— The Fundamentals</h4>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-a1ca62b elementor-invisible elementor-widget elementor-widget-qi_addons_for_elementor_animated_text"
+						<div class="elementor-element elementor-element-a1ca62b elementor-widget elementor-widget-qi_addons_for_elementor_animated_text"
 							data-element_type="widget" data-id="a1ca62b"
 							data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 							data-widget_type="qi_addons_for_elementor_animated_text.default">
 							<div class="elementor-widget-container">
 								<div
 									class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-letter qodef-qi--has-appear qodef--appear-fade">
-									<h1 class="qodef-m-title" id="project-fundamentals-title"><span
-											class="qodef-e-word-holder">Sustainable</span> <span
-											class="qodef-e-word-holder">&amp;</span> <span
-											class="qodef-e-word-holder">Eco-Friendly</span> <span
-											class="qodef-e-word-holder">Design</span></h1>
+									<h1 class="qodef-m-title loading-skeleton" id="project-fundamentals-title"></h1>
 								</div>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-f5c2a80 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
+						<div class="elementor-element elementor-element-f5c2a80 animated-slow elementor-widget elementor-widget-heading"
 							data-element_type="widget" data-id="f5c2a80"
 							data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 							data-widget_type="heading.default">
 							<div class="elementor-widget-container">
-								<p class="elementor-heading-title elementor-size-default"
-									id="project-fundamentals-description">Sustainability is at the core of our
-									architectural approach. We integrate: Energy-efficient materials to reduce carbon
-									footprints Passive design strategies that enhance natural lighting and ventilation
-									Renewable energy solutions, such as solar panels and rainwater harvesting systems
-									Green spaces and biophilic design to promote harmony between built environments and
-									nature.</p>
+								<p class="elementor-heading-title elementor-size-default loading-skeleton"
+									id="project-fundamentals-description"></p>
 							</div>
 						</div>
 					</div>

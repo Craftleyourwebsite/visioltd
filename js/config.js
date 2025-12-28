@@ -44,5 +44,27 @@ const CONFIG = {
 
         // Otherwise, prepend the STRAPI_URL
         return `${this.STRAPI_URL}${url}`;
+    },
+
+    /**
+     * Get an optimized version (format) of the image if available.
+     * Falls back to the original URL.
+     */
+    getOptimizedImageUrl(imageData, preferredFormat = 'large') {
+        if (!imageData) return 'public/placeholder.jpg';
+
+        // Search through data.attributes.formats or just formats
+        const formats = imageData.formats || (imageData.attributes && imageData.attributes.formats);
+
+        if (formats && formats[preferredFormat]) {
+            return this.getImageUrl(formats[preferredFormat].url);
+        }
+
+        // Try 'medium' if 'large' is preferred but missing
+        if (preferredFormat === 'large' && formats?.medium) {
+            return this.getImageUrl(formats.medium.url);
+        }
+
+        return this.getImageUrl(imageData);
     }
 };
