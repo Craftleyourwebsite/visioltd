@@ -93,9 +93,7 @@ async function loadProjects() {
 }
 
 function createProjectCard(project) {
-    const imgUrl = project.thumbnail?.url
-        ? (project.thumbnail.url.startsWith('http') ? project.thumbnail.url : CONFIG.STRAPI_URL + project.thumbnail.url)
-        : 'public/section/1.jpeg'; // Fallback
+    const imgUrl = CONFIG.getImageUrl(project.thumbnail, 'public/section/1.jpeg');
 
     // Category is now a relation - get the name from the related object
     const categoryName = project.category?.name || 'Architecture';

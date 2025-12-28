@@ -123,9 +123,7 @@ function renderCategories(newsItems) {
 
 
 function createNewsCard(item) {
-    const imgUrl = item.main_image?.url
-        ? (item.main_image.url.startsWith('http') ? item.main_image.url : CONFIG.STRAPI_URL + item.main_image.url)
-        : 'public/section/1.jpeg'; // Fallback
+    const imgUrl = CONFIG.getImageUrl(item.main_image, 'public/section/1.jpeg');
 
     // Format date
     const dateStr = item.date ? new Date(item.date).toLocaleDateString() : '';

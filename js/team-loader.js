@@ -62,7 +62,7 @@ function updateMainTeam(members) {
                 // Update Image
                 const img = slot.querySelector('.qodef-m-media-image img');
                 if (img && attr.photo) {
-                    const photoUrl = `${CONFIG.STRAPI_URL}${attr.photo.url}`;
+                    const photoUrl = CONFIG.getImageUrl(attr.photo);
                     img.src = photoUrl;
                     img.srcset = '';
                     img.alt = attr.name;
@@ -148,7 +148,7 @@ function updateExtendedTeam(members) {
 
     members.forEach(member => {
         const attr = member;
-        const photoUrl = (attr.photo) ? `${CONFIG.STRAPI_URL}${attr.photo.url}` : 'public/team/placeholder.jpeg'; // Fallback
+        const photoUrl = CONFIG.getImageUrl(attr.photo, 'public/team/placeholder.jpeg');
 
         const memberHTML = `
             <div class="team-member-card">

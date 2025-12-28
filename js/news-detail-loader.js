@@ -63,7 +63,7 @@ function renderNewsItem(item) {
     // 4. Main Image (Background)
     const imgEl = document.getElementById('news-main-image');
     if (imgEl && item.main_image?.url) {
-        const url = item.main_image.url.startsWith('http') ? item.main_image.url : CONFIG.STRAPI_URL + item.main_image.url;
+        const url = CONFIG.getImageUrl(item.main_image);
         imgEl.style.backgroundImage = `url('${url}')`;
     }
 
@@ -130,7 +130,7 @@ function renderPreviousPost(item) {
 
     let imageUrl = '';
     if (item.main_image?.url) {
-        imageUrl = item.main_image.url.startsWith('http') ? item.main_image.url : CONFIG.STRAPI_URL + item.main_image.url;
+        imageUrl = CONFIG.getImageUrl(item.main_image);
     }
 
     const html = `
@@ -161,7 +161,7 @@ function renderRelatedPosts(items) {
     grid.innerHTML = items.map(item => {
         let imageUrl = '';
         if (item.main_image?.url) {
-            imageUrl = item.main_image.url.startsWith('http') ? item.main_image.url : CONFIG.STRAPI_URL + item.main_image.url;
+            imageUrl = CONFIG.getImageUrl(item.main_image);
         }
 
         return `
@@ -194,7 +194,7 @@ function updateSocialSharing(item) {
 
     let imageUrl = '';
     if (item.main_image?.url) {
-        imageUrl = item.main_image.url.startsWith('http') ? item.main_image.url : CONFIG.STRAPI_URL + item.main_image.url;
+        imageUrl = CONFIG.getImageUrl(item.main_image);
     }
 
     // Update Meta Tags
@@ -275,7 +275,7 @@ function renderRichText(content) {
             if (block.type === 'image') {
                 const img = block.image;
                 if (!img) return '';
-                const url = img.url.startsWith('http') ? img.url : CONFIG.STRAPI_URL + img.url;
+                const url = CONFIG.getImageUrl(img);
                 return `<figure><img src="${url}" alt="${img.alternativeText || ''}"><figcaption>${img.caption || ''}</figcaption></figure>`;
             }
             return '';

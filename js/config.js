@@ -23,5 +23,26 @@ const CONFIG = {
             return obj.map(item => this.flatten(item));
         }
         return obj;
+    },
+
+    /**
+     * Get a fully qualified URL for an image from Strapi data.
+     * Handles Cloudinary (absolute) and Local (relative) URLs.
+     */
+    getImageUrl(imageData, fallback = 'public/placeholder.jpg') {
+        if (!imageData) return fallback;
+
+        // Handle cases where imageData might be the character string URL itself or an object
+        const url = typeof imageData === 'string' ? imageData : (imageData.url || null);
+
+        if (!url) return fallback;
+
+        // If it's already an absolute URL (like Cloudinary), return it as is
+        if (url.startsWith('http')) {
+            return url;
+        }
+
+        // Otherwise, prepend the STRAPI_URL
+        return `${this.STRAPI_URL}${url}`;
     }
 };

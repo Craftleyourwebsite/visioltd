@@ -76,7 +76,7 @@ function injectProjectData(project) {
             return;
         }
 
-        const url = content.url.startsWith('http') ? content.url : CONFIG.STRAPI_URL + content.url;
+        const url = CONFIG.getImageUrl(content);
 
         if (isBackground) {
             el.style.backgroundImage = `url('${url}')`;
@@ -142,7 +142,7 @@ function injectProjectData(project) {
 
             if (!rawUrl) return;
 
-            const imageUrl = rawUrl.startsWith('http') ? rawUrl : CONFIG.STRAPI_URL + rawUrl;
+            const imageUrl = CONFIG.getImageUrl(item);
 
             const itemHTML = `
                 <div class="qodef-e qodef-image-wrapper qodef-grid-item">
