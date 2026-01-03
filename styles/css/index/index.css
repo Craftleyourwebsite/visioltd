@@ -175,12 +175,8 @@
 /* Footer avec background noir comme le header */
 .site-footer {
 	background-color: #000000 !important;
-	position: relative;
-	bottom: 0;
-	left: 0;
-	right: 0;
 	width: 100%;
-	margin: 0 !important;
+	margin-top: auto !important;
 	padding: 0 !important;
 }
 
@@ -213,7 +209,8 @@
 }
 
 /* S'assurer qu'il n'y a pas d'espace blanc en bas */
-html, body {
+html,
+body {
 	margin: 0 !important;
 	padding: 0 !important;
 }
@@ -228,8 +225,8 @@ html, body {
 }
 
 /* S'assurer que le contenu principal pousse le footer en bas */
-.elementor-element-906e93d {
-	margin-top: auto;
+.elementor {
+	flex: 1 0 auto;
 }
 
 /* Supprimer tout padding/margin indésirable */
