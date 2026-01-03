@@ -27,6 +27,7 @@
     setTimeout(() => {
       const target = document.getElementById('tab-' + tabName);
       if (target) {
+        target.scrollTop = 0;
         target.style.setProperty('display', 'block', 'important');
         setTimeout(() => {
           target.style.setProperty('opacity', '1', 'important');
@@ -51,7 +52,7 @@
     // Ensure initial state consistent with CSS defaults
     // History should be visible by default per CSS; ensure classes match
     setActiveLink('history');
-    
+
     // Force initial state to match CSS
     hideAll();
     setTimeout(() => {
