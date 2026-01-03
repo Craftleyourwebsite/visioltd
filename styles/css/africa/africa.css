@@ -226,17 +226,126 @@
 	padding-left: 0 !important;
 }
 
+/* Aligner le titre OUR PROJECTS à gauche */
+.elementor-element-701fde8 .qodef-m-title {
+	text-align: left !important;
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+}
+
+/* Aligner le titre MISSION & VISION à gauche */
+.elementor-element-9678fe9 .qodef-m-title {
+	text-align: left !important;
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+}
+
 /* S'assurer que les conteneurs des titres sont alignés à gauche */
 .elementor-element-f055c35 .elementor-widget-container,
-.elementor-element-d726f80 .elementor-widget-container {
+.elementor-element-d726f80 .elementor-widget-container,
+.elementor-element-701fde8 .elementor-widget-container,
+.elementor-element-9678fe9 .elementor-widget-container {
 	text-align: left !important;
 }
 
 /* Aligner spécifiquement les mots animés */
 .elementor-element-f055c35 .qodef-e-word,
-.elementor-element-d726f80 .qodef-e-word {
+.elementor-element-d726f80 .qodef-e-word,
+.elementor-element-701fde8 .qodef-e-word,
+.elementor-element-9678fe9 .qodef-e-word {
 	text-align: left !important;
 	display: inline-block !important;
+}
+
+/* --- STYLES POUR LA COHÉRENCE DES COULEURS DES PROJETS --- */
+/* Assurer que tous les éléments de projet dans le footer sont blancs */
+.elementor-element-13e222f .elementor-heading-title,
+.elementor-element-421a564 .elementor-heading-title,
+.elementor-element-b8c769d .elementor-heading-title,
+.elementor-element-0a2435e .elementor-heading-title,
+.elementor-element-0541d16 .elementor-heading-title,
+.elementor-element-heritage .elementor-heading-title,
+.elementor-element-interior .elementor-heading-title,
+.elementor-element-landscape .elementor-heading-title,
+.elementor-element-strategy .elementor-heading-title {
+	color: #ffffff !important;
+	transition: color 0.3s ease !important;
+}
+
+/* Effet hover cohérent pour tous les éléments de projet - reste blanc */
+.elementor-element-13e222f .elementor-heading-title:hover,
+.elementor-element-421a564 .elementor-heading-title:hover,
+.elementor-element-b8c769d .elementor-heading-title:hover,
+.elementor-element-0a2435e .elementor-heading-title:hover,
+.elementor-element-0541d16 .elementor-heading-title:hover,
+.elementor-element-heritage .elementor-heading-title:hover,
+.elementor-element-interior .elementor-heading-title:hover,
+.elementor-element-landscape .elementor-heading-title:hover,
+.elementor-element-strategy .elementor-heading-title:hover {
+	color: #ffffff !important;
+}
+
+/* --- ESPACEMENTS POUR LES ÉLÉMENTS DE PROJET --- */
+/* Ajouter des marges modérées entre les éléments de projet */
+.elementor-element-heritage,
+.elementor-element-interior,
+.elementor-element-landscape,
+.elementor-element-strategy {
+	margin-top: 8px !important;
+	margin-bottom: 3px !important;
+}
+
+/* Espacement général pour tous les éléments de projet */
+.elementor-element-13e222f,
+.elementor-element-421a564,
+.elementor-element-b8c769d,
+.elementor-element-0a2435e,
+.elementor-element-0541d16,
+.elementor-element-heritage,
+.elementor-element-interior,
+.elementor-element-landscape,
+.elementor-element-strategy {
+	margin-bottom: 6px !important;
+}
+
+/* --- STYLES POUR LA COHÉRENCE DES LIENS DANS LA SECTION LINKS --- */
+/* Assurer que tous les liens dans la section LINKS sont blancs */
+.elementor-element-74f5361 .elementor-heading-title a,
+.elementor-element-16b69b6 .elementor-heading-title a,
+.elementor-element-e90a0d1 .elementor-heading-title a,
+.elementor-element-0c21dbe .elementor-heading-title a,
+.elementor-element-rise-link .elementor-heading-title a,
+.elementor-element-social-link .elementor-heading-title a,
+.elementor-element-project-link .elementor-heading-title a,
+.elementor-element-news-link .elementor-heading-title a,
+.elementor-element-contact-link .elementor-heading-title a {
+	color: #ffffff !important;
+	text-decoration: none !important;
+	transition: color 0.3s ease !important;
+}
+
+/* Effet hover cohérent pour tous les liens - reste blanc */
+.elementor-element-74f5361 .elementor-heading-title a:hover,
+.elementor-element-16b69b6 .elementor-heading-title a:hover,
+.elementor-element-e90a0d1 .elementor-heading-title a:hover,
+.elementor-element-0c21dbe .elementor-heading-title a:hover,
+.elementor-element-rise-link .elementor-heading-title a:hover,
+.elementor-element-social-link .elementor-heading-title a:hover,
+.elementor-element-project-link .elementor-heading-title a:hover,
+.elementor-element-news-link .elementor-heading-title a:hover,
+.elementor-element-contact-link .elementor-heading-title a:hover {
+	color: #ffffff !important;
+	text-decoration: none !important;
+}
+
+/* Espacements pour les éléments de liens */
+.elementor-element-rise-link,
+.elementor-element-social-link,
+.elementor-element-project-link,
+.elementor-element-news-link,
+.elementor-element-contact-link {
+	margin-top: 8px !important;
+	margin-bottom: 3px !important;
 }
 
 /* Styles pour le header - texte blanc par défaut */
