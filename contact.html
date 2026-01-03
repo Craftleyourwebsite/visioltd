@@ -73,114 +73,52 @@
 		}
 
 
-		/* --- STYLES SPÉCIFIQUES POUR LE HEADER CONTACT - TRANSPARENT AVEC HOVER ET SCROLL --- */
+		/* --- STYLES SPÉCIFIQUES POUR LE HEADER CONTACT - NOIR PAR DÉFAUT --- */
 
-		/* Header transparent par défaut */
-		.site-header .header-wrap:before {
-			background: transparent !important;
-			opacity: 0 !important;
-			transition: all 0.3s ease !important;
-		}
-
-		/* Header noir au hover */
-		.site-header:hover .header-wrap:before {
-			background: #000000 !important;
-			opacity: 1 !important;
-		}
-
-		/* Header noir lors du scroll (clone) */
-		.site-header.clone .header-wrap:before {
-			background: #000000 !important;
-			opacity: 1 !important;
-		}
-
-		/* Header transparent par défaut */
-		.site-header .header-wrap {
-			background: transparent !important;
-			transition: all 0.3s ease !important;
-		}
-
-		/* Header noir au hover */
-		.site-header:hover .header-wrap {
-			background: #000000 !important;
-		}
-
-		/* Header noir lors du scroll (clone) */
-		.site-header.clone .header-wrap {
-			background: #000000 !important;
-		}
-
-		/* Header-wrap-inner transparent par défaut */
+		/* --- HEADER NOIR PAR DÉFAUT SUR CONTACT (comme hover/scroll) --- */
+		.site-header .header-wrap:before,
+		.site-header .header-wrap,
 		.site-header .header-wrap-inner {
-			background: transparent !important;
-			transition: all 0.3s ease !important;
-		}
-
-		/* Header-wrap-inner noir au hover */
-		.site-header:hover .header-wrap-inner {
 			background: #000000 !important;
-		}
-
-		/* Header-wrap-inner noir lors du scroll (clone) */
-		.site-header.clone .header-wrap-inner {
-			background: #000000 !important;
+			opacity: 1 !important;
 		}
 
 		/* =====================================================
-		   CONTACT PAGE - MENU HOVER STYLES
+		   CONTACT PAGE - MENU HOVER STYLES (COMME AFRICA.HTML)
 		   ===================================================== */
 
-		/* État par défaut : fond transparent, texte NOIR */
+		/* Menu blanc par défaut sur fond noir */
 		.site-header .nav-menu a {
-			color: #000000 !important;
-			transition: color 0.3s ease !important;
-		}
-
-		/* Quand le header est survolé : texte BLANC (fond devient noir) */
-		.site-header:hover .nav-menu a {
 			color: #ffffff !important;
 		}
 
-		/* Quand on scrolle (clone) : texte BLANC */
-		.site-header.clone .nav-menu a {
-			color: #ffffff !important;
-		}
-
-		/* CRITIQUE: Quand on survole un item INDIVIDUEL : texte NOIR */
-		/* Double sélecteur pour plus de spécificité */
-		.site-header:hover .nav-menu a:hover,
-		.site-header:hover .nav-menu li>a:hover,
-		html body .site-header:hover .nav-menu a:hover {
+		/* Item actif "Contact" en noir pour être visible sur fond noir */
+		.site-header .nav-menu .current-menu-item a {
 			color: #000000 !important;
 		}
 
-		.site-header.clone .nav-menu a:hover,
-		.site-header.clone .nav-menu li>a:hover,
-		html body .site-header.clone .nav-menu a:hover {
-			color: #000000 !important;
+		/* Hover : texte noir sur fond blanc (comme africa.html) */
+		@media screen and (min-width: 992px) {
+			html .nav-menu>ul>li>a:hover,
+			.nav-menu>ul>li.has-submenu:hover>a {
+				color: #000000 !important;
+			}
 		}
 
-		/* Soulignement noir */
-		.site-header .nav-menu a .link-text:before {
-			background-color: #000000 !important;
-			border-color: #000000 !important;
+		/* Soulignement blanc au hover (comme africa.html) */
+		@media screen and (min-width: 992px) {
+			html.loaded .nav-menu ul li a .link-text:before,
+			.nav-menu li.has-submenu:hover>a .link-text:before {
+				background-color: #ffffff !important;
+				border-color: #ffffff !important;
+			}
 		}
 
 		/* =====================================================
 		   FIN CONTACT PAGE MENU STYLES
 		   ===================================================== */
 
-		/* Exception spéciale : "Contact" reste noir par défaut et au hover */
-		.site-header .nav-menu .current-menu-item a {
-			color: #000000 !important;
-		}
-
-		.site-header:hover .nav-menu .current-menu-item a,
-		.site-header.clone .nav-menu .current-menu-item a {
-			color: #000000 !important;
-		}
-
-		/* Bouton de langue noir par défaut (car fond transparent) */
+		/* Bouton de langue blanc par défaut sur contact (fond noir) */
 		.aboutus-language-btn {
 			background: transparent !important;
 			background-color: transparent !important;
@@ -191,7 +129,7 @@
 			border-color: transparent !important;
 			outline: none !important;
 			outline-width: 0 !important;
-			color: #000000 !important;
+			color: #ffffff !important;
 			font-weight: bold !important;
 			font-size: 14px !important;
 			padding: 8px 16px !important;
@@ -217,16 +155,6 @@
 			appearance: none !important;
 		}
 
-		/* Bouton de langue blanc au hover du header */
-		.site-header:hover .aboutus-language-btn {
-			color: #ffffff !important;
-		}
-
-		/* Bouton de langue blanc lors du scroll (clone) */
-		.site-header.clone .aboutus-language-btn {
-			color: #ffffff !important;
-		}
-
 		/* EN-FR toggle parts + active highlight (aligné avec blog) */
 		.aboutus-language-btn .lang-part,
 		.menu-item-language .lang-part {
@@ -248,22 +176,12 @@
 			opacity: 0.6;
 		}
 
-		/* Logo noir par défaut (car fond transparent) */
+		/* Logo blanc par défaut sur contact (fond noir) */
 		.site-header .logo-image {
-			filter: none !important;
+			filter: brightness(0) invert(1) !important;
 			opacity: 1 !important;
 			visibility: visible !important;
 			transition: filter 0.3s ease !important;
-		}
-
-		/* Logo blanc au hover du header (car fond devient noir) */
-		.site-header:hover .logo-image {
-			filter: brightness(0) invert(1) !important;
-		}
-
-		/* Logo blanc lors du scroll (clone) car fond noir */
-		.site-header.clone .logo-image {
-			filter: brightness(0) invert(1) !important;
 		}
 
 		/* Styles pour aligner le bouton de langue à droite comme dans le blog */
@@ -802,12 +720,69 @@
 			-webkit-backdrop-filter: none !important;
 		}
 
+		/* FORCER HEADER NOIR PAR DÉFAUT SUR CONTACT - ÉVITER LES CONFLITS */
+		.site-header .header-wrap:before,
+		.site-header .header-wrap,
+		.site-header .header-wrap-inner {
+			background: #000000 !important;
+			opacity: 1 !important;
+		}
+
+		/* FORCER MENU BLANC PAR DÉFAUT */
+		.site-header .nav-menu a {
+			color: #ffffff !important;
+		}
+
+		/* FORCER ITEM ACTIF "CONTACT" EN NOIR POUR ÊTRE VISIBLE */
+		.site-header .nav-menu .current-menu-item a {
+			color: #000000 !important;
+		}
+
+		/* FORCER LOGO BLANC PAR DÉFAUT */
+		.site-header .logo-image {
+			filter: brightness(0) invert(1) !important;
+		}
+
+		/* FORCER BOUTON LANGUE BLANC PAR DÉFAUT */
+		.aboutus-language-btn {
+			color: #ffffff !important;
+		}
+
+		/* Hover menu comme africa.html - texte noir sur fond blanc */
+		@media screen and (min-width: 992px) {
+			html .nav-menu>ul>li>a:hover,
+			.nav-menu>ul>li.has-submenu:hover>a {
+				color: #000000 !important;
+			}
+		}
+
+		/* Soulignement blanc au hover comme africa.html */
+		@media screen and (min-width: 992px) {
+			html.loaded .nav-menu ul li a .link-text:before,
+			.nav-menu li.has-submenu:hover>a .link-text:before {
+				background-color: #ffffff !important;
+				border-color: #ffffff !important;
+			}
+		}
+
 		/* Styles pour la section de contact - version corrigée */
 		.contact-section {
 			max-width: 1400px;
 			margin: 80px auto;
 			text-align: center;
 			padding: 40px;
+		}
+
+		/* Aligner le bloc "CONTACT US" (haut du footer) à gauche uniquement sur cette page */
+		[data-id="453d9df"],
+		[data-id="453d9df"] .qodef-m-title {
+			text-align: left !important;
+			justify-content: flex-start !important;
+		}
+
+		/* S'assurer que les mots de l'animation ne restent pas centrés */
+		[data-id="453d9df"] .qodef-m-title .qodef-e-word {
+			display: inline-block;
 		}
 
 		.subtitle {
