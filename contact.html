@@ -346,9 +346,23 @@
 			text-align: left !important;
 		}
 
-		/* Footer en noir et texte en blanc */
+		/* Ajuster l'espacement haut du footer à 20px réels */
 		[data-id="ba48383"] {
 			background-color: #000000 !important;
+			padding-top: 100px !important;
+		}
+
+		/* Neutraliser les marges des premiers éléments pour un contrôle par le parent uniquement */
+		[data-id="ba48383"] .e-con-inner,
+		[data-id="ba48383"] [data-id="f3a1683"],
+		[data-id="ba48383"] [data-id="55b2473"] {
+			margin-top: 0 !important;
+			padding-top: 0 !important;
+		}
+
+		/* Supprimer l'espace vide de la section fantôme au-dessus */
+		[data-id="3687ab62"] {
+			display: none !important;
 		}
 
 		[data-id="ba48383"] * {
@@ -2357,7 +2371,7 @@
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
 									<p class="elementor-heading-title elementor-size-default">45, Saint Georges Street
-									11324 Port Louis, Mauritius</p>
+										11324 Port Louis, Mauritius</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-a9799f8 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2406,7 +2420,7 @@
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
 									<p class="elementor-heading-title elementor-size-default">Monday - Friday : 8:00am -
-									5:00 pm</p>
+										5:00 pm</p>
 								</div>
 							</div>
 						</div>
@@ -2447,7 +2461,7 @@
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
 									<p class="elementor-heading-title elementor-size-default">Urban Planning & Master
-									Planning</p>
+										Planning</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-10916b2 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2456,7 +2470,7 @@
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
 									<p class="elementor-heading-title elementor-size-default">Infrastructure & Mobility
-								</p>
+									</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-a15ecb3 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2541,7 +2555,7 @@
 								<div class="elementor-widget-container">
 									<p class="elementor-heading-title elementor-size-default"><a
 											href="service.html">Services</a>
-								</p>
+									</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-300b34b animated-slow elementor-invisible elementor-widget elementor-widget-heading"
