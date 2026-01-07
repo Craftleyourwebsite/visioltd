@@ -4,41 +4,76 @@
     padding: 60px 0;
     background-color: #fff;
     border-bottom: 1px solid #eee;
+    width: 100%;
+}
+
+.gt-container {
+    max-width: 95%;
+    /* Use more of the screen width */
+    margin: 0 auto;
+    padding: 0 40px;
 }
 
 .all-categories-title {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 800;
     text-transform: uppercase;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     letter-spacing: 1px;
     color: #000;
-    /* Explicitly black */
 }
 
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* 4 columns on desktop, 2 or 1 on mobile */
     gap: 30px;
-    max-width: 1400px;
+    max-width: 1600px;
+    /* Increased max-width for better use of space */
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
+    /* More padding on sides */
 }
 
-@media screen and (min-width: 1200px) {
+/* Very large screens */
+@media screen and (min-width: 1600px) {
     .categories-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     }
 }
 
+/* Standard Laptops (13, 14, 15 inch) and Desktop */
+@media screen and (max-width: 1400px) {
+    .categories-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+}
+
+/* Small Laptops and Large Tablets */
+@media screen and (max-width: 1199px) {
+    .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+/* Tablets */
 @media screen and (max-width: 991px) {
     .categories-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
+/* Small Tablets / Large Phones */
+@media screen and (max-width: 767px) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+/* Mobile */
 @media screen and (max-width: 575px) {
     .categories-grid {
         grid-template-columns: 1fr;
@@ -81,8 +116,8 @@
 }
 
 .category-group-header {
-    font-size: 1.1rem;
-    font-weight: 800;
+    font-size: 1.2rem;
+    font-weight: 900;
     border-bottom: 2px solid #000;
     margin-bottom: 15px;
     padding-bottom: 5px;
@@ -109,7 +144,7 @@
 }
 
 .category-item {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: #000;
     /* Changed from #444 to satisfy black requirement */
     padding: 4px 0;
