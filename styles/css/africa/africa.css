@@ -1,50 +1,6 @@
 /* Extracted styles from africa.html (first custom <style> block) */
 
-/* --- STYLES POUR LES ICONES SOCIALES DU FOOTER --- */
-.elementor-element-7dcf136 {
-	gap: 10px !important;
-	column-gap: 10px !important;
-	justify-content: flex-end;
-}
-
-.elementor-element-7dcf136 .elementor-element {
-	margin: 0 !important;
-	padding: 0 !important;
-}
-
-.elementor-element-fa10d37,
-.elementor-element-c4ca1c8,
-.elementor-element-a7d0713,
-.elementor-element-0a28e8d,
-.elementor-element-ab3a18e,
-.elementor-element-whatsapp {
-	margin: 0 !important;
-	padding: 0 !important;
-	flex-grow: 0;
-	flex-shrink: 0;
-}
-
-.elementor-element-fa10d37 .elementor-widget-container,
-.elementor-element-c4ca1c8 .elementor-widget-container,
-.elementor-element-a7d0713 .elementor-widget-container,
-.elementor-element-0a28e8d .elementor-widget-container,
-.elementor-element-ab3a18e .elementor-widget-container,
-.elementor-element-whatsapp .elementor-widget-container {
-	margin: 0 !important;
-	padding: 0 !important;
-}
-
-/* --- STYLES POUR LES EFFETS HOVER DES BOUTONS SOCIAUX --- */
-.elementor-element-fa10d37 a:hover,
-.elementor-element-c4ca1c8 a:hover,
-.elementor-element-a7d0713 a:hover,
-.elementor-element-0a28e8d a:hover,
-.elementor-element-ab3a18e a:hover,
-.elementor-element-whatsapp a:hover {
-	transform: translateY(-2px) !important;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
-	opacity: 0.9 !important;
-}
+/* STYLES POUR LES ICONES SOCIALES DÉPLACÉS DANS footer.css POUR COHÉRENCE GLOBALE */
 
 /* === STYLES ISOLÉS DU LOGO - LOGO CENTERED === */
 

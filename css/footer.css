@@ -1,30 +1,41 @@
 /* Footer alignment - moved from index.html */
 
-/* --- PRÉCISION ICONES SOCIALES - ESPACEMENT 5PX --- */
-.elementor-element-7dcf136 {
+/* --- PRÉCISION ICONES SOCIALES --- */
+.elementor-element-7dcf136,
+.elementor-element-bdc324f {
 	display: flex !important;
 	flex-direction: row !important;
 	justify-content: flex-end !important;
 	align-items: center !important;
-	gap: 1px !important;
-	/* Espacement strict de 5px */
+	gap: 10px !important;
+	/* Espacement homogène de 10px */
 	margin: 0 !important;
 	padding: 0 !important;
 }
 
-/* Neutralisation radicale de TOUS les conteneurs intermédiaires */
+/* Neutralisation des conteneurs et marges internes */
 .elementor-element-7dcf136 .elementor-widget,
 .elementor-element-7dcf136 .elementor-widget-container,
-.elementor-element-7dcf136 .elementor-element {
+.elementor-element-7dcf136 .elementor-element,
+.elementor-element-bdc324f .elementor-widget,
+.elementor-element-bdc324f .elementor-widget-container,
+.elementor-element-bdc324f .elementor-element {
 	margin: 0 !important;
 	padding: 0 !important;
-	width: 40px !important;
-	min-width: 40px !important;
+	width: auto !important;
+	min-width: unset !important;
 	flex: none !important;
 }
 
+.elementor-element-7dcf136 a,
+.elementor-element-bdc324f a {
+	margin: 0 !important;
+	/* Annule le margin-left: 8px inline */
+}
+
 /* Centrage parfait des icônes dans les blocs de 40px */
-.elementor-element-7dcf136 a {
+.elementor-element-7dcf136 a,
+.elementor-element-bdc324f a {
 	margin: 0 !important;
 	padding: 0 !important;
 	width: 40px !important;
@@ -43,26 +54,42 @@
 	position: relative !important;
 }
 
-/* Aligner les titres CONTACT US et LINKS avec leur contenu */
-.elementor-element-f055c35 .qodef-m-title,
-.elementor-element-d726f80 .qodef-m-title,
-.elementor-element-701fde8 .qodef-m-title {
+/* --- ALIGNEMENT DES TITRES CONTACT US & LINKS --- */
+.elementor-element-7667d46 .qodef-m-title,
+.elementor-element-1c03fac .qodef-m-title,
+.elementor-element-2f0bf20 .qodef-m-title,
+.elementor-element-c6893dd .qodef-m-title,
+.elementor-element-c7a1e3a .qodef-m-title,
+.elementor-element-73063f9 .qodef-m-title,
+.elementor-element-a3502a3 .qodef-m-title,
+.elementor-element-669c2da .qodef-m-title,
+.elementor-element-49eefb5 .qodef-m-title {
 	text-align: left !important;
 	margin-left: 0 !important;
 	padding-left: 0 !important;
 }
 
-/* S'assurer que les conteneurs des titres sont alignés à gauche */
-.elementor-element-f055c35 .elementor-widget-container,
-.elementor-element-d726f80 .elementor-widget-container,
-.elementor-element-701fde8 .elementor-widget-container {
+.elementor-element-7667d46 .elementor-widget-container,
+.elementor-element-1c03fac .elementor-widget-container,
+.elementor-element-2f0bf20 .elementor-widget-container,
+.elementor-element-c6893dd .elementor-widget-container,
+.elementor-element-c7a1e3a .elementor-widget-container,
+.elementor-element-73063f9 .elementor-widget-container,
+.elementor-element-a3502a3 .elementor-widget-container,
+.elementor-element-669c2da .elementor-widget-container,
+.elementor-element-49eefb5 .elementor-widget-container {
 	text-align: left !important;
 }
 
 /* Aligner spécifiquement les mots animés */
 .elementor-element-f055c35 .qodef-e-word,
 .elementor-element-d726f80 .qodef-e-word,
-.elementor-element-701fde8 .qodef-e-word {
+.elementor-element-701fde8 .qodef-e-word,
+.elementor-element-9678fe9 .qodef-e-word,
+.elementor-element-73063f9 .qodef-e-word,
+.elementor-element-a3502a3 .qodef-e-word,
+.elementor-element-669c2da .qodef-e-word,
+.elementor-element-49eefb5 .qodef-e-word {
 	text-align: left !important;
 	display: inline-block !important;
 }
@@ -113,12 +140,16 @@
 	}
 
 	/* --- ALIGNEMENT ET HARMONISATION COLONNE OUR PROJECTS --- */
-	.elementor-element-1c03fac {
+	.elementor-element-1c03fac,
+	.elementor-element-a3502a3 {
 		position: relative !important;
-		left: -50px !important;
+		left: -60px !important;
 	}
 
-	.elementor-element-1c03fac .elementor-heading-title {
+	.elementor-element-1c03fac .qodef-m-title,
+	.elementor-element-1c03fac .elementor-heading-title,
+	.elementor-element-a3502a3 .qodef-m-title,
+	.elementor-element-a3502a3 .elementor-heading-title {
 		white-space: nowrap !important;
 		font-size: 16px !important;
 		/* Taille uniforme pour tous les titres */
@@ -127,12 +158,14 @@
 	}
 
 	/* EMPÊCHER LE RETOUR À LA LIGNE DES HORAIRES */
-	.elementor-element-2f0bf20 .elementor-heading-title {
+	.elementor-element-2f0bf20 .elementor-heading-title,
+	.elementor-element-e20eeba .elementor-heading-title {
 		white-space: nowrap !important;
 	}
 
 	/* --- ÉLARGIR COLONNE MISSION & VISION --- */
-	.elementor-element-c7a1e3a {
+	.elementor-element-c7a1e3a,
+	.elementor-element-49eefb5 {
 		width: calc(100% + 20px) !important;
 		position: relative !important;
 		left: 50px !important;
