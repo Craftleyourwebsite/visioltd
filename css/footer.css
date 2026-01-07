@@ -1,76 +1,80 @@
 /* Footer alignment - moved from index.html */
 
-/* --- STYLES POUR LES ICONES SOCIALES DU FOOTER --- */
-.elementor-element-7dcf136,
-.elementor-element-bdc324f {
-	gap: 10px !important;
-	column-gap: 10px !important;
+/* --- PRÉCISION ICONES SOCIALES - ESPACEMENT 5PX --- */
+.elementor-element-7dcf136 {
+	display: flex !important;
+	flex-direction: row !important;
 	justify-content: flex-end !important;
-	flex-wrap: wrap !important;
-}
-
-.elementor-element-7dcf136 .elementor-element,
-.elementor-element-bdc324f .elementor-element {
+	align-items: center !important;
+	gap: 1px !important;
+	/* Espacement strict de 5px */
 	margin: 0 !important;
 	padding: 0 !important;
 }
 
-.elementor-element-fa10d37,
-.elementor-element-c4ca1c8,
-.elementor-element-a7d0713,
-.elementor-element-0a28e8d,
-.elementor-element-ab3a18e {
+/* Neutralisation radicale de TOUS les conteneurs intermédiaires */
+.elementor-element-7dcf136 .elementor-widget,
+.elementor-element-7dcf136 .elementor-widget-container,
+.elementor-element-7dcf136 .elementor-element {
 	margin: 0 !important;
 	padding: 0 !important;
-	flex-grow: 0 !important;
-	flex-shrink: 0 !important;
-	min-width: auto !important;
+	width: 40px !important;
+	min-width: 40px !important;
+	flex: none !important;
 }
 
-.elementor-element-fa10d37 .elementor-widget-container,
-.elementor-element-c4ca1c8 .elementor-widget-container,
-.elementor-element-a7d0713 .elementor-widget-container,
-.elementor-element-0a28e8d .elementor-widget-container,
-.elementor-element-ab3a18e .elementor-widget-container {
+/* Centrage parfait des icônes dans les blocs de 40px */
+.elementor-element-7dcf136 a {
 	margin: 0 !important;
 	padding: 0 !important;
+	width: 40px !important;
+	height: 40px !important;
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	position: relative !important;
+	top: 0 !important;
+	left: 0 !important;
 }
 
-.elementor-element-fa10d37 a,
-.elementor-element-c4ca1c8 a,
-.elementor-element-a7d0713 a,
-.elementor-element-0a28e8d a,
-.elementor-element-ab3a18e a {
-	margin: 0 2px !important;
-	padding: 0 !important;
+/* Correction spécifique WhatsApp SVG */
+.elementor-element-whatsapp svg {
+	top: 0 !important;
+	position: relative !important;
 }
 
 /* Aligner les titres CONTACT US et LINKS avec leur contenu */
 .elementor-element-f055c35 .qodef-m-title,
-.elementor-element-d726f80 .qodef-m-title {
-  text-align: left !important;
-  margin-left: 0 !important;
-  padding-left: 0 !important;
+.elementor-element-d726f80 .qodef-m-title,
+.elementor-element-701fde8 .qodef-m-title {
+	text-align: left !important;
+	margin-left: 0 !important;
+	padding-left: 0 !important;
 }
 
 /* S'assurer que les conteneurs des titres sont alignés à gauche */
 .elementor-element-f055c35 .elementor-widget-container,
-.elementor-element-d726f80 .elementor-widget-container {
-  text-align: left !important;
+.elementor-element-d726f80 .elementor-widget-container,
+.elementor-element-701fde8 .elementor-widget-container {
+	text-align: left !important;
 }
 
 /* Aligner spécifiquement les mots animés */
 .elementor-element-f055c35 .qodef-e-word,
-.elementor-element-d726f80 .qodef-e-word {
-  text-align: left !important;
-  display: inline-block !important;
+.elementor-element-d726f80 .qodef-e-word,
+.elementor-element-701fde8 .qodef-e-word {
+	text-align: left !important;
+	display: inline-block !important;
 }
 
 /* Responsive mobile - aligner les icônes sociales à gauche */
 @media (max-width: 768px) {
+
 	.elementor-element-7dcf136,
 	.elementor-element-bdc324f {
 		justify-content: flex-start !important;
+		transform: translateY(10px) !important;
+		/* Décaler de 10px vers le bas sans affecter le flux */
 	}
 }
 
@@ -107,10 +111,37 @@
 		top: 0 !important;
 		z-index: 9999 !important;
 	}
+
+	/* --- ALIGNEMENT ET HARMONISATION COLONNE OUR PROJECTS --- */
+	.elementor-element-1c03fac {
+		position: relative !important;
+		left: -50px !important;
+	}
+
+	.elementor-element-1c03fac .elementor-heading-title {
+		white-space: nowrap !important;
+		font-size: 16px !important;
+		/* Taille uniforme pour tous les titres */
+		font-weight: 500 !important;
+		font-family: 'Onest', sans-serif !important;
+	}
+
+	/* EMPÊCHER LE RETOUR À LA LIGNE DES HORAIRES */
+	.elementor-element-2f0bf20 .elementor-heading-title {
+		white-space: nowrap !important;
+	}
+
+	/* --- ÉLARGIR COLONNE MISSION & VISION --- */
+	.elementor-element-c7a1e3a {
+		width: calc(100% + 20px) !important;
+		position: relative !important;
+		left: 50px !important;
+	}
 }
 
 /* --- MOBILE - LOGO FOOTER NORMAL - SOLUTION FINALE --- */
 @media (max-width: 768px) {
+
 	/* Reset absolu avec sélecteurs d'attributs */
 	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper,
 	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper *,
@@ -192,9 +223,11 @@
 	[style*="left: -30px"] {
 		left: 0px !important;
 	}
+
 	[style*="left:-30px"] {
 		left: 0px !important;
 	}
+
 	[style*="transform"] {
 		transform: none !important;
 	}
