@@ -92,13 +92,13 @@
 	.site-branding-center {
 		min-height: 70px !important;
 		padding: 0 0 !important;
-		margin-top: -10px !important;
+		margin-top: 0px !important;
 	}
 
 	.logo-image {
 		max-height: 45px;
 		max-width: 90%;
-		margin: 0 auto !important;
+		margin: 6px auto 0 !important;
 	}
 
 	.site-title {
@@ -114,13 +114,13 @@
 	.site-branding-center {
 		min-height: 60px !important;
 		padding: 0 0 !important;
-		margin-top: -10px !important;
+		margin-top: 0px !important;
 	}
 
 	.logo-image {
 		max-height: 40px;
 		max-width: 85%;
-		margin: 0 auto !important;
+		margin: 6px auto 0 !important;
 	}
 }
 
