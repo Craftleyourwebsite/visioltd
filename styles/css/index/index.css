@@ -261,12 +261,18 @@ body {
 	margin: 0 !important;
 }
 
-/* Ajustement du texte "WORKS" en arrière-plan */
+/* Titre WORKS - noir comme les autres titres */
 .elementor-element-6bfbc4ca .qodef-m-title {
 	font-size: 10vw !important;
 	line-height: 1 !important;
 	margin: 0 !important;
-	opacity: 0.1 !important;
+	color: #000000 !important;
+	opacity: 1 !important;
+}
+
+/* Espacement avant le carrousel */
+.elementor-element-6ea4c584 {
+	margin-top: 60px !important;
 }
 
 /* Ajustements Responsive Mobile */
@@ -282,6 +288,13 @@ body {
 	.elementor-element-6bfbc4ca .qodef-m-title {
 		font-size: 60px !important;
 		margin-top: 10px !important;
+		color: #000000 !important;
+		opacity: 1 !important;
+	}
+
+	/* Espacement mobile avant le carrousel */
+	.elementor-element-6ea4c584 {
+		margin-top: 40px !important;
 	}
 
 	.elementor-element-713c0149 .elementor-heading-title {
@@ -416,6 +429,8 @@ body {
 @media (max-width: 480px) {
 	.elementor-element-6bfbc4ca .qodef-m-title {
 		font-size: 50px !important;
+		color: #000000 !important;
+		opacity: 1 !important;
 	}
 
 	.elementor-element-713c0149 .elementor-heading-title {
@@ -423,29 +438,6 @@ body {
 	}
 }
 
-/* --- ALIGNEMENT DU LOGO FOOTER SUR MOBILE --- */
-@media (max-width: 768px) {
-	.footer-logo-wrapper {
-		text-align: left !important;
-		display: block !important;
-		width: 100% !important;
-		padding-left: 0 !important;
-		margin-left: 0 !important;
-	}
-
-	.footer-logo-wrapper img {
-		margin-left: 0 !important;
-		margin-right: auto !important;
-		display: block !important;
-	}
-
-	/* Désactiver les alignements de containers parents qui pourraient interférer */
-	.elementor-element-a3c724e {
-		justify-content: flex-start !important;
-		align-items: flex-start !important;
-		text-align: left !important;
-	}
-}
 /* --- AJUSTEMENT POSITION LOGO HEADER MOBILE (SANS SCROLL) --- */
 @media screen and (max-width: 991px) {
     .site-header:not(.clone) .logo-image {

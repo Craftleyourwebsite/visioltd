@@ -73,3 +73,129 @@
 		justify-content: flex-start !important;
 	}
 }
+
+/* --- SOLUTION ULTIME - LOGO FOOTER 100PX GAUCHE --- */
+
+/* Sélecteur ultra-spécifique avec ID unique - DESKTOP ONLY */
+@media (min-width: 769px) {
+	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper {
+		position: relative !important;
+		left: -30px !important;
+		margin-left: 0 !important;
+		padding-left: 0 !important;
+		transform: translateX(0) !important;
+		text-align: left !important;
+		width: 100% !important;
+		display: block !important;
+		float: none !important;
+	}
+
+	/* Force avec transform si left ne fonctionne pas */
+	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper img {
+		transform: translateX(-30px) !important;
+		margin-left: 0 !important;
+		display: block !important;
+		max-width: 150px !important;
+		height: auto !important;
+		position: relative !important;
+	}
+
+	/* Alternative avec position absolute */
+	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper {
+		position: absolute !important;
+		left: -30px !important;
+		top: 0 !important;
+		z-index: 9999 !important;
+	}
+}
+
+/* --- MOBILE - LOGO FOOTER NORMAL - SOLUTION FINALE --- */
+@media (max-width: 768px) {
+	/* Reset absolu avec sélecteurs d'attributs */
+	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper,
+	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper *,
+	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper img,
+	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper a,
+	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper[style],
+	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper img[style] {
+		all: unset !important;
+		box-sizing: border-box !important;
+		position: relative !important;
+		left: 0px !important;
+		right: auto !important;
+		top: auto !important;
+		bottom: auto !important;
+		margin: 0px !important;
+		padding: 0px !important;
+		transform: none !important;
+		translate: none !important;
+		float: none !important;
+		clear: both !important;
+		display: block !important;
+		width: auto !important;
+		height: auto !important;
+		max-width: 150px !important;
+		text-align: left !important;
+		z-index: auto !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+	}
+
+	/* Reconstruction minimale et stricte */
+	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper {
+		display: block !important;
+		width: 100% !important;
+		text-align: left !important;
+		position: relative !important;
+		left: 0px !important;
+		transform: none !important;
+		margin: 0px !important;
+		padding: 0px !important;
+	}
+
+	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper a {
+		display: inline-block !important;
+		text-decoration: none !important;
+		position: relative !important;
+		left: 0px !important;
+		transform: none !important;
+		margin: 0px !important;
+		padding: 0px !important;
+	}
+
+	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper img {
+		display: block !important;
+		max-width: 150px !important;
+		height: auto !important;
+		margin: 0px !important;
+		position: relative !important;
+		left: 0px !important;
+		transform: none !important;
+		float: none !important;
+		width: auto !important;
+	}
+
+	/* Force les conteneurs parents */
+	footer#colophon .elementor-element-a3c724e {
+		display: flex !important;
+		flex-direction: column !important;
+		justify-content: flex-start !important;
+		align-items: flex-start !important;
+		position: relative !important;
+		left: 0px !important;
+		transform: none !important;
+		margin: 0px !important;
+		padding: 0px !important;
+	}
+
+	/* Override spécifique pour les styles inline */
+	[style*="left: -30px"] {
+		left: 0px !important;
+	}
+	[style*="left:-30px"] {
+		left: 0px !important;
+	}
+	[style*="transform"] {
+		transform: none !important;
+	}
+}
