@@ -2113,8 +2113,8 @@
 			}
 		}
 
-		/* Mobile: aligner les icônes sociales, OUR PROJECTS et LINKS à gauche */
-		@media (max-width: 768px) {
+		/* Mobile et iPad: aligner les icônes sociales, OUR PROJECTS et LINKS à gauche */
+		@media (max-width: 1024px) {
 			/* Forcer les icônes sociales à gauche avec priorité maximale */
 			body.page-id-23123 .elementor-element-83346e1 .elementor-element-7dcf136,
 			body.page-id-23123 .elementor-element-83346e1 .elementor-element-7dcf136.e-con,
@@ -2154,6 +2154,19 @@
 			body.page-id-23123 .elementor-element-83346e1 .elementor-element-a876615 a,
 			body.page-id-23123 .elementor-element-83346e1 .elementor-element-a876615 a * {
 				text-align: left !important;
+			}
+
+			/* Mobile: faire descendre le logo header de 6px quand il est fixe en haut (scroll) */
+			body.page-id-23123 .header--project.clone .site-branding-center {
+				transform: translateY(4px) !important;
+			}
+
+			body.page-id-23123 .header--project.clone .site-branding-center .site-title a {
+				transform: translateY(4px) !important;
+			}
+
+			body.page-id-23123 .header--project.clone .site-branding-center .logo-image {
+				transform: translateY(4px) !important;
 			}
 		}
 	</style>
