@@ -1462,160 +1462,173 @@
 								</div>
 								<div class="elementor-element elementor-element-1bbe67d4 e-con-full e-flex e-con e-child"
 									data-id="1bbe67d4" data-element_type="container"
-									style="width: 100%; border-top: 1px solid #000000; border-bottom: 1px solid #000000; padding: 40px 0; margin-left: 0;">
-									<div class="elementor-element elementor-element-3a4a2b96 animated-slow elementor-invisible elementor-widget elementor-widget-qi_addons_for_elementor_tabs_horizontal"
+									style="width: 100%; padding: 40px 0; margin-left: 0;">
+									<div class="elementor-element elementor-element-3a4a2b96 animated-slow elementor-invisible elementor-widget elementor-widget-qi_addons_for_elementor_accordion"
 										data-id="3a4a2b96" data-element_type="widget"
-										data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
-										data-widget_type="qi_addons_for_elementor_tabs_horizontal.default">
+										data-settings='{"_animation":"fadeIn"}'
+										data-widget_type="qi_addons_for_elementor_accordion.default">
 										<div class="elementor-widget-container">
-											<div class="qodef-shortcode qodef-m qodef-qi-tabs-horizontal qodef-qi-clear qodef-layout--simple qodef-title-hover--underline-draw qodef-title-underline-from-left"
-												style="max-width: 100%; margin: 0 auto;">
+											<div
+												class="qodef-shortcode qodef-m qodef-qi-accordion qodef-qi-clear qodef-behavior--accordion qodef-layout--simple qodef-style--border-between qodef-height--auto">
 
-												<script>
-													// Script pour forcer le centrage en mobile - EXÉCUTION IMMÉDIATE
-													function adjustMobileTabs() {
-														const tabsNav = document.querySelector('.qodef-tabs-horizontal-navigation');
-														if (!tabsNav) return;
-
-														if (window.innerWidth <= 480) {
-															// Very small screens
-															tabsNav.style.setProperty('justify-content', 'flex-start', 'important');
-															tabsNav.style.setProperty('margin-left', '10px', 'important');
-															tabsNav.style.setProperty('gap', '15px', 'important');
-															tabsNav.style.setProperty('flex-wrap', 'wrap', 'important');
-															tabsNav.style.setProperty('width', '100%', 'important');
-															tabsNav.style.setProperty('align-items', 'flex-start', 'important');
-															tabsNav.style.setProperty('text-align', 'left', 'important');
-														} else if (window.innerWidth <= 768) {
-															// Mobile / tablet
-															tabsNav.style.setProperty('justify-content', 'flex-start', 'important');
-															tabsNav.style.setProperty('margin-left', '20px', 'important');
-															tabsNav.style.setProperty('gap', '20px', 'important');
-															tabsNav.style.setProperty('flex-wrap', 'wrap', 'important');
-															tabsNav.style.setProperty('width', '100%', 'important');
-															tabsNav.style.setProperty('align-items', 'flex-start', 'important');
-															tabsNav.style.setProperty('text-align', 'left', 'important');
-														} else {
-															// Desktop: align titles with content (no left offset)
-															tabsNav.style.setProperty('justify-content', 'flex-start', 'important');
-															tabsNav.style.setProperty('margin-left', '0', 'important');
-															tabsNav.style.setProperty('gap', '30px', 'important');
-															tabsNav.style.setProperty('flex-wrap', 'nowrap', 'important');
-															tabsNav.style.setProperty('text-align', 'left', 'important');
-														}
-													}
-
-													// Exécuter immédiatement et à plusieurs moments
-													adjustMobileTabs();
-													document.addEventListener('DOMContentLoaded', adjustMobileTabs);
-													window.addEventListener('load', adjustMobileTabs);
-													window.addEventListener('resize', adjustMobileTabs);
-
-													// Exécuter après un délai pour s'assurer que tout est chargé
-													setTimeout(adjustMobileTabs, 100);
-													setTimeout(adjustMobileTabs, 500);
-													setTimeout(adjustMobileTabs, 1000);
-												</script>
-												<ul class="qodef-tabs-horizontal-navigation"
-													style="display: flex; justify-content: flex-start; gap: 30px; margin-left: 0;">
-													<li>
-														<h3 class="qodef-tab-title" role="tab">
-															<a href="#qodef-tab-de6d4f0">
-																<span class="q-text">
-																	Your Key Partners </span>
-															</a>
-														</h3>
-													</li>
-													<li>
-														<h3 class="qodef-tab-title" role="tab">
-															<a href="#qodef-tab-0927390">
-																<span class="q-text">
-																	Our Network </span>
-															</a>
-														</h3>
-													</li>
-													<li>
-														<h3 class="qodef-tab-title" role="tab">
-															<a href="#qodef-tab-b0d90cc">
-																<span class="q-text">
-																	Mauritius: Your Gateway to Africa </span>
-															</a>
-														</h3>
-													</li>
-												</ul>
-												<div class="qodef-tabs-horizontal-content" id="qodef-tab-de6d4f0">
-													<div
-														style="display: flex; align-items: flex-start; gap: 40px; min-height: 200px;">
-														<div style="flex: 1; padding-right: 20px; padding-left: 0;">
-															<p>"VISIO is not only a design practice. We are a strategic
-																partner for African development. We help public
-																institutions, private developers, and investors
-																translate ambition into deliverable projects—aligning
-																vision, feasibility, governance, and execution.<br><br>
-
-																Built on more than 40 years of legacy, first established
-																through Gaetan SIEW’s leadership and accelerated over
-																the last 15 years under Vinesh CHINTARAM’s regional
-																drive, VISIO has grown into a multidisciplinary platform
-																combining architecture, planning, development advisory,
-																and project delivery support. Our strength lies in
-																navigating complexity: multi-stakeholder environments,
-																cross-border realities, constrained resources, and high
-																expectations—while maintaining design quality and
-																buildability.<br><br>
-
-																From early strategy to concept definition, approvals,
-																procurement support, and delivery coordination, we
-																provide the clarity and momentum needed to move projects
-																forward—creating environments that perform, inspire, and
-																endure."</p>
-														</div>
+												<h3 class="qodef-e-title-holder">
+													<span class="qodef-e-title">Your Key Partners</span>
+													<span class="qodef-e-mark">
+														<span class="qodef-icon--plus">
+															<span class="qodef-e-icon"><svg height="512" id="Capa_1"
+																	viewbox="0 0 207.2 207.2" width="512"
+																	xmlns="http://www.w3.org/2000/svg">
+																	<g>
+																		<g id="_3">
+																			<path
+																				d="m103.6 207.2c-4.087 0-7.4-3.313-7.4-7.4v-192.4c0-4.087 3.313-7.4 7.4-7.4s7.4 3.313 7.4 7.4v192.4c0 4.087-3.313 7.4-7.4 7.4z">
+																			</path>
+																			<path
+																				d="m199.8 111h-192.4c-4.087 0-7.4-3.313-7.4-7.4s3.313-7.4 7.4-7.4h192.4c4.087 0 7.4 3.313 7.4 7.4s-3.313 7.4-7.4 7.4z">
+																			</path>
+																		</g>
+																	</g>
+																</svg></span>
+														</span>
+														<span class="qodef-icon--minus">
+															<span class="qodef-e-icon"><svg height="512" id="Capa_1"
+																	viewbox="0 0 512 512" width="512"
+																	xmlns="http://www.w3.org/2000/svg">
+																	<g>
+																		<path
+																			d="m480 288h-448c-17.673 0-32-14.327-32-32s14.327-32 32-32h448c17.673 0 32 14.327 32 32s-14.327 32-32 32z">
+																		</path>
+																	</g>
+																</svg></span>
+														</span>
+													</span>
+												</h3>
+												<div class="qodef-e-content">
+													<div class="qodef-e-content-inner">
+														<p>"VISIO is not only a design practice. We are a strategic
+															partner for African development. We help public
+															institutions, private developers, and investors translate
+															ambition into deliverable projects—aligning vision,
+															feasibility, governance, and execution.<br><br>
+															Built on more than 40 years of legacy, first established
+															through Gaetan SIEW’s leadership and accelerated over the
+															last 15 years under Vinesh CHINTARAM’s regional drive, VISIO
+															has grown into a multidisciplinary platform combining
+															architecture, planning, development advisory, and project
+															delivery support. Our strength lies in navigating
+															complexity: multi-stakeholder environments, cross-border
+															realities, constrained resources, and high
+															expectations—while maintaining design quality and
+															buildability.<br><br>
+															From early strategy to concept definition, approvals,
+															procurement support, and delivery coordination, we provide
+															the clarity and momentum needed to move projects
+															forward—creating environments that perform, inspire, and
+															endure."</p>
 													</div>
 												</div>
-												<div class="qodef-tabs-horizontal-content" id="qodef-tab-0927390">
-													<div
-														style="display: flex; align-items: flex-start; gap: 40px; min-height: 200px;">
-														<div style="flex: 1; padding-right: 20px; padding-left: 0;">
-															<p>"Continental Reach. Local Relevance.
-																Active collaborations and engagements across 30+ African
-																countries
-																A professional and institutional network spanning 40+
-																countries
-																Experience across complex assignments—from advisory
-																mandates to full design and delivery support
-																A proven approach anchored in partnership with local
-																architects and professionals, ensuring compliance,
-																contextual fit, and knowledge transfer
-																Selected countries of experience: Madagascar,
-																Seychelles, Réunion Island, Mayotte, Morocco, Algeria,
-																Tunisia, Senegal, Côte d’Ivoire, Ghana, Nigeria,
-																Cameroon, Ethiopia, Kenya, Rwanda, Tanzania, Uganda,
-																Zambia, South Africa, Mozambique, Congo, DR Congo, and
-																others."
-															</p>
-														</div>
+
+												<h3 class="qodef-e-title-holder">
+													<span class="qodef-e-title">Our Network</span>
+													<span class="qodef-e-mark">
+														<span class="qodef-icon--plus">
+															<span class="qodef-e-icon"><svg height="512" id="Capa_1"
+																	viewbox="0 0 207.2 207.2" width="512"
+																	xmlns="http://www.w3.org/2000/svg">
+																	<g>
+																		<g id="_3">
+																			<path
+																				d="m103.6 207.2c-4.087 0-7.4-3.313-7.4-7.4v-192.4c0-4.087 3.313-7.4 7.4-7.4s7.4 3.313 7.4 7.4v192.4c0 4.087-3.313 7.4-7.4 7.4z">
+																			</path>
+																			<path
+																				d="m199.8 111h-192.4c-4.087 0-7.4-3.313-7.4-7.4s3.313-7.4 7.4-7.4h192.4c4.087 0 7.4 3.313 7.4 7.4s-3.313 7.4-7.4 7.4z">
+																			</path>
+																		</g>
+																	</g>
+																</svg></span>
+														</span>
+														<span class="qodef-icon--minus">
+															<span class="qodef-e-icon"><svg height="512" id="Capa_1"
+																	viewbox="0 0 512 512" width="512"
+																	xmlns="http://www.w3.org/2000/svg">
+																	<g>
+																		<path
+																			d="m480 288h-448c-17.673 0-32-14.327-32-32s14.327-32 32-32h448c17.673 0 32 14.327 32 32s-14.327 32-32 32z">
+																		</path>
+																	</g>
+																</svg></span>
+														</span>
+													</span>
+												</h3>
+												<div class="qodef-e-content">
+													<div class="qodef-e-content-inner">
+														<p>"Continental Reach. Local Relevance.<br>
+															Active collaborations and engagements across 30+ African
+															countries<br>
+															A professional and institutional network spanning 40+
+															countries<br>
+															Experience across complex assignments—from advisory mandates
+															to full design and delivery support<br>
+															A proven approach anchored in partnership with local
+															architects and professionals, ensuring compliance,
+															contextual fit, and knowledge transfer<br>
+															Selected countries of experience: Madagascar, Seychelles,
+															Réunion Island, Mayotte, Morocco, Algeria, Tunisia, Senegal,
+															Côte d’Ivoire, Ghana, Nigeria, Cameroon, Ethiopia, Kenya,
+															Rwanda, Tanzania, Uganda, Zambia, South Africa, Mozambique,
+															Congo, DR Congo, and others."</p>
 													</div>
 												</div>
-												<div class="qodef-tabs-horizontal-content" id="qodef-tab-b0d90cc">
-													<div
-														style="display: flex; align-items: flex-start; gap: 40px; min-height: 200px;">
-														<div style="flex: 1; padding-right: 20px; padding-left: 0;">
-															<p>"Mauritius is VISIO’s base—and a strategic platform for
-																African engagement. Through the Mauritius IFC, partners
-																benefit from a stable, transparent environment with:
-																Strong legal and contractual frameworks
-																Structured mechanisms for project financing and
-																cross-border investment
-																Efficient vehicles for regional operations and
-																partnerships
-																This allows VISIO to offer an end-to-end bridge—from
-																feasibility and investment readiness to design delivery
-																and implementation support—helping projects move from
-																vision to impact across African cities and territories."
-															</p>
-														</div>
+
+												<h3 class="qodef-e-title-holder">
+													<span class="qodef-e-title">Mauritius: Your Gateway to Africa</span>
+													<span class="qodef-e-mark">
+														<span class="qodef-icon--plus">
+															<span class="qodef-e-icon"><svg height="512" id="Capa_1"
+																	viewbox="0 0 207.2 207.2" width="512"
+																	xmlns="http://www.w3.org/2000/svg">
+																	<g>
+																		<g id="_3">
+																			<path
+																				d="m103.6 207.2c-4.087 0-7.4-3.313-7.4-7.4v-192.4c0-4.087 3.313-7.4 7.4-7.4s7.4 3.313 7.4 7.4v192.4c0 4.087-3.313 7.4-7.4 7.4z">
+																			</path>
+																			<path
+																				d="m199.8 111h-192.4c-4.087 0-7.4-3.313-7.4-7.4s3.313-7.4 7.4-7.4h192.4c4.087 0 7.4 3.313 7.4 7.4s-3.313 7.4-7.4 7.4z">
+																			</path>
+																		</g>
+																	</g>
+																</svg></span>
+														</span>
+														<span class="qodef-icon--minus">
+															<span class="qodef-e-icon"><svg height="512" id="Capa_1"
+																	viewbox="0 0 512 512" width="512"
+																	xmlns="http://www.w3.org/2000/svg">
+																	<g>
+																		<path
+																			d="m480 288h-448c-17.673 0-32-14.327-32-32s14.327-32 32-32h448c17.673 0 32 14.327 32 32s-14.327 32-32 32z">
+																		</path>
+																	</g>
+																</svg></span>
+														</span>
+													</span>
+												</h3>
+												<div class="qodef-e-content">
+													<div class="qodef-e-content-inner">
+														<p>"Mauritius is VISIO’s base—and a strategic platform for
+															African engagement. Through the Mauritius IFC, partners
+															benefit from a stable, transparent environment with:<br>
+															Strong legal and contractual frameworks<br>
+															Structured mechanisms for project financing and cross-border
+															investment<br>
+															Efficient vehicles for regional operations and
+															partnerships<br>
+															This allows VISIO to offer an end-to-end bridge—from
+															feasibility and investment readiness to design delivery and
+															implementation support—helping projects move from vision to
+															impact across African cities and territories."</p>
 													</div>
 												</div>
+
 											</div>
 										</div>
 									</div>
@@ -2422,6 +2435,9 @@
 	<script type="text/javascript"
 		src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/jquery/ui/tabs.min.js?ver=1.13.3"
 		id="jquery-ui-tabs-js"></script>
+	<script type="text/javascript"
+		src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/jquery/ui/accordion.min.js?ver=1.13.3"
+		id="jquery-ui-accordion-js"></script>
 	<script type="text/javascript"
 		src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/plugins/fslightbox/fslightbox.min.js?ver=6.8.2"
 		id="fslightbox-js"></script>
