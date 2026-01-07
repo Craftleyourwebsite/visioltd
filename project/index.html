@@ -9,6 +9,8 @@
   <link rel="profile" href="http://gmpg.org/xfn/11">
   <link rel="icon" type="image/jpeg" href="../public/favicon.jpeg">
   <link rel="shortcut icon" type="image/jpeg" href="../public/favicon.jpeg">
+  <link rel="stylesheet" href="../css/project-list-table.css">
+  <link rel="stylesheet" href="../css/all-categories.css">
   <title>Projects &#8211; Visio Architecture Ltd</title>
   <meta name='robots' content='max-image-preview:large' />
   <style>
@@ -2430,8 +2432,15 @@
                               <div class="wpb_column vc_column_container vc_col-sm-12">
                                 <div class="vc_column-inner">
                                   <div class="wpb_wrapper">
-                                    <!-- Filters bar (auto-built by JS) - moved above grid -->
-                                    <div class="gt-filters" id="gt-filters"></div>
+                                    <!-- ALL CATEGORIES GROUPED SECTION (Dynamic) -->
+                                    <section class="all-categories-section">
+                                      <div class="gt-container">
+                                        <h2 class="all-categories-title" style="cursor: pointer;">All Categories</h2>
+                                        <div class="categories-grid" id="dynamic-categories-grid">
+                                          <!-- Built dynamically by JS -->
+                                        </div>
+                                      </div>
+                                    </section>
                                     <div class="gt-grid" id="projects-container" style="position: relative;">
                                     </div>
                                   </div>
@@ -2444,6 +2453,29 @@
                       </div>
                     </div>
                   </div>
+            </section>
+
+            <!-- SELECTED PROJECTS LIST SECTION -->
+            <section class="project-list-section">
+              <div class="project-list-container">
+                <h2 class="project-list-title">Selected Projects List</h2>
+                <div class="project-table-wrapper">
+                  <table class="project-table">
+                    <thead>
+                      <tr>
+                        <th class="year-col">Year</th>
+                        <th class="location-col">Location</th>
+                        <th class="name-col">Project Name</th>
+                        <th class="client-col">Client</th>
+                        <th class="category-col">Category</th>
+                      </tr>
+                    </thead>
+                    <tbody id="project-list-body">
+                      <!-- Data will be injected here by project-list-loader.js -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </section>
 
           </div> <!-- #content .site-content -->
@@ -2925,6 +2957,7 @@
     id="prime-slider-site-js"></script>
   <script src="../js/config.js"></script>
   <script src="../js/projects-loader.js"></script>
+  <script src="../js/project-list-loader.js"></script>
 </body>
 
 </html>

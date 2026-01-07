@@ -1,0 +1,126 @@
+/* ALL CATEGORIES SECTION STYLES */
+
+.all-categories-section {
+    padding: 60px 0;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.all-categories-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+    color: #000;
+    /* Explicitly black */
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns on desktop, 2 or 1 on mobile */
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+@media screen and (min-width: 1200px) {
+    .categories-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-group-header {
+        cursor: pointer;
+        padding: 10px 0;
+    }
+
+    .category-group-header::after {
+        display: block;
+        /* Show + on mobile */
+    }
+
+    .category-group.is-active .category-group-header::after {
+        transform: rotate(45deg);
+        /* Transform + to X or just tilt */
+        content: '-';
+    }
+
+    .category-list {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, opacity 0.2s ease;
+        opacity: 0;
+    }
+
+    .category-group.is-active .category-list {
+        max-height: 1000px;
+        /* Big enough for the list */
+        opacity: 1;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+}
+
+.category-group {
+    margin-bottom: 20px;
+}
+
+.category-group-header {
+    font-size: 1.1rem;
+    font-weight: 800;
+    border-bottom: 2px solid #000;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    cursor: default;
+}
+
+/* Accordion indicator (hidden on desktop) */
+.category-group-header::after {
+    content: '+';
+    font-size: 1.5rem;
+    display: none;
+    transition: transform 0.3s ease;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-item {
+    font-size: 0.85rem;
+    color: #000;
+    /* Changed from #444 to satisfy black requirement */
+    padding: 4px 0;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.category-item:hover {
+    color: #000;
+    font-weight: 700;
+    padding-left: 5px;
+    /* Subtle interaction */
+}

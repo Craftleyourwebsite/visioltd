@@ -3,7 +3,57 @@
  * Fetches categories from Strapi API and rebuilds the filter bar.
  */
 
-document.addEventListener('DOMContentLoaded', loadProjects);
+document.addEventListener('DOMContentLoaded', () => {
+    loadProjects();
+
+    // Delegate click events for category-item and group headers
+    document.addEventListener('click', (e) => {
+        // Filter click
+        if (e.target.classList.contains('category-item')) {
+            const catName = e.target.textContent.trim();
+            filterProjectsBy(catName);
+        }
+
+        // Accordion toggle (mobile only)
+        if (e.target.classList.contains('category-group-header') && window.innerWidth <= 575) {
+            const group = e.target.closest('.category-group');
+            if (group) {
+                group.classList.toggle('is-active');
+            }
+        }
+
+        // Reset filter when clicking "All Categories" title
+        if (e.target.classList.contains('all-categories-title')) {
+            filterProjectsBy('All');
+        }
+    });
+});
+
+function filterProjectsBy(catName) {
+    const container = document.getElementById('projects-container');
+    if (!container) return;
+
+    const items = Array.from(container.querySelectorAll('.gt-grid-item'));
+
+    items.forEach(item => {
+        let show = (catName === 'All');
+        if (!show) {
+            try {
+                const itemCats = JSON.parse(item.getAttribute('data-categories') || '[]');
+                show = itemCats.some(c => c.trim().toLowerCase() === catName.trim().toLowerCase());
+            } catch (e) {
+                console.error(e);
+                show = false;
+            }
+        }
+
+        item.classList.toggle('is-hidden', !show);
+        item.style.display = show ? '' : 'none';
+    });
+
+    // Scroll to grid
+    container.scrollIntoView({ behavior: 'smooth' });
+}
 
 // Global variable to store fetched categories
 let allCategories = [];
@@ -34,11 +84,14 @@ async function loadProjects() {
         const projectsJson = await projectsResponse.json();
         const projects = CONFIG.flatten(projectsJson);
 
-        // Parse categories (may fail if not available yet)
+        // Parse categories
         if (categoriesResponse.ok) {
             const categoriesJson = await categoriesResponse.json();
             allCategories = CONFIG.flatten(categoriesJson) || [];
             if (!Array.isArray(allCategories)) allCategories = [];
+
+            // Render the category grid dynamically
+            renderCategoryGrid(allCategories);
         }
 
         // Robust check: projects must be an array
@@ -77,9 +130,6 @@ async function loadProjects() {
             container.insertAdjacentHTML('beforeend', html);
         });
 
-        // Re-initialize filters with API categories
-        initFilters();
-
     } catch (error) {
         console.error('Error loading projects:', error);
         container.innerHTML = `
@@ -95,11 +145,13 @@ async function loadProjects() {
 function createProjectCard(project) {
     const imgUrl = CONFIG.getImageUrl(project.thumbnail, 'public/section/1.jpeg');
 
-    // Category is now a relation - get the name from the related object
-    const categoryName = project.category?.name || 'Architecture';
+    // Handle multiple categories
+    const categories = Array.isArray(project.categories) ? project.categories : (project.category ? [project.category] : []);
+    const categoryNames = categories.length > 0 ? categories.map(c => c.name).join(', ') : 'Architecture';
+    const categoryList = categories.map(c => c.name);
 
     return `
-        <div class="gt-grid-item gt-grid-item--h2" data-category="${categoryName}" style="position: relative;">
+        <div class="gt-grid-item gt-grid-item--h2" data-categories='${JSON.stringify(categoryList)}' style="position: relative;">
             <div class="gt-img" style="background-image:url('${imgUrl}');"></div>
             <a href="projectview.html?project=${project.slug}" class="gt-content">
                 <span>
@@ -109,67 +161,70 @@ function createProjectCard(project) {
                     </ul>
                     <p class="gt-excerpt">${project.excerpt || ''}</p>
                     <ul class="gt-cat">
-                        <li>${categoryName}</li>
+                        <li>${categoryNames}</li>
                     </ul>
                 </span>
             </a>
-        </div>
     `;
 }
 
-function initFilters() {
-    const grid = document.getElementById('projects-container');
-    if (!grid) return;
+function renderCategoryGrid(categories) {
+    const gridContainer = document.getElementById('dynamic-categories-grid');
+    if (!gridContainer) return;
 
-    const items = Array.from(grid.querySelectorAll('.gt-grid-item'));
-    const bar = document.getElementById('gt-filters');
+    // Group categories by the 'group' field
+    const groups = {};
+    categories.forEach(cat => {
+        const groupName = cat.group || 'Other';
+        if (!groups[groupName]) groups[groupName] = [];
+        groups[groupName].push(cat.name);
+    });
 
-    if (!bar) return;
+    // Define the preferred order of groups to match the design if possible
+    const preferredOrder = [
+        'Core Architecture',
+        'Infrastructure & Transport',
+        'Industrial & Logistics',
+        'Urban Planning & Territorial Development',
+        'Heritage & Adaptive Reuse',
+        'Interior Architecture',
+        'Landscape & Environment',
+        'Specialist / Strategic Work'
+    ];
 
-    // Build categories list: use API categories if available, else derive from projects
-    let categoryNames = [];
+    // Sort group names: preferred order first, then alphabetical
+    const groupNames = Object.keys(groups).sort((a, b) => {
+        const idxA = preferredOrder.indexOf(a);
+        const idxB = preferredOrder.indexOf(b);
+        if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+        if (idxA !== -1) return -1;
+        if (idxB !== -1) return 1;
+        return a.localeCompare(b);
+    });
 
-    if (allCategories.length > 0) {
-        // Use categories from API (already sorted by order)
-        categoryNames = allCategories.map(cat => cat.name);
-    } else {
-        // Fallback: derive from project items
-        const categoriesSet = new Set();
-        items.forEach(item => {
-            const cat = item.getAttribute('data-category');
-            if (cat) categoriesSet.add(cat);
+    gridContainer.innerHTML = '';
+
+    groupNames.forEach(groupName => {
+        const groupDiv = document.createElement('div');
+        groupDiv.className = 'category-group';
+
+        const header = document.createElement('div');
+        header.className = 'category-group-header';
+        header.textContent = groupName;
+
+        const list = document.createElement('ul');
+        list.className = 'category-list';
+
+        groups[groupName].forEach(catName => {
+            const li = document.createElement('li');
+            li.className = 'category-item';
+            li.textContent = catName;
+            list.appendChild(li);
         });
-        categoryNames = Array.from(categoriesSet);
-    }
 
-    if (categoryNames.length === 0) return;
-
-    // Add "All" at the beginning
-    const finalCats = ['All', ...categoryNames];
-
-    // Build filter buttons
-    bar.innerHTML = '';
-    finalCats.forEach((cat, idx) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.textContent = cat;
-        if (idx === 0) btn.classList.add('is-active');
-
-        btn.addEventListener('click', () => {
-            // UI toggle
-            Array.from(bar.children).forEach(b => b.classList.remove('is-active'));
-            btn.classList.add('is-active');
-
-            // Logic toggle
-            items.forEach(item => {
-                const itemCat = item.getAttribute('data-category');
-                const show = (cat === 'All') || (itemCat === cat);
-
-                item.classList.toggle('is-hidden', !show);
-                item.style.display = show ? '' : 'none';
-            });
-        });
-
-        bar.appendChild(btn);
+        groupDiv.appendChild(header);
+        groupDiv.appendChild(list);
+        gridContainer.appendChild(groupDiv);
     });
 }
+
