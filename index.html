@@ -2252,9 +2252,10 @@
                   </div>
                 </div>
               </div>
-              <div class="footer-logo-wrapper" style="text-align: left; width: 100%; position: relative !important; left: -30px !important; transform: translateX(0) !important;">
+              <div class="footer-logo-wrapper"
+                style="text-align: left; width: 100%; position: relative !important; left: -30px !important; transform: translateX(0) !important;">
                 <a href="./" style="display: inline-block; position: relative !important; left: 0 !important;">
-                  <img src="./public/logoblanc.png" alt="VISIO"
+                  <img src="/public/logoblanc.png" alt="VISIO"
                     style="max-width: 150px; height: auto; display: block; margin-left: 0; position: relative !important; left: 0 !important; transform: translateX(0) !important;">
                 </a>
               </div>
@@ -2665,31 +2666,31 @@
     <!-- #colophon .site-footer -->
   </div>
   <script>
-      // Reset logo footer sur mobile
-      if (window.innerWidth <= 768) {
-        document.addEventListener('DOMContentLoaded', function() {
-          const logoWrapper = document.querySelector('.footer-logo-wrapper');
-          const logoImg = document.querySelector('.footer-logo-wrapper img');
-          
-          if (logoWrapper) {
-            logoWrapper.style.left = '0px';
-            logoWrapper.style.transform = 'none';
-            logoWrapper.style.position = 'relative';
-            logoWrapper.style.margin = '0px';
-            logoWrapper.style.padding = '0px';
-          }
-          
-          if (logoImg) {
-            logoImg.style.left = '0px';
-            logoImg.style.transform = 'none';
-            logoImg.style.position = 'relative';
-            logoImg.style.margin = '0px';
-            logoImg.style.float = 'none';
-          }
-        });
-      }
-    </script>
-    <script src="js/speculationrules.js"></script>
+    // Reset logo footer sur mobile
+    if (window.innerWidth <= 768) {
+      document.addEventListener('DOMContentLoaded', function () {
+        const logoWrapper = document.querySelector('.footer-logo-wrapper');
+        const logoImg = document.querySelector('.footer-logo-wrapper img');
+
+        if (logoWrapper) {
+          logoWrapper.style.left = '0px';
+          logoWrapper.style.transform = 'none';
+          logoWrapper.style.position = 'relative';
+          logoWrapper.style.margin = '0px';
+          logoWrapper.style.padding = '0px';
+        }
+
+        if (logoImg) {
+          logoImg.style.left = '0px';
+          logoImg.style.transform = 'none';
+          logoImg.style.position = 'relative';
+          logoImg.style.margin = '0px';
+          logoImg.style.float = 'none';
+        }
+      });
+    }
+  </script>
+  <script src="js/speculationrules.js"></script>
   <script src="js/lazyload.js"></script>
   <script type="text/javascript"
     src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3"
