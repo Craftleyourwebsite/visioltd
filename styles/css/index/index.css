@@ -446,3 +446,9 @@ body {
 		text-align: left !important;
 	}
 }
+/* --- AJUSTEMENT POSITION LOGO HEADER MOBILE (SANS SCROLL) --- */
+@media screen and (max-width: 991px) {
+    .site-header:not(.clone) .logo-image {
+        transform: translateY(-3px) !important;
+    }
+}
