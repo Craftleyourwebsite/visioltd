@@ -1,0 +1,166 @@
+/* Static Team Section Styles */
+
+.static-team-section {
+    padding: 100px 0;
+    background-color: #fff;
+    font-family: 'Inter', 'Now', sans-serif;
+}
+
+.static-team-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.team-header {
+    margin-bottom: 60px;
+}
+
+.team-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.team-title {
+    font-size: 15vw;
+    /* Very large as in the image */
+    font-weight: 900;
+    margin: 0;
+    line-height: 0.8;
+    color: #050508;
+    text-transform: uppercase;
+}
+
+.more-details {
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease;
+}
+
+.more-details:hover {
+    transform: translateX(5px);
+}
+
+.more-details span {
+    font-size: 24px;
+}
+
+.team-intro {
+    font-size: 24px;
+    line-height: 1.4;
+    max-width: 800px;
+    margin: 0;
+    color: #000;
+}
+
+.team-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+section#team.static-team-section .team-card {
+    flex: 1;
+    min-width: 480px;
+    display: flex !important;
+    background-color: #f4f4f4 !important;
+    overflow: hidden !important;
+    align-items: stretch !important;
+    border: none !important;
+    margin: 0 !important;
+}
+
+section#team.static-team-section .member-image {
+    flex: 0 0 42% !important;
+    position: relative !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    /* Let it be driven by flex stretch */
+}
+
+section#team.static-team-section .member-image img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    object-fit: cover !important;
+    filter: grayscale(100%) !important;
+    max-width: none !important;
+    /* Override potential global max-width */
+}
+
+section#team.static-team-section .member-info {
+    padding: 40px 30px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    flex: 1 !important;
+}
+
+.member-info h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 0 5px 0;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.member-info .role {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 25px 0;
+}
+
+.member-info .bio {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+    /* Common in these kinds of designs */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+    section#team.static-team-section .team-card {
+        min-width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    section#team.static-team-section .team-title {
+        font-size: 20vw !important;
+    }
+
+    section#team.static-team-section .team-title-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+    }
+
+    section#team.static-team-section .team-intro {
+        font-size: 18px !important;
+    }
+
+    section#team.static-team-section .team-card {
+        flex-direction: column !important;
+    }
+
+    section#team.static-team-section .member-image {
+        flex: 0 0 300px !important;
+        width: 100% !important;
+    }
+
+    section#team.static-team-section .member-info {
+        padding: 20px !important;
+    }
+}
