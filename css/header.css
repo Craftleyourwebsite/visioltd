@@ -87,10 +87,10 @@
   .logo-image,
   .site-header:not(.clone) .logo-image,
   .site-header.clone .logo-image {
-    max-height: 45px !important;
+    max-height: 55px !important;
     max-width: 85% !important;
-    margin: 10px auto 0 auto !important;
-    /* Adjusted from -20px to 10px to move down by 30px */
+    margin: 6px auto 0 auto !important;
+    transform: translateX(-120px) !important;
   }
 }
 
@@ -109,10 +109,10 @@
   .logo-image,
   .site-header:not(.clone) .logo-image,
   .site-header.clone .logo-image {
-    max-height: 45px !important;
+    max-height: 55px !important;
     max-width: 80% !important;
-    margin: 10px auto 0 auto !important;
-    /* Adjusted from -20px to 10px */
+    margin: 6px auto 0 auto !important;
+    transform: translateX(-120px) !important;
   }
 
   .site-title {
@@ -135,9 +135,10 @@
   .logo-image,
   .site-header:not(.clone) .logo-image,
   .site-header.clone .logo-image {
-    max-height: 35px !important;
+    max-height: 45px !important;
     max-width: 75% !important;
-    margin: 15px auto 0 auto !important;
+    margin: 11px auto 0 auto !important;
+    transform: translateX(-70px) !important;
   }
 }
 
