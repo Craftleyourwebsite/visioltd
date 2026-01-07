@@ -88,6 +88,7 @@
 		@media (max-width: 600px) {
 			.qodef-m-title {
 				font-size: 10vw;
+				white-space: normal !important;
 			}
 		}
 
@@ -128,15 +129,18 @@
 			color: #000000 !important;
 		}
 
-		/* Exception spéciale : "Services" est noir par défaut et reste noir au hover */
-		.site-header .nav-menu .current-menu-item a,
-		.site-header.clone .nav-menu .current-menu-item a {
-			color: #000000 !important;
-		}
+		/* Exception spéciale : "Services" est noir par défaut (sur fond blanc) en desktop */
+		@media screen and (min-width: 992px) {
 
-		.site-header .nav-menu .current-menu-item a:hover,
-		.site-header.clone .nav-menu .current-menu-item a:hover {
-			color: #000000 !important;
+			.site-header .nav-menu .current-menu-item a,
+			.site-header.clone .nav-menu .current-menu-item a {
+				color: #000000 !important;
+			}
+
+			.site-header .nav-menu .current-menu-item a:hover,
+			.site-header.clone .nav-menu .current-menu-item a:hover {
+				color: #000000 !important;
+			}
 		}
 
 		/* Bouton de langue blanc en permanence */
@@ -698,17 +702,8 @@
 				transform: translateX(0);
 			}
 
-			/* Overlay pour assombrir le contenu derrière le menu */
-			.is-menu-toggled-on::before {
-				content: '';
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100vh;
-				background: rgba(0, 0, 0, 0.5);
-				z-index: 998;
-			}
+			/* Suppression de l'overlay noir total qui bloquait la vue du background */
+			/* .is-menu-toggled-on::before { ... } supprimé car l'utilisateur ne veut pas de background noir fixe */
 
 			/* Styles pour le menu mobile quand il est ouvert - Demi-écran comme l'exemple */
 			.is-menu-toggled-on .nav-menu {
@@ -874,7 +869,7 @@
 			flex-wrap: nowrap !important;
 		}
 
-		.elementor-element-83346e1 .elementor-element-7dcf136 > .elementor-element,
+		.elementor-element-83346e1 .elementor-element-7dcf136>.elementor-element,
 		.elementor-element-83346e1 .elementor-element-7dcf136 .elementor-widget,
 		.elementor-element-83346e1 .elementor-element-7dcf136 .elementor-widget-container {
 			width: auto !important;
@@ -1998,40 +1993,6 @@
 			}
 		}
 	</style>
-	<style id="mobile-header-service-sync">
-		/* Mobile header sync with aboutus.html - service.html */
-		@media screen and (max-width: 991px) {
-
-			/* Icône hamburger visible sur fond noir */
-			.site-header .menu-toggle .lines,
-			.site-header .menu-toggle .lines:before,
-			.site-header .menu-toggle .lines:after {
-				background-color: #ffffff !important;
-			}
-
-			/* Panneau et liens lisibles quand le menu est ouvert */
-			.is-menu-toggled-on .site-header .menu-wrap,
-			.is-menu-toggled-on .site-header .nav-menu,
-			.is-menu-toggled-on .site-header .menu-wrap:before {
-				background: #000000 !important;
-			}
-
-			.is-menu-toggled-on .site-header .nav-menu a,
-			.is-menu-toggled-on #menu-item-language a {
-				color: #ffffff !important;
-			}
-
-			/* Superposer correctement le panneau */
-			.site-header .menu-wrap {
-				position: relative;
-				z-index: 1001;
-			}
-
-			.is-menu-toggled-on .site-header {
-				background: #000000 !important;
-			}
-		}
-	</style>
 	<style id="footer-service-final-overrides">
 		body.page-id-23123 .elementor-element-83346e1 .elementor-element-7dcf136 {
 			display: flex !important;
@@ -2115,6 +2076,7 @@
 
 		/* Mobile et iPad: aligner les icônes sociales, OUR PROJECTS et LINKS à gauche */
 		@media (max-width: 1024px) {
+
 			/* Forcer les icônes sociales à gauche avec priorité maximale */
 			body.page-id-23123 .elementor-element-83346e1 .elementor-element-7dcf136,
 			body.page-id-23123 .elementor-element-83346e1 .elementor-element-7dcf136.e-con,
@@ -2942,7 +2904,7 @@
 									<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-word qodef-qi--has-appear qodef--appear-from-top"
 										data-appear-delay="100">
 										<h1 class="qodef-m-title"
-											style="margin-bottom: 60px; width: 100%; max-width: 100%; overflow: visible; font-size: clamp(40px, 6vw, 80px);">
+											style="margin-bottom: 60px; width: 100%; max-width: 100%; overflow: visible; font-size: clamp(30px, 8vw, 80px); white-space: normal;">
 											<span class="qodef-e-word">TYPE</span> <span class="qodef-e-word">OF</span>
 											<span class="qodef-e-word">PROJECTS</span>
 										</h1>
@@ -3292,8 +3254,7 @@
 									<a href="https://www.linkedin.com" target="_blank"
 										style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin-left: 8px; background-color: #000000; border-radius: 12px; color: white; text-decoration: none; transition: all 0.3s ease;">
 										<svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-											<path
-												fill="white"
+											<path fill="white"
 												d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
 										</svg>
 									</a>
