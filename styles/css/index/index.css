@@ -234,7 +234,215 @@ body {
 	box-sizing: border-box;
 }
 
-/* S'assurer que le dernier élément n'a pas de margin */
-.elementor-element-c7a1e3a {
-	margin-bottom: 0 !important;
+/* --- STYLES POUR LA SECTION PROJECTS / WORKS --- */
+.elementor-element-70ef4311 {
+	width: 100% !important;
+	max-width: 100% !important;
+	overflow-x: hidden !important;
+}
+
+.elementor-element-6ea4c584 {
+	width: 100% !important;
+	max-width: 100% !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+/* Forcer le conteneur du carrousel à être full-width */
+.elementor-element-537e2745 {
+	width: 100% !important;
+	max-width: 100% !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.elementor-element-537e2745 .elementor-widget-container {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+/* Ajustement du texte "WORKS" en arrière-plan */
+.elementor-element-6bfbc4ca .qodef-m-title {
+	font-size: 10vw !important;
+	line-height: 1 !important;
+	margin: 0 !important;
+	opacity: 0.1 !important;
+}
+
+/* Ajustements Responsive Mobile */
+@media (max-width: 768px) {
+	.elementor-element-70ef4311 {
+		padding: 0 !important;
+	}
+
+	.elementor-element-413d310b .e-con-inner {
+		padding: 0 20px !important;
+	}
+
+	.elementor-element-6bfbc4ca .qodef-m-title {
+		font-size: 60px !important;
+		margin-top: 10px !important;
+	}
+
+	.elementor-element-713c0149 .elementor-heading-title {
+		font-size: 18px !important;
+		line-height: 1.4 !important;
+	}
+
+	.elementor-element-fbd58c0 {
+		margin-top: 20px !important;
+	}
+
+	/* Carousel height on mobile */
+	.elementor-element-537e2745 .bdt-prime-slider-skin-coral {
+		height: 550px !important;
+		/* Increase height slightly for better fit */
+	}
+
+	.elementor-element-537e2745 .bdt-slideshow-items {
+		height: 550px !important;
+	}
+
+	.elementor-element-537e2745 .bdt-ps-slide-img {
+		height: 550px !important;
+	}
+
+	/* Navigation arrows fix - ensure they are in the center right within the carousel */
+	.elementor-element-537e2745 .bdt-navigation-arrows {
+		position: absolute !important;
+		top: 50% !important;
+		right: 15px !important;
+		left: auto !important;
+		transform: translateY(-50%) !important;
+		display: flex !important;
+		flex-direction: column !important;
+		gap: 15px !important;
+		z-index: 1000 !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+		width: auto !important;
+		height: auto !important;
+	}
+
+	.elementor-element-537e2745 .bdt-prime-slider-previous,
+	.elementor-element-537e2745 .bdt-prime-slider-next {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		width: 40px !important;
+		height: 40px !important;
+		background-color: transparent !important;
+		backdrop-filter: none !important;
+		border: 1px solid rgba(255, 255, 255, 0.3) !important;
+		border-radius: 4px !important;
+		position: static !important;
+		margin: 0 !important;
+		transition: background-color 0.3s ease, border-color 0.3s ease !important;
+		animation: none !important;
+		/* Remove any plugin animations */
+		transform: none !important;
+		/* Ensure no parallax or hover shifts */
+	}
+
+	.elementor-element-537e2745 .bdt-prime-slider-previous:hover,
+	.elementor-element-537e2745 .bdt-prime-slider-next:hover,
+	.elementor-element-537e2745 .bdt-prime-slider-previous:active,
+	.elementor-element-537e2745 .bdt-prime-slider-next:active {
+		background-color: rgba(255, 255, 255, 0.2) !important;
+		border-color: rgba(255, 255, 255, 0.8) !important;
+		transform: none !important;
+		/* Maintain static position on hover */
+	}
+
+
+
+	/* Force visibility of arrow icons if they are SVGs inside */
+	.elementor-element-537e2745 .bdt-navigation-arrows a::before,
+	.elementor-element-537e2745 .bdt-navigation-arrows a::after {
+		color: #ffffff !important;
+	}
+
+	/* Read More button fix */
+	.elementor-element-537e2745 .bdt-slideshow-content-wrapper {
+		height: 100% !important;
+		display: flex !important;
+		flex-direction: column !important;
+		justify-content: center !important;
+		padding: 0 40px 0 20px !important;
+	}
+
+	.elementor-element-537e2745 .bdt-prime-slider-content {
+		width: 100% !important;
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+
+	.elementor-element-537e2745 .bdt-coral-btn {
+		margin-top: 30px !important;
+		display: inline-block !important;
+		transform: none !important;
+		/* Disable problematic parallax on mobile */
+		opacity: 1 !important;
+		visibility: visible !important;
+	}
+
+	.elementor-element-537e2745 .bdt-slide-btn {
+		display: inline-flex !important;
+		align-items: center !important;
+		background: #ffffff !important;
+		padding: 12px 24px !important;
+		border-radius: 0 !important;
+		text-transform: uppercase !important;
+		font-weight: 600 !important;
+		font-size: 14px !important;
+		color: #000000 !important;
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+		width: auto !important;
+		height: auto !important;
+	}
+
+	.elementor-element-537e2745 .bdt-prime-slider-button-text {
+		color: #000000 !important;
+	}
+
+	/* Titre du carrousel mobile */
+	.elementor-element-537e2745 .bdt-title-tag {
+		font-size: 28px !important;
+		line-height: 1.2 !important;
+		margin-bottom: 10px !important;
+	}
+}
+
+@media (max-width: 480px) {
+	.elementor-element-6bfbc4ca .qodef-m-title {
+		font-size: 50px !important;
+	}
+
+	.elementor-element-713c0149 .elementor-heading-title {
+		font-size: 16px !important;
+	}
+}
+
+/* --- ALIGNEMENT DU LOGO FOOTER SUR MOBILE --- */
+@media (max-width: 768px) {
+	.footer-logo-wrapper {
+		text-align: left !important;
+		display: block !important;
+		width: 100% !important;
+		padding-left: 0 !important;
+		margin-left: 0 !important;
+	}
+
+	.footer-logo-wrapper img {
+		margin-left: 0 !important;
+		margin-right: auto !important;
+		display: block !important;
+	}
+
+	/* Désactiver les alignements de containers parents qui pourraient interférer */
+	.elementor-element-a3c724e {
+		justify-content: flex-start !important;
+		align-items: flex-start !important;
+		text-align: left !important;
+	}
 }
