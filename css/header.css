@@ -1,18 +1,153 @@
-/* Header / Logo / Site Branding - moved from index.html */
+/* Header / Logo / Site Branding - Styles extracted from africa.css for consistency */
 
-/* Conteneur centré pour le branding */
-.site-branding-center {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  /* valeurs renforcées depuis les surcharges plus bas */
-  height: auto !important;
-  min-height: 80px !important;
+/* === STYLES ISOLÉS DU LOGO - LOGO CENTERED === */
+
+/* Conteneur du branding - centré et avec hauteur fixe */
+.site-branding {
+  max-height: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-/* Header - texte blanc par défaut */
+.site-branding-center {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center;
+  height: auto !important;
+  min-height: 80px !important;
+  flex: 1;
+  padding: 10px 0;
+}
+
+.site-header.clone .site-branding-center {
+  min-height: 60px !important;
+  padding: 8px 0;
+}
+
+/* Styles pour l'image du logo - dimensions et positionnement */
+.logo-image {
+  max-height: 50px;
+  width: auto;
+  display: block !important;
+  margin: 0 auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: all 0.3s ease;
+  object-fit: contain;
+}
+
+/* Logo en mode normal (header transparent) */
+.site-header:not(.clone) .logo-image {
+  max-height: 50px;
+  max-width: 100%;
+}
+
+/* Logo en mode scroll (header clone) */
+.site-header.clone .logo-image {
+  max-height: 45px;
+  max-width: 100%;
+}
+
+/* Conteneur du titre du site */
+.site-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.site-title a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.site-title a img {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  max-width: 100%;
+  height: auto;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Masquer le texte du logo */
+.logo-text {
+  display: none !important;
+}
+
+/* === STYLES TABLETTE/MOYEN (991px) - Placé avant pour cascade correcte === */
+@media screen and (max-width: 991px) {
+
+  .logo-image,
+  .site-header:not(.clone) .logo-image,
+  .site-header.clone .logo-image {
+    max-height: 45px !important;
+    max-width: 85% !important;
+    margin: -20px auto 0 auto !important;
+  }
+}
+
+/* === STYLES MOBILES - LOGO CENTRÉ === */
+@media screen and (max-width: 768px) {
+  .elementor-element-7dcf136 {
+    justify-content: flex-start !important;
+  }
+
+  .site-branding-center {
+    min-height: 70px !important;
+    padding: 0 0 !important;
+    margin-top: -10px !important;
+  }
+
+  .logo-image,
+  .site-header:not(.clone) .logo-image,
+  .site-header.clone .logo-image {
+    max-height: 45px !important;
+    max-width: 80% !important;
+    margin: -20px auto 0 auto !important;
+  }
+
+  .site-title {
+    width: 100%;
+  }
+
+  .site-title a {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .site-branding-center {
+    min-height: 60px !important;
+    padding: 0 0 !important;
+    margin-top: -10px !important;
+  }
+
+  .logo-image,
+  .site-header:not(.clone) .logo-image,
+  .site-header.clone .logo-image {
+    max-height: 35px !important;
+    max-width: 75% !important;
+    margin: 15px auto 0 auto !important;
+  }
+}
+
+/* --- AJUSTEMENT POSITION LOGO HEADER MOBILE (SANS SCROLL) --- */
+
+
+
+
+
+/* === HEADER STYLES & LAYOUT === */
+
+/* Styles pour le header - texte blanc par défaut */
 .site-header:not(.clone) .nav-menu a,
 .site-header:not(.clone) .menu-toggle .lines,
 .site-header:not(.clone) .menu-toggle .lines:before,
@@ -24,30 +159,7 @@
   color: #000000 !important;
 }
 
-/* Header en mode scroll - header noir, texte blanc */
-.site-header.clone .header-wrap:before {
-  background: #000000 !important;
-  opacity: 1 !important;
-}
-
-.site-header.clone .nav-menu a,
-.site-header.clone .menu-toggle .lines,
-.site-header.clone .menu-toggle .lines:before,
-.site-header.clone .menu-toggle .lines:after {
-  color: #ffffff !important;
-}
-
-.site-header.clone .nav-menu a:hover {
-  color: #000000 !important;
-}
-
-/* Logo toujours blanc (inversé) */
-.site-header:not(.clone) .logo-image,
-.site-header.clone .logo-image {
-  filter: brightness(0) invert(1) !important;
-}
-
-/* Élément de menu actif (comme aboutus.html) */
+/* Styles pour l'élément actif - Noir */
 .site-header .nav-menu .current-menu-item a,
 .site-header.clone .nav-menu .current-menu-item a {
   color: #000000 !important;
@@ -58,7 +170,242 @@
   color: #000000 !important;
 }
 
-/* Mise en page du header */
+/* Styles pour le bouton de langue - noir par défaut */
+.language-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 40px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.language-btn:hover {
+  background: none;
+  color: #ffffff;
+  transform: none;
+}
+
+.language-btn.active {
+  background: none;
+  color: #ffffff;
+}
+
+/* Lang toggle showing both EN-FR with active highlight */
+.language-btn .lang-part,
+.menu-item-language .lang-part {
+  opacity: 0.6;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.language-btn .lang-part.active,
+.menu-item-language .lang-part.active {
+  opacity: 1;
+  color: #d4af37;
+  /* highlight active language */
+  font-weight: 700;
+}
+
+.language-btn .lang-sep,
+.menu-item-language .lang-sep {
+  display: inline-block;
+  margin: 0 8px;
+  /* small spacing around dash */
+  opacity: 0.6;
+}
+
+/* Styles pour le header en mode scroll - texte blanc, header noir */
+.site-header.clone .header-wrap:before {
+  background: #000000 !important;
+  opacity: 1 !important;
+}
+
+/* S'assurer que le header reste noir quand le menu est ouvert, même en mode scroll */
+.is-menu-toggled-on .site-header.clone .header-wrap:before {
+  background: #000000 !important;
+  opacity: 1 !important;
+}
+
+/* Styles pour le hamburger en mode scroll quand le menu est ouvert */
+.is-menu-toggled-on .site-header.clone .menu-toggle .lines,
+.is-menu-toggled-on .site-header.clone .menu-toggle .lines:before,
+.is-menu-toggled-on .site-header.clone .menu-toggle .lines:after {
+  background-color: #ffffff !important;
+}
+
+/* S'assurer que le menu lui-même n'est pas affecté par l'animation du hamburger */
+.is-menu-toggled-on .nav-menu {
+  /* Le menu garde son comportement normal */
+  display: block !important;
+}
+
+.is-menu-toggled-on .nav-menu ul {
+  /* La liste du menu garde son comportement normal */
+  display: block !important;
+}
+
+.is-menu-toggled-on .nav-menu li {
+  /* Les éléments du menu gardent leur comportement normal */
+  display: block !important;
+}
+
+.is-menu-toggled-on .nav-menu a {
+  /* Les liens du menu gardent leur comportement normal */
+  display: block !important;
+}
+
+/* Décalage de 30px vers la droite pour les titres du menu (desktop uniquement) */
+@media screen and (min-width: 992px) {
+  .site-header .nav-menu>ul#menu-mymenu {
+    transform: translateX(90px);
+  }
+}
+
+/* Styles pour le menu mobile quand il est ouvert - Demi-écran comme l'exemple */
+@media screen and (max-width: 991px) {
+  .is-menu-toggled-on .nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100vh;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-menu {
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .is-menu-toggled-on .nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0 40px;
+    width: 100%;
+  }
+
+  .is-menu-toggled-on .nav-menu li {
+    display: block;
+    width: 100%;
+  }
+
+  .is-menu-toggled-on .nav-menu a {
+    color: #ffffff !important;
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .is-menu-toggled-on .nav-menu a:hover {
+    color: #ffffff !important;
+    opacity: 0.8;
+    padding-left: 10px;
+  }
+
+  /* Style spécial pour l'élément language dans le menu */
+  .is-menu-toggled-on .menu-item-language a {
+    border-bottom: none;
+    font-weight: 600;
+    color: #cccccc !important;
+  }
+
+  /* Animation des éléments du menu - apparition progressive */
+  .is-menu-toggled-on .nav-menu li {
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideInMenu 0.3s ease forwards;
+  }
+
+  .is-menu-toggled-on .nav-menu li:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .is-menu-toggled-on .nav-menu li:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .is-menu-toggled-on .nav-menu li:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .is-menu-toggled-on .nav-menu li:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+
+  .is-menu-toggled-on .nav-menu li:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+
+  .is-menu-toggled-on .nav-menu li:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+
+  .is-menu-toggled-on .nav-menu li:nth-child(7) {
+    animation-delay: 0.7s;
+  }
+
+  .is-menu-toggled-on .nav-menu li:nth-child(8) {
+    animation-delay: 0.8s;
+  }
+
+  @keyframes slideInMenu {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+.site-header.clone .nav-menu a,
+.site-header.clone .menu-toggle .lines,
+.site-header.clone .menu-toggle .lines:before,
+.site-header.clone .menu-toggle .lines:after {
+  color: #ffffff !important;
+}
+
+.site-header.clone .nav-menu a:hover {
+  color: #ffffff !important;
+}
+
+/* Style pour le bouton quand on scrolle - blanc */
+.site-header.clone .language-btn {
+  color: #ffffff !important;
+}
+
+.site-header.clone .language-btn:hover {
+  color: #ffffff !important;
+}
+
+.site-header.clone .language-btn.active {
+  color: #ffffff !important;
+}
+
+/* S'assurer que le logo reste blanc dans tous les cas */
+.site-header:not(.clone) .logo-image,
+.site-header.clone .logo-image {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Forcer le positionnement à droite dans le header */
 .layout-medium {
   display: flex !important;
   align-items: center !important;
@@ -75,75 +422,190 @@
   flex-shrink: 0;
 }
 
-/* S'assurer que le logo est toujours visible */
-.site-title a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Styles et ordre des éléments (Menu burger à droite pour mobile) */
+.menu-toggle {
+  order: 1 !important;
+  margin-left: auto !important;
 }
 
-.site-title a img {
-  display: block !important;
+.nav-menu {
+  order: 2 !important;
+}
+
+.language-switcher {
+  order: 3 !important;
+}
+
+/* Masquer le language switcher sur mobile et afficher l'option dans le menu */
+@media screen and (max-width: 991px) {
+  .language-switcher {
+    display: none !important;
+  }
+
+  .menu-item-language {
+    display: block !important;
+  }
+
+  /* Styles pour le texte du header en mobile - Texte blanc */
+  .site-header:not(.clone) .nav-menu a,
+  .site-header:not(.clone) .menu-toggle .lines,
+  .site-header:not(.clone) .menu-toggle .lines:before,
+  .site-header:not(.clone) .menu-toggle .lines:after {
+    color: #ffffff !important;
+  }
+
+  .site-header:not(.clone) .menu-toggle .lines,
+  .site-header:not(.clone) .menu-toggle .lines:before,
+  .site-header:not(.clone) .menu-toggle .lines:after {
+    background-color: #ffffff !important;
+  }
+
+  /* Quand le menu est ouvert en mobile - Texte blanc */
+  .is-menu-toggled-on .site-header:not(.clone) .nav-menu a,
+  .is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines,
+  .is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:before,
+  .is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:after {
+    color: #ffffff !important;
+  }
+
+  .is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines,
+  .is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:before,
+  .is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:after {
+    background-color: #ffffff !important;
+  }
+
+  /* Animation d'entrée du menu - slide depuis la droite */
+  .nav-menu {
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .is-menu-toggled-on .nav-menu {
+    transform: translateX(0);
+  }
+
+  /* Overlay pour assombrir le contenu derrière le menu */
+  .is-menu-toggled-on::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+  }
+}
+
+/* Afficher le language switcher sur desktop et masquer l'option dans le menu */
+@media screen and (min-width: 992px) {
+  .language-switcher {
+    display: flex !important;
+  }
+
+  .menu-item-language {
+    display: none !important;
+  }
+}
+
+/* Styles pour le header quand le menu est ouvert - Header noir */
+.is-menu-toggled-on .site-header:not(.clone) .header-wrap:before {
+  background: #000000 !important;
   opacity: 1 !important;
-  visibility: visible !important;
 }
 
-/* Styles pour l'image du logo */
-.logo-image {
-  max-height: 50px;
-  width: auto;
+/* Styles pour le hamburger quand le menu est ouvert - Texte blanc */
+.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines,
+.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:before,
+.is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:after {
+  background-color: #ffffff !important;
+}
+
+/* Isolation complète de l'animation du hamburger - ne s'applique qu'au bouton */
+.is-menu-toggled-on .menu-toggle .lines {
+  /* Animation spécifique au hamburger uniquement */
+  background-color: transparent !important;
+}
+
+.is-menu-toggled-on .menu-toggle .lines:before {
+  /* Animation spécifique au hamburger uniquement */
+  top: 0 !important;
+  transform: rotate(45deg) !important;
+  background-color: #ffffff !important;
+}
+
+.is-menu-toggled-on .menu-toggle .lines:after {
+  /* Animation spécifique au hamburger uniquement */
+  bottom: 0 !important;
+  transform: rotate(-45deg) !important;
+  background-color: #ffffff !important;
+}
+
+/* Animation du hamburger pour fermer (X) */
+.is-menu-toggled-on .menu-toggle .lines {
+  background-color: transparent !important;
+}
+
+.is-menu-toggled-on .menu-toggle .lines:before {
+  transform: rotate(45deg) translate(5px, 5px) !important;
+  background-color: #ffffff !important;
+}
+
+.is-menu-toggled-on .menu-toggle .lines:after {
+  transform: rotate(-45deg) translate(7px, -6px) !important;
+  background-color: #ffffff !important;
+}
+
+/* Styles pour le language switcher quand le menu est ouvert */
+.is-menu-toggled-on .site-header:not(.clone) .language-btn {
+  color: #ffffff !important;
+}
+
+.is-menu-toggled-on .site-header:not(.clone) .language-btn:hover {
+  color: #ffffff !important;
+}
+
+/* Styles de base pour le hamburger */
+.menu-toggle {
+  position: relative;
+  cursor: pointer;
+  z-index: 1000;
   display: block;
-  margin: 0 auto;
-  opacity: 1;
-  visibility: visible;
+  width: 30px;
+  height: 30px;
+}
+
+.menu-toggle .lines {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   transition: all 0.3s ease;
 }
 
-/* Logo en mode normal (header transparent) */
-.site-header:not(.clone) .logo-image {
-  max-height: 50px;
-  opacity: 1;
-  visibility: visible;
+.menu-toggle .lines:before,
+.menu-toggle .lines:after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
 }
 
-/* Logo en mode scroll (header clone) */
-.site-header.clone .logo-image {
-  max-height: 45px;
-  opacity: 1;
-  visibility: visible;
+.menu-toggle .lines:before {
+  top: -8px;
 }
 
-/* Surcharger les limitations de hauteur du thème */
-.site-branding {
-  max-height: none !important;
-  display: flex !important;
-  align-items: center !important;
+.menu-toggle .lines:after {
+  bottom: -8px;
 }
 
-/* Hauteur réduite pour le header cloné */
-.site-header.clone .site-branding-center {
-  min-height: 60px !important;
-}
-
-/* Responsive pour mobile */
-@media screen and (max-width: 991px) {
-  .site-title img.logo-image {
-    max-height: 35px !important;
-  }
-
-  .site-header:not(.clone) .logo-image {
-    max-height: 35px !important;
-  }
-
-  .site-header.clone .logo-image {
-    max-height: 30px !important;
-  }
-
-  .site-branding-center {
-    min-height: 60px !important;
-  }
-
-  .site-header.clone .site-branding-center {
-    min-height: 50px !important;
-  }
+/* Animation du hamburger pour fermer (X) */
+.is-menu-toggled-on .menu-toggle .lines {
+  background-color: transparent !important;
 }
