@@ -89,7 +89,8 @@
   .site-header.clone .logo-image {
     max-height: 45px !important;
     max-width: 85% !important;
-    margin: -20px auto 0 auto !important;
+    margin: 10px auto 0 auto !important;
+    /* Adjusted from -20px to 10px to move down by 30px */
   }
 }
 
@@ -110,7 +111,8 @@
   .site-header.clone .logo-image {
     max-height: 45px !important;
     max-width: 80% !important;
-    margin: -20px auto 0 auto !important;
+    margin: 10px auto 0 auto !important;
+    /* Adjusted from -20px to 10px */
   }
 
   .site-title {
