@@ -1,102 +1,113 @@
-/* SELECTED PROJECTS LIST TABLE STYLES */
+/* SELECTED PROJECTS LIST TABLE STYLES - SPREADSHEET DESIGN */
 
 .project-list-section {
-    padding: 80px 0;
-    background-color: #f9f9f9;
+    padding: 60px 0;
+    background-color: #fff;
 }
 
 .project-list-title {
     text-align: center;
-    font-size: 3rem;
-    font-weight: 800;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    /* Clean sans-serif */
+    font-size: 2.5rem;
+    font-weight: 900;
+    /* Extra bold */
     text-transform: uppercase;
-    margin-bottom: 50px;
-    letter-spacing: 2px;
+    margin-bottom: 30px;
+    letter-spacing: 0px;
     color: #000;
 }
 
 .project-list-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 100%;
+    /* Full width or close to it */
+    padding: 0 40px;
     overflow-x: auto;
-    /* For mobile responsiveness */
 }
 
 .project-table {
     width: 100%;
     border-collapse: collapse;
     background: #fff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
-    overflow: hidden;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    table-layout: auto;
+    /* Allow columns to adapt */
 }
 
+/* Headers */
 .project-table thead {
-    background-color: #000;
-    color: #fff;
+    background-color: #fff;
 }
 
 .project-table th {
-    padding: 20px 15px;
+    padding: 12px 10px;
     text-align: left;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-    border-bottom: 2px solid #333;
-}
-
-.project-table td {
-    padding: 18px 15px;
-    border-bottom: 1px solid #eee;
-    font-size: 0.95rem;
-    color: #333;
-    transition: background 0.3s ease;
-}
-
-.project-table tr:last-child td {
-    border-bottom: none;
-}
-
-.project-table tbody tr:hover td {
-    background-color: #f5f5f5;
-}
-
-.project-table .year-col {
-    width: 80px;
     font-weight: 700;
-    color: #666;
+    color: #000;
+    border: 1px solid #ccc;
+    /* Grid lines */
+    white-space: nowrap;
+}
+
+/* Data Cells */
+.project-table td {
+    padding: 10px 10px;
+    border: 1px solid #ccc;
+    /* Grid lines */
+    font-size: 0.9rem;
+    color: #000;
+    vertical-align: middle;
+}
+
+/* Hover effect for better readability (optional but good) */
+.project-table tbody tr:hover td {
+    background-color: #f0f0f0;
+}
+
+/* Column Specifics (based on visual weight) */
+.project-table .year-col {
+    width: 60px;
+    text-align: center;
 }
 
 .project-table .location-col {
-    width: 200px;
+    width: 20%;
 }
 
 .project-table .name-col {
-    font-weight: 600;
-    color: #000;
+    width: 25%;
 }
 
 .project-table .client-col {
-    color: #555;
+    width: 20%;
 }
 
 .project-table .category-col {
-    font-style: italic;
-    color: #777;
+    width: 20%;
 }
 
-/* Responsive Adjustments */
+/* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
+    .project-list-container {
+        padding: 0 15px;
+    }
+
     .project-list-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .project-table th,
     .project-table td {
-        padding: 12px 10px;
-        font-size: 0.85rem;
+        padding: 8px 5px;
+        font-size: 0.8rem;
+    }
+
+    /* Allow scrolling on mobile */
+    .project-table {
+        min-width: 800px;
+        /* Force scroll */
     }
 }
 
@@ -106,4 +117,5 @@
     text-align: center;
     font-size: 1.1rem;
     color: #666;
+    border: 1px solid #ccc;
 }

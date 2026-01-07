@@ -45,19 +45,56 @@ async function loadProjectList() {
         // Show loading state
         tableBody.innerHTML = `<tr><td colspan="5" class="table-status-message">Loading project list...</td></tr>`;
 
-        const response = await fetch(`${CONFIG.API_URL}/projects?locale=${lang}&populate=categories&sort=date:desc`, {
+        // 1. Try to fetch the Selected Project List first
+        const selectedResponse = await fetch(`${CONFIG.API_URL}/selected-project-list?locale=${lang}&populate[projects]=true`, {
             mode: 'cors',
             credentials: 'omit'
         });
 
         let projectsFromStrapi = [];
-        if (response.ok) {
-            const json = await response.json();
-            projectsFromStrapi = CONFIG.flatten(json) || [];
+        let usedSelectedList = false;
+
+        if (selectedResponse.ok) {
+            const selectedJson = await selectedResponse.json();
+            const flattenedSelected = CONFIG.flatten(selectedJson);
+
+            if (flattenedSelected && Array.isArray(flattenedSelected.projects) && flattenedSelected.projects.length > 0) {
+                projectsFromStrapi = flattenedSelected.projects;
+                usedSelectedList = true;
+                console.log('Using projects from "Selected Project List" (manually ordered in Strapi)');
+            }
+        }
+
+        // 2. If Selected Project List is empty or failed, fallback to all projects sorted by date
+        if (!usedSelectedList) {
+            console.log('Selected Project List empty or inaccessible. Falling back to all projects (date:desc)');
+            const response = await fetch(`${CONFIG.API_URL}/projects?locale=${lang}&populate=categories&sort=date:desc`, {
+                mode: 'cors',
+                credentials: 'omit'
+            });
+
+            if (response.ok) {
+                const json = await response.json();
+                projectsFromStrapi = CONFIG.flatten(json) || [];
+            }
         }
 
         // Map Strapi projects to same format as INITIAL_PROJECTS
         const mappedStrapi = projectsFromStrapi.map(p => {
+            if (usedSelectedList) {
+                // p is an item from the repeatable component: tables.project-item
+                return {
+                    year: p.year || 'Unknown',
+                    location: p.location || '',
+                    title: p.name || '',
+                    client: p.client || '',
+                    category: p.category || '',
+                    isFromStrapi: true,
+                    id: p.id
+                };
+            }
+
+            // Fallback: p is a project collection type
             const cats = Array.isArray(p.categories) ? p.categories : (p.category ? [p.category] : []);
             return {
                 year: p.date ? p.date.substring(0, 4) : 'Unknown',
@@ -70,27 +107,38 @@ async function loadProjectList() {
             };
         });
 
-        // Merge and deduplicate (Strapi takes priority if title matches)
+        // Merge and deduplicate
         const allProjects = [...mappedStrapi];
+
         INITIAL_PROJECTS.forEach(initP => {
             if (!mappedStrapi.find(s => s.title.trim().toLowerCase() === initP.title.trim().toLowerCase())) {
                 allProjects.push(initP);
             }
         });
 
-        // SORTING: Most recent year at the top
-        // If years are same, Strapi projects (fromStrapi) come before initial projects
-        allProjects.sort((a, b) => {
-            if (b.year !== a.year) {
-                return b.year.localeCompare(a.year);
-            }
-            // Secondary sort: Strapi projects first if years are equal
-            if (a.isFromStrapi && !b.isFromStrapi) return -1;
-            if (!a.isFromStrapi && b.isFromStrapi) return 1;
-            // Tertiary sort for Strapi: ID Desc
-            if (a.isFromStrapi && b.isFromStrapi) return b.id - a.id;
-            return 0;
-        });
+        // SORTING:
+        // If using manual Strapi list, preserve their order at the top.
+        // Otherwise sort by year.
+        if (usedSelectedList) {
+            allProjects.sort((a, b) => {
+                if (a.isFromStrapi && !b.isFromStrapi) return -1;
+                if (!a.isFromStrapi && b.isFromStrapi) return 1;
+                if (!a.isFromStrapi && !b.isFromStrapi) {
+                    return b.year.localeCompare(a.year);
+                }
+                return 0; // Preserve Strapi order
+            });
+        } else {
+            allProjects.sort((a, b) => {
+                if (b.year !== a.year) {
+                    return b.year.localeCompare(a.year);
+                }
+                if (a.isFromStrapi && !b.isFromStrapi) return -1;
+                if (!a.isFromStrapi && b.isFromStrapi) return 1;
+                if (a.isFromStrapi && b.isFromStrapi) return b.id - a.id;
+                return 0;
+            });
+        }
 
         if (allProjects.length === 0) {
             tableBody.innerHTML = `<tr><td colspan="5" class="table-status-message">No projects found.</td></tr>`;

@@ -67,11 +67,11 @@ async function loadProjects() {
     try {
         // Fetch both projects and categories in parallel
         const [projectsResponse, categoriesResponse] = await Promise.all([
-            fetch(`${CONFIG.API_URL}/projects?locale=${lang}&populate=*`, {
+            fetch(`${CONFIG.API_URL}/projects?locale=${lang}&populate=*&pagination[limit]=100`, {
                 mode: 'cors',
                 credentials: 'omit'
             }),
-            fetch(`${CONFIG.API_URL}/categories?locale=${lang}&sort=order:asc`, {
+            fetch(`${CONFIG.API_URL}/categories?locale=${lang}&sort=order:asc&pagination[limit]=100`, {
                 mode: 'cors',
                 credentials: 'omit'
             })
