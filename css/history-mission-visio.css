@@ -15,7 +15,9 @@
 		margin: 10px auto !important;
 		padding: 30px 25px !important;
 		border-radius: 12px !important;
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+		background: rgba(255, 255, 255, 0.95) !important;
+		color: #000000 !important;
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
 		z-index: 1000 !important;
 	}
 
@@ -23,7 +25,7 @@
 		display: flex !important;
 		justify-content: space-between !important;
 		margin-bottom: 20px !important;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
 		padding-bottom: 10px !important;
 	}
 
@@ -54,12 +56,12 @@
 	}
 
 	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-track {
-		background: rgba(255, 255, 255, 0.1) !important;
+		background: rgba(0, 0, 0, 0.05) !important;
 		border-radius: 3px !important;
 	}
 
 	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-thumb {
-		background: rgba(255, 255, 255, 0.3) !important;
+		background: rgba(0, 0, 0, 0.2) !important;
 		border-radius: 3px !important;
 	}
 
@@ -97,12 +99,12 @@
 	}
 
 	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-track {
-		background: rgba(255, 255, 255, 0.1) !important;
+		background: rgba(0, 0, 0, 0.05) !important;
 		border-radius: 2px !important;
 	}
 
 	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-thumb {
-		background: rgba(255, 255, 255, 0.3) !important;
+		background: rgba(0, 0, 0, 0.2) !important;
 		border-radius: 2px !important;
 	}
 
@@ -135,12 +137,12 @@
 	}
 
 	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-track {
-		background: rgba(255, 255, 255, 0.1) !important;
+		background: rgba(0, 0, 0, 0.05) !important;
 		border-radius: 2px !important;
 	}
 
 	.history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-thumb {
-		background: rgba(255, 255, 255, 0.3) !important;
+		background: rgba(0, 0, 0, 0.2) !important;
 		border-radius: 2px !important;
 	}
 
@@ -179,7 +181,7 @@
 	left: 50% !important;
 	right: auto !important;
 	transform: translate(-50%, -50%) !important;
-	background: rgba(0, 0, 0, 0.95) !important;
+	background: rgba(255, 255, 255, 0.95) !important;
 	padding: 50px !important;
 	border-radius: 0 !important;
 	width: 55% !important;
@@ -195,13 +197,13 @@
 
 /* Ensure text inside shortcode is white */
 .history-mission-visio-card .qodef-shortcode {
-	color: white !important;
+	color: #000000 !important;
 }
 
 /* Remove background images from the carousel slide */
 #bdt-carousel-copy .bdt-ps-slide-img {
 	background-image: none !important;
-	background-color: #1a1a1a !important;
+	background-color: #ffffff !important;
 }
 
 #bdt-carousel-copy .bdt-position-cover.bdt-animation-kenburns {
@@ -222,7 +224,7 @@
 	list-style: none !important;
 	margin: 0 !important;
 	padding: 0 !important;
-	border-bottom: 2px solid rgba(255, 255, 255, 0.3) !important;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.1) !important;
 	margin-bottom: 30px !important;
 }
 
@@ -235,7 +237,7 @@
 }
 
 .history-mission-visio-card .tab-link {
-	color: rgba(255, 255, 255, 0.7) !important;
+	color: rgba(0, 0, 0, 0.5) !important;
 	text-decoration: none !important;
 	font-size: 1.1em !important;
 	font-weight: bold !important;
@@ -245,8 +247,8 @@
 }
 
 .history-mission-visio-card .tab-link--active {
-	color: white !important;
-	border-bottom: 3px solid white !important;
+	color: #000000 !important;
+	border-bottom: 3px solid #000000 !important;
 }
 
 /* Tab content layout */
@@ -262,17 +264,17 @@
 }
 
 .history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-track {
-	background: rgba(255, 255, 255, 0.05) !important;
+	background: rgba(0, 0, 0, 0.05) !important;
 	border-radius: 3px !important;
 }
 
 .history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-thumb {
-	background: rgba(255, 255, 255, 0.2) !important;
+	background: rgba(0, 0, 0, 0.1) !important;
 	border-radius: 3px !important;
 }
 
 .history-mission-visio-card .qodef-tabs-horizontal-content::-webkit-scrollbar-thumb:hover {
-	background: rgba(255, 255, 255, 0.4) !important;
+	background: rgba(0, 0, 0, 0.2) !important;
 }
 
 .history-mission-visio-card .tab-content-wrapper {
@@ -288,7 +290,7 @@
 }
 
 .history-mission-visio-card .tab-content-text {
-	color: white !important;
+	color: #000000 !important;
 	font-size: 1.05em !important;
 	line-height: 1.7 !important;
 }
