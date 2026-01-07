@@ -1,4 +1,11 @@
 const CONFIG = {
+    // Detect root path relative to current page
+    get ROOT_PATH() {
+        const path = window.location.pathname;
+        const depth = path.endsWith('/') ? path.split('/').filter(p => p).length : path.split('/').filter(p => p).length - 1;
+        return depth > 0 ? '../'.repeat(depth) : './';
+    },
+
     // Determine the base URL based on the environment
     STRAPI_URL: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'http://localhost:1337'
@@ -30,7 +37,7 @@ const CONFIG = {
      * Handles Cloudinary (absolute) and Local (relative) URLs.
      */
     getImageUrl(imageData, fallback = 'public/placeholder.jpg') {
-        if (!imageData) return fallback;
+        if (!imageData) return this.ROOT_PATH + fallback;
 
         // Handle cases where imageData might be the character string URL itself or an object
         const url = typeof imageData === 'string' ? imageData : (imageData.url || null);
