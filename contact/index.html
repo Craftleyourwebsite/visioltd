@@ -19,6 +19,11 @@
 	<link rel="stylesheet" href="../css/utilities.css">
 	<meta name='robots' content='max-image-preview:large' />
 	<style>
+		html,
+		body {
+			overflow-x: hidden;
+		}
+
 		img:is([sizes="auto" i], [sizes^="auto," i]) {
 			contain-intrinsic-size: 3000px 1500px
 		}
@@ -405,6 +410,188 @@
 			padding: 3px 0 !important;
 			font-weight: normal !important;
 			font-size: 14px !important;
+		}
+
+		/* Career Button & Modal Styles */
+		.career-btn {
+			background-color: #000;
+			color: #fff;
+			border: none;
+			padding: 12px 30px;
+			border-radius: 5px;
+			font-weight: 700;
+			margin-top: 0;
+			cursor: pointer;
+			text-transform: uppercase;
+			display: inline-block;
+			align-self: flex-start;
+			/* Ensure it doesn't stretch in flex container */
+			width: auto;
+			font-size: 13px;
+			letter-spacing: 0.5px;
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+		}
+
+		.career-btn:hover {
+			background-color: #333;
+		}
+
+		.career-modal {
+			display: none;
+			position: fixed;
+			z-index: 99999;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			background-color: rgba(0, 0, 0, 0.8);
+		}
+
+		.career-modal-content {
+			background-color: #fff;
+			margin: 5% auto;
+			padding: 40px;
+			border: none;
+			width: 60%;
+			max-width: 800px;
+			max-height: 90vh;
+			overflow-y: auto;
+			position: relative;
+			box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+			animation: modalPop 0.4s ease-out forwards;
+			font-family: 'Open Sans', sans-serif;
+		}
+
+		@keyframes modalPop {
+			from {
+				opacity: 0;
+				transform: translateY(-20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.career-modal-header {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		.career-modal-header h2 {
+			font-size: 24px;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			color: #000;
+			margin: 0;
+			padding-bottom: 10px;
+			border-bottom: 2px solid #000;
+			display: inline-block;
+		}
+
+		.career-content-wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: 30px;
+		}
+
+		.career-intro {
+			text-align: center;
+			color: #444;
+			font-size: 14px;
+			line-height: 1.6;
+		}
+
+		.job-list {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+		}
+
+		.job-item {
+			border: 1px solid #eee;
+			padding: 20px;
+			transition: all 0.3s ease;
+			cursor: pointer;
+		}
+
+		.job-item:hover {
+			border-color: #000;
+			background: #fafafa;
+		}
+
+		.job-title {
+			font-size: 16px;
+			font-weight: 700;
+			margin: 0 0 5px 0;
+			text-transform: uppercase;
+		}
+
+		.job-location {
+			font-size: 12px;
+			color: #888;
+			margin-bottom: 10px;
+			display: block;
+		}
+
+		.job-desc {
+			font-size: 13px;
+			color: #666;
+			margin: 0;
+		}
+
+		.apply-section {
+			text-align: center;
+			margin-top: 20px;
+			padding-top: 20px;
+			border-top: 1px solid #eee;
+		}
+
+		.apply-btn {
+			background-color: #000;
+			color: #fff;
+			padding: 12px 30px;
+			text-transform: uppercase;
+			text-decoration: none;
+			font-size: 13px;
+			font-weight: bold;
+			letter-spacing: 1px;
+			display: inline-block;
+			transition: background 0.3s;
+		}
+
+		.apply-btn:hover {
+			background-color: #333;
+			color: #fff;
+		}
+
+		/* Responsive */
+		@media screen and (max-width: 768px) {
+			.career-modal-content {
+				width: 90%;
+				margin: 10% auto;
+				padding: 20px;
+			}
+		}
+
+		.career-close-modal {
+			color: #333;
+			float: right;
+			font-size: 30px;
+			font-weight: 300;
+			position: absolute;
+			right: 20px;
+			top: 10px;
+			background: transparent;
+			padding: 0;
+			line-height: 1;
+		}
+
+		.career-close-modal:hover {
+			color: #000;
 		}
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
@@ -1249,7 +1436,7 @@
 		button,
 		html .elementor-button,
 		html .ekit-wid-con .elementskit-btn,
-		html .ekit-wid-con .ekit_creative_button,
+		.ekit_creative_button,
 		.more-link {
 			font-family: 'Jost';
 		}
@@ -1536,7 +1723,7 @@
 		.elementor-button.elementor-size-lg,
 		.elementor-button.elementor-size-xl,
 		html .ekit-wid-con .elementskit-btn,
-		html .ekit-wid-con .ekit_creative_button {
+		.ekit_creative_button {
 			border-radius: 0px;
 		}
 
@@ -2233,6 +2420,12 @@
 						<button type="submit">Send Message</button>
 					</div>
 				</form>
+				<div style="display: flex; gap: 50px; max-width: 1000px; margin: 0 auto; justify-content: flex-start;">
+					<div style="width: 50%; display: flex; flex-direction: column;">
+						<button type="button" id="career-btn" class="career-btn">CAREER / INTERNSHIP</button>
+					</div>
+					<div style="width: 50%;"></div>
+				</div>
 			</section>
 
 			<!-- FIN ICI --------------------- -->
@@ -3014,5 +3207,84 @@
 		});
 	</script>
 </body>
+
+<!-- Career Modal -->
+<div id="career-modal" class="career-modal">
+	<div class="career-modal-content">
+		<span class="career-close-modal">&times;</span>
+
+		<div class="career-modal-header">
+			<h2>Career & Internship</h2>
+		</div>
+
+		<div class="career-content-wrapper">
+			<div class="career-intro">
+				<p>At Visio Architecture, we are constantly looking for talented individuals to join our dynamic team.
+					Whether you are an experienced architect or an intern looking to gain experience, we want to hear
+					from you.</p>
+			</div>
+
+			<div class="job-list">
+				<div class="job-item">
+					<h3 class="job-title">Senior Architect</h3>
+					<span class="job-location">Port Louis, Mauritius</span>
+					<p class="job-desc">We are looking for an experienced Senior Architect with 5+ years of experience
+						to lead sustainable design projects.</p>
+				</div>
+
+				<div class="job-item">
+					<h3 class="job-title">Junior Interior Designer</h3>
+					<span class="job-location">Port Louis, Mauritius</span>
+					<p class="job-desc">Assist our interior design team in creating functional and aesthetic spaces.
+						Proficiency in AutoCAD and SketchUp required.</p>
+				</div>
+
+				<div class="job-item">
+					<h3 class="job-title">Internship Program</h3>
+					<span class="job-location">Port Louis, Mauritius</span>
+					<p class="job-desc">Our internship program offers hands-on experience in architectural planning,
+						design, and site visits for students.</p>
+				</div>
+			</div>
+
+			<div class="apply-section">
+				<p>Interested in joining us?</p>
+				<a href="mailto:contact@visio.mu?subject=Application for [Job Title]" class="apply-btn">Send your CV</a>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script>
+	// Career Modal Script
+	document.addEventListener('DOMContentLoaded', function () {
+		var modal = document.getElementById("career-modal");
+		var btn = document.getElementById("career-btn");
+		var span = document.getElementsByClassName("career-close-modal")[0];
+
+		if (btn) {
+			btn.onclick = function () {
+				console.log("Opening Career modal");
+				modal.style.display = "block";
+				document.body.style.overflow = "hidden"; // Prevent scrolling background
+			}
+		}
+
+		if (span) {
+			span.onclick = function () {
+				modal.style.display = "none";
+				document.body.style.overflow = "auto";
+			}
+		}
+
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+				document.body.style.overflow = "auto";
+			}
+		}
+	});
+</script>
 
 </html>
