@@ -107,36 +107,23 @@
 
 /* --- SOLUTION ULTIME - LOGO FOOTER 100PX GAUCHE --- */
 
-/* Sélecteur ultra-spécifique avec ID unique - DESKTOP ONLY */
+/* Sélecteur spécifique pour le logo footer - DESKTOP ONLY */
 @media (min-width: 769px) {
-	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper {
+	.elementor-element-a3c724e .footer-logo-wrapper {
 		position: relative !important;
 		left: -30px !important;
 		margin-left: 0 !important;
 		padding-left: 0 !important;
-		transform: translateX(0) !important;
 		text-align: left !important;
 		width: 100% !important;
 		display: block !important;
-		float: none !important;
 	}
 
-	/* Force avec transform si left ne fonctionne pas */
-	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper img {
-		transform: translateX(-30px) !important;
-		margin-left: 0 !important;
-		display: block !important;
+	.elementor-element-a3c724e .footer-logo-wrapper img {
 		max-width: 150px !important;
 		height: auto !important;
-		position: relative !important;
-	}
-
-	/* Alternative avec position absolute */
-	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper {
-		position: absolute !important;
-		left: -30px !important;
-		top: 0 !important;
-		z-index: 9999 !important;
+		display: block !important;
+		transform: none !important;
 	}
 
 	/* --- ALIGNEMENT ET HARMONISATION COLONNE OUR PROJECTS --- */
@@ -175,13 +162,11 @@
 /* --- MOBILE - LOGO FOOTER NORMAL - SOLUTION FINALE --- */
 @media (max-width: 768px) {
 
-	/* Reset absolu avec sélecteurs d'attributs */
-	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper,
-	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper *,
-	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper img,
-	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper a,
-	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper[style],
-	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper img[style] {
+	/* Reset absolu pour le logo footer sur mobile */
+	.elementor-element-a3c724e .footer-logo-wrapper,
+	.elementor-element-a3c724e .footer-logo-wrapper *,
+	.elementor-element-a3c724e .footer-logo-wrapper img,
+	.elementor-element-a3c724e .footer-logo-wrapper a {
 		all: unset !important;
 		box-sizing: border-box !important;
 		position: relative !important;
