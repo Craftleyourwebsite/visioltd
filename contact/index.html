@@ -451,143 +451,49 @@
 
 		.career-modal-content {
 			background-color: #fff;
-			margin: 5% auto;
-			padding: 40px;
+			margin: 5vh auto;
+			padding: 0;
 			border: none;
-			width: 60%;
-			max-width: 800px;
-			max-height: 90vh;
-			overflow-y: auto;
+			width: 90vw;
+			height: 90vh;
+			max-width: 1400px;
+			max-height: none;
+			overflow: hidden;
 			position: relative;
-			box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 			animation: modalPop 0.4s ease-out forwards;
 			font-family: 'Open Sans', sans-serif;
+			border-radius: 12px;
 		}
 
 		@keyframes modalPop {
 			from {
 				opacity: 0;
-				transform: translateY(-20px);
+				transform: translateY(-20px) scale(0.98);
 			}
 
 			to {
 				opacity: 1;
-				transform: translateY(0);
+				transform: translateY(0) scale(1);
 			}
 		}
 
-		.career-modal-header {
-			text-align: center;
-			margin-bottom: 30px;
-		}
-
-		.career-modal-header h2 {
-			font-size: 24px;
-			letter-spacing: 2px;
-			text-transform: uppercase;
-			color: #000;
-			margin: 0;
-			padding-bottom: 10px;
-			border-bottom: 2px solid #000;
-			display: inline-block;
-		}
-
-		.career-content-wrapper {
-			display: flex;
-			flex-direction: column;
-			gap: 30px;
-		}
-
-		.career-intro {
-			text-align: center;
-			color: #444;
-			font-size: 14px;
-			line-height: 1.6;
-		}
-
-		.job-list {
-			display: flex;
-			flex-direction: column;
-			gap: 20px;
-		}
-
-		.job-item {
-			border: 1px solid #eee;
-			padding: 20px;
-			transition: all 0.3s ease;
-			cursor: pointer;
-		}
-
-		.job-item:hover {
-			border-color: #000;
-			background: #fafafa;
-		}
-
-		.job-title {
-			font-size: 16px;
-			font-weight: 700;
-			margin: 0 0 5px 0;
-			text-transform: uppercase;
-		}
-
-		.job-location {
-			font-size: 12px;
-			color: #888;
-			margin-bottom: 10px;
-			display: block;
-		}
-
-		.job-desc {
-			font-size: 13px;
-			color: #666;
-			margin: 0;
-		}
-
-		.apply-section {
-			text-align: center;
-			margin-top: 20px;
-			padding-top: 20px;
-			border-top: 1px solid #eee;
-		}
-
-		.apply-btn {
-			background-color: #000;
-			color: #fff;
-			padding: 12px 30px;
-			text-transform: uppercase;
-			text-decoration: none;
-			font-size: 13px;
-			font-weight: bold;
-			letter-spacing: 1px;
-			display: inline-block;
-			transition: background 0.3s;
-		}
-
-		.apply-btn:hover {
-			background-color: #333;
-			color: #fff;
-		}
-
-		/* Responsive */
-		@media screen and (max-width: 768px) {
-			.career-modal-content {
-				width: 90%;
-				margin: 10% auto;
-				padding: 20px;
-			}
-		}
-
+		/* Close button inside full-screen modal */
 		.career-close-modal {
-			color: #333;
-			float: right;
-			font-size: 30px;
+			color: #000;
+			font-size: 35px;
 			font-weight: 300;
 			position: absolute;
-			right: 20px;
-			top: 10px;
-			background: transparent;
-			padding: 0;
+			right: 30px;
+			top: 20px;
+			background: rgba(255, 255, 255, 0.8);
+			padding: 5px 15px;
 			line-height: 1;
+			z-index: 10000;
+			cursor: pointer;
+			border-radius: 50%;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			transition: all 0.3s ease;
 		}
 
 		.career-close-modal:hover {
@@ -3212,47 +3118,7 @@
 <div id="career-modal" class="career-modal">
 	<div class="career-modal-content">
 		<span class="career-close-modal">&times;</span>
-
-		<div class="career-modal-header">
-			<h2>Career & Internship</h2>
-		</div>
-
-		<div class="career-content-wrapper">
-			<div class="career-intro">
-				<p>At Visio Architecture, we are constantly looking for talented individuals to join our dynamic team.
-					Whether you are an experienced architect or an intern looking to gain experience, we want to hear
-					from you.</p>
-			</div>
-
-			<div class="job-list">
-				<div class="job-item">
-					<h3 class="job-title">Senior Architect</h3>
-					<span class="job-location">Port Louis, Mauritius</span>
-					<p class="job-desc">We are looking for an experienced Senior Architect with 5+ years of experience
-						to lead sustainable design projects.</p>
-				</div>
-
-				<div class="job-item">
-					<h3 class="job-title">Junior Interior Designer</h3>
-					<span class="job-location">Port Louis, Mauritius</span>
-					<p class="job-desc">Assist our interior design team in creating functional and aesthetic spaces.
-						Proficiency in AutoCAD and SketchUp required.</p>
-				</div>
-
-				<div class="job-item">
-					<h3 class="job-title">Internship Program</h3>
-					<span class="job-location">Port Louis, Mauritius</span>
-					<p class="job-desc">Our internship program offers hands-on experience in architectural planning,
-						design, and site visits for students.</p>
-				</div>
-			</div>
-
-			<div class="apply-section">
-				<p>Interested in joining us?</p>
-				<a href="mailto:contact@visio.mu?subject=Application for [Job Title]" class="apply-btn">Send your CV</a>
-			</div>
-		</div>
-
+		<iframe src="../career.html" style="width: 100%; height: 100%; border: none;"></iframe>
 	</div>
 </div>
 
