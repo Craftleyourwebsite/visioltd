@@ -730,892 +730,160 @@
 			min-width: 35px !important;
 		}
 
-		/* Nouveau design Architecture Blog */
-		* {
-			margin: 0;
+		/* --- REDESIGN NEWS PAGE --- */
+		.post-header-classic.portfolio-header {
+			padding: 60px 0 5px !important;
+			margin-bottom: 0 !important;
+			text-align: center;
+		}
+
+		.portfolio-header .entry-title {
+			font-family: 'Onest', sans-serif;
+			font-size: clamp(60px, 15vw, 150px) !important;
+			font-weight: 900 !important;
+			text-transform: uppercase;
+			letter-spacing: -4px;
+			margin: 0 !important;
+			color: #020014;
+			line-height: 0.9;
+		}
+
+		.filters {
+			list-style: none;
+			margin: 0 0 60px 0;
 			padding: 0;
-			box-sizing: border-box;
+			text-align: center;
 		}
 
-		body {
-			font-family: 'Arial', sans-serif;
-			background-color: #f8f8f8;
-			color: #333;
-			line-height: 1.6;
+		.filters li {
+			display: inline-block;
+			margin: 0 15px;
 		}
 
-		.container {
+		.filters li a {
+			text-transform: uppercase;
+			font-size: 13px;
+			font-weight: 500;
+			letter-spacing: 3px;
+			color: #020014;
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+
+		.filters li.current a,
+		.filters li a:hover {
+			color: #d4af37;
+		}
+
+		.blog-grid-wrap {
+			width: 100%;
 			max-width: 1400px;
 			margin: 0 auto;
+			padding: 0 30px;
+		}
+
+		.portfolio-grid .hentry {
+			width: 33.333%;
 			padding: 20px;
-			display: grid;
-			grid-template-columns: 1fr 2fr 1fr;
-			gap: 40px;
+			transition: opacity 0.4s ease;
 		}
 
-		/* Colonne de gauche (supprimée avec le contenu) */
-		/* Colonne centrale - contenu principal */
-		.main-content {
-			background: white;
-			border-radius: 8px;
-			overflow: hidden;
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-		}
-
-		/* Colonne de droite - sidebar */
-		.sidebar {
-			display: flex;
-			flex-direction: column;
-			gap: 30px;
-		}
-
-		/* (duplicate .main-content supprimé) */
-		.hero-image {
-			width: 100%;
-			height: 500px;
-			background: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
-			background-size: cover;
-			background-position: center;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		.content-wrapper {
-			padding: 30px;
-		}
-
-		.article-title {
-			color: #D4A574;
-			font-size: 28px;
-			font-weight: 300;
-			margin-bottom: 20px;
-			letter-spacing: 0.5px;
-		}
-
-		.article-content {
-			color: #666;
-			font-size: 16px;
-			line-height: 1.8;
-			margin-bottom: 30px;
-		}
-
-		.article-meta {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			color: #D4A574;
-			font-size: 14px;
-		}
-
-		.comments-link {
-			color: #D4A574;
-			text-decoration: none;
-		}
-
-		/* (duplicate .sidebar supprimé) */
-		.widget {
-			background: white;
-			border-radius: 8px;
-			padding: 25px;
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-		}
-
-		.widget-title {
-			font-size: 12px;
-			font-weight: 700;
-			letter-spacing: 1px;
-			text-transform: uppercase;
-			color: #333;
-			margin-bottom: 20px;
-			padding-bottom: 10px;
-			border-bottom: 2px solid #D4A574;
-		}
-
-		.blog-post {
-			display: flex;
-			margin-bottom: 20px;
-			align-items: flex-start;
-		}
-
-		.post-thumbnail {
-			width: 60px;
-			height: 45px;
-			background: #D4A574;
-			border-radius: 4px;
-			margin-right: 15px;
-			flex-shrink: 0;
-		}
-
-		.post-content h3 {
-			font-size: 14px;
-			color: #D4A574;
-			margin-bottom: 5px;
-			line-height: 1.4;
-		}
-
-		.post-date {
-			font-size: 11px;
-			color: #999;
-			text-transform: uppercase;
-			letter-spacing: 0.5px;
-		}
-
-		.category-list {
-			list-style: none;
-		}
-
-		.category-list li {
-			margin-bottom: 8px;
-		}
-
-		.category-list a {
-			color: #D4A574;
-			text-decoration: none;
-			font-size: 14px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-
-		.category-count {
-			color: #999;
-			font-size: 12px;
-		}
-
-		@media (max-width: 768px) {
-			.container {
-				grid-template-columns: 1fr;
-				padding: 10px;
-				gap: 20px;
+		@media screen and (max-width: 991px) {
+			.portfolio-grid .hentry {
+				width: 50%;
 			}
 
-			.left-sidebar {
-				display: none;
-			}
-
-			.hero-image {
-				height: 300px;
-			}
-
-			.article-title {
-				font-size: 24px;
-			}
-
-			.content-wrapper {
-				padding: 20px;
+			.blog-grid-wrap {
+				padding: 0 15px;
 			}
 		}
 
-		/* Suppression de tous les filtres sombres */
-		.site-content,
-		.content-area,
-		.site-main,
-		#main,
-		#content,
-		#primary {
-			background: transparent !important;
-			box-shadow: none !important;
-		}
-
-		/* Suppression des overlays sombres */
-		.site-content::before,
-		.site-content::after,
-		.content-area::before,
-		.content-area::after,
-		.site-main::before,
-		.site-main::after {
-			display: none !important;
-			background: none !important;
-		}
-
-		/* Suppression des bordures sombres */
-		.site-content,
-		.content-area,
-		.site-main {
-			border: none !important;
-			border-bottom: none !important;
-		}
-
-		/* Assurer que le footer est transparent */
-		.site-footer {
-			background: transparent !important;
-			box-shadow: none !important;
-		}
-
-		/* ===== Architecture Blog Section (custom) ===== */
-		.arch-container {
-			max-width: none !important;
-			width: 100% !important;
-			margin: 0 !important;
-			padding: 20px 40px;
-			display: grid;
-			grid-template-columns: 1fr 2fr 1fr;
-			/* left | center | right */
-			gap: 40px;
-		}
-
-		.left-sidebar,
-		.right-sidebar {
-			display: flex;
-			flex-direction: column;
-			gap: 30px;
-		}
-
-		/* FORCE blog content area FULL WIDTH - Override theme constraints */
-		.site-main>.layout-medium {
-			max-width: none !important;
-			width: 100% !important;
-			margin-left: 0 !important;
-			margin-right: 0 !important;
-			padding-left: 0 !important;
-			padding-right: 0 !important;
-		}
-
-		/* Override global .layout-medium rule specifically for blog */
-		.blog .site-main .layout-medium {
-			max-width: none !important;
-			width: 100% !important;
-			margin: 0 !important;
-			padding: 0 !important;
-		}
-
-		/* Center the header area and main title within full-width container */
-		.site-main>.layout-medium>#primary,
-		.site-main>.layout-medium>#primary>#content {
-			max-width: 1200px;
-			margin-left: auto;
-			margin-right: auto;
-			width: 100%;
-		}
-
-		/* Main article */
-		.article-image {
-			width: 100%;
-			height: 400px;
-			object-fit: cover;
-		}
-
-		.article-text {
-			color: #666;
-			font-size: 16px;
-			line-height: 1.8;
-			margin-bottom: 30px;
-		}
-
-		.article-meta {
-			display: flex;
-			align-items: center;
-			gap: 15px;
-			color: #d4a574;
-			font-size: 14px;
-		}
-
-		/* Sidebar sections */
-		.sidebar-section {
-			background: #fff;
-			padding: 30px;
-			border-radius: 8px;
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-		}
-
-		.sidebar-title {
-			font-size: 14px;
-			font-weight: 700;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-			margin-bottom: 25px;
-			color: #333;
-			border-bottom: 3px solid #000;
-			padding-bottom: 10px;
-		}
-
-		/* Recent articles */
-		.recent-article {
-			display: flex;
-			gap: 15px;
-			margin-bottom: 25px;
-			padding-bottom: 20px;
-			border-bottom: 1px solid #eee;
-		}
-
-		.recent-article:last-child {
-			margin-bottom: 0;
-			padding-bottom: 0;
-			border-bottom: none;
-		}
-
-		.recent-article-image {
-			width: 80px;
-			height: 60px;
-			object-fit: cover;
-			border-radius: 4px;
-			flex-shrink: 0;
-		}
-
-		.recent-article-content h3 {
-			color: #d4a574;
-			font-size: 16px;
-			font-weight: 400;
-			margin-bottom: 8px;
-			line-height: 1.4;
-		}
-
-		.recent-article-date {
-			color: #999;
-			font-size: 12px;
-			text-transform: uppercase;
-			letter-spacing: 0.5px;
-		}
-
-		/* Categories (reuse .category-list) */
-		.category-item {
-			margin-bottom: 12px;
-		}
-
-		.category-item a {
-			color: #d4a574;
-			text-decoration: none;
-			font-size: 16px;
-		}
-
-		.category-item .count {
-			color: #999;
-			font-size: 14px;
-		}
-
-		/* Tags */
-		.tags-list {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 10px;
-		}
-
-		.tag {
-			background: #f8f8f8;
-			color: #d4a574;
-			padding: 8px 15px;
-			border-radius: 20px;
-			text-decoration: none;
-			font-size: 14px;
-			border: 1px solid #e0e0e0;
-			transition: background-color 0.3s, color 0.3s;
-		}
-
-		.tag:hover {
-			background: #d4a574;
-			color: #fff;
-		}
-
-		/* Newsletter */
-		.newsletter-form {
-			display: flex;
-			flex-direction: column;
-			gap: 15px;
-		}
-
-		.newsletter-input {
-			padding: 15px;
-			border: 1px solid #ddd;
-			border-radius: 4px;
-			font-size: 14px;
-		}
-
-		.newsletter-checkbox {
-			display: flex;
-			align-items: flex-start;
-			gap: 10px;
-			font-size: 12px;
-			color: #666;
-		}
-
-		.newsletter-submit {
-			background: #333;
-			color: #fff;
-			padding: 15px;
-			border: none;
-			border-radius: 4px;
-			font-size: 14px;
-			cursor: pointer;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-		}
-
-		.newsletter-submit:hover {
-			background: #555;
-		}
-
-		/* Responsive */
-		@media (max-width: 768px) {
-			.arch-container {
-				grid-template-columns: 1fr;
-				padding: 10px;
+		@media screen and (max-width: 767px) {
+			.portfolio-grid .hentry {
+				width: 100%;
 			}
 
-			.article-title {
-				font-size: 24px;
+			.post-header-classic.portfolio-header {
+				margin-bottom: 30px;
 			}
 
-			.sidebar-section {
-				padding: 20px;
+			.filters {
+				margin-bottom: 40px;
+			}
+
+			.filters li {
+				margin: 5px 10px;
 			}
 		}
 
-		/* === FULL WIDTH OVERRIDES FOR BLOG PAGE === */
-		/* Make the blog content area span the full viewport width */
-		.blog .site-main>.layout-medium,
-		.blog .site-main .layout-medium {
-			max-width: none !important;
-			width: 100% !important;
-			margin-left: 0 !important;
-			margin-right: 0 !important;
-			padding-left: 0 !important;
-			padding-right: 0 !important;
-		}
-
-		/* Remove inner max-width caps */
-		.blog #primary,
-		.blog #content,
-		.blog #primary #content {
-			max-width: none !important;
-			width: 100% !important;
-			margin: 0 !important;
-			padding: 0 !important;
-		}
-
-		/* Make the custom blog grid single-column and edge-to-edge */
-		.blog .arch-container {
-			grid-template-columns: 1fr !important;
-			gap: 0 !important;
-			padding-left: 0 !important;
-			padding-right: 0 !important;
-		}
-
-		/* Hide sidebars on full width */
-		.blog .left-sidebar,
-		.blog .right-sidebar {
-			display: none !important;
-		}
-
-		/* Remove card styling when full width */
-		.blog .main-content {
-			border-radius: 0 !important;
-			box-shadow: none !important;
-		}
-	</style>
-	<style>
-		/* Minimal styles for the GT blog wrapper */
-		.gt-page-wrapper {
+		.hentry-wrap {
 			position: relative;
-			padding: 120px 0;
-			background-color: #FFFFFF;
-		}
-	</style>
-	<style id="gt-blog-styles">
-		:root {
-			--gt-accent: #D4A574;
-			--gt-text-color: #32455e;
-		}
-
-		/* Layout: center content and separate right sidebar */
-		.gt-page-wrapper {
-			padding: 80px 0;
-			background: #fff;
-		}
-
-		.gt-page-wrapper .gt-container {
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 0 24px;
-		}
-
-		/* Apply the 2-column grid to the direct wrapper of main and sidebar */
-		.gt-page-wrapper .gt-container .gt-main-row {
-			display: grid;
-			grid-template-columns: minmax(0, 2fr) 360px;
-			/* content | fixed sidebar */
-			gap: 48px;
-			align-items: start;
-		}
-
-		/* Ensure left column content is visually centered in its track */
-		.gt-main {
-			min-width: 0;
-		}
-
-		.gt-right-sidebar {
-			width: 100%;
-			max-width: 360px;
-			margin-left: auto;
-		}
-
-		/* Left content (blog list) */
-		.gt-blog-list {
-			display: block;
-		}
-
-		.gt-blog-list-item {
-			margin-bottom: 48px;
-		}
-
-		.gt-blog-list-item .gt-img {
-			position: relative;
-			display: block;
 			overflow: hidden;
 		}
 
-		.gt-blog-list-item .gt-img img {
+		.featured-image {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.featured-image img {
 			width: 100%;
 			height: auto;
 			display: block;
-			transition: transform .4s ease;
+			transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 		}
 
-		/* Subtle zoom on hover for better visual alignment cue */
-		.gt-blog-list-item .gt-img:hover img {
-			transform: scale(1.02);
+		.hentry:hover .featured-image img {
+			transform: scale(1.05);
 		}
 
-		.gt-content .gt-title {
-			color: var(--gt-accent);
-			font-size: 28px;
-			font-weight: 600;
-			margin: 24px 0 12px;
-			line-height: 1.25;
+		.hentry-middle {
+			padding: 30px 0;
+			text-align: center;
 		}
 
-		.gt-excerpt {
-			color: #666;
-			font-size: 16px;
-			line-height: 1.8;
-			margin-bottom: 16px;
-		}
-
-		.gt-comments a,
-		.gt-date {
-			color: var(--gt-accent);
-			font-size: 12px;
-			letter-spacing: .2px;
-		}
-
-		/* Right sidebar */
-		.gt-right-sidebar {
-			padding-top: 0;
-		}
-
-		.gt-right-sidebar .gt-widget {
-			margin-bottom: 28px;
-		}
-
-		/* Remove top border/padding on first widget so it aligns with main image top */
-		.gt-right-sidebar .gt-widget:first-child .gt-widget-heading {
-			border-top: none;
-			padding-top: 0;
-			margin-top: 0;
-		}
-
-		.gt-right-sidebar .gt-widget-heading {
-			border-top: 3px solid #111;
-			padding-top: 12px;
-			margin-bottom: 16px;
-		}
-
-		.gt-right-sidebar .gt-widget-title {
-			font-size: 12px;
-			font-weight: 700;
+		.entry-title {
+			font-size: 19px;
+			margin: 0;
+			font-weight: 900;
+			text-transform: uppercase;
 			letter-spacing: 1px;
-			text-transform: uppercase;
 		}
 
-		/* Image hover overlay and arrow appearance */
-		.gt-blog-list-item .gt-img {
-			position: relative;
-			overflow: hidden;
+		.entry-title a {
+			color: #020014;
+			text-decoration: none;
+			transition: color 0.3s ease;
 		}
 
-		.gt-blog-list-item .gt-img img {
-			transition: transform .4s ease, filter .3s ease, opacity .3s ease;
+		.entry-title a:hover {
+			color: #d4af37;
 		}
 
-		.gt-blog-list-item .gt-img .gt-overlay {
-			position: absolute;
-			inset: 0;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			opacity: 0;
-			pointer-events: none;
-			transition: opacity .3s ease;
+		/* Isotope masonry fix */
+		.masonry {
+			margin: 0 auto;
 		}
 
-		.gt-blog-list-item .gt-img .gt-overlay-color {
-			position: absolute;
-			inset: 0;
-			background: rgba(0, 0, 0, 0.25);
-			opacity: 0;
-			transition: opacity .3s ease;
-		}
-
-		.gt-blog-list-item .gt-img .gt-overlay-icon {
-			position: relative;
-			z-index: 1;
-			color: #ffffff;
-			opacity: 0;
-			transform: translateX(-6px);
-			transition: all .35s ease;
-		}
-
-		.gt-blog-list-item .gt-img .gt-overlay-icon svg {
-			width: 40px;
-			height: 40px;
-			display: block;
-		}
-
-		.gt-blog-list-item .gt-img:hover .gt-overlay {
-			opacity: 1;
-		}
-
-		.gt-blog-list-item .gt-img:hover .gt-overlay-color {
-			opacity: 1;
-		}
-
-		.gt-blog-list-item .gt-img:hover .gt-overlay-icon {
-			opacity: 1;
-			transform: translateX(0);
-		}
-
-		.gt-blog-list-item .gt-img:hover img {
-			transform: scale(1.02);
-			filter: blur(1.5px) brightness(0.9);
-		}
-
-		/* Put divider under 'Architecture Blog' heading (underline) */
-		#luxe_blog_widget-3 .gt-widget-heading {
-			border-top: none;
-			padding-top: 0;
-			margin-top: 0;
-			border-bottom: 3px solid #111;
-			padding-bottom: 12px;
-		}
-
-		/* Enlarge headings inside sidebar widgets */
-		.gt-right-sidebar .gt-widget-heading,
-		.gt-right-sidebar .gt-widget-heading .gt-widget-title {
-			font-size: 16px;
-		}
-
-		/* Categories usability */
-		.gt-right-sidebar .widget_categories ul li a {
-			cursor: pointer;
-		}
-
-		.gt-right-sidebar .widget_categories ul li a.gt-cat-active {
-			color: #111;
-			font-weight: 700;
-		}
-
-		.gt-right-sidebar .widget_categories ul li .gt-count {
-			color: #999;
-		}
-
-		/* Sidebar blog widget */
-		.gt-blog-widget ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
-		}
-
-		.gt-blog-widget li {
-			display: flex;
-			gap: 14px;
-			align-items: flex-start;
-			padding: 12px 0;
-			border-bottom: 1px solid #eee;
-		}
-
-		.gt-blog-widget .gt-image img {
-			width: 60px;
-			height: 60px;
-			object-fit: cover;
-			border-radius: 4px;
-			display: block;
-		}
-
-		.gt-blog-widget .gt-content h2 {
-			font-size: 14px;
-			color: var(--gt-accent);
-			margin: 0 0 6px;
-			line-height: 1.35;
-		}
-
-		.gt-blog-widget .gt-content span {
-			font-size: 11px;
-			color: #999;
-			text-transform: uppercase;
-			letter-spacing: .2px;
-		}
-
-		/* Categories list in sidebar */
+		/* Horizontal list items for mobile filters if needed */
 		.widget_categories ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 15px;
 		}
 
 		.widget_categories ul li {
-			padding: 10px 0;
-			border-bottom: 1px solid #eee;
-			color: var(--gt-text-color);
-		}
-
-		.widget_categories ul li a {
-			color: var(--gt-accent);
-			text-decoration: none;
-		}
-
-		/* Shift the categories container 15px to the right */
-		.gt-right-sidebar .widget_categories {
-			margin-left: 15px;
-		}
-
-		/* Sticky behavior for sidebar - align with main image top */
-		.gt-sticky-sidebar .inner-wrapper-sticky {
-			position: sticky;
-			top: 0;
-		}
-
-		/* When header is sticky, keep a small offset so hover doesn't collide with header */
-		@media (min-width: 992px) {
-
-			body.is-header-small .gt-sticky-sidebar .inner-wrapper-sticky,
-			.site-header.clone~.site-main .gt-sticky-sidebar .inner-wrapper-sticky {
-				top: 10px;
-			}
-		}
-
-		/* Pagination spacing */
-		.gt-pagination {
-			margin-top: 24px;
-		}
-
-		/* Reduce bottom spacing on blog page (strong overrides) */
-		.gt-page-wrapper {
-
-			padding: 24px 0 100px !important;
+			width: auto;
+			border-bottom: none !important;
+			padding: 5px 10px !important;
+			background: #f5f5f5;
+			border-radius: 4px;
 			margin-bottom: 0 !important;
 		}
 
-		/* Remove all bottom spacing from News title - ISOLATED */
-		#news-page-header,
-		#news-page-header .entry-header,
-		#news-page-header .entry-title {
-			margin-bottom: 0 !important;
-			padding-bottom: 0 !important;
-		}
-
-		.gt-main .gt-blog-list {
-			margin-bottom: 0 !important;
-		}
-
-		.gt-main .gt-blog-list-item {
-			margin-bottom: 32px;
-		}
-
-		.gt-main .gt-blog-list-item:last-child {
-			margin-bottom: 0 !important;
-		}
-
-		.site,
-		.site-main,
-		.content-area,
-		.site-content,
-		#content.site-content,
-		#primary.content-area,
-		.layout-medium:last-child {
-			margin-bottom: 0 !important;
-			padding-bottom: 0 !important;
-		}
-
-		/* Responsive */
-		@media (max-width: 1024px) {
-			.gt-page-wrapper .gt-container .gt-main-row {
-				grid-template-columns: 1fr;
-				gap: 32px;
-			}
-		}
-
-		/* Mobile Layout - Sidebar at bottom & Horizontal Filters */
-		@media (max-width: 991px) {
-
-			/* Stack main content and sidebar (column layout) */
-			.gt-page-wrapper .gt-container .gt-main-row {
-				display: flex;
-				flex-direction: column;
-				gap: 40px;
-			}
-
-			/* Make sidebar full width and move to top */
-			.gt-right-sidebar {
-				order: -1;
-				width: 100%;
-				max-width: 100%;
-				margin-left: 0;
-				margin-top: 20px;
-				margin-bottom: 40px;
-				/* Add spacing between filters and news list */
-				border-top: 1px solid #eee;
-				padding-top: 30px;
-			}
-
-			/* Disable sticky on mobile */
-			.gt-sticky-sidebar .inner-wrapper-sticky {
-				position: static !important;
-				top: auto !important;
-
-				/* Horizontal layout container */
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-				gap: 20px;
-				align-items: flex-start;
-			}
-
-			/* Widget containers */
-			.gt-widget {
-				flex: 1 1 300px;
-				/* Grow, shrink, base width */
-				width: 100%;
-				margin-bottom: 0 !important;
-				min-width: 250px;
-				/* Prevent being too squashed */
-			}
-
-			/* Ensure lists inside widgets display properly */
-			.gt-blog-widget ul,
-			.widget_categories ul {
-				width: 100%;
-			}
-
-			/* Special styling for horizontal list items if needed to save space */
-			.widget_categories ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 15px;
-			}
-
-			.widget_categories ul li {
-				width: auto;
-				border-bottom: none !important;
-				padding: 5px 10px !important;
-				background: #f5f5f5;
-				border-radius: 4px;
-				margin-bottom: 0 !important;
-			}
-
-			/* Adjust margins for widget headings */
-			.gt-right-sidebar .gt-widget-heading {
-				margin-bottom: 12px;
-			}
+		/* Adjust margins for widget headings */
+		.gt-right-sidebar .gt-widget-heading {
+			margin-bottom: 12px;
 		}
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
@@ -2641,7 +1909,8 @@
 							<div class="site-branding-center">
 								<h1 class="site-title">
 									<a href="../" rel="home">
-										<img src="../public/logoblanc.png" alt="Visio Architecture Ltd" class="logo-image">
+										<img src="../public/logoblanc.png" alt="Visio Architecture Ltd"
+											class="logo-image">
 										<span class="screen-reader-text">
 											Visio Architecture Ltd </span>
 									</a>
@@ -2723,64 +1992,35 @@
 		</header>
 		<!-- #masthead .site-header -->
 		<div id="main" class="site-main">
-			<div class="layout-medium">
+			<div class="layout-full">
 				<div id="primary" class="content-area ">
 					<div id="content" class="site-content" role="main">
-						<div id="news-page-header" class="post-header post-header-classic archive-header">
+						<div class="post-header post-header-classic portfolio-header">
 							<header class="entry-header">
 								<h1 class="entry-title">
-									<span class="cat-title">News</span> <!-- .cat-title -->
-								</h1>
-								<!-- .entry-title -->
-							</header>
-						</div>
-						<!-- .post-header .post-header-classic .archive-header -->
-						<!-- GT Blog content (full) -->
-						<div class="gt-page-wrapper">
-							<div class="gt-container gt-main-container">
-								<div class="gt-main-row">
-									<!-- Left: content logic zone -->
-									<main class="gt-main">
-										<div class="gt-blog-list" id="news-container">
-											<!-- News items will be injected here -->
-										</div>
-									</main>
-									<!-- Right: sidebar zone -->
-									<aside class="gt-right-sidebar">
-										<div class="gt-sidebar">
-											<div class="gt-sticky-sidebar">
-												<div class="inner-wrapper-sticky" style="position: relative;">
-													<div id="luxe_blog_widget-3"
-														class="gt-widget widget_luxe_blog_widget">
-														<div class="gt-widget-heading">
-															<div class="gt-widget-title">Architecture News</div>
-														</div>
-														<div class="gt-blog-widget">
-															<ul id="news-sidebar-list">
-																<!-- Dynamic sidebar news -->
-															</ul>
-														</div>
-													</div>
-													<div id="categories-3" class="gt-widget widget_categories">
-														<div class="gt-widget-heading">
-															<div class="gt-widget-title">Categories</div>
-														</div>
-														<ul id="gt-categories-list"></ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</aside>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- #content .site-content -->
-				</div>
-				<!-- #primary .content-area -->
-			</div>
-			<!-- .layout-medium -->
-		</div>
+									News </h1> <!-- .entry-title -->
+							</header> <!-- .entry-header -->
+						</div> <!-- .post-header .post-header-classic .portfolio-header -->
+
+						<ul id="filters" class="filters">
+							<!-- Categories will be injected here by news-loader.js -->
+							<li class="current">
+								<a data-filter="*" href="#">all</a>
+							</li>
+						</ul> <!-- #filters .filters -->
+
+
+						<div class="blog-grid-wrap">
+							<div id="news-container" class="blog-stream blog-grid blog-small portfolio-grid masonry"
+								data-layout="fitRows" data-item-width="480">
+								<!-- News items will be injected here by news-loader.js -->
+							</div> <!-- .blog-stream .blog-grid .blog-small .portfolio-grid .masonry -->
+						</div> <!-- .blog-grid-wrap -->
+
+					</div> <!-- #content .site-content -->
+				</div> <!-- #primary .content-area -->
+			</div> <!-- layout -->
+		</div> <!-- #main .site-main -->
 		<!-- #main .site-main -->
 		<footer id="colophon" class="site-footer" role="contentinfo">
 			<div class="site-info">

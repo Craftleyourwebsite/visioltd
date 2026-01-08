@@ -12,7 +12,7 @@ async function loadNews() {
     if (!container) return;
 
     // Optional: add a loader
-    container.innerHTML = '<p style="text-align:center; padding: 40px;">Loading news...</p>';
+    container.innerHTML = '<p style="text-align:center; padding: 40px; width: 100%;">Loading news...</p>';
 
     const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
 
@@ -32,7 +32,7 @@ async function loadNews() {
 
         if (!Array.isArray(newsItems) || newsItems.length === 0) {
             container.innerHTML = `
-                <div style="text-align: center; padding: 40px;">
+                <div style="text-align: center; padding: 40px; width: 100%;">
                     <h3>No news found</h3>
                     <p>Stay tuned for updates.</p>
                 </div>`;
@@ -50,10 +50,37 @@ async function loadNews() {
         // Extract and render categories based on the fetched news
         renderCategories(newsItems);
 
+        // Initialize Isotope after items are loaded and images are ready
+        if (typeof imagesLoaded !== 'undefined' && typeof Isotope !== 'undefined') {
+            imagesLoaded(container, function () {
+                const iso = new Isotope(container, {
+                    itemSelector: '.hentry',
+                    layoutMode: 'fitRows'
+                });
+
+                // Filter logic
+                const filters = document.getElementById('filters');
+                if (filters) {
+                    filters.addEventListener('click', function (e) {
+                        const link = e.target.closest('a');
+                        if (!link) return;
+                        e.preventDefault();
+
+                        // Update current class
+                        filters.querySelectorAll('li').forEach(li => li.classList.remove('current'));
+                        link.parentElement.classList.add('current');
+
+                        const filterValue = link.getAttribute('data-filter');
+                        iso.arrange({ filter: filterValue });
+                    });
+                }
+            });
+        }
+
     } catch (error) {
         console.error('Error loading news:', error);
         container.innerHTML = `
-            <div style="text-align: center; padding: 40px; color: red;">
+            <div style="text-align: center; padding: 40px; color: red; width: 100%;">
                 <h3>Error loading news</h3>
                 <p>${error.message}</p>
             </div>`;
@@ -61,7 +88,7 @@ async function loadNews() {
 }
 
 function renderCategories(newsItems) {
-    const container = document.getElementById('gt-categories-list');
+    const container = document.getElementById('filters');
     if (!container) return;
 
     container.innerHTML = '';
@@ -69,10 +96,7 @@ function renderCategories(newsItems) {
     const categoryMap = new Map();
 
     newsItems.forEach(item => {
-        // Check for 'category', 'categorie', 'categories'
-        // Strapi might return it as an object (relation) or string
         let cats = [];
-
         const rawCat = item.category || item.categorie || item.categories;
 
         if (Array.isArray(rawCat)) {
@@ -94,67 +118,55 @@ function renderCategories(newsItems) {
             }
 
             if (name) {
-                if (categoryMap.has(slug)) {
-                    categoryMap.get(slug).count++;
-                } else {
-                    categoryMap.set(slug, { name, slug, count: 1 });
-                }
+                categoryMap.set(slug, name);
             }
         });
     });
 
-    if (categoryMap.size === 0) {
-        container.innerHTML = '<li style="color:#999; font-size: 13px;">No categories found in news items.</li>';
-        return;
-    }
-
     // Add "All"
     const allLi = document.createElement('li');
-    allLi.innerHTML = `<a href="news.html" class="gt-cat-active">All</a> <span class="gt-count">(${newsItems.length})</span>`;
+    allLi.className = 'current';
+    allLi.innerHTML = `<a data-filter="*" href="#">all</a>`;
     container.appendChild(allLi);
 
-    categoryMap.forEach((val) => {
+    categoryMap.forEach((name, slug) => {
         const li = document.createElement('li');
-        // Currently just a link, we can add filtering logic if needed later
-        li.innerHTML = `<a href="news.html?category=${val.slug}">${val.name}</a> <span class="gt-count">(${val.count})</span>`;
+        li.innerHTML = `<a data-filter=".${slug}" href="#">${name}</a>`;
         container.appendChild(li);
     });
 }
 
-
 function createNewsCard(item) {
-    const imgUrl = CONFIG.getImageUrl(item.main_image, 'public/section/1.jpeg');
+    const imgUrl = CONFIG.getImageUrl(item.main_image, '../public/section/1.jpeg');
 
-    // Format date
-    const dateStr = item.date ? new Date(item.date).toLocaleDateString() : '';
+    // Get slugs for filtering classes
+    let cats = [];
+    const rawCat = item.category || item.categorie || item.categories;
+    if (Array.isArray(rawCat)) cats = rawCat;
+    else if (rawCat) cats = [rawCat];
+
+    const categoryClasses = cats.map(cat => {
+        const slug = typeof cat === 'string' ? cat : (cat.slug || cat.name || cat.Name || '');
+        return slug.toLowerCase().replace(/\s+/g, '-');
+    }).join(' ');
 
     return `
-    <div class="gt-blog-list-item gt-style-2">
-        <div class="gt-img">
-            <a href="newsopen.html?news=${item.slug}">
-                <img src="${imgUrl}" alt="${item.title}" style="width: 100%; height: auto;">
-                <div class="gt-overlay">
-                    <div class="gt-overlay-color"></div>
-                    <div class="gt-overlay-icon">
-                        <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-arrow-right">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="gt-content">
-            <h3 class="gt-title">
-                <a href="newsopen.html?news=${item.slug}">${item.title}</a>
-            </h3>
-            <p class="gt-excerpt">${item.excerpt || ''}</p>
-            <span>
-                <div class="gt-date">${dateStr}</div>
-            </span>
+    <div id="post-${item.id}" class="post-${item.id} portfolio hentry ${categoryClasses}">
+        <div class="hentry-wrap">
+            <div class="featured-image">
+                <a href="../newsopen/?news=${item.slug}">
+                    <img src="${imgUrl}" class="attachment-arkiz_image_size_4 size-arkiz_image_size_4 wp-post-image" alt="${item.title}" />
+                </a>
+            </div>
+            <div class="hentry-middle">
+                <header class="entry-header">
+                    <h2 class="entry-title">
+                        <a href="../newsopen/?news=${item.slug}">${item.title}</a>
+                    </h2>
+                </header>
+            </div>
         </div>
     </div>
     `;
 }
+

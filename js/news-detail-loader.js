@@ -135,16 +135,16 @@ function renderPreviousPost(item) {
 
     const html = `
         <div class="nav-previous">
-            <a class="nav-image-link" href="newsopen.html?news=${item.slug}">
+            <a class="nav-image-link" href="./?news=${item.slug}">
                 <img src="${imageUrl}" alt="${item.title}">
             </a>
             <div class="nav-desc">
                 <h4>Previous Post</h4>
-                <a href="newsopen.html?news=${item.slug}" rel="prev">
+                <a href="./?news=${item.slug}" rel="prev">
                     <span class="meta-nav">&#8592;</span> ${item.title}
                 </a>
             </div>
-            <a class="nav-overlay-link" href="newsopen.html?news=${item.slug}" rel="prev">
+            <a class="nav-overlay-link" href="./?news=${item.slug}" rel="prev">
                 ${item.title}
             </a>
         </div>
@@ -173,9 +173,9 @@ function renderRelatedPosts(items) {
                                 <span class="cat-links"><a href="#">${item.category}</a></span>
                             </div>
                             <h2 class="entry-title">
-                                <a href="newsopen.html?news=${item.slug}">${item.title}</a>
+                                <a href="./?news=${item.slug}">${item.title}</a>
                             </h2>
-                            <a class="more-link" href="newsopen.html?news=${item.slug}">View Post</a>
+                            <a class="more-link" href="./?news=${item.slug}">View Post</a>
                         </header>
                     </div>
                 </div>
