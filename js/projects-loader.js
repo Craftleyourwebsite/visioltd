@@ -1,63 +1,3 @@
-/**
- * PROJECTS LIST LOADER - WITH CATEGORY API SUPPORT (V3)
- * Fetches categories from Strapi API and rebuilds the filter bar.
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadProjects();
-
-    // Delegate click events for category-item and group headers
-    document.addEventListener('click', (e) => {
-        // Filter click
-        if (e.target.classList.contains('category-item')) {
-            const catName = e.target.textContent.trim();
-            filterProjectsBy(catName);
-        }
-
-        // Accordion toggle (mobile only)
-        if (e.target.classList.contains('category-group-header') && window.innerWidth <= 575) {
-            const group = e.target.closest('.category-group');
-            if (group) {
-                group.classList.toggle('is-active');
-            }
-        }
-
-        // Reset filter when clicking "All Categories" title
-        if (e.target.classList.contains('all-categories-title')) {
-            filterProjectsBy('All');
-        }
-    });
-});
-
-function filterProjectsBy(catName) {
-    const container = document.getElementById('projects-container');
-    if (!container) return;
-
-    const items = Array.from(container.querySelectorAll('.gt-grid-item'));
-
-    items.forEach(item => {
-        let show = (catName === 'All');
-        if (!show) {
-            try {
-                const itemCats = JSON.parse(item.getAttribute('data-categories') || '[]');
-                show = itemCats.some(c => c.trim().toLowerCase() === catName.trim().toLowerCase());
-            } catch (e) {
-                console.error(e);
-                show = false;
-            }
-        }
-
-        item.classList.toggle('is-hidden', !show);
-        item.style.display = show ? '' : 'none';
-    });
-
-    // Scroll to grid
-    container.scrollIntoView({ behavior: 'smooth' });
-}
-
-// Global variable to store fetched categories
-let allCategories = [];
-
 async function loadProjects() {
     const container = document.getElementById('projects-container');
     if (!container) return;
@@ -65,7 +5,6 @@ async function loadProjects() {
     const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
 
     try {
-        // Fetch both projects and categories in parallel
         const [projectsResponse, categoriesResponse] = await Promise.all([
             fetch(`${CONFIG.API_URL}/projects?locale=${lang}&populate=*&pagination[limit]=100`, {
                 mode: 'cors',
@@ -84,24 +23,19 @@ async function loadProjects() {
         const projectsJson = await projectsResponse.json();
         const projects = CONFIG.flatten(projectsJson);
 
-        // Parse categories
         if (categoriesResponse.ok) {
             const categoriesJson = await categoriesResponse.json();
             allCategories = CONFIG.flatten(categoriesJson) || [];
             if (!Array.isArray(allCategories)) allCategories = [];
 
-            // Render the category grid dynamically
             renderCategoryGrid(allCategories);
         }
 
-        // Robust check: projects must be an array
         if (!Array.isArray(projects)) {
             console.warn('Projects data is not an array:', projects);
-
             if (projects && (projects.error || projects.message)) {
                 throw new Error(projects.error?.message || projects.message || 'Unknown API Error');
             }
-
             container.innerHTML = `
                 <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: rgba(0,0,0,0.05); color: #000;">
                     <h3>Invalid Data Error</h3>
@@ -122,7 +56,6 @@ async function loadProjects() {
             return;
         }
 
-        // Clear existing static items
         container.innerHTML = '';
 
         projects.forEach(project => {
@@ -145,27 +78,45 @@ async function loadProjects() {
 function createProjectCard(project) {
     const imgUrl = CONFIG.getImageUrl(project.thumbnail, 'public/section/1.jpeg');
 
-    // Handle multiple categories
     const categories = Array.isArray(project.categories) ? project.categories : (project.category ? [project.category] : []);
-    const categoryNames = categories.length > 0 ? categories.map(c => c.name).join(', ') : 'Architecture';
     const categoryList = categories.map(c => c.name);
 
     return `
-        <div class="gt-grid-item gt-grid-item--h2" data-categories='${JSON.stringify(categoryList)}' style="position: relative;">
-            <div class="gt-img" style="background-image:url('${imgUrl}');"></div>
-            <a href="projectview.html?project=${project.slug}" class="gt-content">
-                <span>
-                    <h2>${project.title}</h2>
-                    <ul class="gt-location">
-                        <li>${project.location || ''}</li>
-                    </ul>
-                    <p class="gt-excerpt">${project.excerpt || ''}</p>
-                    <ul class="gt-cat">
-                        <li>${categoryNames}</li>
-                    </ul>
-                </span>
-            </a>
+        <div class="hentry" data-categories='${JSON.stringify(categoryList)}'>
+            <div class="hentry-wrap">
+                <div class="featured-image">
+                    <a href="projectview.html?project=${project.slug}">
+                        <img src="${imgUrl}" alt="${project.title}">
+                    </a>
+                </div>
+                <div class="hentry-middle">
+                    <header class="entry-header">
+                        <h2 class="entry-title">
+                            <a href="projectview.html?project=${project.slug}">${project.title}</a>
+                        </h2>
+                    </header>
+                </div>
+            </div>
+        </div>
     `;
+}
+
+function filterProjectsBy(catName) {
+    const items = document.querySelectorAll('#projects-container .hentry');
+    items.forEach(item => {
+        let cats = [];
+        try {
+            cats = JSON.parse(item.getAttribute('data-categories') || '[]');
+        } catch (e) {
+            console.error('Error parsing categories for item', e);
+        }
+
+        if (catName === 'All' || cats.includes(catName)) {
+            item.classList.remove('is-hidden');
+        } else {
+            item.classList.add('is-hidden');
+        }
+    });
 }
 
 function renderCategoryGrid(categories) {
@@ -180,51 +131,61 @@ function renderCategoryGrid(categories) {
         groups[groupName].push(cat.name);
     });
 
-    // Define the preferred order of groups to match the design if possible
-    const preferredOrder = [
-        'Core Architecture',
-        'Infrastructure & Transport',
-        'Industrial & Logistics',
-        'Urban Planning & Territorial Development',
-        'Heritage & Adaptive Reuse',
-        'Interior Architecture',
-        'Landscape & Environment',
-        'Specialist / Strategic Work'
+    // Define the column mapping to match the spreadsheet design
+    const columnMapping = [
+        ['Core Architecture'],
+        ['Infrastructure & Transport', 'Industrial & Logistics'],
+        ['Urban Planning & Territorial Development', 'Heritage & Adaptive Reuse'],
+        ['Interior Architecture', 'Landscape & Environment', 'Specialist / Strategic Work']
     ];
-
-    // Sort group names: preferred order first, then alphabetical
-    const groupNames = Object.keys(groups).sort((a, b) => {
-        const idxA = preferredOrder.indexOf(a);
-        const idxB = preferredOrder.indexOf(b);
-        if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-        if (idxA !== -1) return -1;
-        if (idxB !== -1) return 1;
-        return a.localeCompare(b);
-    });
 
     gridContainer.innerHTML = '';
 
-    groupNames.forEach(groupName => {
-        const groupDiv = document.createElement('div');
-        groupDiv.className = 'category-group';
+    columnMapping.forEach(colGroups => {
+        const colDiv = document.createElement('div');
+        colDiv.className = 'category-column';
 
-        const header = document.createElement('div');
-        header.className = 'category-group-header';
-        header.textContent = groupName;
+        colGroups.forEach(groupName => {
+            if (groups[groupName]) {
+                const groupDiv = document.createElement('div');
+                groupDiv.className = 'category-group';
 
-        const list = document.createElement('ul');
-        list.className = 'category-list';
+                const header = document.createElement('div');
+                header.className = 'category-group-header';
+                header.textContent = groupName;
 
-        groups[groupName].forEach(catName => {
-            const li = document.createElement('li');
-            li.className = 'category-item';
-            li.textContent = catName;
-            list.appendChild(li);
+                const list = document.createElement('ul');
+                list.className = 'category-list';
+
+                groups[groupName].forEach(catName => {
+                    const li = document.createElement('li');
+                    li.className = 'category-item';
+                    li.textContent = catName;
+
+                    // Add click event for filtering
+                    li.addEventListener('click', () => {
+                        filterProjectsBy(catName);
+                        // Optional: Smooth scroll to projects
+                        document.getElementById('projects-container').scrollIntoView({ behavior: 'smooth' });
+                    });
+
+                    list.appendChild(li);
+                });
+
+                header.addEventListener('click', () => {
+                    if (window.innerWidth <= 575) {
+                        groupDiv.classList.toggle('is-active');
+                    }
+                });
+
+                groupDiv.appendChild(header);
+                groupDiv.appendChild(list);
+                colDiv.appendChild(groupDiv);
+            }
         });
 
-        groupDiv.appendChild(header);
-        groupDiv.appendChild(list);
-        gridContainer.appendChild(groupDiv);
+        gridContainer.appendChild(colDiv);
     });
 }
 
+document.addEventListener('DOMContentLoaded', loadProjects);

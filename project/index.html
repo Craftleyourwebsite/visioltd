@@ -1897,6 +1897,11 @@
       width: 100% !important;
     }
 
+    .gt-main {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
     /* Grid utilitaires type bootstrap (scopés) */
     .gt-main .row {
       display: -ms-flexbox;
@@ -2006,150 +2011,180 @@
       color: #c60035;
     }
 
-    /* Grille Masonry (CSS Grid) – pleine largeur, sans gouttières */
-    /* Laisser .gt-main gérer le full-bleed; la grille occupe 100% pour éviter les arrondis créant un vide à droite */
-    .gt-main .gt-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0;
-      margin: 0;
-      width: 100%;
-      max-width: 100%;
+    /* --- ARKIZ THEME REDESIGN STYLES --- */
+    .blog-grid-wrap,
+    .all-categories-section .gt-container {
+      max-width: 1600px;
+      /* Centered container for better balance */
+      margin: 0 auto !important;
+      padding: 0 100px !important;
+      /* Large side spacing as requested by arrows */
     }
 
-    @media (min-width: 768px) {
-      .gt-main .gt-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (min-width: 992px) {
-      .gt-main .gt-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    /* Clearfix pour compatibilité avec contenus flottants */
-    .gt-main .gt-page-content:before,
-    .gt-main .gt-page-content:after,
-    .gt-main .gt-page-content>.page:before,
-    .gt-main .gt-page-content>.page:after,
-    .gt-main .gt-post-content:before,
-    .gt-main .gt-post-content:after,
-    .gt-main .gt-post-content>.post:before,
-    .gt-main .gt-post-content>.post:after {
-      content: '';
-      display: block;
-      clear: both;
-    }
-
-    /* Items */
-    .gt-main .gt-grid-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 0;
-      background: transparent;
-    }
-
-    .gt-main .gt-grid-item .gt-img {
-      width: 100%;
-      padding-top: 100%;
-      background-size: cover;
-      background-position: center center;
-      transition: transform .35s ease;
-    }
-
-    .gt-main .gt-grid-item:hover .gt-img {
-      transform: scale(1.04);
-    }
-
-    /* Overlay contenu */
-    .gt-main .gt-grid-item .gt-content {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: flex-end;
-      padding: 18px;
-      background: linear-gradient(to top, rgba(0, 0, 0, .58), rgba(0, 0, 0, .08) 60%, rgba(0, 0, 0, 0));
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .gt-main .gt-grid-item .gt-content span {
-      display: block;
-      width: 100%;
-    }
-
-    .gt-main .gt-grid-item .gt-content h2 {
-      margin: 0 0 8px;
-      font-size: clamp(16px, 1.2vw + 10px, 22px);
-      line-height: 1.2;
-      color: #ffffff !important;
-      font-family: 'Onest', sans-serif;
-      font-weight: 700;
-    }
-
-    .gt-main .gt-location,
-    .gt-main .gt-location li,
-    .gt-main .gt-location * {
-      list-style: none !important;
+    .categories-grid {
       padding: 0 !important;
-      margin: 0 0 10px !important;
-      display: flex !important;
-      gap: 8px !important;
-      color: #ffffff !important;
-      font-size: 12px !important;
-      opacity: 1 !important;
-      text-decoration: none !important;
+      margin: 0 !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      /* Force 4 columns to match 4x4 request */
+      max-width: 100% !important;
     }
 
-    .gt-main .gt-excerpt {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.4;
-      color: #f2f2f2 !important;
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
+    @media screen and (max-width: 991px) {
+      .categories-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+
+    @media screen and (max-width: 575px) {
+      .categories-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    .all-categories-title {
+      font-family: 'Onest', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 30px !important;
+      text-align: center;
+      /* Centered as requested */
+    }
+
+    .projects-header {
+      padding: 60px 0 5px !important;
+      /* Extremely reduced bottom padding */
+      margin-bottom: 0 !important;
+      text-align: center;
+    }
+
+    .projects-header .entry-title {
+      font-family: 'Onest', sans-serif;
+      font-size: clamp(60px, 15vw, 150px) !important;
+      /* "Tres Grand" title */
+      font-weight: 900 !important;
+      text-transform: uppercase;
+      letter-spacing: -4px;
+      /* More aggressive negative tracking for huge font */
+      margin: 0 !important;
+      color: #020014;
+      line-height: 0.9;
+    }
+
+    /* Hide the redundant banner titles if "Projects" is the main one */
+    .gt-main .gt-page-banner {
+      display: none !important;
+    }
+
+    .portfolio-grid {
+      display: grid !important;
+      grid-template-columns: repeat(1, 1fr) !important;
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .portfolio-grid .hentry {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin-bottom: 30px;
+      text-align: left;
       transition: all 0.3s ease;
     }
 
-    .gt-main .gt-grid-item:hover .gt-excerpt {
-      margin: 0 0 12px;
-      opacity: 1;
-      max-height: 100px;
+    @media screen and (min-width: 576px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
     }
 
-    .gt-main .gt-cat {
-      list-style: none;
+    @media screen and (min-width: 992px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        /* Strictly force 4x4 grid */
+      }
+    }
+
+    .hentry-wrap {
+      position: relative;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    .featured-image {
+      position: relative;
+      margin-bottom: 20px;
+      overflow: hidden;
+      /* Fixed Aspect Ratio (e.g., 3:2) */
+      aspect-ratio: 3 / 2;
+    }
+
+    .featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Ensures images fill the consistent size */
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+
+    .hentry-wrap:hover .featured-image img {
+      transform: scale(1.08);
+    }
+
+    .featured-image a:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #000;
+      opacity: 0;
+      z-index: 1;
+      transition: opacity 0.4s ease;
+    }
+
+    .hentry-wrap:hover .featured-image a:before {
+      opacity: 0.1;
+    }
+
+    .hentry-middle {
       padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 8px;
     }
 
-    .gt-main .gt-cat li {
-      display: inline-block;
-      background: #ffffff;
-      color: #32455e;
-      border-radius: 14px;
-      padding: 3px 10px;
-      font-size: 11px;
-      letter-spacing: .5px;
+    .entry-header {
+      margin-top: 15px;
+    }
+
+    .entry-title {
+      font-family: 'Onest', sans-serif;
+      font-size: 15px;
+      /* Slightly smaller for better 4-col fit */
+      font-weight: 900;
+      /* Extra bold as per reference */
       text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0;
+      line-height: 1.2;
     }
 
-    /* Liens internes */
-    .gt-main a {
-      color: #d84156;
+    .entry-title a {
+      color: #020014 !important;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
     }
 
-    .gt-main a:hover {
-      color: #c60035;
+    .entry-title a:hover {
+      opacity: 0.6;
     }
 
-    /* === PROJECTS PAGE – GRID SHOULD FILL, NO BODY BACKGROUND === */
-    /* Ensure wrappers stay transparent so the grid itself defines visuals */
+    /* Fallback and hidden states for filtering */
+    .hentry.is-hidden {
+      display: none !important;
+    }
+
+    /* Global page layout refinements */
     #main,
     .site-main,
     .content-area,
@@ -2158,142 +2193,79 @@
       background: transparent !important;
     }
 
-    /* Remove any pale/white subscribe strip and spacing above footer */
     .site .footer-subscribe {
       display: none !important;
-      background: transparent !important;
     }
 
     .site-footer {
-      margin-top: 0 !important;
+      margin-top: 80px !important;
       border-top: none !important;
     }
 
-    #content.site-content,
-    .content-area,
-    .site-main {
-      margin-bottom: 0 !important;
-      padding-bottom: 0 !important;
+    /* Fix for the main title as requested */
+    .gt-main .gt-page-heading h1 {
+      font-weight: 900 !important;
+      letter-spacing: -1px;
+      margin-bottom: 40px;
     }
 
-    .gt-main .gt-page-wrapper {
-      margin-bottom: 0 !important;
-    }
-
-    /* === GRID FILL LOGIC ===
-   Make the 4x4 grid occupy the available height so no white band shows,
-   without using a page background. */
-    .gt-main .gt-grid {
-      min-height: 100vh;
-      /* let rows stretch to fill viewport height */
-      grid-auto-rows: 1fr;
-      /* rows share height equally */
-      grid-auto-flow: dense;
-      /* compact fill */
-    }
-
-    /* Square tiles driven by container, image fills the tile */
-    .gt-main .gt-grid-item {
-      aspect-ratio: 1 / 1;
-    }
-
-    .gt-main .gt-grid-item .gt-img {
-      padding-top: 0 !important;
-      /* override padding square trick */
-      height: 100% !important;
-      /* fill the tile height */
-      background-size: cover !important;
-      background-position: center center !important;
-    }
-
-    /* === HOVER: image becomes white, description centered === */
-    .gt-main .gt-grid-item .gt-content {
-      transition: background .25s ease, color .25s ease, align-items .25s ease, justify-content .25s ease, text-align .25s ease;
-    }
-
-    .gt-main .gt-grid-item:hover .gt-content {
-      background: rgba(255, 255, 255, 1) !important;
-      align-items: center !important;
-      justify-content: center !important;
-      text-align: center !important;
-      color: #000 !important;
-    }
-
-    /* Center inner block and its lists */
-    .gt-main .gt-grid-item:hover .gt-content span {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-    }
-
-    .gt-main .gt-grid-item:hover .gt-location,
-    .gt-main .gt-grid-item:hover .gt-cat {
-      justify-content: center !important;
-    }
-
-    .gt-main .gt-grid-item:hover .gt-content h2,
-    .gt-main .gt-grid-item:hover .gt-content .gt-excerpt,
-    .gt-main .gt-grid-item:hover .gt-content .gt-location li {
-      color: #000 !important;
-    }
-
-    /* Keep category pills readable on white */
-    .gt-main .gt-grid-item:hover .gt-cat li {
-      background: #000 !important;
-      color: #fff !important;
-    }
-
-    /* === FILTER BAR (bottom of Projects) === */
-    .gt-main .gt-filters {
+    /* Ensure category section itself doesn't have offset */
+    .all-categories-section {
       width: 100%;
+      margin-bottom: 40px;
+      margin-top: 0 !important;
+      padding-top: 5px !important;
+      /* Extremely reduced top padding */
+    }
+
+    .category-column {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 36px;
-      padding: 10px 12px 18px;
-      margin-top: 0;
-      background: transparent;
+      flex-direction: column;
+      gap: 40px;
+      /* Desktop gap */
     }
 
-    .gt-main .gt-filters button {
-      position: relative;
-      appearance: none;
-      border: 0;
-      background: transparent;
-      color: #444;
-      font-size: 15px;
-      letter-spacing: .3px;
-      padding: 6px 2px;
-      cursor: pointer;
-      opacity: .95;
-      transition: color .2s ease, opacity .2s ease;
-      outline: none;
-      box-shadow: none;
-      text-decoration: none;
-    }
+    @media screen and (max-width: 575px) {
+      .category-column {
+        gap: 10px !important;
+        /* Extremely reduced gap on mobile per arrows */
+      }
 
-    .gt-main .gt-filters button:hover {
-      opacity: 1;
-      color: #000;
-      text-decoration: none;
-    }
+      .category-group-header {
+        cursor: pointer;
+        padding: 5px 0 !important;
+        margin-bottom: 5px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        border-bottom: 2px solid #000 !important;
+        color: #000 !important;
+        width: 100% !important;
+      }
 
-    .gt-main .gt-filters button.is-active {
-      color: #000;
-      opacity: 1;
-      text-decoration: underline;
-      text-underline-offset: 6px;
-      text-decoration-thickness: 2px;
-    }
+      .category-group-header::after {
+        content: '+' !important;
+        display: block !important;
+        font-size: 24px !important;
+        font-weight: 300 !important;
+        color: #000 !important;
+        margin-left: 10px !important;
+      }
 
-    /* Simple show/hide animation */
-    .gt-main .gt-grid-item {
-      transition: opacity .25s ease, transform .25s ease;
-    }
+      .category-group.is-active .category-group-header::after {
+        content: '-' !important;
+      }
 
-    .gt-main .gt-grid-item.is-hidden {
-      opacity: 0;
-      transform: scale(.98);
+      .category-list {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+
+      .category-group.is-active .category-list {
+        max-height: 1000px;
+        margin-bottom: 15px;
+      }
     }
   </style>
   <style id="footer-dark-override">
@@ -2441,7 +2413,10 @@
                                         </div>
                                       </div>
                                     </section>
-                                    <div class="gt-grid" id="projects-container" style="position: relative;">
+                                    <div class="blog-grid-wrap">
+                                      <div class="blog-stream blog-grid portfolio-grid" id="projects-container">
+                                        <!-- Projects will be loaded here -->
+                                      </div>
                                     </div>
                                   </div>
                                 </div>

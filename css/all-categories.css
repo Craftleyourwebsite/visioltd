@@ -73,7 +73,6 @@
     }
 }
 
-/* Mobile */
 @media screen and (max-width: 575px) {
     .categories-grid {
         grid-template-columns: 1fr;
@@ -86,13 +85,16 @@
 
     .category-group-header::after {
         display: block;
-        /* Show + on mobile */
+        /* Show on mobile */
+        content: '+';
+        /* Plus by default */
+        font-size: 1.5rem;
+        font-weight: 300;
     }
 
     .category-group.is-active .category-group-header::after {
-        transform: rotate(45deg);
-        /* Transform + to X or just tilt */
         content: '-';
+        /* Minus when open */
     }
 
     .category-list {
@@ -104,7 +106,6 @@
 
     .category-group.is-active .category-list {
         max-height: 1000px;
-        /* Big enough for the list */
         opacity: 1;
         margin-top: 10px;
         margin-bottom: 20px;
