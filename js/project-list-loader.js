@@ -1,12 +1,12 @@
 /**
- * PROJECT LIST LOADER (V2)
- * Fetches projects from Strapi API, merges with initial projects from image,
- * and builds the "Selected Projects List" table with sorting (most recent first).
+ * PROJECT LIST LOADER (V5 - OPTIMIZED DYNAMIC HYBRID)
+ * Fetches "Selected Projects" directly from Strapi API at runtime.
+ * Merges them with INITIAL_PROJECTS (Static).
+ * Sorts by Year DESC.
+ * OPTIMIZATION: Uses localStorage caching (5 minutes TTL) to prevent hammering Strapi on every page load.
  */
 
-document.addEventListener('DOMContentLoaded', loadProjectList);
-
-// Initial projects extracted from the provided image
+// Initial projects (LEGITIMATE STATIC PROJECTS)
 const INITIAL_PROJECTS = [
     { year: '2025', location: 'Port Louis, Mauritius', title: 'Harbourview Mixed-Use Tower', client: 'Meridian Capital Ltd', category: 'Mixed-Use / High-Rise' },
     { year: '2025', location: 'Côte d\'Or, Mauritius', title: 'Verdant Courtyard Residences', client: 'Côte d\'Or Development Co.', category: 'Residential (Mid-High End)' },
@@ -35,121 +35,151 @@ const INITIAL_PROJECTS = [
     { year: '2018', location: 'Kinshasa, DRC', title: 'Riverfront Convention Centre Concept', client: 'Congo Events & Expo SA', category: 'Public / Event' }
 ];
 
-async function loadProjectList() {
-    const tableBody = document.getElementById('project-list-body');
-    if (!tableBody) return;
+// Config for Optimization
+const PROJECTS_CACHE_KEY = 'cached_strapi_projects';
+const CACHE_TTL_MS = 300000; // 5 Minutes Cache
 
+document.addEventListener('DOMContentLoaded', loadProjectList);
+
+async function loadProjectList() {
+    console.log('Project List Loader (Optimized Dynamic): Initializing...');
     const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
 
-    try {
-        // Show loading state
-        tableBody.innerHTML = `<tr><td colspan="5" class="table-status-message">Loading project list...</td></tr>`;
+    // Elements
+    const enBody = document.getElementById('project-list-body-en');
+    const frBody = document.getElementById('project-list-body-fr');
 
-        // 1. Try to fetch the Selected Project List first
-        const selectedResponse = await fetch(`${CONFIG.API_URL}/selected-project-list?locale=${lang}&populate[projects]=true`, {
-            mode: 'cors',
-            credentials: 'omit'
-        });
+    if (!enBody || !frBody) {
+        console.warn('Project List Loader: Table body elements not found.');
+        return;
+    }
 
-        let projectsFromStrapi = [];
-        let usedSelectedList = false;
+    async function fetchAndRenderProjects(language) {
+        const targetBody = language === 'fr' ? frBody : enBody;
+        if (!targetBody) return;
 
-        if (selectedResponse.ok) {
-            const selectedJson = await selectedResponse.json();
-            const flattenedSelected = CONFIG.flatten(selectedJson);
+        // Show loading state if empty and not hidden
+        if (targetBody.style.display !== 'none' && targetBody.querySelectorAll('tr').length === 0) {
+            targetBody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:20px; color:#888;">Loading projects...</td></tr>';
+        }
 
-            if (flattenedSelected && Array.isArray(flattenedSelected.projects) && flattenedSelected.projects.length > 0) {
-                projectsFromStrapi = flattenedSelected.projects;
-                usedSelectedList = true;
-                console.log('Using projects from "Selected Project List" (manually ordered in Strapi)');
+        let strapiProjects = [];
+        const cacheKey = `${PROJECTS_CACHE_KEY}_${language}`;
+        let loadedFromValidCache = false;
+
+        // 1. Try Valid Cache
+        try {
+            const cachedData = localStorage.getItem(cacheKey);
+            if (cachedData) {
+                const parsed = JSON.parse(cachedData);
+                const now = Date.now();
+                if (now - parsed.timestamp < CACHE_TTL_MS) {
+                    strapiProjects = parsed.data;
+                    loadedFromValidCache = true;
+                    console.log(`[List] Using cached projects for ${language} (Expires in ${Math.round((CACHE_TTL_MS - (now - parsed.timestamp)) / 1000)}s)`);
+                }
+            }
+        } catch (e) {
+            console.warn('[List] Cache parse error, ignoring.');
+        }
+
+        // 2. Fetch if not in valid cache
+        if (!loadedFromValidCache) {
+            try {
+                // Fetch from Strapi (Selected List)
+                const baseUrl = (typeof CONFIG !== 'undefined' && CONFIG.API_URL) ? CONFIG.API_URL : 'https://visiostrapi-production.up.railway.app/api';
+                const url = `${baseUrl}/selected-project-list?locale=${language}&populate[projects]=true`;
+
+                console.log(`[List] Fetching dynamic projects from: ${url}`);
+
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second max
+
+                const response = await fetch(url, { signal: controller.signal });
+                clearTimeout(timeoutId);
+
+                if (response.ok) {
+                    const json = await response.json();
+                    let rawProjects = [];
+
+                    if (json.data && json.data.attributes && Array.isArray(json.data.attributes.projects)) {
+                        rawProjects = json.data.attributes.projects;
+                    } else if (json.data && json.data.projects) {
+                        rawProjects = json.data.projects;
+                    }
+
+                    strapiProjects = rawProjects.map(p => ({
+                        year: p.year || 'Unknown',
+                        location: p.location || '',
+                        title: p.name || '',
+                        client: p.client || '',
+                        category: p.category || '',
+                        isFromStrapi: true,
+                        id: p.id
+                    }));
+
+                    // Save to Cache
+                    localStorage.setItem(cacheKey, JSON.stringify({
+                        timestamp: Date.now(),
+                        data: strapiProjects
+                    }));
+
+                } else {
+                    throw new Error(`Strapi fetch failed (${response.status})`);
+                }
+
+            } catch (err) {
+                console.warn(`[List] Error fetching for ${language}:`, err);
+
+                // 3. Fallback to Expired Cache
+                const cachedData = localStorage.getItem(cacheKey);
+                if (cachedData) {
+                    try {
+                        const parsed = JSON.parse(cachedData);
+                        strapiProjects = parsed.data;
+                        console.log('[List] Recovering with EXPIRED cache due to fetch error.');
+                    } catch (e) { }
+                }
             }
         }
 
-        // 2. If Selected Project List is empty or failed, fallback to all projects sorted by date
-        if (!usedSelectedList) {
-            console.log('Selected Project List empty or inaccessible. Falling back to all projects (date:desc)');
-            const response = await fetch(`${CONFIG.API_URL}/projects?locale=${lang}&populate=categories&sort=date:desc`, {
-                mode: 'cors',
-                credentials: 'omit'
-            });
+        // 4. Merge with INITIAL_PROJECTS
+        // We use a Map to deduplicate using normalized title as key
+        const projectMap = new Map();
 
-            if (response.ok) {
-                const json = await response.json();
-                projectsFromStrapi = CONFIG.flatten(json) || [];
-            }
-        }
+        // Add Strapi projects first (higher priority if we want them to be the source of truth, 
+        // or lower if we want static to override? Usually dynamic overrides static, but here 
+        // we're appending static ones that aren't in dynamic. The user wants "Selected Project List" + "Initial".
+        // Use title as unique key.
 
-        // Map Strapi projects to same format as INITIAL_PROJECTS
-        const mappedStrapi = projectsFromStrapi.map(p => {
-            if (usedSelectedList) {
-                // p is an item from the repeatable component: tables.project-item
-                return {
-                    year: p.year || 'Unknown',
-                    location: p.location || '',
-                    title: p.name || '',
-                    client: p.client || '',
-                    category: p.category || '',
-                    isFromStrapi: true,
-                    id: p.id
-                };
-            }
-
-            // Fallback: p is a project collection type
-            const cats = Array.isArray(p.categories) ? p.categories : (p.category ? [p.category] : []);
-            return {
-                year: p.date ? p.date.substring(0, 4) : 'Unknown',
-                location: p.location || '',
-                title: p.title || '',
-                client: p.client || '',
-                category: cats.map(c => c.name).join(', '),
-                isFromStrapi: true,
-                id: p.id
-            };
+        // Add dynamic projects
+        strapiProjects.forEach(p => {
+            projectMap.set(p.title.trim().toLowerCase(), p);
         });
 
-        // Merge and deduplicate
-        const allProjects = [...mappedStrapi];
-
+        // Add static projects only if not present
         INITIAL_PROJECTS.forEach(initP => {
-            if (!mappedStrapi.find(s => s.title.trim().toLowerCase() === initP.title.trim().toLowerCase())) {
-                allProjects.push(initP);
+            const key = initP.title.trim().toLowerCase();
+            if (!projectMap.has(key)) {
+                projectMap.set(key, initP);
             }
         });
 
-        // SORTING:
-        // If using manual Strapi list, preserve their order at the top.
-        // Otherwise sort by year.
-        if (usedSelectedList) {
-            allProjects.sort((a, b) => {
-                if (a.isFromStrapi && !b.isFromStrapi) return -1;
-                if (!a.isFromStrapi && b.isFromStrapi) return 1;
-                if (!a.isFromStrapi && !b.isFromStrapi) {
-                    return b.year.localeCompare(a.year);
-                }
-                return 0; // Preserve Strapi order
-            });
+        const finalProjects = Array.from(projectMap.values());
+
+        // 5. Sort by Year DESC
+        finalProjects.sort((a, b) => {
+            const yearA = parseInt(a.year) || 0;
+            const yearB = parseInt(b.year) || 0;
+            if (yearB !== yearA) return yearB - yearA; // Descending
+            return a.title.localeCompare(b.title);
+        });
+
+        // 6. Render HTML
+        if (finalProjects.length === 0) {
+            targetBody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:20px;">No projects found.</td></tr>';
         } else {
-            allProjects.sort((a, b) => {
-                if (b.year !== a.year) {
-                    return b.year.localeCompare(a.year);
-                }
-                if (a.isFromStrapi && !b.isFromStrapi) return -1;
-                if (!a.isFromStrapi && b.isFromStrapi) return 1;
-                if (a.isFromStrapi && b.isFromStrapi) return b.id - a.id;
-                return 0;
-            });
-        }
-
-        if (allProjects.length === 0) {
-            tableBody.innerHTML = `<tr><td colspan="5" class="table-status-message">No projects found.</td></tr>`;
-            return;
-        }
-
-        // Clear loading state
-        tableBody.innerHTML = '';
-
-        allProjects.forEach(project => {
-            const row = `
+            const html = finalProjects.map(project => `
                 <tr>
                     <td class="year-col">${project.year}</td>
                     <td class="location-col">${project.location}</td>
@@ -157,29 +187,31 @@ async function loadProjectList() {
                     <td class="client-col">${project.client}</td>
                     <td class="category-col">${project.category}</td>
                 </tr>
-            `;
-            tableBody.insertAdjacentHTML('beforeend', row);
-        });
+            `).join('');
+            targetBody.innerHTML = html;
+        }
 
-    } catch (error) {
-        console.error('Error loading project list:', error);
-        // Fallback to initial projects if API fails
-        renderFallback(tableBody);
+        console.log(`[List] Rendered ${finalProjects.length} projects for ${language}`);
     }
-}
 
-function renderFallback(container) {
-    container.innerHTML = '';
-    INITIAL_PROJECTS.forEach(project => {
-        const row = `
-            <tr>
-                <td class="year-col">${project.year}</td>
-                <td class="location-col">${project.location}</td>
-                <td class="name-col">${project.title}</td>
-                <td class="client-col">${project.client}</td>
-                <td class="category-col">${project.category}</td>
-            </tr>
-        `;
-        container.insertAdjacentHTML('beforeend', row);
+    function updateProjectListVisibility(language) {
+        if (language.toLowerCase() === 'fr') {
+            enBody.style.display = 'none';
+            frBody.style.display = 'table-row-group';
+            fetchAndRenderProjects('fr');
+        } else {
+            enBody.style.display = 'table-row-group';
+            frBody.style.display = 'none';
+            fetchAndRenderProjects('en');
+        }
+    }
+
+    // Initial load
+    updateProjectListVisibility(lang);
+
+    // Listen for language changes
+    window.addEventListener('languageChanged', (e) => {
+        const newLang = e.detail.language;
+        updateProjectListVisibility(newLang);
     });
 }

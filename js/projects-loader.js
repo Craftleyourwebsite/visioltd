@@ -1,191 +1,290 @@
-async function loadProjects() {
-    const container = document.getElementById('projects-container');
-    if (!container) return;
+/**
+ * PROJECTS LOADER
+ * Fetches projects from Strapi and renders them into #projects-container
+ * Uses ContentLoader for intelligent caching and skeleton loading
+ */
 
-    const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
+(function () {
+    'use strict';
 
-    try {
-        const [projectsResponse, categoriesResponse] = await Promise.all([
-            fetch(`${CONFIG.API_URL}/projects?locale=${lang}&populate=*&pagination[limit]=100`, {
-                mode: 'cors',
-                credentials: 'omit'
-            }),
-            fetch(`${CONFIG.API_URL}/categories?locale=${lang}&sort=order:asc&pagination[limit]=100`, {
-                mode: 'cors',
-                credentials: 'omit'
-            })
-        ]);
+    // Cache configuration
+    const CONTENT_TYPE = 'projects';
+    const GRID_CACHE_KEY = 'cached_strapi_projects_grid';
+    const GRID_CACHE_TTL = 300000; // 5 minutes
 
-        if (!projectsResponse.ok) {
-            throw new Error(`HTTP Error ${projectsResponse.status}: ${projectsResponse.statusText}`);
+    /**
+     * Load Projects content
+     */
+    async function loadProjects() {
+        const container = document.getElementById('projects-container');
+        if (!container) return;
+
+        const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
+
+        // --- STATIC CATEGORIES HANDLING (Always run) ---
+        updateCategoryVisibility(lang);
+
+        // Listen for language changes
+        window.addEventListener('languageChanged', (e) => {
+            updateCategoryVisibility(e.detail.language);
+        });
+
+        // Fix: Allow clicking "All Categories" title to reset filter
+        setupAllCategoriesClick(container);
+
+        // Check if ContentLoader is available
+        if (typeof ContentLoader !== 'undefined') {
+            // Use the unified ContentLoader
+            await ContentLoader.load({
+                type: CONTENT_TYPE,
+                url: `${CONFIG.API_URL}/projects?locale=${lang}&populate=*&pagination[limit]=100`,
+                containerId: 'projects-container',
+                renderFn: createProjectCard,
+                skeletonCount: 9,
+                onSuccess: (items, source) => {
+                    console.log(`[Projects] Loaded ${items.length} items from ${source}`);
+                },
+                onError: (error) => {
+                    console.error('[Projects] Load error:', error);
+                }
+            });
+        } else {
+            // Fallback to direct loading with cache
+            await loadProjectsDirect();
         }
+    }
 
-        const projectsJson = await projectsResponse.json();
-        const projects = CONFIG.flatten(projectsJson);
-
-        if (categoriesResponse.ok) {
-            const categoriesJson = await categoriesResponse.json();
-            allCategories = CONFIG.flatten(categoriesJson) || [];
-            if (!Array.isArray(allCategories)) allCategories = [];
-
-            renderCategoryGrid(allCategories);
-        }
-
-        if (!Array.isArray(projects)) {
-            console.warn('Projects data is not an array:', projects);
-            if (projects && (projects.error || projects.message)) {
-                throw new Error(projects.error?.message || projects.message || 'Unknown API Error');
+    /**
+     * Update category visibility based on language
+     */
+    function updateCategoryVisibility(language) {
+        const enContainer = document.getElementById('cat-en-container');
+        const frContainer = document.getElementById('cat-fr-container');
+        if (enContainer && frContainer) {
+            if (language.toLowerCase() === 'fr') {
+                enContainer.style.display = 'none';
+                frContainer.style.display = 'grid';
+            } else {
+                enContainer.style.display = 'grid';
+                frContainer.style.display = 'none';
             }
-            container.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: rgba(0,0,0,0.05); color: #000;">
-                    <h3>Invalid Data Error</h3>
-                    <p>Strapi returned valid JSON but not a list of projects.</p>
-                    <pre style="text-align:left; font-size:10px;">${JSON.stringify(projectsJson, null, 2).slice(0, 300)}...</pre>
-                </div>`;
-            return;
+        }
+    }
+
+    /**
+     * Setup click handler for "All Categories" title
+     */
+    function setupAllCategoriesClick(container) {
+        const allCatTitle = document.querySelector('.all-categories-title');
+        if (allCatTitle) {
+            allCatTitle.replaceWith(allCatTitle.cloneNode(true));
+            const newTitle = document.querySelector('.all-categories-title');
+            newTitle.addEventListener('click', () => {
+                filterProjectsBy('All');
+                if (container) container.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+    }
+
+    /**
+     * Direct loading fallback with built-in cache
+     */
+    async function loadProjectsDirect() {
+        const container = document.getElementById('projects-container');
+        if (!container) return;
+
+        const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
+        const cacheKey = `${GRID_CACHE_KEY}_${lang}`;
+
+        // Show skeleton loading
+        container.innerHTML = generateSkeletons(9);
+
+        let projects = [];
+        let useCache = false;
+
+        // 1. Try Cache
+        try {
+            const cachedData = localStorage.getItem(cacheKey);
+            if (cachedData) {
+                const parsed = JSON.parse(cachedData);
+                const now = Date.now();
+                if (now - parsed.timestamp < GRID_CACHE_TTL) {
+                    projects = parsed.data;
+                    useCache = true;
+                    console.log(`[Projects] Using cache (expires in ${Math.round((GRID_CACHE_TTL - (now - parsed.timestamp)) / 1000)}s)`);
+                }
+            }
+        } catch (e) {
+            console.warn('[Projects] Cache parse error');
         }
 
-        if (projects.length === 0) {
-            console.warn('No projects returned from Strapi.');
+        // 2. Fetch if no valid cache
+        if (!useCache) {
+            try {
+                console.log('[Projects] Fetching fresh data...');
+                const response = await fetch(`${CONFIG.API_URL}/projects?locale=${lang}&populate=*&pagination[limit]=100`, {
+                    mode: 'cors',
+                    credentials: 'omit'
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP Error ${response.status}`);
+                }
+
+                const json = await response.json();
+                const fetchedProjects = CONFIG.flatten(json);
+
+                if (Array.isArray(fetchedProjects)) {
+                    projects = fetchedProjects;
+                    // Save to Cache
+                    localStorage.setItem(cacheKey, JSON.stringify({
+                        timestamp: Date.now(),
+                        data: projects
+                    }));
+                }
+            } catch (error) {
+                console.error('[Projects] Fetch error:', error);
+
+                // Fallback: Try to use expired cache
+                const cachedData = localStorage.getItem(cacheKey);
+                if (cachedData) {
+                    try {
+                        projects = JSON.parse(cachedData).data;
+                        console.log('[Projects] Using expired cache as fallback');
+                    } catch (e) { }
+                }
+
+                if (projects.length === 0) {
+                    container.innerHTML = `
+                        <div class="content-error" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                            <h3>Connection Error</h3>
+                            <p>Could not load projects. Please check your connection.</p>
+                            <button onclick="location.reload()">Retry</button>
+                        </div>`;
+                    return;
+                }
+            }
+        }
+
+        // 3. Render
+        if (!Array.isArray(projects) || projects.length === 0) {
             container.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: rgba(0,0,0,0.05); color: #000;">
+                <div class="content-empty" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
                     <h3>No projects found</h3>
-                    <p>Please ensure you have created and <strong>published</strong> a project in Strapi (Drafts are not shown).</p>
-                    <p>Current Locale: ${lang}</p>
+                    <p>Public projects will appear here once published.</p>
                 </div>`;
             return;
         }
 
         container.innerHTML = '';
-
+        const fragment = document.createDocumentFragment();
         projects.forEach(project => {
-            const html = createProjectCard(project);
-            container.insertAdjacentHTML('beforeend', html);
-        });
-
-    } catch (error) {
-        console.error('Error loading projects:', error);
-        container.innerHTML = `
-            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: #ffebee; color: #c62828;">
-                <h3>Connection Error</h3>
-                <p>Could not load projects from Strapi.</p>
-                <p><strong>Reason:</strong> ${error.message}</p>
-                <p>Make sure Strapi is running (<code>npm run develop</code>) and permissions (Public > find) are set.</p>
-            </div>`;
-    }
-}
-
-function createProjectCard(project) {
-    const imgUrl = CONFIG.getImageUrl(project.thumbnail, 'public/section/1.jpeg');
-
-    const categories = Array.isArray(project.categories) ? project.categories : (project.category ? [project.category] : []);
-    const categoryList = categories.map(c => c.name);
-
-    return `
-        <div class="hentry" data-categories='${JSON.stringify(categoryList)}'>
-            <div class="hentry-wrap">
-                <div class="featured-image">
-                    <a href="projectview.html?project=${project.slug}">
-                        <img src="${imgUrl}" alt="${project.title}">
-                    </a>
-                </div>
-                <div class="hentry-middle">
-                    <header class="entry-header">
-                        <h2 class="entry-title">
-                            <a href="projectview.html?project=${project.slug}">${project.title}</a>
-                        </h2>
-                    </header>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function filterProjectsBy(catName) {
-    const items = document.querySelectorAll('#projects-container .hentry');
-    items.forEach(item => {
-        let cats = [];
-        try {
-            cats = JSON.parse(item.getAttribute('data-categories') || '[]');
-        } catch (e) {
-            console.error('Error parsing categories for item', e);
-        }
-
-        if (catName === 'All' || cats.includes(catName)) {
-            item.classList.remove('is-hidden');
-        } else {
-            item.classList.add('is-hidden');
-        }
-    });
-}
-
-function renderCategoryGrid(categories) {
-    const gridContainer = document.getElementById('dynamic-categories-grid');
-    if (!gridContainer) return;
-
-    // Group categories by the 'group' field
-    const groups = {};
-    categories.forEach(cat => {
-        const groupName = cat.group || 'Other';
-        if (!groups[groupName]) groups[groupName] = [];
-        groups[groupName].push(cat.name);
-    });
-
-    // Define the column mapping to match the spreadsheet design
-    const columnMapping = [
-        ['Core Architecture'],
-        ['Infrastructure & Transport', 'Industrial & Logistics'],
-        ['Urban Planning & Territorial Development', 'Heritage & Adaptive Reuse'],
-        ['Interior Architecture', 'Landscape & Environment', 'Specialist / Strategic Work']
-    ];
-
-    gridContainer.innerHTML = '';
-
-    columnMapping.forEach(colGroups => {
-        const colDiv = document.createElement('div');
-        colDiv.className = 'category-column';
-
-        colGroups.forEach(groupName => {
-            if (groups[groupName]) {
-                const groupDiv = document.createElement('div');
-                groupDiv.className = 'category-group';
-
-                const header = document.createElement('div');
-                header.className = 'category-group-header';
-                header.textContent = groupName;
-
-                const list = document.createElement('ul');
-                list.className = 'category-list';
-
-                groups[groupName].forEach(catName => {
-                    const li = document.createElement('li');
-                    li.className = 'category-item';
-                    li.textContent = catName;
-
-                    // Add click event for filtering
-                    li.addEventListener('click', () => {
-                        filterProjectsBy(catName);
-                        // Optional: Smooth scroll to projects
-                        document.getElementById('projects-container').scrollIntoView({ behavior: 'smooth' });
-                    });
-
-                    list.appendChild(li);
-                });
-
-                header.addEventListener('click', () => {
-                    if (window.innerWidth <= 575) {
-                        groupDiv.classList.toggle('is-active');
-                    }
-                });
-
-                groupDiv.appendChild(header);
-                groupDiv.appendChild(list);
-                colDiv.appendChild(groupDiv);
+            const div = document.createElement('div');
+            div.innerHTML = createProjectCard(project).trim();
+            if (div.firstChild) {
+                fragment.appendChild(div.firstChild);
             }
         });
+        container.appendChild(fragment);
+    }
 
-        gridContainer.appendChild(colDiv);
+    /**
+     * Generate skeleton loading cards
+     */
+    function generateSkeletons(count) {
+        let html = '';
+        for (let i = 0; i < count; i++) {
+            html += `
+                <div class="hentry skeleton-card">
+                    <div class="hentry-wrap">
+                        <div class="featured-image">
+                            <div class="skeleton-image content-skeleton" style="width:100%;height:0;padding-bottom:66.67%;"></div>
+                        </div>
+                        <div class="hentry-middle">
+                            <header class="entry-header">
+                                <h2 class="entry-title">
+                                    <span class="skeleton-title content-skeleton" style="display:block;height:24px;width:80%;margin:15px auto 0;"></span>
+                                </h2>
+                            </header>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        return html;
+    }
+
+    /**
+     * Create project card HTML
+     */
+    function createProjectCard(project) {
+        const imgUrl = CONFIG.getImageUrl(project.thumbnail, 'public/section/1.jpeg');
+
+        const categories = Array.isArray(project.categories) ? project.categories : (project.category ? [project.category] : []);
+        const categoryList = categories.map(c => c.name);
+
+        // Clean categories string for attribute
+        const catAttr = JSON.stringify(categoryList).replace(/"/g, '&quot;');
+
+        // LINK FIX: Point to ../projectview/index.html
+        const projectUrl = `../projectview/index.html?project=${project.slug}`;
+
+        return `
+            <div class="hentry" data-categories="${catAttr}">
+                <div class="hentry-wrap">
+                    <div class="featured-image">
+                        <a href="${projectUrl}">
+                            <img src="${imgUrl}" alt="${project.title}" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="hentry-middle">
+                        <header class="entry-header">
+                            <h2 class="entry-title">
+                                <a href="${projectUrl}">${project.title}</a>
+                            </h2>
+                        </header>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    /**
+     * Filter projects by category
+     */
+    function filterProjectsBy(catName) {
+        const items = document.querySelectorAll('#projects-container .hentry:not(.skeleton-card)');
+        items.forEach(item => {
+            let cats = [];
+            try {
+                cats = JSON.parse(item.getAttribute('data-categories').replace(/&quot;/g, '"') || '[]');
+            } catch (e) {
+                console.warn('Error parsing categories:', e);
+            }
+
+            if (catName === 'All' || cats.includes(catName)) {
+                item.classList.remove('is-hidden');
+                item.style.display = '';
+            } else {
+                item.classList.add('is-hidden');
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    // Expose for category filtering
+    window.filterProjectsBy = filterProjectsBy;
+
+    // Initialize on DOM ready
+    document.addEventListener('DOMContentLoaded', loadProjects);
+
+    // Re-load on language change
+    window.addEventListener('languageChanged', () => {
+        // Clear loading state to allow refresh
+        if (typeof ContentLoader !== 'undefined') {
+            ContentLoader.LoadingState.resetAll();
+        }
+        loadProjects();
     });
-}
 
-document.addEventListener('DOMContentLoaded', loadProjects);
+})();

@@ -8,31 +8,189 @@
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1" name="viewport">
 	<link href="http://gmpg.org/xfn/11" rel="profile">
-	<title>Urban Vista Tower &#8211; Arkiz.</title>
+	<title>Project Details - Visio Architecture</title>
 	<link rel="icon" type="image/jpeg" href="../public/favicon.jpeg">
 	<link rel="shortcut icon" type="image/jpeg" href="../public/favicon.jpeg">
 	<meta content='max-image-preview:large' name='robots'>
 	<style>
 		img:is([sizes="auto" i], [sizes^="auto," i]) {
-			contain-intrinsic-size: 3000px 1500px
+			contain-intrinsic-size: 3000px 1500px;
 		}
 	</style>
-	<link href='//fonts.googleapis.com' rel='dns-prefetch'>
-	<link href="https://themes.pixelwars.org/arkiz/demo-01/feed/" rel="alternate" title="Arkiz. &raquo; Feed"
-		type="application/rss+xml">
-	<link href="https://themes.pixelwars.org/arkiz/demo-01/comments/feed/" rel="alternate"
-		title="Arkiz. &raquo; Comments Feed" type="application/rss+xml">
-	<link href="https://themes.pixelwars.org/arkiz/demo-01/portfolio/urban-vista-tower/feed/" rel="alternate"
-		title="Arkiz. &raquo; Urban Vista Tower Comments Feed" type="application/rss+xml">
-	<script type="text/javascript">
+	<!-- ... (truncated unchanged lines) ... -->
+	<style>
+		/* Project Gallery Grid - 3x3 Centered */
+		#project-gallery-grid {
+			display: grid !important;
+			grid-template-columns: repeat(3, 1fr) !important;
+			gap: 20px !important;
+			width: 100% !important;
+			max-width: 1200px !important;
+			margin: 0 auto !important;
+			position: relative !important;
+			padding: 20px 0 !important;
+		}
+
+		/* ... */
+		/* Skeleton Loading */
+		.loading-skeleton {
+			background-color: #f0f0f0;
+			position: relative;
+			overflow: hidden;
+			color: transparent !important;
+			border-radius: 4px;
+			min-height: 1.2em;
+			display: inline-block;
+			width: 100%;
+			background-image: none !important;
+			/* Fix static background flash */
+		}
+
+		/* ... */
+		<link href='//fonts.googleapis.com' rel='dns-prefetch'><link href="https://themes.pixelwars.org/arkiz/demo-01/feed/" rel="alternate" title="Arkiz. &raquo; Feed"
+		type="application/rss+xml"><link href="https://themes.pixelwars.org/arkiz/demo-01/comments/feed/" rel="alternate"
+		title="Arkiz. &raquo; Comments Feed" type="application/rss+xml"><link href="https://themes.pixelwars.org/arkiz/demo-01/portfolio/urban-vista-tower/feed/" rel="alternate"
+		title="Arkiz. &raquo; Urban Vista Tower Comments Feed" type="application/rss+xml"><script type="text/javascript">
+
 		/* <![CDATA[ */
-		window._wpemojiSettings = { "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/", "ext": ".png", "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/", "svgExt": ".svg", "source": { "concatemoji": "https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.3" } };
+		window._wpemojiSettings= {
+
+			"baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/",
+			"ext": ".png",
+			"svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/",
+			"svgExt": ".svg",
+			"source": {
+				"concatemoji": "https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.3"
+			}
+		}
+
+		;
+
 		/*! This file is auto-generated */
-		!function (s, n) { var o, i, e; function c(e) { try { var t = { supportTests: e, timestamp: (new Date).valueOf() }; sessionStorage.setItem(o, JSON.stringify(t)) } catch (e) { } } function p(e, t, n) { e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(t, 0, 0); var t = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data), a = (e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(n, 0, 0), new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data)); return t.every(function (e, t) { return e === a[t] }) } function u(e, t) { e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(t, 0, 0); for (var n = e.getImageData(16, 16, 1, 1), a = 0; a < n.data.length; a++)if (0 !== n.data[a]) return !1; return !0 } function f(e, t, n, a) { switch (t) { case "flag": return n(e, "\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f", "\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f") ? !1 : !n(e, "\ud83c\udde8\ud83c\uddf6", "\ud83c\udde8\u200b\ud83c\uddf6") && !n(e, "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f"); case "emoji": return !a(e, "\ud83e\udedf") }return !1 } function g(e, t, n, a) { var r = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? new OffscreenCanvas(300, 150) : s.createElement("canvas"), o = r.getContext("2d", { willReadFrequently: !0 }), i = (o.textBaseline = "top", o.font = "600 32px Arial", {}); return e.forEach(function (e) { i[e] = t(o, e, n, a) }), i } function t(e) { var t = s.createElement("script"); t.src = e, t.defer = !0, s.head.appendChild(t) } "undefined" != typeof Promise && (o = "wpEmojiSettingsSupports", i = ["flag", "emoji"], n.supports = { everything: !0, everythingExceptFlag: !0 }, e = new Promise(function (e) { s.addEventListener("DOMContentLoaded", e, { once: !0 }) }), new Promise(function (t) { var n = function () { try { var e = JSON.parse(sessionStorage.getItem(o)); if ("object" == typeof e && "number" == typeof e.timestamp && (new Date).valueOf() < e.timestamp + 604800 && "object" == typeof e.supportTests) return e.supportTests } catch (e) { } return null }(); if (!n) { if ("undefined" != typeof Worker && "undefined" != typeof OffscreenCanvas && "undefined" != typeof URL && URL.createObjectURL && "undefined" != typeof Blob) try { var e = "postMessage(" + g.toString() + "(" + [JSON.stringify(i), f.toString(), p.toString(), u.toString()].join(",") + "));", a = new Blob([e], { type: "text/javascript" }), r = new Worker(URL.createObjectURL(a), { name: "wpTestEmojiSupports" }); return void (r.onmessage = function (e) { c(n = e.data), r.terminate(), t(n) }) } catch (e) { } c(n = g(i, f, p, u)) } t(n) }).then(function (e) { for (var t in e) n.supports[t] = e[t], n.supports.everything = n.supports.everything && n.supports[t], "flag" !== t && (n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && n.supports[t]); n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && !n.supports.flag, n.DOMReady = !1, n.readyCallback = function () { n.DOMReady = !0 } }).then(function () { return e }).then(function () { var e; n.supports.everything || (n.readyCallback(), (e = n.source || {}).concatemoji ? t(e.concatemoji) : e.wpemoji && e.twemoji && (t(e.twemoji), t(e.wpemoji))) })) }((window, document), window._wpemojiSettings);
+		!function (s, n) {
+			var o,
+			i,
+			e;
+
+			function c(e) {
+				try {
+					var t= {
+						supportTests: e, timestamp: (new Date).valueOf()
+					}
+
+					;
+					sessionStorage.setItem(o, JSON.stringify(t))
+				}
+
+				catch (e) {}
+			}
+
+			function p(e, t, n) {
+				e.clearRect(0, 0, e.canvas.width, e.canvas.height),
+				e.fillText(t, 0, 0);
+				var t=new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data),
+				a=(e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(n, 0, 0), new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data));
+
+				return t.every(function (e, t) {
+						return e===a[t]
+					})
+			}
+
+			function u(e, t) {
+				e.clearRect(0, 0, e.canvas.width, e.canvas.height),
+				e.fillText(t, 0, 0);
+				for (var n=e.getImageData(16, 16, 1, 1), a=0; a < n.data.length; a++)if (0 !==n.data[a]) return !1;
+				return !0
+			}
+
+			function f(e, t, n, a) {
+				switch (t) {
+					case "flag": return n(e, "\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f", "\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f") ? !1: !n(e, "\ud83c\udde8\ud83c\uddf6", "\ud83c\udde8\u200b\ud83c\uddf6") && !n(e, "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");
+					case "emoji": return !a(e, "\ud83e\udedf")
+				}
+
+				return !1
+			}
+
+			function g(e, t, n, a) {
+
+				var r="undefined" !=typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? new OffscreenCanvas(300, 150) : s.createElement("canvas"),
+				o=r.getContext("2d", {
+					willReadFrequently: !0
+
+				}),
+			i=(o.textBaseline="top", o.font="600 32px Arial", {});
+
+		return e.forEach(function (e) {
+				i[e]=t(o, e, n, a)
+			}),
+		i
+		}
+
+		function t(e) {
+			var t=s.createElement("script");
+			t.src=e,
+			t.defer= !0,
+			s.head.appendChild(t)
+		}
+
+		"undefined" !=typeof Promise && (o="wpEmojiSettingsSupports", i=["flag", "emoji"], n.supports= {
+				everything: !0, everythingExceptFlag: !0
+			}
+
+			, e=new Promise(function (e) {
+					s.addEventListener("DOMContentLoaded", e, {
+						once: !0
+					})
+
+			}), new Promise(function (t) {
+				var n=function () {
+					try {
+						var e=JSON.parse(sessionStorage.getItem(o)); if ("object"==typeof e && "number"==typeof e.timestamp && (new Date).valueOf() < e.timestamp + 604800 && "object"==typeof e.supportTests) return e.supportTests
+					}
+
+					catch (e) {}
+
+					return null
+				}
+
+				(); if ( !n) {
+					if ("undefined" !=typeof Worker && "undefined" !=typeof OffscreenCanvas && "undefined" !=typeof URL && URL.createObjectURL && "undefined" !=typeof Blob) try {
+						var e="postMessage(" + g.toString() + "(" + [JSON.stringify(i), f.toString(), p.toString(), u.toString()].join(",") + "));", a=new Blob([e], {
+							type: "text/javascript"
+
+						}), r=new Worker(URL.createObjectURL(a), {
+						name: "wpTestEmojiSupports"
+
+					}); return void (r.onmessage=function (e) {
+						c(n=e.data), r.terminate(), t(n)
+					})
+			}
+
+			catch (e) {}
+
+			c(n=g(i, f, p, u))
+		}
+
+		t(n)
+
+		}).then(function (e) {
+				for (var t in e) n.supports[t]=e[t], n.supports.everything=n.supports.everything && n.supports[t], "flag" !==t && (n.supports.everythingExceptFlag=n.supports.everythingExceptFlag && n.supports[t]); n.supports.everythingExceptFlag=n.supports.everythingExceptFlag && !n.supports.flag, n.DOMReady= !1, n.readyCallback=function () {
+					n.DOMReady= !0
+				}
+
+			}).then(function () {
+				return e
+
+			}).then(function () {
+				var e; n.supports.everything || (n.readyCallback(), (e=n.source || {}).concatemoji ? t(e.concatemoji) : e.wpemoji && e.twemoji && (t(e.twemoji), t(e.wpemoji)))
+			}))
+		}
+
+		((window, document), window._wpemojiSettings);
+
 		/* ]]> */
-	</script>
-	<style id='wp-emoji-styles-inline-css' type='text/css'>
-		img.wp-smiley,
+		</script><style id='wp-emoji-styles-inline-css' type='text/css'>img.wp-smiley,
 		img.emoji {
 			display: inline !important;
 			border: none !important;
@@ -1164,6 +1322,18 @@
 		#project-title,
 		#project-subtitle {
 			color: #000000 !important;
+		}
+
+		/* Footer Styles - Dynamic Page */
+		.site-footer,
+		.site-info {
+			background-color: #000000 !important;
+			color: #ffffff !important;
+		}
+
+		.site-footer p {
+			color: #ffffff !important;
+			opacity: 0.8;
 		}
 	</style>
 </head>

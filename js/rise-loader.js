@@ -1,6 +1,6 @@
 /**
- * NEWS LOADER
- * Fetches news from Strapi and renders them into #news-container
+ * RISE LOADER
+ * Fetches rise posts from Strapi and renders them into #rise-container
  * Uses ContentLoader for intelligent caching and skeleton loading
  */
 
@@ -8,13 +8,13 @@
     'use strict';
 
     // Cache key for this content type
-    const CONTENT_TYPE = 'news';
+    const CONTENT_TYPE = 'rise';
 
     /**
-     * Load News content
+     * Load Rise content
      */
-    async function loadNews() {
-        const container = document.getElementById('news-container');
+    async function loadRise() {
+        const container = document.getElementById('rise-container');
         if (!container) return;
 
         const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
@@ -24,31 +24,31 @@
             // Use the unified ContentLoader
             await ContentLoader.load({
                 type: CONTENT_TYPE,
-                url: `${CONFIG.API_URL}/news?locale=${lang}&populate=*&sort=date:desc`,
-                containerId: 'news-container',
-                renderFn: createNewsCard,
+                url: `${CONFIG.API_URL}/rises?locale=${lang}&populate=*&sort=date:desc`,
+                containerId: 'rise-container',
+                renderFn: createRiseCard,
                 skeletonCount: 6,
                 onSuccess: (items, source) => {
-                    console.log(`[News] Loaded ${items.length} items from ${source}`);
+                    console.log(`[Rise] Loaded ${items.length} items from ${source}`);
                     renderCategories(items);
                     initializeIsotope(container);
                 },
                 onError: (error) => {
-                    console.error('[News] Load error:', error);
+                    console.error('[Rise] Load error:', error);
                     renderCategories([]);
                 }
             });
         } else {
             // Fallback to direct loading
-            await loadNewsDirect();
+            await loadRiseDirect();
         }
     }
 
     /**
      * Direct loading fallback (without ContentLoader)
      */
-    async function loadNewsDirect() {
-        const container = document.getElementById('news-container');
+    async function loadRiseDirect() {
+        const container = document.getElementById('rise-container');
         if (!container) return;
 
         // Show skeleton loading
@@ -57,7 +57,7 @@
         const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
 
         try {
-            const response = await fetch(`${CONFIG.API_URL}/news?locale=${lang}&populate=*&sort=date:desc`, {
+            const response = await fetch(`${CONFIG.API_URL}/rises?locale=${lang}&populate=*&sort=date:desc`, {
                 mode: 'cors',
                 credentials: 'omit'
             });
@@ -67,12 +67,12 @@
             }
 
             const json = await response.json();
-            const newsItems = CONFIG.flatten(json);
+            const riseItems = CONFIG.flatten(json);
 
-            if (!Array.isArray(newsItems) || newsItems.length === 0) {
+            if (!Array.isArray(riseItems) || riseItems.length === 0) {
                 container.innerHTML = `
                     <div class="content-empty" style="text-align: center; padding: 40px; width: 100%;">
-                        <h3>No news found</h3>
+                        <h3>No items found</h3>
                         <p>Stay tuned for updates.</p>
                     </div>`;
                 renderCategories([]);
@@ -80,18 +80,18 @@
             }
 
             container.innerHTML = '';
-            newsItems.forEach(item => {
-                container.insertAdjacentHTML('beforeend', createNewsCard(item));
+            riseItems.forEach(item => {
+                container.insertAdjacentHTML('beforeend', createRiseCard(item));
             });
 
-            renderCategories(newsItems);
+            renderCategories(riseItems);
             initializeIsotope(container);
 
         } catch (error) {
-            console.error('Error loading news:', error);
+            console.error('Error loading rise items:', error);
             container.innerHTML = `
                 <div class="content-error" style="text-align: center; padding: 40px; width: 100%;">
-                    <h3>Error loading news</h3>
+                    <h3>Error loading content</h3>
                     <p>${error.message}</p>
                     <button onclick="location.reload()">Retry</button>
                 </div>`;
@@ -160,7 +160,7 @@
     /**
      * Render category filters
      */
-    function renderCategories(newsItems) {
+    function renderCategories(items) {
         const container = document.getElementById('filters');
         if (!container) return;
 
@@ -168,7 +168,7 @@
 
         const categoryMap = new Map();
 
-        newsItems.forEach(item => {
+        items.forEach(item => {
             let cats = [];
             const rawCat = item.category || item.categorie || item.categories;
 
@@ -210,9 +210,9 @@
     }
 
     /**
-     * Create news card HTML
+     * Create rise card HTML
      */
-    function createNewsCard(item) {
+    function createRiseCard(item) {
         const imgUrl = CONFIG.getImageUrl(item.main_image, '../public/section/1.jpeg');
 
         // Get slugs for filtering classes
@@ -230,14 +230,14 @@
         <div id="post-${item.id}" class="post-${item.id} portfolio hentry ${categoryClasses}">
             <div class="hentry-wrap">
                 <div class="featured-image">
-                    <a href="../newsopen/?news=${item.slug}">
+                    <a href="../riseopen/?rise=${item.slug}">
                         <img src="${imgUrl}" class="attachment-arkiz_image_size_4 size-arkiz_image_size_4 wp-post-image" alt="${item.title}" loading="lazy" />
                     </a>
                 </div>
                 <div class="hentry-middle">
                     <header class="entry-header">
                         <h2 class="entry-title">
-                            <a href="../newsopen/?news=${item.slug}">${item.title}</a>
+                            <a href="../riseopen/?rise=${item.slug}">${item.title}</a>
                         </h2>
                     </header>
                 </div>
@@ -247,7 +247,7 @@
     }
 
     // Initialize on DOM ready
-    document.addEventListener('DOMContentLoaded', loadNews);
+    document.addEventListener('DOMContentLoaded', loadRise);
 
     // Re-load on language change
     window.addEventListener('languageChanged', () => {
@@ -255,7 +255,7 @@
         if (typeof ContentLoader !== 'undefined') {
             ContentLoader.LoadingState.resetAll();
         }
-        loadNews();
+        loadRise();
     });
 
 })();

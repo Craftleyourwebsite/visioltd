@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en-US"
-	class="no-featured-area is-header-small is-body-full-width is-single-post-title-default is-post-title-align-center is-post-media-fixed is-blog-text-align-left is-meta-with-icons is-header-light is-header-full-width is-header-parallax-no is-menu-sticky is-menu-fixed-width is-menu-align-center is-menu-light is-submenu-light is-submenu-align-left is-menu-uppercase is-featured-area-full is-slider-buttons-center-margin is-slider-buttons-rounded is-slider-buttons-dark is-slider-title-label is-slider-parallax is-slider-title-none-uppercase is-slider-more-link-show-on-hover is-slider-more-link-border-bottom is-slider-text-align-center is-slider-v-align-center is-slider-h-align-center is-link-box-title-default is-link-box-title-transform-none is-link-box-text-align-center is-link-box-v-align-center is-link-box-parallax is-intro-align-center is-intro-text-dark is-intro-parallax-no is-more-link-border-bottom-light is-about-author-minimal is-related-posts-parallax is-related-posts-fixed is-share-links-boxed is-tagcloud-minimal is-nav-single-rounded is-nav-single-no-animated is-comments-minimal is-comments-image-rounded is-comment-form-boxed is-comment-form-border is-no-sidebar is-widget-title-align-left is-widget-bottomline is-trending-posts-default is-footer-subscribe-light is-footer-widgets-align-left is-footer-full-width is-meta-uppercase is-slider-dots-rounded-line-grow is-top-bar-mobile-left-visible is-top-bar-uppercase is-top-bar-full is-sub-menu-ani-fade-in-left is-menu-hover-solid is-menu-hover-overflow is-menu-hover-arrow-left is-copyright-uppercase is-logo-bg-stretch-left is-header-sticky-shadow-soft-shorter is-header-transparent-border-bottom is-header-bg-blur-slightly is-footer-border-top is-footer-border-light"
+	class="no-featured-area is-header-small is-body-full-width is-single-post-title-default is-post-title-align-center is-post-media-fixed is-blog-text-align-left is-meta-with-icons is-header-light is-header-full-width is-header-parallax-no is-menu-sticky is-menu-fixed-width is-menu-align-center is-menu-light is-submenu-light is-submenu-align-left is-menu-uppercase is-featured-area-full is-slider-buttons-center-margin is-slider-buttons-rounded is-slider-buttons-dark is-slider-title-label is-slider-parallax is-slider-title-none-uppercase is-slider-more-link-show-on-hover is-slider-more-link-border-bottom is-slider-text-align-center is-slider-v-align-center is-slider-h-align-center is-link-box-title-default is-link-box-title-transform-none is-link-box-text-align-center is-link-box-v-align-center is-link-box-parallax is-intro-align-center is-intro-text-dark is-intro-parallax-no is-more-link-border-bottom-light is-about-author-minimal is-related-posts-parallax is-related-posts-fixed is-share-links-boxed is-tagcloud-minimal is-nav-single-rounded is-nav-single-no-animated is-comments-minimal is-comments-image-rounded is-comment-form-boxed is-comment-form-border is-sidebar-right is-sidebar-sticky is-sidebar-align-left is-widget-title-align-left is-widget-bottomline is-trending-posts-default is-footer-subscribe-light is-footer-widgets-align-left is-footer-full-width is-meta-uppercase is-slider-dots-rounded-line-grow is-top-bar-mobile-left-visible is-top-bar-uppercase is-top-bar-full is-sub-menu-ani-fade-in-left is-menu-hover-solid is-menu-hover-overflow is-menu-hover-arrow-left is-copyright-uppercase is-logo-bg-stretch-left is-header-sticky-shadow-soft-shorter is-header-transparent-border-bottom is-header-bg-blur-slightly is-footer-border-top is-footer-border-light"
 	data-title-ratio="0.7" data-link-box-title-ratio="0.5" data-generic-button-style="" data-header-bg-shape="">
 
 <head>
@@ -9,25 +9,23 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="icon" type="image/jpeg" href="../public/favicon.jpeg">
 	<link rel="shortcut icon" type="image/jpeg" href="../public/favicon.jpeg">
-	<link rel="stylesheet" href="../css/content-loading.css">
-	<title>Rise &#8211; Visio Architecture Ltd</title>
+	<title>Architectural Heritage &#8211; Visio Architecture Ltd</title>
 	<meta name='robots' content='max-image-preview:large' />
+
+	<!-- Dynamic Social Meta Tags -->
+	<meta property="og:type" content="article">
+	<meta property="og:title" id="og-title" content="Visio Architecture News">
+	<meta property="og:description" id="og-description"
+		content="Latest architectural insights from Visio Architecture Ltd">
+	<meta property="og:image" id="og-image" content="">
+	<meta property="og:url" id="og-url" content="">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" id="twitter-title" content="Visio Architecture News">
+	<meta name="twitter:description" id="twitter-description"
+		content="Latest architectural insights from Visio Architecture Ltd">
+	<meta name="twitter:image" id="twitter-image" content="">
 	<style>
-		/* Sticky Footer logic */
-		#page {
-			display: flex !important;
-			flex-direction: column !important;
-			min-height: 100vh !important;
-		}
-
-		#main {
-			flex: 1 0 auto !important;
-		}
-
-		.site-footer {
-			flex-shrink: 0 !important;
-		}
-
 		img:is([sizes="auto" i], [sizes^="auto," i]) {
 			contain-intrinsic-size: 3000px 1500px
 		}
@@ -48,13 +46,6 @@
 			flex: 1;
 		}
 
-		/* Décalage de 90px vers la droite pour les titres du menu (desktop uniquement) */
-		@media screen and (min-width: 992px) {
-			.site-header .nav-menu>ul#menu-mymenu {
-				transform: translateX(90px);
-			}
-		}
-
 		.site-title {
 			text-align: center;
 			margin: 0;
@@ -69,1035 +60,28 @@
 		}
 
 		.logo-image {
-			max-height: 30px;
+			max-height: 20px;
 			width: auto;
 			display: block;
 			margin: 0 auto;
 		}
 
-		@media screen and (max-width: 991px) {
-
-			/* Limiter la hauteur du header pour éviter le grand bloc noir */
-			.site-header,
-			.site-header .header-wrap,
-			.site-header .header-wrap-inner {
-				min-height: 64px !important;
-				height: 64px !important;
-			}
-
-			/* Restreindre l'overlay noir du header à la hauteur du header */
-			.site-header .header-wrap:before,
-			.site-header.clone .header-wrap:before {
-				height: 64px !important;
-				top: 0 !important;
-				bottom: auto !important;
-			}
-
-			/* Eviter toute hauteur forcée sur la navigation */
-			#site-navigation,
-			.main-navigation {
-				height: auto !important;
-			}
-
-			/* Centrer verticalement la marque et ajuster le logo */
-			.site-branding {
-				max-height: 64px !important;
-				display: flex;
-				align-items: center;
-			}
-
-			.site-title a {
-				display: flex;
-				align-items: center;
-			}
-
-			.logo-image {
-				max-height: 30px !important;
-			}
-
-			.logo-image {
-				max-height: 24px;
-			}
-		}
-
-		/* --- STYLES SPÉCIFIQUES POUR LE HEADER BLOG - NOIR EN PERMANENCE --- */
-		/* Header noir en permanence (normal et scroll) */
-		.site-header .header-wrap:before,
-		.site-header.clone .header-wrap:before {
-			background: #000000 !important;
-			opacity: 1 !important;
-		}
-
-		/* Forcer le header à être noir en permanence */
-		.site-header .header-wrap,
-		.site-header.clone .header-wrap {
-			background: #000000 !important;
-		}
-
-		/* S'assurer que le header-wrap-inner est aussi noir */
-		.site-header .header-wrap-inner,
-		.site-header.clone .header-wrap-inner {
-			background: #000000 !important;
-		}
-
-		/* Texte blanc en permanence pour tous les liens de navigation */
-		.site-header .nav-menu a,
-		.site-header .menu-toggle .lines,
-		.site-header .menu-toggle .lines:before,
-		.site-header .menu-toggle .lines:after,
-		.site-header.clone .nav-menu a,
-		.site-header.clone .menu-toggle .lines,
-		.site-header.clone .menu-toggle .lines:before,
-		.site-header.clone .menu-toggle .lines:after {
-			color: #ffffff !important;
-		}
-
-		.site-header .nav-menu a:hover,
-		.site-header.clone .nav-menu a:hover {
-			color: #000000 !important;
-		}
-
-		/* Exception spéciale : "Blog" est noir par défaut et reste noir au hover */
-		.site-header .nav-menu .current-menu-item a,
-		.site-header.clone .nav-menu .current-menu-item a {
-			color: #000000 !important;
-		}
-
-		.site-header .nav-menu .current-menu-item a:hover,
-		.site-header.clone .nav-menu .current-menu-item a:hover {
-			color: #000000 !important;
-		}
-
-		/* Fixes mobile header readability */
-		@media screen and (max-width: 991px) {
-
-			/* Keep all links white on mobile, including current (active) item */
-			.site-header .nav-menu a,
-			.site-header.clone .nav-menu a,
-			.site-header .nav-menu .current-menu-item a,
-			.site-header.clone .nav-menu .current-menu-item a {
-				color: #ffffff !important;
-			}
-
-			/* Prevent hover from turning links black on dark background */
-			.site-header .nav-menu a:hover,
-			.site-header.clone .nav-menu a:hover,
-			.site-header .nav-menu .current-menu-item a:hover,
-			.site-header.clone .nav-menu .current-menu-item a:hover {
-				color: #ffffff !important;
-			}
-
-			/* Ensure hamburger icon lines are visible (white) */
-			.site-header .menu-toggle .lines,
-			.site-header .menu-toggle .lines:before,
-			.site-header .menu-toggle .lines:after,
-			.site-header.clone .menu-toggle .lines,
-			.site-header.clone .menu-toggle .lines:before,
-			.site-header.clone .menu-toggle .lines:after {
-				background-color: #ffffff !important;
-			}
-		}
-
-		/* Bouton de langue blanc en permanence */
-		.blog-language-btn {
-			background: transparent !important;
-			background-color: transparent !important;
-			background-image: none !important;
-			border: none !important;
-			border-width: 0 !important;
-			border-style: none !important;
-			border-color: transparent !important;
-			outline: none !important;
-			outline-width: 0 !important;
-			color: #ffffff !important;
-			font-weight: bold !important;
-			font-size: 14px !important;
-			padding: 8px 16px !important;
-			cursor: pointer !important;
-			transition: none !important;
-			text-transform: uppercase !important;
-			letter-spacing: 1px !important;
-			min-width: 40px !important;
-			text-align: center !important;
-			white-space: nowrap !important;
-			box-shadow: none !important;
-			text-decoration: none !important;
-			text-shadow: none !important;
-			display: inline-block !important;
-			vertical-align: middle !important;
-			line-height: 1 !important;
-			-webkit-box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			-webkit-border-radius: 0 !important;
-			-moz-border-radius: 0 !important;
-			border-radius: 0 !important;
-			-webkit-appearance: none !important;
-			-moz-appearance: none !important;
-			appearance: none !important;
-		}
-
-		/* S'assurer que le logo reste blanc (car c'est logoblanc.png) */
-		.site-header .logo-image,
-		.site-header.clone .logo-image {
-			filter: brightness(0) invert(1) !important;
-			opacity: 1 !important;
-			visibility: visible !important;
-		}
-
-		/* Logo en mobile - décalé de 14px vers le bas */
-		@media screen and (max-width: 991px) {
-			.site-header .site-title img {
-				max-height: 30px !important;
-				width: auto !important;
-				display: block !important;
-				margin: 0 auto !important;
-				transform: translateY(14px) !important;
-			}
-		}
-
-		.blog-language-btn:hover {
-			background: transparent !important;
-			background-color: transparent !important;
-			background-image: none !important;
-			color: #ffffff !important;
-			transform: none !important;
-			border: none !important;
-			border-width: 0 !important;
-			border-style: none !important;
-			border-color: transparent !important;
-			outline: none !important;
-			outline-width: 0 !important;
-			box-shadow: none !important;
-			text-decoration: none !important;
-			text-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			-webkit-border-radius: 0 !important;
-			-moz-border-radius: 0 !important;
-			border-radius: 0 !important;
-		}
-
-		.blog-language-btn.active {
-			background: transparent !important;
-			background-color: transparent !important;
-			background-image: none !important;
-			color: #ffffff !important;
-			border: none !important;
-			border-width: 0 !important;
-			border-style: none !important;
-			border-color: transparent !important;
-			outline: none !important;
-			outline-width: 0 !important;
-			box-shadow: none !important;
-			text-decoration: none !important;
-			text-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			-webkit-border-radius: 0 !important;
-			-moz-border-radius: 0 !important;
-			border-radius: 0 !important;
-		}
-
-		.blog-language-btn:focus {
-			border: none !important;
-			border-width: 0 !important;
-			border-style: none !important;
-			border-color: transparent !important;
-			outline: none !important;
-			outline-width: 0 !important;
-			box-shadow: none !important;
-			text-decoration: none !important;
-			text-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			-webkit-border-radius: 0 !important;
-			-moz-border-radius: 0 !important;
-			border-radius: 0 !important;
-		}
-
-		.blog-language-btn:active {
-			border: none !important;
-			border-width: 0 !important;
-			border-style: none !important;
-			border-color: transparent !important;
-			outline: none !important;
-			outline-width: 0 !important;
-			box-shadow: none !important;
-			text-decoration: none !important;
-			text-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			-webkit-border-radius: 0 !important;
-			-moz-border-radius: 0 !important;
-			border-radius: 0 !important;
-		}
-
-		/* Supprimer tous les pseudo-éléments qui pourraient causer des icônes */
-		.blog-language-btn::before,
-		.blog-language-btn::after {
-			content: none !important;
-			display: none !important;
-			visibility: hidden !important;
-			opacity: 0 !important;
-			width: 0 !important;
-			height: 0 !important;
-			margin: 0 !important;
-			padding: 0 !important;
-			border: none !important;
-			background: none !important;
-			background-image: none !important;
-		}
-
-		/* Forcer l'override de tous les styles possibles */
-		.blog-language-btn,
-		.blog-language-btn:hover,
-		.blog-language-btn:focus,
-		.blog-language-btn:active,
-		.blog-language-btn.active,
-		.blog-language-btn::before,
-		.blog-language-btn::after {
-			background: transparent !important;
-			background-color: transparent !important;
-			background-image: none !important;
-			border: none !important;
-			border-width: 0 !important;
-			border-style: none !important;
-			border-color: transparent !important;
-			outline: none !important;
-			outline-width: 0 !important;
-			box-shadow: none !important;
-			text-decoration: none !important;
-			text-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			-webkit-border-radius: 0 !important;
-			-moz-border-radius: 0 !important;
-			border-radius: 0 !important;
-			-webkit-appearance: none !important;
-			-moz-appearance: none !important;
-			appearance: none !important;
-		}
-
-		/* Styles ultra-spécifiques pour éliminer tout élément perturbateur */
-		#language-btn.blog-language-btn {
-			background: transparent !important;
-			background-color: transparent !important;
-			background-image: none !important;
-			border: none !important;
-			border-width: 0 !important;
-			border-style: none !important;
-			border-color: transparent !important;
-			outline: none !important;
-			outline-width: 0 !important;
-			box-shadow: none !important;
-			text-decoration: none !important;
-			text-shadow: none !important;
-			-webkit-box-shadow: none !important;
-			-moz-box-shadow: none !important;
-			-webkit-border-radius: 0 !important;
-			-moz-border-radius: 0 !important;
-			border-radius: 0 !important;
-			-webkit-appearance: none !important;
-			-moz-appearance: none !important;
-			appearance: none !important;
-			position: relative !important;
-			z-index: 1 !important;
-		}
-
-		/* Supprimer tous les éléments enfants qui pourraient causer des icônes */
-		#language-btn.blog-language-btn *,
-		#language-btn.blog-language-btn *::before,
-		#language-btn.blog-language-btn *::after {
-			content: none !important;
-			display: none !important;
-			visibility: hidden !important;
-			opacity: 0 !important;
-			width: 0 !important;
-			height: 0 !important;
-			margin: 0 !important;
-			padding: 0 !important;
-			border: none !important;
-			background: none !important;
-			background-image: none !important;
-		}
-
-		/* Forcer le texte uniquement */
-		#language-btn.blog-language-btn {
-			color: #ffffff !important;
-			font-weight: bold !important;
-			font-size: 14px !important;
-			padding: 8px 16px !important;
-			cursor: pointer !important;
-			text-transform: uppercase !important;
-			letter-spacing: 1px !important;
-			min-width: 40px !important;
-			text-align: center !important;
-			white-space: nowrap !important;
-			display: inline-block !important;
-			vertical-align: middle !important;
-			line-height: 1 !important;
-		}
-
-		/* Réactiver l'affichage des spans internes pour EN/FR */
-		#language-btn.blog-language-btn span {
-			display: inline !important;
-			opacity: 1 !important;
-			visibility: visible !important;
-			width: auto !important;
-			height: auto !important;
-			margin: 0 0 !important;
-			padding: 0 0 !important;
-		}
-
-		/* EN-FR toggle parts + active highlight */
-		.blog-language-btn .lang-part,
-		.menu-item-language .lang-part {
-			opacity: 0.6;
-			transition: color 0.2s ease, opacity 0.2s ease;
-		}
-
-		.blog-language-btn .lang-part.active,
-		.menu-item-language .lang-part.active {
-			opacity: 1;
-			color: #d4af37;
-			font-weight: 700;
-		}
-
-		.blog-language-btn .lang-sep,
-		.menu-item-language .lang-sep {
-			display: inline-block;
-			margin: 0 8px;
-			opacity: 0.6;
-		}
-
-		/* Forcer le positionnement à droite dans le header */
-		.layout-medium {
-			display: flex !important;
-			align-items: center !important;
-			justify-content: space-between !important;
-		}
-
-		.nav-menu {
-			flex: 1 !important;
-			display: flex !important;
-			justify-content: center !important;
-		}
-
-		.language-switcher {
-			flex-shrink: 0 !important;
-		}
-
-		/* Orchestration des éléments comme sur aboutus.html */
-		.menu-toggle {
-			order: 1 !important;
-			margin-left: auto !important;
-			position: relative;
-			z-index: 1001;
-			display: block;
-			width: 30px;
-			height: 30px;
-			cursor: pointer;
-		}
-
-		.menu-toggle .lines {
-			display: block;
-			width: 30px;
-			height: 3px;
-			background: #ffffff;
-			position: relative;
-			top: 50%;
-			transform: translateY(-50%);
-			transition: all 0.3s ease;
-		}
-
-		.menu-toggle .lines:before,
-		.menu-toggle .lines:after {
-			content: '';
-			position: absolute;
-			left: 0;
-			width: 30px;
-			height: 3px;
-			background: #ffffff;
-			transition: all 0.3s ease;
-		}
-
-		.menu-toggle .lines:before {
-			top: -8px;
-		}
-
-		.menu-toggle .lines:after {
-			bottom: -8px;
-		}
-
-		.nav-menu {
-			order: 2 !important;
-		}
-
-		.language-switcher {
-			order: 3 !important;
-		}
-
-		/* Responsive pour le sélecteur de langue (même logique que service.html) */
-		@media screen and (max-width: 991px) {
-
-			/* Positionner le hamburger en haut à droite du header */
-			.site-header .header-wrap-inner {
-				position: relative;
-			}
-
-			.site-header .menu-toggle {
-				position: absolute;
-				right: 16px;
-				top: 6px;
-				margin-left: 0 !important;
-				z-index: 1001;
-			}
-
-			.language-switcher {
-				display: none !important;
-			}
-
-			.menu-item-language {
-				display: block !important;
-			}
-
-			.is-menu-toggled-on .menu-item-language a {
-				border-bottom: none;
-				font-weight: 600;
-				color: #cccccc !important;
-			}
-
-			/* Styles mobile pour reproduire le header d'aboutus.html */
-			/* Texte du menu et hamburger visibles en mobile */
-			.site-header:not(.clone) .nav-menu a,
-			.site-header:not(.clone) .menu-toggle .lines,
-			.site-header:not(.clone) .menu-toggle .lines:before,
-			.site-header:not(.clone) .menu-toggle .lines:after {
-				color: #ffffff !important;
-			}
-
-			.site-header:not(.clone) .menu-toggle .lines,
-			.site-header:not(.clone) .menu-toggle .lines:before,
-			.site-header:not(.clone) .menu-toggle .lines:after {
-				background-color: #ffffff !important;
-			}
-
-			/* Slide-in du menu depuis la droite */
-			.nav-menu {
-				transform: translateX(100%);
-				transition: transform 0.3s ease-in-out;
-			}
-
-			.is-menu-toggled-on .nav-menu {
-				transform: translateX(0);
-			}
-
-			/* Overlay sombre derrière le menu ouvert */
-			.is-menu-toggled-on::before {
-				content: '';
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100vh;
-				background: rgba(0, 0, 0, 0.5);
-				z-index: 998;
-			}
-
-			/* Conteneur du menu mobile (demi-écran à droite) */
-			.is-menu-toggled-on .nav-menu {
-				position: fixed;
-				top: 0;
-				right: 0;
-				width: 50%;
-				height: 100vh;
-				background: #000000;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				z-index: 999;
-				transform: translateX(0);
-				transition: transform 0.3s ease;
-			}
-
-			.is-menu-toggled-on .nav-menu ul {
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-				gap: 20px;
-				padding: 0 40px;
-				width: 100%;
-			}
-
-			.is-menu-toggled-on .nav-menu li {
-				display: block;
-				width: 100%;
-			}
-
-			.is-menu-toggled-on .nav-menu a {
-				color: #ffffff !important;
-				font-size: 18px;
-				font-weight: 400;
-				text-decoration: none;
-				transition: all 0.3s ease;
-				display: block;
-				padding: 10px 0;
-				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-			}
-
-			.is-menu-toggled-on .nav-menu a:hover {
-				color: #ffffff !important;
-				opacity: 0.8;
-				padding-left: 10px;
-			}
-
-			/* Animation des items */
-			.is-menu-toggled-on .nav-menu li {
-				opacity: 0;
-				transform: translateX(20px);
-				animation: slideInMenu 0.3s ease forwards;
-			}
-
-			.is-menu-toggled-on .nav-menu li:nth-child(1) {
-				animation-delay: 0.1s;
-			}
-
-			.is-menu-toggled-on .nav-menu li:nth-child(2) {
-				animation-delay: 0.2s;
-			}
-
-			.is-menu-toggled-on .nav-menu li:nth-child(3) {
-				animation-delay: 0.3s;
-			}
-
-			.is-menu-toggled-on .nav-menu li:nth-child(4) {
-				animation-delay: 0.4s;
-			}
-
-			.is-menu-toggled-on .nav-menu li:nth-child(5) {
-				animation-delay: 0.5s;
-			}
-
-			.is-menu-toggled-on .nav-menu li:nth-child(6) {
-				animation-delay: 0.6s;
-			}
-
-			.is-menu-toggled-on .nav-menu li:nth-child(7) {
-				animation-delay: 0.7s;
-			}
-
-			.is-menu-toggled-on .nav-menu li:nth-child(8) {
-				animation-delay: 0.8s;
-			}
-
-			@keyframes slideInMenu {
-				to {
-					opacity: 1;
-					transform: translateX(0);
-				}
-			}
-
-			/* Hamburger en X quand le menu est ouvert */
-			.is-menu-toggled-on .menu-toggle .lines {
-				background-color: transparent !important;
-			}
-
-			.is-menu-toggled-on .menu-toggle .lines:before {
-				top: 0 !important;
-				transform: rotate(45deg) !important;
-				background-color: #ffffff !important;
-			}
-
-			.is-menu-toggled-on .menu-toggle .lines:after {
-				bottom: 0 !important;
-				transform: rotate(-45deg) !important;
-				background-color: #ffffff !important;
-			}
-		}
-
-		@media screen and (min-width: 992px) {
-			.language-switcher {
-				display: flex !important;
-			}
-
-			.menu-item-language {
-				display: none !important;
-			}
-		}
-
-		.blog-language-btn {
-			font-size: 12px !important;
-			padding: 6px 12px !important;
-			min-width: 35px !important;
-		}
-
-		/* --- REDESIGN NEWS PAGE --- */
-		.post-header-classic.portfolio-header {
-			padding: 60px 0 5px !important;
-			margin-bottom: 0 !important;
-			text-align: center;
-		}
-
-		.portfolio-header .entry-title {
-			font-family: 'Onest', sans-serif;
-			font-size: clamp(60px, 15vw, 150px) !important;
-			font-weight: 900 !important;
-			text-transform: uppercase;
-			letter-spacing: -4px;
-			margin: 0 !important;
-			color: #020014;
-			line-height: 0.9;
-		}
-
-		.filters {
-			list-style: none;
-			margin: 0 0 60px 0;
-			padding: 0;
-			text-align: center;
-		}
-
-		.filters li {
-			display: inline-block;
-			margin: 0 15px;
-		}
-
-		.filters li a {
-			text-transform: uppercase;
-			font-size: 13px;
-			font-weight: 500;
-			letter-spacing: 3px;
-			color: #020014;
-			text-decoration: none;
-			transition: color 0.3s ease;
-		}
-
-		.filters li.current a,
-		.filters li a:hover {
-			color: #d4af37;
-		}
-
-		.blog-grid-wrap {
-			width: 100%;
-			max-width: 1400px;
-			margin: 0 auto;
-			padding: 0 30px;
-		}
-
-		.portfolio-grid .hentry {
-			width: 25%;
-			padding: 20px;
-			transition: opacity 0.4s ease;
-		}
-
-		@media screen and (max-width: 991px) {
-			.portfolio-grid .hentry {
-				width: 50%;
-			}
-
-			.blog-grid-wrap {
-				padding: 0 15px;
-			}
-		}
-
-		/* --- UNIFIED GRID AND IMAGE STYLES --- */
-		.blog-grid-wrap {
-			width: 100% !important;
-			max-width: 1600px !important;
-			margin: 0 auto !important;
-			padding: 0 20px !important;
-			box-sizing: border-box !important;
-		}
-
-		#rise-container,
-		#social-container,
-		#news-container {
-			width: 100% !important;
-			margin: 0 auto !important;
-		}
-
-		.portfolio-grid .hentry {
-			width: 25% !important;
-			padding: 10px !important;
-			box-sizing: border-box !important;
-			float: left;
-		}
-
-		.portfolio-grid .featured-image {
-			width: 100% !important;
-			aspect-ratio: 4 / 3 !important;
-			overflow: hidden !important;
-			position: relative !important;
-			background: #f5f5f5;
-			margin: 0 !important;
-		}
-
-		.portfolio-grid .featured-image img {
-			width: 100% !important;
-			height: 100% !important;
-			object-fit: cover !important;
-			position: absolute !important;
-			top: 0 !important;
-			left: 0 !important;
-		}
-
-		.portfolio-grid .hentry-middle {
-			padding: 20px 0 !important;
-		}
-
-		.portfolio-grid .entry-title {
-			font-size: 19px !important;
-			font-weight: 900 !important;
-			text-transform: uppercase !important;
-		}
-
-		/* Centering core containers */
-		.site-main .layout-full,
-		#primary.content-area,
-		#content.site-content {
-			width: 100% !important;
-			max-width: 100% !important;
-			margin: 0 !important;
-			padding: 0 !important;
-		}
-
-		@media screen and (max-width: 991px) {
-			.portfolio-grid .hentry {
-				width: 50% !important;
-			}
-		}
-
-		@media screen and (max-width: 767px) {
-			.portfolio-grid .hentry {
-				width: 100% !important;
-			}
-		}
-
-		@media screen and (max-width: 767px) {
-			.portfolio-grid .hentry {
-				width: 100%;
-			}
-
-			.post-header-classic.portfolio-header {
-				margin-bottom: 30px;
-			}
-
-			.filters {
-				margin-bottom: 40px;
-			}
-
-			.filters li {
-				margin: 5px 10px;
-			}
-		}
-
-		.hentry-wrap {
-			position: relative;
-			overflow: hidden;
-		}
-
-		.featured-image {
-			position: relative;
-			overflow: hidden;
-		}
-
-		.featured-image img {
-			width: 100%;
-			height: auto;
-			display: block;
-			transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-		}
-
-		.hentry:hover .featured-image img {
-			transform: scale(1.05);
-		}
-
-		.hentry-middle {
-			padding: 30px 0;
-			text-align: center;
-		}
-
-		.entry-title {
-			font-size: 19px;
-			margin: 0;
-			font-weight: 900;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-		}
-
-		.entry-title a {
-			color: #020014;
-			text-decoration: none;
-			transition: color 0.3s ease;
-		}
-
-		.entry-title a:hover {
-			color: #d4af37;
-		}
-
-		/* Isotope masonry fix */
-		.masonry {
-			margin: 0 auto;
-		}
-
-		/* Horizontal list items for mobile filters if needed */
-		.widget_categories ul {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 15px;
-		}
-
-		.widget_categories ul li {
-			width: auto;
-			border-bottom: none !important;
-			padding: 5px 10px !important;
-			background: #f5f5f5;
-			border-radius: 4px;
-			margin-bottom: 0 !important;
-		}
-
-		/* Adjust margins for widget headings */
-		.gt-right-sidebar .gt-widget-heading {
-			margin-bottom: 12px;
+		/* Force dark footer */
+		.site-footer,
+		.site-footer .site-info {
+			background: #000 !important;
+			background-color: #000 !important;
+			color: #fff !important;
+			border-top: none !important;
 		}
 
-		/* --- ANNOUNCEMENT TICKER FOR RISE --- */
-		.rise-teaser-container {
-			max-width: 1400px;
-			margin: 20px auto 30px;
-			overflow: hidden;
-			height: 50px;
-			text-align: center;
-			position: relative;
-			background: transparent;
+		.site-footer a,
+		.site-footer .site-info a {
+			color: #fff !important;
 		}
-
-		.rise-teaser-track {
-			display: flex;
-			flex-direction: column;
-			animation: teaser-scroll-v2 24s cubic-bezier(0.85, 0, 0.15, 1) infinite;
-		}
-
-		.rise-teaser-item {
-			height: 50px;
-			line-height: 50px;
-			font-family: 'Onest', sans-serif;
-			font-size: clamp(14px, 2.5vw, 22px);
-			font-weight: 900;
-			letter-spacing: 1px;
-			text-transform: uppercase;
-			color: #000000;
-			white-space: nowrap;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		@keyframes teaser-scroll-v2 {
-
-			0%,
-			10% {
-				transform: translateY(0);
-			}
-
-			12.5%,
-			22.5% {
-				transform: translateY(-50px);
-			}
-
-			25%,
-			35% {
-				transform: translateY(-100px);
-			}
-
-			37.5%,
-			47.5% {
-				transform: translateY(-150px);
-			}
-
-			50%,
-			60% {
-				transform: translateY(-200px);
-			}
-
-			62.5%,
-			72.5% {
-				transform: translateY(-250px);
-			}
-
-			75%,
-			85% {
-				transform: translateY(-300px);
-			}
-
-			87.5%,
-			97.5% {
-				transform: translateY(-350px);
-			}
-
-			100% {
-				transform: translateY(-400px);
-			}
-		}
-
-		@media screen and (max-width: 767px) {
-			.rise-teaser-container {
-				height: 40px;
-				margin: 10px auto 20px;
-			}
-
-			.rise-teaser-item {
-				height: 40px;
-				line-height: 40px;
-				font-size: 11px;
-				font-weight: 800;
-			}
-
-			@keyframes teaser-scroll-v2 {
-
-				0%,
-				10% {
-					transform: translateY(0);
-				}
-
-				12.5%,
-				22.5% {
-					transform: translateY(-40px);
-				}
-
-				25%,
-				35% {
-					transform: translateY(-80px);
-				}
-
-				37.5%,
-				47.5% {
-					transform: translateY(-120px);
-				}
-
-				50%,
-				60% {
-					transform: translateY(-160px);
-				}
-
-				62.5%,
-				72.5% {
-					transform: translateY(-200px);
-				}
-
-				75%,
-				85% {
-					transform: translateY(-240px);
-				}
-
-				87.5%,
-				97.5% {
-					transform: translateY(-280px);
-				}
 
-				100% {
-					transform: translateY(-320px);
-				}
-			}
+		.site-footer .site-info p {
+			color: #fff !important;
 		}
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
@@ -1105,6 +89,9 @@
 		href="https://themes.pixelwars.org/arkiz/demo-01/feed/" />
 	<link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Comments Feed"
 		href="https://themes.pixelwars.org/arkiz/demo-01/comments/feed/" />
+	<link rel="alternate" type="application/rss+xml"
+		title="Visio Architecture Ltd &raquo; Architectural Heritage Comments Feed"
+		href="https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/feed/" />
 	<script type="text/javascript">
 		/* <![CDATA[ */
 		window._wpemojiSettings = { "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/", "ext": ".png", "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/", "svgExt": ".svg", "source": { "concatemoji": "https:\/\/themes.pixelwars.org\/arkiz\/demo-01\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.2" } };
@@ -1610,6 +597,7 @@
 			}
 		}
 
+
 		@media screen and (min-width: 992px) {
 			h1 {
 				font-size: 98px;
@@ -1621,6 +609,7 @@
 				font-size: 16px;
 			}
 		}
+
 
 		@media screen and (min-width: 992px) {
 			.blog-stream .entry-content {
@@ -1636,12 +625,6 @@
 
 		.widget-title {
 			font-size: 13px;
-		}
-
-		@media screen and (min-width: 992px) {
-			.nav-menu>ul {
-				font-size: 13px;
-			}
 		}
 
 		@media screen and (min-width: 992px) {
@@ -1769,6 +752,7 @@
 			}
 		}
 
+
 		html .site-header .site-title a {
 			padding: 12px 24px;
 		}
@@ -1830,6 +814,7 @@
 			.is-header-small .site-branding {
 				max-height: 80px;
 			}
+
 		}
 
 		@media screen and (min-width: 992px) {
@@ -1844,6 +829,7 @@
 			.is-header-small.is-header-smaller .site-header.clone .site-branding {
 				max-height: 60px;
 			}
+
 		}
 
 		.button.is-primary,
@@ -1866,28 +852,28 @@
 		}
 
 		a {
-			color: #D4A574;
+			color: #d84156;
 		}
 
 		a:hover {
-			color: #bfa15f;
+			color: #c60035;
 		}
 
 		.header-wrap:before {
-			background: #000000 !important;
+			background: #262100;
 		}
 
 		.is-header-half-transparent:not(.is-menu-toggled-on) .site-header:not(.clone) .header-wrap:before {
-			opacity: 1 !important;
+			opacity: 0.45;
 		}
 
 		.header-wrap:after {
-			opacity: 0 !important;
+			opacity: 0.08;
 		}
 
 		@media screen and (min-width: 992px) {
 			.nav-menu>ul>li.current-menu-item>a {
-				color: #000000 !important;
+				color: #ffffff !important;
 			}
 		}
 
@@ -1902,7 +888,7 @@
 
 			html .nav-menu>ul>li>a:hover,
 			.nav-menu>ul>li.has-submenu:hover>a {
-				color: #000000 !important;
+				color: #0a0a0a;
 			}
 		}
 
@@ -1910,8 +896,8 @@
 
 			html.loaded .nav-menu ul li a .link-text:before,
 			.nav-menu li.has-submenu:hover>a .link-text:before {
-				background-color: #ffffff !important;
-				border-color: #ffffff !important;
+				background-color: #fcf1e5;
+				border-color: #fcf1e5;
 			}
 		}
 
@@ -2062,9 +1048,17 @@
 		src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/bdthemes-prime-slider-lite/assets/js/bdt-uikit.min.js?ver=3.21.7"
 		id="bdt-uikit-js"></script>
 	<link rel="https://api.w.org/" href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/" />
+	<link rel="alternate" title="JSON" type="application/json"
+		href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/wp/v2/posts/5656" />
 	<link rel="EditURI" type="application/rsd+xml" title="RSD"
 		href="https://themes.pixelwars.org/arkiz/demo-01/xmlrpc.php?rsd" />
 	<meta name="generator" content="WordPress 6.8.2" />
+	<link rel="canonical" href="https://themes.pixelwars.org/arkiz/demo-01/architectural-heritage/" />
+	<link rel='shortlink' href='https://themes.pixelwars.org/arkiz/demo-01/?p=5656' />
+	<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed"
+		href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthemes.pixelwars.org%2Farkiz%2Fdemo-01%2Farchitectural-heritage%2F" />
+	<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed"
+		href="https://themes.pixelwars.org/arkiz/demo-01/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthemes.pixelwars.org%2Farkiz%2Fdemo-01%2Farchitectural-heritage%2F&#038;format=xml" />
 	<meta name="generator"
 		content="Elementor 3.27.7; features: e_font_icon_svg, additional_custom_breakpoints, e_element_cache; settings: css_print_method-external, google_font-enabled, font_display-swap">
 	<style>
@@ -2089,236 +1083,212 @@
 			}
 		}
 	</style>
-	<style id="footer-dark-override">
-		/* Force dark footer across Blog */
-		.site-footer,
-		.site-footer .site-info {
-			background: #000 !important;
-			background-color: #000 !important;
-			color: #fff !important;
-			border-top: none !important;
-		}
-
-		.site-footer a,
-		.site-footer .site-info a {
-			color: #fff !important;
-		}
-
-		.site-footer .site-info p {
-			color: #fff !important;
-		}
-	</style>
 </head>
 
-<body class="blog wp-theme-arkiz qodef-qi--no-touch qi-addons-for-elementor-1.8.9 elementor-default elementor-kit-11">
+<body
+	class="wp-singular post-template-default single single-post postid-5656 single-format-standard wp-theme-arkiz qodef-qi--no-touch qi-addons-for-elementor-1.8.9 elementor-default elementor-kit-11">
 	<div id="page" class="hfeed site">
-		<header id="masthead" class="site-header" role="banner">
-			<div class="header-wrap" data-parallax-video="">
-				<div class="header-wrap-inner">
-					<div class="site-branding">
-						<div class="site-branding-wrap">
-							<div class="site-branding-left">
-							</div>
-							<!-- .site-branding-left -->
-							<div class="site-branding-center">
-								<h1 class="site-title">
-									<a href="../" rel="home">
-										<img src="../public/logoblanc.png" alt="Visio Architecture Ltd"
-											class="logo-image">
-										<span class="screen-reader-text">
-											Visio Architecture Ltd </span>
-									</a>
-								</h1>
-								<!-- .site-title -->
-								<p class="site-description">
-								</p>
-								<!-- .site-description -->
-							</div>
-							<!-- .site-branding-center -->
-							<div class="site-branding-right">
-							</div>
-							<!-- .site-branding-right -->
-						</div>
-						<!-- .site-branding-wrap -->
-					</div>
-					<!-- .site-branding -->
-					<nav id="site-navigation" class="main-navigation site-navigation" role="navigation">
-						<div class="menu-wrap">
-							<div class="layout-medium">
-								<a class="menu-toggle">
-									<span class="lines"></span>
-								</a> <!-- .menu-toggle -->
-								<div class="nav-menu">
-									<ul id="menu-mymenu" class="">
-										<li id="menu-item-23651"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children menu-item-23651">
-											<a href="../">Home</a>
-										</li>
-										<li id="menu-item-africa"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-africa">
-											<a href="../africa/">Africa</a>
-										</li>
-										<li id="menu-item-15520"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15520">
-											<a href="../project/">Projects</a>
-										</li>
-										<li id="menu-item-23188"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23188">
-											<a href="../service/">Services</a>
-										</li>
-										<li id="menu-item-rise"
-											class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item current_page_item current_page_parent menu-item-rise">
-											<a href="../rise/" aria-current="page">RISE</a>
-										</li>
-										<li id="menu-item-social"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-social">
-											<a href="../social/">Social</a>
-										</li>
-										<li id="menu-item-23186"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23186">
-											<a href="../aboutus/">About Us</a>
-										</li>
-										<li id="menu-item-news"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-news">
-											<a href="../news/">News</a>
-										</li>
-										<li id="menu-item-23184"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23184">
-											<a href="../contact/">Contact</a>
-										</li>
-										<li id="menu-item-language" class="menu-item menu-item-language"><a href="#"
-												onclick="toggleLanguage(); return false;">Language: <span
-													class="lang-part lang-en">EN</span><span class="lang-sep"> -
-												</span><span class="lang-part lang-fr">FR</span></a></li>
-									</ul>
-								</div>
+		<div style="position: fixed; top: 30px; left: 30px; z-index: 1000;">
+			<a href="javascript:history.back()"
+				style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: #000000; border-radius: 50%; text-decoration: none; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;"
+				onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 6px 20px rgba(0, 0, 0, 0.3)'"
+				onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.2)'">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+					stroke-linecap="round" stroke-linejoin="round">
+					<line x1="19" y1="12" x2="5" y2="12"></line>
+					<polyline points="12 19 5 12 12 5"></polyline>
+				</svg>
+			</a>
+		</div>
+		<section class="top-content-single is-top-content-single-full with-parallax">
+			<div class="layout-medium">
+				<div class="post-header post-header-classic is-cat-link-borders-light is-cat-link-rounded">
+					<header class="entry-header">
+						<div class="entry-meta above-title">
+							<span class="cat-links">
+								<span class="prefix">
+									in </span>
+								<a href="#" rel="category tag" id="news-category">News</a> </span> <!-- .cat-links -->
+						</div> <!-- .entry-meta .above-title -->
+						<h1 class="entry-title" id="news-title"></h1>
+						<div class="entry-meta below-title">
+							<span class="posted-on" id="news-date-container">
+								<span class="prefix">
+									on </span>
+								<a href="#" rel="bookmark">
+									<time class="entry-date published" id="news-date"></time>
+								</a>
+							</span> <!-- .posted-on -->
+						</div> <!-- .entry-meta .below-title -->
+					</header> <!-- .entry-header -->
+					<div class="post-thumbnail" id="news-main-image" style="background-image: url();"
+						data-medium-image="" data-large-image="">
+						<div class="post-wrap">
+							<span class="scrolldown"></span> <!-- .scrolldown -->
+						</div> <!-- .post-wrap -->
+					</div> <!-- .post-thumbnail -->
+				</div> <!-- .post-header -->
+			</div> <!-- .layout-medium -->
+		</section> <!-- .top-content-single -->
 
-							</div>
-							<!-- .layout-medium -->
-						</div>
-						<!-- .menu-wrap -->
-					</nav>
-					<!-- #site-navigation .main-navigation .site-navigation -->
-				</div>
-				<!-- .header-wrap-inner -->
-			</div>
-			<!-- .header-wrap -->
-		</header>
-		<!-- #masthead .site-header -->
 		<div id="main" class="site-main">
-			<div class="layout-full">
+			<div class="layout-fixed">
 				<div id="primary" class="content-area ">
 					<div id="content" class="site-content" role="main">
-						<div class="post-header post-header-classic portfolio-header">
-							<header class="entry-header">
-								<h1 class="entry-title">
-									Rise </h1> <!-- .entry-title -->
-							</header> <!-- .entry-header -->
-						</div> <!-- .post-header .post-header-classic .portfolio-header -->
+						<article id="post-5656"
+							class="post-5656 post type-post status-publish format-standard has-post-thumbnail hentry category-news is-cat-link-borders-light is-cat-link-rounded">
+							<div class="hentry-wrap">
+								<div class="entry-content" id="news-content">
+									<!-- Content will be injected here -->
+								</div> <!-- .entry-content -->
+							</div> <!-- .hentry-wrap -->
+							<div class="share-links">
+								<h3>Share This</h3>
 
-						<div class="rise-teaser-container">
-							<div class="rise-teaser-track">
-								<div class="rise-teaser-item">Resilience • Innovation • Sustainability • Excellence
-								</div>
-								<div class="rise-teaser-item">Resilient • Inclusive • Smart • Efficiency</div>
-								<div class="rise-teaser-item">Research • Innovation • Strategy • Evolution</div>
-								<div class="rise-teaser-item">Revitalisation • Impact • Social • Environment</div>
-								<div class="rise-teaser-item">Responsibility • Integrity • Stewardship • Empowerment
-								</div>
-								<div class="rise-teaser-item">Risk-aware • Investment-ready • Scalable • Execution</div>
-								<div class="rise-teaser-item">Regeneration • Infrastructure • Spaces • Economies</div>
-								<div class="rise-teaser-item">Results • Impact • Solutions • Experience</div>
-								<!-- Loop Clone -->
-								<div class="rise-teaser-item">Resilience • Innovation • Sustainability • Excellence
-								</div>
-							</div>
+								<a id="share-facebook-bottom" class="share-facebook" rel="nofollow" target="_blank"
+									href="#" title="Share this post on Facebook"
+									style="display: inline-flex; align-items: center; justify-content: center; margin-right: 15px;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+										xmlns="http://www.w3.org/2000/svg">
+										<path
+											d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.324v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+									</svg>
+								</a>
+
+								<a id="share-twitter-bottom" class="share-twitter" rel="nofollow" target="_blank"
+									href="#" title="Tweet this post to your followers"
+									style="display: inline-flex; align-items: center; justify-content: center; margin-right: 15px;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+										xmlns="http://www.w3.org/2000/svg">
+										<path
+											d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404z" />
+									</svg>
+								</a>
+
+								<a id="share-pinterest-bottom" class="share-pinterest" rel="nofollow" target="_blank"
+									href="#" title="Pin it"
+									style="display: inline-flex; align-items: center; justify-content: center; margin-right: 15px;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+										xmlns="http://www.w3.org/2000/svg">
+										<path
+											d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.965 1.406-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z" />
+									</svg>
+								</a>
+
+								<a id="share-mail-bottom" class="share-mail" rel="nofollow" target="_blank" href="#"
+									title="Email this post to a friend"
+									style="display: inline-flex; align-items: center; justify-content: center;">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+										stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<path
+											d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+										</path>
+										<polyline points="22,6 12,13 2,6"></polyline>
+									</svg>
+								</a>
+							</div> <!-- .share-links -->
+							<nav class="nav-single" id="previous-post-container" style="display: none;">
+								<!-- Dynamic Previous Post will be injected here -->
+							</nav> <!-- .nav-single -->
+							<div class="related-posts" id="related-posts-section" style="display: none;">
+								<h3 class="widget-title">
+									<span>You May Also Like</span>
+								</h3> <!-- .widget-title -->
+
+								<div class="blocks" id="related-posts-grid">
+									<!-- Dynamic Related Posts will be injected here -->
+								</div> <!-- .blocks -->
+							</div> <!-- .related-posts -->
+						</article> <!-- .post -->
+						<div id="comments" class="comments-area">
+							<div id="respond" class="comment-respond">
+								<h3 id="reply-title" class="comment-reply-title">Leave A Comment <small><a
+											rel="nofollow" id="cancel-comment-reply-link"
+											href="/arkiz/demo-01/architectural-heritage/#respond"
+											style="display:none;">Cancel reply</a></small></h3>
+								<form action="https://themes.pixelwars.org/arkiz/demo-01/wp-comments-post.php"
+									method="post" id="commentform" class="comment-form">
+									<p class="comment-notes"><span id="email-notes">Your email address will not be
+											published.</span> <span class="required-field-message">Required fields are
+											marked <span class="required">*</span></span></p>
+									<p class="comment-form-comment"><label for="comment">Comment <span
+												class="required">*</span></label> <textarea id="comment" name="comment"
+											cols="45" rows="8" maxlength="65525" required></textarea></p>
+									<p class="comment-form-author"><label for="author">Name <span
+												class="required">*</span></label> <input id="author" name="author"
+											type="text" value="" size="30" maxlength="245" autocomplete="name"
+											required /></p>
+									<p class="comment-form-email"><label for="email">Email <span
+												class="required">*</span></label> <input id="email" name="email"
+											type="email" value="" size="30" maxlength="100"
+											aria-describedby="email-notes" autocomplete="email" required /></p>
+									<p class="comment-form-url"><label for="url">Website</label> <input id="url"
+											name="url" type="url" value="" size="30" maxlength="200"
+											autocomplete="url" /></p>
+									<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent"
+											name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label
+											for="wp-comment-cookies-consent">Save my name, email, and website in this
+											browser for the next time I comment.</label></p>
+									<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit"
+											value="Post Comment" /> <input type='hidden' name='comment_post_ID'
+											value='5656' id='comment_post_ID' />
+										<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+									</p>
+								</form>
+							</div><!-- #respond -->
 						</div>
-
-						<ul id="filters" class="filters">
-							<!-- Categories will be injected here by news-loader.js -->
-							<li class="current">
-								<a data-filter="*" href="#">all</a>
-							</li>
-						</ul> <!-- #filters .filters -->
-
-
-						<div class="blog-grid-wrap">
-							<div id="rise-container" class="blog-stream blog-grid blog-small portfolio-grid masonry"
-								data-layout="fitRows">
-								<!-- Rise items will be injected here by rise-loader.js -->
-							</div> <!-- .blog-stream .blog-grid .blog-small .portfolio-grid .masonry -->
-						</div> <!-- .blog-grid-wrap -->
-
 					</div> <!-- #content .site-content -->
 				</div> <!-- #primary .content-area -->
 			</div> <!-- layout -->
 		</div> <!-- #main .site-main -->
-		<!-- #main .site-main -->
+
+
 		<footer id="colophon" class="site-footer" role="contentinfo">
 			<div class="site-info">
+
 				<p>© 2025 Visio. All Rights Reserved.</p>
-			</div>
-			<!-- .site-info -->
-		</footer>
-		<!-- #colophon .site-footer -->
+			</div> <!-- .site-info -->
+		</footer> <!-- #colophon .site-footer -->
 	</div>
 	<script type="speculationrules">
-      {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
-    </script>
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
 	<script>
-		// Gestion de l'état de langue avec mise en évidence EN-FR (persistée)
-		const LANGUAGE_STORAGE_KEY = 'currentLanguage';
-
-		function getCurrentLanguage() {
-			try {
-				return localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'EN';
-			} catch (e) {
-				return 'EN';
-			}
-		}
-
-		function setCurrentLanguage(lang) {
-			try {
-				localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
-			} catch (e) {
-				// ignore
-			}
-		}
-
-		function updateLanguageUI() {
-			const lang = getCurrentLanguage();
-			const languageBtn = document.getElementById('language-btn');
-			const languageMenuItem = document.querySelector('#menu-item-language a');
-
-			if (languageBtn && !languageBtn.querySelector('.lang-en')) {
-				languageBtn.innerHTML = '<span class="lang-part lang-en">EN<\/span><span class="lang-sep">  -  <\/span><span class="lang-part lang-fr">FR<\/span>';
-			}
-
-			const btnEn = languageBtn ? languageBtn.querySelector('.lang-en') : null;
-			const btnFr = languageBtn ? languageBtn.querySelector('.lang-fr') : null;
-			const menuEn = languageMenuItem ? languageMenuItem.querySelector('.lang-en') : null;
-			const menuFr = languageMenuItem ? languageMenuItem.querySelector('.lang-fr') : null;
-
-			[btnEn, menuEn].forEach(function (el) { if (el) el.classList.toggle('active', lang === 'EN'); });
-			[btnFr, menuFr].forEach(function (el) { if (el) el.classList.toggle('active', lang === 'FR'); });
-
-			if (languageBtn) {
-				languageBtn.classList.toggle('active', lang === 'FR');
-			}
-		}
-
+		// Fonction pour basculer entre les langues
 		function toggleLanguage() {
-			const next = getCurrentLanguage() === 'EN' ? 'FR' : 'EN';
-			setCurrentLanguage(next);
-			updateLanguageUI();
+			const desktopBtn = document.getElementById('language-btn');
+			const mobileBtn = document.getElementById('language-btn-mobile');
+
+			// Toggle la langue
+			const currentLang = desktopBtn.textContent;
+			const newLang = currentLang === 'EN' ? 'FR' : 'EN';
+
+			// Mettre à jour les deux boutons
+			desktopBtn.textContent = newLang;
+			mobileBtn.textContent = newLang;
+
+			// Ajouter/retirer la classe active
+			desktopBtn.classList.toggle('active');
+			mobileBtn.classList.toggle('active');
+
+			// Ici vous pouvez ajouter la logique pour changer la langue du site
+			console.log('Langue changée vers:', newLang);
 		}
 
+		// Synchroniser les boutons au chargement de la page
 		document.addEventListener('DOMContentLoaded', function () {
-			updateLanguageUI();
+			const desktopBtn = document.getElementById('language-btn');
+			const mobileBtn = document.getElementById('language-btn-mobile');
+
+			if (desktopBtn && mobileBtn) {
+				// S'assurer que les deux boutons ont le même état
+				mobileBtn.textContent = desktopBtn.textContent;
+				if (desktopBtn.classList.contains('active')) {
+					mobileBtn.classList.add('active');
+				}
+			}
 		});
-
 		const lazyloadRunObserver = () => {
-
 			const lazyloadBackgrounds = document.querySelectorAll(`.e-con.e-parent:not(.e-lazyloaded)`);
 			const lazyloadBackgroundObserver = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => {
@@ -2342,8 +1312,12 @@
 		events.forEach((event) => {
 			document.addEventListener(event, lazyloadRunObserver);
 		});
-
 	</script>
+	<style id='core-block-supports-inline-css' type='text/css'>
+		.wp-container-core-columns-is-layout-9d6595d7 {
+			flex-wrap: nowrap;
+		}
+	</style>
 	<script type="text/javascript"
 		src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3"
 		id="jquery-ui-core-js"></script>
@@ -2355,6 +1329,9 @@
 	<script type="text/javascript"
 		src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/js/main.min.js?ver=1.8.9"
 		id="qi-addons-for-elementor-script-js"></script>
+	<script type="text/javascript"
+		src="https://themes.pixelwars.org/arkiz/demo-01/wp-includes/js/comment-reply.min.js?ver=6.8.2"
+		id="comment-reply-js" async="async" data-wp-strategy="async"></script>
 	<script type="text/javascript"
 		src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/themes/arkiz/js/jquery.fitvids.js"
 		id="fitvids-js"></script>
@@ -2424,12 +1401,8 @@
 	<script type="text/javascript"
 		src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/pixelwars-core/themes/global/js/shortcodes.js"
 		id="pixelwars-core-shortcodes-js"></script>
-	<script type="text/javascript"
-		src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/bdthemes-prime-slider-lite/assets/js/prime-slider-site.min.js?ver=3.17.6"
-		id="prime-slider-site-js"></script>
 	<script src="../js/config.js"></script>
-	<script src="../js/content-loader.js"></script>
-	<script src="../js/rise-loader.js"></script>
+	<script src="../js/social-detail-loader.js"></script>
 </body>
 
 </html>

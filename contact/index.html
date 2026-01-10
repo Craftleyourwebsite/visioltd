@@ -1052,7 +1052,7 @@
 			width: 50%;
 		}
 
-		input,
+		input:not([type="checkbox"]),
 		textarea {
 			width: 100%;
 			padding: 25px 20px;
@@ -1065,7 +1065,7 @@
 			min-height: 60px;
 		}
 
-		input:focus,
+		input:not([type="checkbox"]):focus,
 		textarea:focus {
 			border-color: #a67c52;
 			background-color: #fff;
@@ -1082,11 +1082,13 @@
 			font-size: 14px;
 			text-align: left;
 			display: flex;
-			align-items: center;
+			align-items: flex-start;
 			gap: 12px;
 			color: #555;
 			margin-top: 10px;
 			line-height: 1.4;
+			width: 100%;
+			max-width: 100%;
 		}
 
 		.terms input[type="checkbox"] {
@@ -1097,22 +1099,40 @@
 			flex-shrink: 0;
 			border: 2px solid #ddd;
 			border-radius: 3px;
-			appearance: auto;
-			-webkit-appearance: auto;
+			appearance: none;
+			-webkit-appearance: none;
 			background-color: #fff;
-			transition: border-color 0.2s ease;
+			transition: all 0.3s ease;
+			display: grid;
+			place-content: center;
+			padding: 0;
+			min-height: auto;
+		}
+
+		.terms input[type="checkbox"]::before {
+			content: "";
+			width: 10px;
+			height: 10px;
+			transform: scale(0);
+			transition: 0.2s transform ease-in-out;
+			background-color: #000;
+			clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+		}
+
+		.terms input[type="checkbox"]:checked::before {
+			transform: scale(1);
 		}
 
 		.terms input[type="checkbox"]:checked {
-			border-color: #a67c52;
+			border-color: #000;
 		}
 
 		.terms input[type="checkbox"]:hover {
-			border-color: #a67c52;
+			border-color: #000;
 		}
 
 		.terms input[type="checkbox"]:focus {
-			outline: 2px solid #a67c52;
+			outline: 2px solid #000;
 			outline-offset: 2px;
 		}
 
@@ -2079,9 +2099,12 @@
 				opacity: 1 !important;
 			}
 
-			/* Logo blanc pour contraste */
-			.site-header .logo-image {
+			/* Logo blanc pour contraste et décalage 20px bas */
+			.site-header .logo-image,
+			.site-header.clone .logo-image {
 				filter: brightness(0) invert(1) !important;
+				position: relative !important;
+				top: 8px !important;
 			}
 
 			/* Liens lisibles (blanc) en mobile */
@@ -2168,6 +2191,18 @@
 				align-items: center !important;
 				justify-content: space-between !important;
 				width: 100% !important;
+			}
+		}
+
+		/* Tablet fixes (iPad Air, Surface Pro X) */
+		@media screen and (min-width: 768px) and (max-width: 1440px) {
+
+			header#masthead .logo-image,
+			header#masthead.clone .logo-image {
+				transform: translate(50px, -5px) !important;
+				position: relative !important;
+				left: auto !important;
+				top: auto !important;
 			}
 		}
 	</style>

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en-US"
-	class="no-featured-area is-header-small is-body-full-width is-single-post-title-default is-post-title-align-center is-post-media-fixed is-blog-text-align-left is-meta-with-icons is-header-light is-header-full-width is-header-parallax-no is-menu-sticky is-menu-fixed-width is-menu-align-center is-menu-light is-submenu-light is-submenu-align-left is-menu-uppercase is-featured-area-full is-slider-buttons-center-margin is-slider-buttons-rounded is-slider-buttons-dark is-slider-title-label is-slider-parallax is-slider-title-none-uppercase is-slider-more-link-show-on-hover is-slider-more-link-border-bottom is-slider-text-align-center is-slider-v-align-center is-slider-h-align-center is-link-box-title-default is-link-box-title-transform-none is-link-box-text-align-center is-link-box-v-align-center is-link-box-parallax is-intro-align-center is-intro-text-dark is-intro-parallax-no is-more-link-border-bottom-light is-about-author-minimal is-related-posts-parallax is-related-posts-fixed is-share-links-boxed is-tagcloud-minimal is-nav-single-rounded is-nav-single-no-animated is-comments-minimal is-comments-image-rounded is-comment-form-boxed is-comment-form-border is-sidebar-right is-sidebar-sticky is-sidebar-align-left is-widget-title-align-left is-widget-bottomline is-trending-posts-default is-footer-subscribe-light is-footer-widgets-align-left is-footer-full-width is-meta-uppercase is-slider-dots-rounded-line-grow is-top-bar-mobile-left-visible is-top-bar-uppercase is-top-bar-full is-sub-menu-ani-fade-in-left is-menu-hover-solid is-menu-hover-overflow is-menu-hover-arrow-left is-copyright-uppercase is-logo-bg-stretch-left is-header-sticky-shadow-soft-shorter is-header-transparent-border-bottom is-header-bg-blur-slightly is-footer-border-top is-footer-border-light"
+	class="no-featured-area is-header-small is-body-full-width is-single-post-title-default is-post-title-align-center is-post-media-fixed is-blog-text-align-left is-meta-with-icons is-header-light is-header-full-width is-header-parallax-no is-menu-sticky is-menu-fixed-width is-menu-align-center is-menu-light is-submenu-light is-submenu-align-left is-menu-uppercase is-featured-area-full is-slider-buttons-center-margin is-slider-buttons-rounded is-slider-buttons-dark is-slider-title-label is-slider-parallax is-slider-title-none-uppercase is-slider-more-link-show-on-hover is-slider-more-link-border-bottom is-slider-text-align-center is-slider-v-align-center is-slider-h-align-center is-link-box-title-default is-link-box-title-transform-none is-link-box-text-align-center is-link-box-v-align-center is-link-box-parallax is-intro-align-center is-intro-text-dark is-intro-parallax-no is-more-link-border-bottom-light is-about-author-minimal is-related-posts-parallax is-related-posts-fixed is-share-links-boxed is-tagcloud-minimal is-nav-single-rounded is-nav-single-no-animated is-comments-minimal is-comments-image-rounded is-comment-form-boxed is-comment-form-border is-no-sidebar is-widget-title-align-left is-widget-bottomline is-trending-posts-default is-footer-subscribe-light is-footer-widgets-align-left is-footer-full-width is-meta-uppercase is-slider-dots-rounded-line-grow is-top-bar-mobile-left-visible is-top-bar-uppercase is-top-bar-full is-sub-menu-ani-fade-in-left is-menu-hover-solid is-menu-hover-overflow is-menu-hover-arrow-left is-copyright-uppercase is-logo-bg-stretch-left is-header-sticky-shadow-soft-shorter is-header-transparent-border-bottom is-header-bg-blur-slightly is-footer-border-top is-footer-border-light"
 	data-title-ratio="0.7" data-link-box-title-ratio="0.5" data-generic-button-style="" data-header-bg-shape="">
 
 <head>
@@ -9,6 +9,7 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="icon" type="image/jpeg" href="../public/favicon.jpeg">
 	<link rel="shortcut icon" type="image/jpeg" href="../public/favicon.jpeg">
+	<link rel="stylesheet" href="../css/content-loading.css">
 	<title>Social &#8211; Visio Architecture Ltd</title>
 	<meta name='robots' content='max-image-preview:large' />
 	<style>
@@ -783,7 +784,7 @@
 		}
 
 		.portfolio-grid .hentry {
-			width: 33.333%;
+			width: 25%;
 			padding: 20px;
 			transition: opacity 0.4s ease;
 		}
@@ -795,6 +796,79 @@
 
 			.blog-grid-wrap {
 				padding: 0 15px;
+			}
+		}
+
+		/* --- UNIFIED GRID AND IMAGE STYLES --- */
+		.blog-grid-wrap {
+			width: 100% !important;
+			max-width: 1600px !important;
+			margin: 0 auto !important;
+			padding: 0 20px !important;
+			box-sizing: border-box !important;
+		}
+
+		#rise-container,
+		#social-container,
+		#news-container {
+			width: 100% !important;
+			margin: 0 auto !important;
+		}
+
+		.portfolio-grid .hentry {
+			width: 25% !important;
+			padding: 10px !important;
+			box-sizing: border-box !important;
+			float: left;
+		}
+
+		.portfolio-grid .featured-image {
+			width: 100% !important;
+			aspect-ratio: 4 / 3 !important;
+			overflow: hidden !important;
+			position: relative !important;
+			background: #f5f5f5;
+			margin: 0 !important;
+		}
+
+		.portfolio-grid .featured-image img {
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: cover !important;
+			position: absolute !important;
+			top: 0 !important;
+			left: 0 !important;
+		}
+
+		.portfolio-grid .hentry-middle {
+			padding: 20px 0 !important;
+		}
+
+		.portfolio-grid .entry-title {
+			font-size: 19px !important;
+			font-weight: 900 !important;
+			text-transform: uppercase !important;
+		}
+
+		/* Centering core containers */
+		.site-main .layout-full,
+		#primary.content-area,
+		#content.site-content {
+			width: 100% !important;
+			max-width: 100% !important;
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+
+		@media screen and (max-width: 991px) {
+			.portfolio-grid .hentry {
+				width: 50% !important;
+			}
+		}
+
+		@media screen and (max-width: 767px) {
+			.portfolio-grid .hentry {
+				width: 100% !important;
 			}
 		}
 
@@ -2153,9 +2227,9 @@
 
 
 						<div class="blog-grid-wrap">
-							<div id="news-container" class="blog-stream blog-grid blog-small portfolio-grid masonry"
-								data-layout="fitRows" data-item-width="480">
-								<!-- News items will be injected here by news-loader.js -->
+							<div id="social-container" class="blog-stream blog-grid blog-small portfolio-grid masonry"
+								data-layout="fitRows">
+								<!-- Social items will be injected here by social-loader.js -->
 							</div> <!-- .blog-stream .blog-grid .blog-small .portfolio-grid .masonry -->
 						</div> <!-- .blog-grid-wrap -->
 
@@ -2338,7 +2412,8 @@
 		src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/bdthemes-prime-slider-lite/assets/js/prime-slider-site.min.js?ver=3.17.6"
 		id="prime-slider-site-js"></script>
 	<script src="../js/config.js"></script>
-	<script src="../js/news-loader.js"></script>
+	<script src="../js/content-loader.js"></script>
+	<script src="../js/social-loader.js"></script>
 </body>
 
 </html>
