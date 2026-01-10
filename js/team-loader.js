@@ -14,52 +14,82 @@
      * Initialize Team Loading
      */
     async function initTeam() {
+        // Expose toggle function globally for the See More button
+        window.toggleTeamExpansion = function (e) {
+            if (e) e.preventDefault();
+
+            // Show all hidden members
+            const hiddenMembers = document.querySelectorAll('.team-member-hidden');
+            hiddenMembers.forEach(member => {
+                member.classList.remove('team-member-hidden');
+                // Remove inline display:none and verify display:flex is active (from CSS or added)
+                member.style.display = '';
+                member.style.removeProperty('display');
+
+                // If CSS isn't loading, fallback to inline flex
+                if (getComputedStyle(member).display === 'none') {
+                    member.style.display = 'flex';
+                }
+            });
+
+            // Hide the button itself
+            const btnWrapper = document.querySelector('.qodef-m-see-more');
+            if (btnWrapper) btnWrapper.style.display = 'none';
+        };
+
         const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
 
         // 1. Hide slots immediately
         hideAllMainTeamSlots();
 
         try {
-            let members = [];
-            let source = 'network';
+            let cachedMembers = null;
 
-            // 2. Try Cache if ContentCache is available
+            // 2. Try to show cached data FIRST for instant display
             if (typeof ContentCache !== 'undefined') {
                 const cached = ContentCache.get(CONTENT_TYPE, lang);
-                if (cached && cached.isValid) {
-                    members = cached.data;
-                    source = 'cache';
+                if (cached && cached.data && cached.data.length > 0) {
+                    cachedMembers = cached.data;
+                    console.log('[Team] Showing cached data instantly');
+                    updateMainTeam(cachedMembers.slice(0, 4));
+                    updateExtendedTeam(cachedMembers.slice(4));
                 }
             }
 
-            // 3. Fetch if no cache
-            if (members.length === 0) {
-                const url = `${CONFIG.API_URL}/team-members?populate=*&sort=order:asc`;
-                const fetchFn = (typeof ContentLoader !== 'undefined') ? ContentLoader.fetchWithRetry : fetch;
+            // 3. ALWAYS fetch fresh data from Strapi (stale-while-revalidate)
+            const url = `${CONFIG.API_URL}/team-members?populate=*&sort=order:asc`;
+            const response = await (typeof ContentLoader !== 'undefined'
+                ? ContentLoader.fetchWithRetry(url)
+                : fetch(url).then(r => r.json()));
+            const freshMembers = CONFIG.flatten(response);
 
-                const response = await (typeof ContentLoader !== 'undefined' ? ContentLoader.fetchWithRetry(url) : fetch(url).then(r => r.json()));
-                members = CONFIG.flatten(response);
-
-                if (Array.isArray(members) && typeof ContentCache !== 'undefined') {
-                    ContentCache.set(CONTENT_TYPE, lang, members);
+            if (Array.isArray(freshMembers) && freshMembers.length > 0) {
+                // 4. Update cache with fresh data
+                if (typeof ContentCache !== 'undefined') {
+                    ContentCache.set(CONTENT_TYPE, lang, freshMembers);
                 }
-            }
 
-            // 4. Render
-            if (Array.isArray(members) && members.length > 0) {
-                console.log(`[Team] Rendering ${members.length} members from ${source}`);
-                updateMainTeam(members.slice(0, 4));
-                updateExtendedTeam(members.slice(4));
+                // 5. Check if data changed - if so, update display
+                const dataChanged = !cachedMembers ||
+                    JSON.stringify(freshMembers) !== JSON.stringify(cachedMembers);
+
+                if (dataChanged) {
+                    console.log('[Team] Fresh data received, updating display');
+                    updateMainTeam(freshMembers.slice(0, 4));
+                    updateExtendedTeam(freshMembers.slice(4));
+                } else {
+                    console.log('[Team] Data unchanged, no update needed');
+                }
             }
 
         } catch (error) {
             console.error('[Team] Initialization error:', error);
 
-            // Fallback: Try expired cache
+            // Fallback: Show cached data if network fails
             if (typeof ContentCache !== 'undefined') {
                 const cached = ContentCache.get(CONTENT_TYPE, lang);
                 if (cached && cached.data) {
-                    console.log('[Team] Using expired cache as fallback');
+                    console.log('[Team] Using cache as fallback');
                     updateMainTeam(cached.data.slice(0, 4));
                     updateExtendedTeam(cached.data.slice(4));
                 }
@@ -171,9 +201,12 @@
             const div = document.createElement('div');
             // Added 'elementor-element' to ensure it matches the CSS selector if needed, 
             // though we will also update CSS to be sure.
-            div.className = 'team-member-card elementor-element elementor-widget elementor-widget-qi_addons_for_elementor_team_member';
-            // Mimic the styles of the existing items directly
-            div.style.display = 'flex';
+            // Added 'team-member-hidden' class for reference
+            div.className = 'team-member-card elementor-element elementor-widget elementor-widget-qi_addons_for_elementor_team_member team-member-hidden';
+
+            // FORCE HIDE using inline style to bypass any CSS caching issues
+            div.style.display = 'none';
+            div.style.setProperty('display', 'none', 'important'); // Double enforcement
 
             div.innerHTML = `
                 <div class="elementor-widget-container">

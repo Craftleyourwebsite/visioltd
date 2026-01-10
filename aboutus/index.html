@@ -3141,44 +3141,43 @@
 						<script src="../js/config.js"></script>
 						<script src="../js/content-loader.js"></script>
 						<script src="../js/team-loader.js"></script>
-						<!-- Team Expansion JavaScript -->
+						<!-- Team Expansion JavaScript (Updated for Unified Grid) -->
 						<script>
 							function toggleTeamExpansion(event) {
-								event.preventDefault();
-								const extendedSection = document.getElementById('extended-team-section');
+								if (event) event.preventDefault();
+
 								const seeMoreLink = event.target.closest('.qodef-see-more-link');
+								const hiddenMembers = document.querySelectorAll('.team-member-hidden');
 
-								if (extendedSection.style.display === 'none' || extendedSection.style.display === '') {
-									// Show extended section
-									extendedSection.style.display = 'block';
-									seeMoreLink.innerHTML = '<span>- see less</span>';
+								if (hiddenMembers.length > 0) {
+									// Show all hidden members
+									hiddenMembers.forEach(member => {
+										member.classList.remove('team-member-hidden');
+										member.style.display = '';
+										member.style.removeProperty('display');
 
-									// Scroll to show the new cards
-									setTimeout(() => {
-										const teamGridContainer = extendedSection.querySelector('.team-grid-container');
-										if (teamGridContainer) {
-											const extendedSectionRect = extendedSection.getBoundingClientRect();
-											const scrollPosition = window.pageYOffset + extendedSectionRect.top - 200;
-
-											window.scrollTo({
-												top: scrollPosition,
-												behavior: 'smooth'
-											});
+										// Fallback if CSS doesn't apply flex
+										if (getComputedStyle(member).display === 'none') {
+											member.style.display = 'flex';
 										}
-									}, 300);
-								} else {
-									// Hide extended section
-									extendedSection.style.display = 'none';
-									seeMoreLink.innerHTML = '<span>+ see more</span>';
+									});
 
-									// Scroll back to the see more button
-									setTimeout(() => {
-										seeMoreLink.scrollIntoView({
-											behavior: 'smooth',
-											block: 'center',
-											inline: 'nearest'
-										});
-									}, 100);
+									// Update button text
+									if (seeMoreLink) {
+										seeMoreLink.innerHTML = '<span>- see less</span>';
+									}
+								} else {
+									// Re-hide members (toggle back)
+									const visibleExtended = document.querySelectorAll('.elementor-element-af195fa > .team-member-card');
+									visibleExtended.forEach(member => {
+										member.classList.add('team-member-hidden');
+										member.style.setProperty('display', 'none', 'important');
+									});
+
+									// Update button text
+									if (seeMoreLink) {
+										seeMoreLink.innerHTML = '<span>+ see more</span>';
+									}
 								}
 							}
 						</script>

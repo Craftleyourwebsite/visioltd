@@ -26,9 +26,15 @@
   }
 }
 
+
+
+.elementor-element-af195fa>.team-member-card.team-member-hidden {
+  display: none !important;
+}
+
 /* Conteneurs individuels des membres de l'équipe (Existing + New) */
 .elementor-element-af195fa>.elementor-element,
-.elementor-element-af195fa>.team-member-card {
+.elementor-element-af195fa>.team-member-card:not(.team-member-hidden) {
   flex: 1 1 250px !important;
   max-width: 300px !important;
   min-width: 250px !important;
@@ -39,7 +45,7 @@
 @media screen and (min-width: 769px) {
 
   .elementor-element-af195fa>.elementor-element,
-  .elementor-element-af195fa>.team-member-card {
+  .elementor-element-af195fa>.team-member-card:not(.team-member-hidden) {
     width: auto !important;
     max-width: none !important;
     flex: none !important;
