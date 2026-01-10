@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const STRAPI_URL = 'https://visiostrapi-production.up.railway.app';
+const STRAPI_URL = 'https://admin.creatymu.org';
 const API_URL = `${STRAPI_URL}/api`;
 const LOCALES = ['en', 'fr'];
 const CATEGORIE_DIR = path.join(__dirname, '../categorie');

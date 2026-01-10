@@ -72,40 +72,77 @@
   opacity: 0.9 !important;
 }
 
-/* Section contenu */
+/* Section contenu - Transformée en overlay au survol */
 .qodef-qi-team-member .qodef-m-content {
-  flex-shrink: 0 !important;
-  padding: 20px !important;
-  background: #fff !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  padding: 30px 20px !important;
+  background: rgba(80, 80, 80, 0.8) !important;
+  /* Gris foncé semi-transparent */
   text-align: center !important;
-  min-height: 120px !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
+  align-items: center !important;
+  opacity: 0 !important;
+  transition: opacity 0.4s ease, transform 0.4s ease !important;
+  transform: translateY(20px) !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  color: #ffffff !important;
 }
 
-/* Centrage des titres et rôles */
+.qodef-qi-team-member:hover .qodef-m-content {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+.qodef-qi-team-member .qodef-m-inner {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Centrage des titres, rôles et descriptions */
 .qodef-qi-team-member .qodef-m-title,
-.qodef-qi-team-member .qodef-m-role {
+.qodef-qi-team-member .qodef-m-role,
+.qodef-qi-team-member .qodef-m-description {
   text-align: center !important;
   justify-content: center !important;
   display: flex !important;
   align-items: center !important;
   width: 100% !important;
+  color: #ffffff !important;
 }
 
-.qodef-qi-team-member .qodef-m-title {
-  margin: 0 auto 8px auto !important;
-  font-size: 1.1em !important;
+.qodef-qi-team-member .qodef-m-title,
+.qodef-qi-team-member .qodef-m-title strong {
+  margin: 0 auto 2px auto !important;
+  font-size: 1.25em !important;
   line-height: 1.2 !important;
+  font-weight: 700 !important;
+  /* Gras automatique */
+  text-transform: none !important;
 }
 
-.qodef-qi-team-member .qodef-m-role {
-  margin: 10px auto 0 auto !important;
-  font-size: 0.9em !important;
+.qodef-qi-team-member .qodef-m-role,
+.qodef-qi-team-member .qodef-m-role strong {
+  margin: 0 auto 5px auto !important;
+  font-size: 1em !important;
   line-height: 1.3 !important;
-  padding: 0 10px !important;
-  max-width: 100% !important;
+  font-weight: 700 !important;
+  /* Gras automatique */
+  opacity: 1 !important;
+}
+
+.qodef-qi-team-member .qodef-m-description {
+  margin: 2px auto 0 auto !important;
+  font-size: 0.9em !important;
+  line-height: 1.4 !important;
+  font-weight: 400 !important;
+  opacity: 0.9 !important;
 }
 
 /* Centrage des icônes sociales */
@@ -115,7 +152,17 @@
   display: flex !important;
   align-items: center !important;
   margin: 15px auto 0 auto !important;
-  gap: 10px !important;
+  gap: 15px !important;
+}
+
+.qodef-qi-team-member .qodef-m-social-icons a {
+  color: #ffffff !important;
+}
+
+.qodef-qi-team-member .qodef-m-social-icons svg {
+  fill: #ffffff !important;
+  width: 18px !important;
+  height: 18px !important;
 }
 
 /* Responsive pour les titres longs */

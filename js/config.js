@@ -9,7 +9,7 @@ const CONFIG = {
     // Determine the base URL based on the environment
     STRAPI_URL: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'http://localhost:1337'
-        : 'https://visiostrapi-production.up.railway.app', // Production URL
+        : 'https://admin.creatymu.org', // Production URL
 
     get API_URL() {
         return `${this.STRAPI_URL}/api`;

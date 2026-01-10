@@ -70,11 +70,21 @@ function updateMainTeam(members) {
 
                 // Update Name
                 const title = slot.querySelector('.qodef-m-title');
-                if (title) title.innerText = attr.name;
+                if (title) title.innerHTML = `<strong>${attr.name}</strong>`;
 
                 // Update Role
                 const role = slot.querySelector('.qodef-m-role');
-                if (role) role.innerText = attr.role;
+                if (role) role.innerHTML = `<strong>${attr.role}</strong>`;
+
+                // Update Description
+                let desc = slot.querySelector('.qodef-m-description');
+                if (!desc) {
+                    // Create description if it doesn't exist (useful for future-proofing)
+                    desc = document.createElement('p');
+                    desc.className = 'qodef-m-description';
+                    role.parentNode.insertBefore(desc, role.nextSibling);
+                }
+                if (desc) desc.innerText = attr.description || '';
 
                 // Update Socials
                 updateSocialLinks(slot, attr);
@@ -160,8 +170,9 @@ function updateExtendedTeam(members) {
                     </div>
                   </div>
                   <div class="qodef-m-content">
-                    <h4 itemprop="name" class="qodef-m-title">${attr.name}</h4>
-                    <p class="qodef-m-role">${attr.role}</p>
+                    <h4 itemprop="name" class="qodef-m-title"><strong>${attr.name}</strong></h4>
+                    <p class="qodef-m-role"><strong>${attr.role}</strong></p>
+                    <p class="qodef-m-description">${attr.description || ''}</p>
                     <div class="qodef-m-social-icons">
                       ${generateSocialLinkHTML(attr.facebook_link, 'facebook')}
                       ${generateSocialLinkHTML(attr.twitter_link, 'twitter')}

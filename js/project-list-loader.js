@@ -87,7 +87,7 @@ async function loadProjectList() {
         if (!loadedFromValidCache) {
             try {
                 // Fetch from Strapi (Selected List)
-                const baseUrl = (typeof CONFIG !== 'undefined' && CONFIG.API_URL) ? CONFIG.API_URL : 'https://visiostrapi-production.up.railway.app/api';
+                const baseUrl = (typeof CONFIG !== 'undefined' && CONFIG.API_URL) ? CONFIG.API_URL : 'https://admin.creatymu.org/api';
                 const url = `${baseUrl}/selected-project-list?locale=${language}&populate[projects]=true`;
 
                 console.log(`[List] Fetching dynamic projects from: ${url}`);
