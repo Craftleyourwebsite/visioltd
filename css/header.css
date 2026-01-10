@@ -386,7 +386,7 @@
 }
 
 .site-header.clone .nav-menu a:hover {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 
 /* Style pour le bouton quand on scrolle - blanc */
@@ -395,7 +395,7 @@
 }
 
 .site-header.clone .language-btn:hover {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 
 .site-header.clone .language-btn.active {

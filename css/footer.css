@@ -112,6 +112,7 @@
 	.elementor-element-a3c724e .footer-logo-wrapper {
 		position: relative !important;
 		left: -30px !important;
+		top: -5px !important;
 		margin-left: 0 !important;
 		padding-left: 0 !important;
 		text-align: left !important;
@@ -172,7 +173,7 @@
 		position: relative !important;
 		left: 0px !important;
 		right: auto !important;
-		top: auto !important;
+		top: -5px !important;
 		bottom: auto !important;
 		margin: 0px !important;
 		padding: 0px !important;
@@ -196,6 +197,7 @@
 		width: 100% !important;
 		text-align: left !important;
 		position: relative !important;
+		top: -5px !important;
 		left: 0px !important;
 		transform: none !important;
 		margin: 0px !important;
