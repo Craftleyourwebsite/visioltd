@@ -8,44 +8,67 @@
     'use strict';
 
     // Cache configuration
-    const CONTENT_TYPE = 'team_members';
-    // No specific local direct cache used here as ContentLoader handles it
+    const CONTENT_TYPE = 'team-members';
 
     /**
      * Initialize Team Loading
      */
     async function initTeam() {
-        // First, hide all main team slots immediately to prevent flash of empty content
         hideAllMainTeamSlots();
 
-        // Load content via ContentLoader
-        if (typeof ContentLoader !== 'undefined') {
-            await ContentLoader.load({
-                type: CONTENT_TYPE,
-                // We use a general URL without language if team is not localized, 
-                // but if localized team members are needed, we can add ?locale=${lang}
-                url: `${CONFIG.API_URL}/team-members?populate=*&sort=order:asc`,
-                containerId: 'team-section-trigger', // Dummy ID or wrapper if needed, but we handle rendering manually
-                renderFn: (items) => {
-                    // This is a custom render path since we have a specific slot-based layout for the first 4 members
-                    if (Array.isArray(items) && items.length > 0) {
-                        updateMainTeam(items.slice(0, 4));
-                        updateExtendedTeam(items.slice(4));
-                    }
-                    return ''; // ContentLoader handles DOM if we return HTML, but we do it manually for slots
-                },
-                skeletonCount: 0, // We handle our own layout for slots
-                onSuccess: (items, source) => {
-                    console.log(`[Team] Loaded ${items.length} members from ${source}`);
-                },
-                onError: (error) => {
-                    console.error('[Team] Load error:', error);
+        const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
+
+        try {
+            // 1. Check Cache (using the unified system)
+            if (typeof ContentCache !== 'undefined') {
+                const cached = ContentCache.get(CONTENT_TYPE, lang);
+                if (cached && cached.isValid) {
+                    console.log(`[Team] Using cache from ${cached.source}`);
+                    renderTeam(cached.data);
+                    return;
                 }
-            });
-        } else {
-            // Fallback to direct fetch (as previously implemented but optimized)
-            await fetchTeamMembersDirect();
+            }
+
+            // 2. Fetch Fresh Data (using the unified system's robust fetch)
+            const url = `${CONFIG.API_URL}/team-members?populate=*&sort=order:asc`;
+            let data;
+
+            if (typeof ContentLoader !== 'undefined') {
+                const json = await ContentLoader.fetchWithRetry(url);
+                data = CONFIG.flatten(json);
+
+                // Save to cache
+                ContentCache.set(CONTENT_TYPE, lang, data);
+            } else {
+                const response = await fetch(url);
+                const json = await response.json();
+                data = CONFIG.flatten(json);
+            }
+
+            if (data) {
+                renderTeam(data);
+            }
+        } catch (error) {
+            console.error('[Team] Load error:', error);
+
+            // Fallback to expired cache if available
+            if (typeof ContentCache !== 'undefined') {
+                const cached = ContentCache.get(CONTENT_TYPE, lang);
+                if (cached && cached.data) {
+                    console.log('[Team] Using expired cache as fallback');
+                    renderTeam(cached.data);
+                }
+            }
         }
+    }
+
+    /**
+     * Main rendering function
+     */
+    function renderTeam(items) {
+        if (!Array.isArray(items) || items.length === 0) return;
+        updateMainTeam(items.slice(0, 4));
+        updateExtendedTeam(items.slice(4));
     }
 
     /**
