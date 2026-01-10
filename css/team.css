@@ -9,13 +9,41 @@
   align-items: stretch !important;
 }
 
-/* Conteneurs individuels des membres de l'équipe */
-.elementor-element-af195fa>.elementor-element {
+/* DESKTOP GRID OVERRIDE - Strict 4 columns */
+@media screen and (min-width: 769px) {
+  .elementor-element-af195fa {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    justify-content: start !important;
+    justify-items: stretch !important;
+  }
+
+  /* Fix for phantom grid items (Elementor pseudo-elements) */
+  .elementor-element-af195fa::before,
+  .elementor-element-af195fa::after {
+    display: none !important;
+    content: none !important;
+  }
+}
+
+/* Conteneurs individuels des membres de l'équipe (Existing + New) */
+.elementor-element-af195fa>.elementor-element,
+.elementor-element-af195fa>.team-member-card {
   flex: 1 1 250px !important;
   max-width: 300px !important;
   min-width: 250px !important;
   display: flex !important;
   flex-direction: column !important;
+}
+
+@media screen and (min-width: 769px) {
+
+  .elementor-element-af195fa>.elementor-element,
+  .elementor-element-af195fa>.team-member-card {
+    width: auto !important;
+    max-width: none !important;
+    flex: none !important;
+  }
 }
 
 /* Conteneurs des widgets team member */
@@ -285,6 +313,7 @@
 }
 
 /* Team Grid Container - Same layout as base team section */
+/* Team Grid Container - Same layout as base team section */
 .team-grid-container {
   display: flex !important;
   flex-wrap: wrap !important;
@@ -295,6 +324,23 @@
   margin: 0 auto !important;
 }
 
+@media screen and (min-width: 769px) {
+  .team-grid-container {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    justify-content: start !important;
+    justify-items: stretch !important;
+  }
+
+  /* Fix for phantom grid items (Elementor pseudo-elements) */
+  .team-grid-container::before,
+  .team-grid-container::after {
+    display: none !important;
+    content: none !important;
+  }
+}
+
+/* Team Member Cards in Extended Section - Same style as base cards */
 /* Team Member Cards in Extended Section - Same style as base cards */
 .extended-team-section .team-member-card {
   flex: 1 1 250px !important;
@@ -306,6 +352,14 @@
   opacity: 1 !important;
   transform: translateY(0) scale(1) !important;
   animation: slideInUp 0.5s ease-out forwards !important;
+}
+
+@media screen and (min-width: 769px) {
+  .extended-team-section .team-member-card {
+    width: auto !important;
+    max-width: none !important;
+    flex: none !important;
+  }
 }
 
 /* Apply the same styles as base team member cards */

@@ -143,10 +143,20 @@
     }
 
     function updateExtendedTeam(members) {
-        const gridContainer = document.querySelector('.team-grid-container');
-        if (!gridContainer) return;
+        // Target the MAIN container now
+        const mainContainer = document.querySelector('.elementor-element-af195fa');
+        if (!mainContainer) return;
+
+        // Hide the old separate container (and the see more button from that section if it was separate)
+        const oldGridContainer = document.querySelector('.team-grid-container');
+        if (oldGridContainer) oldGridContainer.style.display = 'none';
 
         const seeMoreWrapper = document.querySelector('.qodef-m-see-more');
+
+        // Remove any previously added extended members to avoid duplicates
+        const existingExtended = mainContainer.querySelectorAll('.team-member-card');
+        existingExtended.forEach(el => el.remove());
+
         if (!members || members.length === 0) {
             if (seeMoreWrapper) seeMoreWrapper.style.display = 'none';
             return;
@@ -154,13 +164,17 @@
             if (seeMoreWrapper) seeMoreWrapper.style.display = 'block';
         }
 
-        gridContainer.innerHTML = '';
         const fragment = document.createDocumentFragment();
 
         members.forEach(member => {
             const photoUrl = CONFIG.getOptimizedImageUrl ? CONFIG.getOptimizedImageUrl(member.photo, 'medium') : CONFIG.getImageUrl(member.photo);
             const div = document.createElement('div');
-            div.className = 'team-member-card elementor-widget elementor-widget-qi_addons_for_elementor_team_member';
+            // Added 'elementor-element' to ensure it matches the CSS selector if needed, 
+            // though we will also update CSS to be sure.
+            div.className = 'team-member-card elementor-element elementor-widget elementor-widget-qi_addons_for_elementor_team_member';
+            // Mimic the styles of the existing items directly
+            div.style.display = 'flex';
+
             div.innerHTML = `
                 <div class="elementor-widget-container">
                     <div class="qodef-shortcode qodef-m qodef-qi-team-member qodef-item-layout--info-from-bottom qodef-image--hover-zoom">
@@ -187,7 +201,9 @@
             `;
             fragment.appendChild(div);
         });
-        gridContainer.appendChild(fragment);
+
+        // Append to the main container (making them siblings of the first 4 items)
+        mainContainer.appendChild(fragment);
     }
 
     function generateSocialLinkHTML(link, type, isEmail = false) {
