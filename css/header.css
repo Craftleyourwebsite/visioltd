@@ -94,7 +94,21 @@
   }
 }
 
+
 /* === STYLES MOBILES - LOGO CENTRÉ === */
+
+/* === FIX ISOLÉ iPAD AIR 5 (769px - 850px) === */
+@media screen and (min-width: 769px) and (max-width: 850px) {
+
+  .logo-image,
+  .site-header:not(.clone) .logo-image,
+  .site-header.clone .logo-image {
+    transform: translateX(-70px) translateY(-13px) !important;
+    margin-top: 0 !important;
+    max-width: 85% !important;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .elementor-element-7dcf136 {
     justify-content: flex-start !important;
@@ -112,7 +126,7 @@
     max-height: 55px !important;
     max-width: 80% !important;
     margin: 6px auto 0 auto !important;
-    transform: translateX(-120px) !important;
+    transform: translateX(-120px) translateY(-1px) !important;
   }
 
   .site-title {
@@ -138,7 +152,7 @@
     max-height: 45px !important;
     max-width: 75% !important;
     margin: 11px auto 0 auto !important;
-    transform: translateX(-70px) !important;
+    transform: translateX(-70px) translateY(-1px) !important;
   }
 }
 

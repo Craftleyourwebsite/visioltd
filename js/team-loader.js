@@ -160,24 +160,26 @@
         members.forEach(member => {
             const photoUrl = CONFIG.getOptimizedImageUrl ? CONFIG.getOptimizedImageUrl(member.photo, 'medium') : CONFIG.getImageUrl(member.photo);
             const div = document.createElement('div');
-            div.className = 'team-member-card';
+            div.className = 'team-member-card elementor-widget elementor-widget-qi_addons_for_elementor_team_member';
             div.innerHTML = `
-                <div class="qodef-shortcode qodef-m qodef-qi-team-member qodef-item-layout--info-from-bottom qodef-image--hover-zoom">
-                    <div class="qodef-m-inner">
-                        <div class="qodef-m-image">
-                            <div class="qodef-m-media-image">
-                                <img loading="lazy" decoding="async" src="${photoUrl}" class="attachment-full size-full" alt="${member.name}" style="width: 100%; height: auto; object-fit: cover; aspect-ratio: 1080/1215;">
+                <div class="elementor-widget-container">
+                    <div class="qodef-shortcode qodef-m qodef-qi-team-member qodef-item-layout--info-from-bottom qodef-image--hover-zoom">
+                        <div class="qodef-m-inner">
+                            <div class="qodef-m-image">
+                                <div class="qodef-m-media-image">
+                                    <img loading="lazy" decoding="async" src="${photoUrl}" class="attachment-full size-full" alt="${member.name}" style="width: 100%; height: auto; object-fit: cover; aspect-ratio: 1080/1215;">
+                                </div>
                             </div>
-                        </div>
-                        <div class="qodef-m-content">
-                            <h4 itemprop="name" class="qodef-m-title"><strong>${member.name || ''}</strong></h4>
-                            <p class="qodef-m-role"><strong>${member.role || ''}</strong></p>
-                            <p class="qodef-m-description">${member.description || ''}</p>
-                            <div class="qodef-m-social-icons">
-                                ${generateSocialLinkHTML(member.facebook_link, 'facebook')}
-                                ${generateSocialLinkHTML(member.twitter_link, 'twitter')}
-                                ${generateSocialLinkHTML(member.instagram_link, 'instagram')}
-                                ${generateSocialLinkHTML(member.email, 'envelope', true)}
+                            <div class="qodef-m-content">
+                                <h4 itemprop="name" class="qodef-m-title"><strong>${member.name || ''}</strong></h4>
+                                <p class="qodef-m-role"><strong>${member.role || ''}</strong></p>
+                                <p class="qodef-m-description">${member.description || ''}</p>
+                                <div class="qodef-m-social-icons">
+                                    ${generateSocialLinkHTML(member.facebook_link, 'facebook')}
+                                    ${generateSocialLinkHTML(member.twitter_link, 'twitter')}
+                                    ${generateSocialLinkHTML(member.instagram_link, 'instagram')}
+                                    ${generateSocialLinkHTML(member.email, 'envelope', true)}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -197,11 +199,12 @@
             instagram: "M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z",
             envelope: "M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"
         };
+        const iconClass = (type === 'envelope') ? 'e-far-envelope' : `e-fab-${type}`;
         const vb = (type === 'instagram') ? "0 0 448 512" : "0 0 512 512";
         return `
             <a class="qodef-e-social-icon-link" itemprop="url" href="${href}" target="_blank">
                 <span class="qodef-e-social-icon">
-                    <svg aria-hidden="true" class="e-font-icon-svg e-fab-${type}" viewBox="${vb}" xmlns="http://www.w3.org/2000/svg">
+                    <svg aria-hidden="true" class="e-font-icon-svg ${iconClass}" viewBox="${vb}" xmlns="http://www.w3.org/2000/svg">
                         <path d="${iconPaths[type]}"></path>
                     </svg>
                 </span>

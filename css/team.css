@@ -286,27 +286,26 @@
 
 /* Team Grid Container - Same layout as base team section */
 .team-grid-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  align-items: stretch;
-  padding: 0 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 30px !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  margin: 0 auto !important;
 }
 
 /* Team Member Cards in Extended Section - Same style as base cards */
 .extended-team-section .team-member-card {
-  flex: 1 1 250px;
-  max-width: 300px;
-  min-width: 250px;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s ease, opacity 0.4s ease;
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  animation: slideInUp 0.5s ease-out forwards;
+  flex: 1 1 250px !important;
+  max-width: 300px !important;
+  min-width: 250px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: all 0.3s ease, opacity 0.4s ease !important;
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  animation: slideInUp 0.5s ease-out forwards !important;
 }
 
 /* Apply the same styles as base team member cards */
@@ -411,7 +410,7 @@
   display: flex !important;
   align-items: center !important;
   margin: 15px auto 0 auto !important;
-  gap: 10px !important;
+  gap: 15px !important;
 }
 
 .extended-team-section .team-member-card:nth-child(1) {

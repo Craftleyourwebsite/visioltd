@@ -536,7 +536,7 @@
         height: 44px;
         cursor: pointer;
         position: fixed;
-        top: 6px;
+        top: 2px;
         right: 12px;
         z-index: 10110;
         -webkit-tap-highlight-color: transparent;
@@ -2685,23 +2685,20 @@
   <script>
     // === Mobile header/menu toggle for Projects page ===
     document.addEventListener('DOMContentLoaded', function () {
-      var siteHeader = document.querySelector('.site-header');
-      var menuToggle = document.querySelector('.menu-toggle');
-      var navMenu = document.querySelector('.nav-menu');
+      var navMenu = document.querySelector('.site-header .nav-menu') || document.querySelector('.nav-menu');
       var backdrop = null;
       var root = document.documentElement;
       var mobileDrawer = null;
+
       // Ajuste dynamiquement la hauteur du header mobile pour le padding du contenu
       function updateMobileHeaderOffset() {
-        if (!siteHeader) return;
-        var headerHeight = siteHeader.offsetHeight || 64;
+        var visibleHeader = document.querySelector('.site-header.clone') || document.querySelector('.site-header');
+        if (!visibleHeader) return;
+        var headerHeight = visibleHeader.offsetHeight || 64;
         document.documentElement.style.setProperty('--projectHeaderH', headerHeight + 'px');
       }
 
-      if (!siteHeader || !menuToggle || !navMenu) return;
-
       function ensureMobileDrawer() {
-        // Check if drawer exists in DOM, if not recreate it
         var existingDrawer = document.getElementById('mobile-drawer');
         if (!existingDrawer) {
           mobileDrawer = document.createElement('nav');
@@ -2732,13 +2729,11 @@
           mobileDrawer.appendChild(list);
           document.body.appendChild(mobileDrawer);
 
-          // Add event listener to close button
           closeBtn.addEventListener('click', function (e) {
             e.preventDefault();
             closeMenu();
           });
 
-          // Add event listeners to menu items
           var menuItems = mobileDrawer.querySelectorAll('a');
           menuItems.forEach(function (item) {
             item.addEventListener('click', function (e) {
@@ -2752,8 +2747,6 @@
 
       function openMenu() {
         ensureMobileDrawer();
-
-        // Ensure mobile drawer is visible and positioned correctly
         if (mobileDrawer) {
           mobileDrawer.style.transform = 'translateX(0)';
           mobileDrawer.setAttribute('aria-hidden', 'false');
@@ -2761,13 +2754,10 @@
 
         document.body.classList.add('is-menu-toggled-on');
         root.classList.add('is-menu-toggled-on');
-
-        // Empêcher le scroll sur html aussi (certains navigateurs ignorent body)
         document.documentElement.style.overflow = 'hidden';
         document.documentElement.style.height = '100vh';
         document.body.style.height = '100vh';
 
-        // Ajouter un backdrop cliquable
         var existingBackdrop = document.getElementById('menu-backdrop');
         if (!existingBackdrop) {
           backdrop = document.createElement('div');
@@ -2776,10 +2766,13 @@
           document.body.appendChild(backdrop);
         }
 
-        // Accessibilité
-        menuToggle.setAttribute('aria-expanded', 'true');
+        // Update aria on all toggles involved
+        document.querySelectorAll('.menu-toggle').forEach(function (el) {
+          el.setAttribute('aria-expanded', 'true');
+        });
         if (navMenu) navMenu.setAttribute('aria-hidden', 'false');
       }
+
       function closeMenu() {
         document.body.classList.remove('is-menu-toggled-on');
         root.classList.remove('is-menu-toggled-on');
@@ -2787,140 +2780,78 @@
         document.documentElement.style.height = '';
         document.body.style.height = '';
 
-        // Retirer le backdrop
         var existing = document.getElementById('menu-backdrop');
         if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
 
-        // Hide mobile drawer but don't remove it from DOM
         if (mobileDrawer) {
           mobileDrawer.style.transform = 'translateX(100%)';
           mobileDrawer.setAttribute('aria-hidden', 'true');
         }
 
-        // Accessibilité
-        menuToggle.setAttribute('aria-expanded', 'false');
+        document.querySelectorAll('.menu-toggle').forEach(function (el) {
+          el.setAttribute('aria-expanded', 'false');
+        });
         if (navMenu) navMenu.setAttribute('aria-hidden', 'true');
       }
+
       function toggleMenu(e) {
-        e && e.preventDefault();
-        console.log('Toggle menu called, current state:', document.body.classList.contains('is-menu-toggled-on'));
+        if (e) e.preventDefault();
         if (document.body.classList.contains('is-menu-toggled-on')) {
-          console.log('Closing menu');
           closeMenu();
         } else {
-          console.log('Opening menu');
           openMenu();
         }
       }
 
-      if (navMenu && !navMenu.id) { navMenu.id = 'primary-nav'; }
-      if (menuToggle) {
-        menuToggle.setAttribute('aria-controls', navMenu.id);
-        menuToggle.setAttribute('role', 'button');
-        menuToggle.setAttribute('aria-label', 'Toggle menu');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      }
-      if (navMenu) { navMenu.setAttribute('aria-hidden', 'true'); }
-
-      var onToggle = function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
-        console.log('Menu toggle clicked');
-        toggleMenu(e);
-      };
-
-      // Remove any existing listeners first
-      menuToggle.removeEventListener('click', onToggle, true);
-      menuToggle.removeEventListener('touchend', onToggle, true);
-
-      // Add fresh listeners
-      menuToggle.addEventListener('click', onToggle, true);
-      // Improve responsiveness on some mobile devices (only once)
-      menuToggle.addEventListener('touchend', onToggle, { passive: false, capture: true });
-
-      // Close when clicking a link in the original nav menu
-      if (navMenu) {
-        navMenu.addEventListener('click', function (e) {
-          var target = e.target;
-          if (target && target.tagName === 'A') {
-            console.log('Link clicked in nav menu, closing menu');
-            closeMenu();
-          }
-        });
-      }
-
-      // Close when clicking a link in the mobile drawer
+      // Event delegation for menu toggle - Handles cloned headers
       document.addEventListener('click', function (e) {
-        if (mobileDrawer && mobileDrawer.contains(e.target) && e.target.tagName === 'A') {
-          console.log('Link clicked in mobile drawer, closing menu');
-          closeMenu();
+        var toggle = e.target.closest('.menu-toggle');
+        if (toggle) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleMenu(e);
         }
-      });
+      }, true); // Capture phase
 
-      // Close when clicking on backdrop or outside panel
+      // Handle touch events specifically if needed
+      document.addEventListener('touchend', function (e) {
+        var toggle = e.target.closest('.menu-toggle');
+        if (toggle) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleMenu(e);
+        }
+      }, { passive: false, capture: true });
+
+
+      // Global closers
       document.addEventListener('click', function (e) {
         if (e.target && e.target.id === 'menu-backdrop') {
           closeMenu();
           return;
         }
         if (!document.body.classList.contains('is-menu-toggled-on')) return;
-        var withinMenu = navMenu && navMenu.contains(e.target);
-        var withinToggle = menuToggle && menuToggle.contains(e.target);
-        if (!withinMenu && !withinToggle) closeMenu();
+
+        var drawer = document.getElementById('mobile-drawer');
+        var toggle = e.target.closest('.menu-toggle');
+        if (drawer && !drawer.contains(e.target) && !toggle) {
+          // Check if clicking inside original nav menu which implies navigation
+          // But valid links inside nav are handled separately?
+          // Actually, original nav menu is hidden on mobile so clicks there unlikely unless layout is weird.
+          closeMenu();
+        }
       });
 
-      // Close on ESC
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closeMenu();
       });
 
-
-      // Initial update on load
       updateMobileHeaderOffset();
-      // Force closed state on load to ensure burger is visible
-      try { closeMenu(); } catch (e) { }
-      setTimeout(function () { try { closeMenu(); } catch (e) { } }, 0);
 
-      // Additional listener for orientation change and rapid resize
-      window.addEventListener('orientationchange', function () {
-        setTimeout(function () {
-          if (window.innerWidth > 991) {
-            closeMenu();
-            // Force close any remaining mobile drawer elements
-            var drawer = document.getElementById('mobile-drawer');
-            if (drawer) {
-              drawer.style.transform = 'translateX(100%)';
-            }
-            // Remove any backdrop
-            var backdrop = document.getElementById('menu-backdrop');
-            if (backdrop && backdrop.parentNode) {
-              backdrop.parentNode.removeChild(backdrop);
-            }
-          }
-        }, 100);
-      });
-
-      // Debounced resize handler for better performance
-      var resizeTimeout;
+      // Handle resize/orientation
       window.addEventListener('resize', function () {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function () {
-          if (window.innerWidth > 991) {
-            closeMenu();
-            // Force close any remaining mobile drawer elements
-            var drawer = document.getElementById('mobile-drawer');
-            if (drawer) {
-              drawer.style.transform = 'translateX(100%)';
-            }
-            // Remove any backdrop
-            var backdrop = document.getElementById('menu-backdrop');
-            if (backdrop && backdrop.parentNode) {
-              backdrop.parentNode.removeChild(backdrop);
-            }
-          }
-          updateMobileHeaderOffset();
-        }, 150);
+        updateMobileHeaderOffset();
+        if (window.innerWidth > 991) closeMenu();
       });
     });
     // === Projects filter (bottom bar) ===

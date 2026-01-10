@@ -439,8 +439,94 @@ body {
 }
 
 /* --- AJUSTEMENT POSITION LOGO HEADER MOBILE (SANS SCROLL) --- */
-@media screen and (max-width: 991px) {
-    .site-header:not(.clone) .logo-image {
-        transform: translateY(-3px) !important;
-    }
+/* --- AJUSTEMENT POSITION LOGO HEADER (TABLETTE GÉNÉRALE) --- */
+@media screen and (min-width: 851px) and (max-width: 991px) {
+
+	#masthead .logo-image,
+	#masthead .site-header:not(.clone) .logo-image,
+	#masthead .site-header.clone .logo-image {
+		transform: translateX(-120px) translateY(-3px) !important;
+	}
+}
+
+/* --- AJUSTEMENT POSITION LOGO HEADER MOBILE (< 768px) --- */
+@media screen and (max-width: 768px) {
+
+	/* Monter de 4px (Target: -7px) with high specificity */
+	#masthead .logo-image,
+	#masthead .site-header:not(.clone) .logo-image,
+	#masthead .site-header.clone .logo-image {
+		transform: translateX(-120px) translateY(-1px) !important;
+	}
+}
+
+@media screen and (max-width: 480px) {
+
+	#masthead .logo-image,
+	#masthead .site-header:not(.clone) .logo-image,
+	#masthead .site-header.clone .logo-image {
+		transform: translateX(-70px) translateY(-1px) !important;
+	}
+}
+
+/* === FIX ISOLÉ iPAD AIR 5 (769px - 850px) === */
+@media screen and (min-width: 769px) and (max-width: 850px) {
+
+	/* SUPER HAUTE SPÉCIFICITÉ ID */
+	#masthead .logo-image,
+	#masthead .site-header:not(.clone) .logo-image,
+	#masthead .site-header.clone .logo-image {
+		transform: translateX(-70px) translateY(-13px) !important;
+		margin-top: 0 !important;
+		max-width: 85% !important;
+	}
+}
+
+/* --- FOOTER LOGO ALIGNMENT (MOBILE) --- */
+@media screen and (max-width: 768px) {
+
+	/* Force left alignment for the footer logo container */
+	.elementor-element-a3c724e {
+		align-items: flex-start !important;
+		justify-content: flex-start !important;
+		text-align: left !important;
+	}
+
+	.footer-logo-wrapper {
+		text-align: left !important;
+		margin-left: 0 !important;
+		padding-left: 0 !important;
+		display: block !important;
+		width: 100% !important;
+	}
+
+	.footer-logo-wrapper img {
+		margin-left: 0 !important;
+		margin-right: auto !important;
+		display: block !important;
+	}
+}
+
+
+/* --- ALIGNEMENT CONTENU BAS DE PAGE MOBILE (Social & Copyright) --- */
+@media screen and (max-width: 768px) {
+
+	/* Aligner les icônes sociales à gauche */
+	.elementor-element-7dcf136 {
+		justify-content: flex-start !important;
+		padding-left: 0 !important;
+	}
+
+	/* Aligner le copyright à gauche */
+	.site-footer .site-info {
+		text-align: left !important;
+		padding-left: 20px !important;
+	}
+
+	/* Assurer l'alignement à gauche des conteneurs parents */
+	.elementor-element-af5edb2,
+	.elementor-element-a3c724e {
+		align-items: flex-start !important;
+		text-align: left !important;
+	}
 }

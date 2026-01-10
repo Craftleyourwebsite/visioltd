@@ -160,95 +160,36 @@
 	}
 }
 
-/* --- MOBILE - LOGO FOOTER NORMAL - SOLUTION FINALE --- */
+/* --- MOBILE - LOGO FOOTER ALIGNEMENT GAUCHE (COMME AFRICA.HTML / INDEX.CSS) --- */
 @media (max-width: 768px) {
 
-	/* Reset absolu pour le logo footer sur mobile */
-	.elementor-element-a3c724e .footer-logo-wrapper,
-	.elementor-element-a3c724e .footer-logo-wrapper *,
-	.elementor-element-a3c724e .footer-logo-wrapper img,
-	.elementor-element-a3c724e .footer-logo-wrapper a {
-		all: unset !important;
-		box-sizing: border-box !important;
-		position: relative !important;
-		left: 0px !important;
-		right: auto !important;
-		top: -5px !important;
-		bottom: auto !important;
-		margin: 0px !important;
-		padding: 0px !important;
-		transform: none !important;
-		translate: none !important;
-		float: none !important;
-		clear: both !important;
-		display: block !important;
-		width: auto !important;
-		height: auto !important;
-		max-width: 150px !important;
+	/* Force left alignment for the footer logo container */
+	.elementor-element-a3c724e {
+		align-items: flex-start !important;
+		justify-content: flex-start !important;
 		text-align: left !important;
-		z-index: auto !important;
-		opacity: 1 !important;
-		visibility: visible !important;
 	}
 
-	/* Reconstruction minimale et stricte */
-	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper {
+	.footer-logo-wrapper {
+		text-align: left !important;
+		margin-left: 0 !important;
+		padding-left: 0 !important;
 		display: block !important;
 		width: 100% !important;
-		text-align: left !important;
-		position: relative !important;
-		top: -5px !important;
-		left: 0px !important;
-		transform: none !important;
-		margin: 0px !important;
-		padding: 0px !important;
 	}
 
-	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper a {
-		display: inline-block !important;
-		text-decoration: none !important;
-		position: relative !important;
-		left: 0px !important;
-		transform: none !important;
-		margin: 0px !important;
-		padding: 0px !important;
-	}
-
-	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper img {
+	.footer-logo-wrapper img {
+		margin-left: 0 !important;
+		margin-right: auto !important;
 		display: block !important;
-		max-width: 150px !important;
-		height: auto !important;
-		margin: 0px !important;
-		position: relative !important;
-		left: 0px !important;
-		transform: none !important;
-		float: none !important;
-		width: auto !important;
 	}
 
-	/* Force les conteneurs parents */
-	footer#colophon .elementor-element-a3c724e {
-		display: flex !important;
-		flex-direction: column !important;
-		justify-content: flex-start !important;
-		align-items: flex-start !important;
+	/* Reset spécifique pour éviter les conflits */
+	footer#colophon .elementor-element-a3c724e .footer-logo-wrapper {
 		position: relative !important;
 		left: 0px !important;
 		transform: none !important;
 		margin: 0px !important;
 		padding: 0px !important;
-	}
-
-	/* Override spécifique pour les styles inline */
-	[style*="left: -30px"] {
-		left: 0px !important;
-	}
-
-	[style*="left:-30px"] {
-		left: 0px !important;
-	}
-
-	[style*="transform"] {
-		transform: none !important;
 	}
 }
