@@ -191,7 +191,7 @@
 		.aboutus-language-btn .lang-part.active,
 		.menu-item-language .lang-part.active {
 			opacity: 1;
-			color: #d4af37;
+			color: #d4af37 !important;
 			/* highlight active language */
 			font-weight: 700;
 		}
@@ -343,6 +343,12 @@
 			border-radius: 0 !important;
 		}
 
+		/* Fix for Hover State: Keep active language gold */
+		.aboutus-language-btn:hover .lang-part.active,
+		.menu-item-language a:hover .lang-part.active {
+			color: #d4af37 !important;
+		}
+
 		/* Services title shift */
 		@media screen and (min-width: 992px) {
 			.elementor-element-8839b51 .qodef-m-title {
@@ -489,6 +495,11 @@
 
 			.menu-item-language {
 				display: block !important;
+			}
+
+			.menu-item-language a {
+				pointer-events: auto !important;
+				cursor: pointer !important;
 			}
 
 			/* Forcer le menu-toggle à être visible en mobile */
@@ -2434,7 +2445,7 @@
 											<a href="../contact/">Contact</a>
 										</li>
 										<li class="menu-item menu-item-language" id="menu-item-language">
-											<a href="#" onclick="toggleLanguage(); return false;">Language: <span
+											<a href="#" onclick="return false;"><span
 													class="lang-part lang-en">EN</span><span
 													class="lang-sep">-</span><span
 													class="lang-part lang-fr">FR</span></a>
@@ -2442,9 +2453,9 @@
 									</ul>
 								</div>
 								<div class="language-switcher">
-									<button class="aboutus-language-btn" id="language-btn"
-										onclick="toggleLanguage()"><span class="lang-part lang-en">EN</span><span
-											class="lang-sep">-</span><span class="lang-part lang-fr">FR</span></button>
+									<button class="aboutus-language-btn" id="language-btn"><span
+											class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span
+											class="lang-part lang-fr">FR</span></button>
 								</div><!-- .language-switcher -->
 							</div><!-- .layout-medium -->
 						</div><!-- .menu-wrap -->
@@ -2545,7 +2556,8 @@
 									<div class="elementor-element elementor-element-32f365d elementor-widget elementor-widget-heading"
 										data-element_type="widget" data-id="32f365d" data-widget_type="heading.default">
 										<div class="elementor-widget-container">
-											<p class="elementor-heading-title elementor-size-default">Vision. Design.
+											<p class="elementor-heading-title elementor-size-default"
+												data-i18n="intro_subtitle">Vision. Design.
 												Inspire</p>
 										</div>
 									</div>
@@ -2555,7 +2567,8 @@
 									<div class="elementor-element elementor-element-4b0b87c elementor-widget elementor-widget-heading"
 										data-element_type="widget" data-id="4b0b87c" data-widget_type="heading.default">
 										<div class="elementor-widget-container">
-											<h2 class="elementor-heading-title elementor-size-default">"Future-Ready by
+											<h2 class="elementor-heading-title elementor-size-default"
+												data-i18n="intro_quote">"Future-Ready by
 												Design"</h2>
 										</div>
 									</div>
@@ -2571,7 +2584,7 @@
 										<div class="elementor-widget-container">
 											<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-letter qodef-qi--has-appear qodef--appear-from-right"
 												data-appear-delay="100">
-												<h1 class="qodef-m-title"><span
+												<h1 class="qodef-m-title" data-i18n-group="intro_title"><span
 														class="qodef-e-word-holder">SERVICES</span></h1>
 											</div>
 										</div>
@@ -2585,7 +2598,8 @@
 									<div class="elementor-element elementor-element-ad9154e elementor-widget elementor-widget-heading"
 										data-element_type="widget" data-id="ad9154e" data-widget_type="heading.default">
 										<div class="elementor-widget-container">
-											<h2 class="elementor-heading-title elementor-size-default">From concept to
+											<h2 class="elementor-heading-title elementor-size-default"
+												data-i18n="intro_desc">From concept to
 												completion, we bring innovation and rigor to every detail—designing
 												timeless spaces that elevate everyday life.</h2>
 										</div>
@@ -2599,7 +2613,7 @@
 										<div class="elementor-widget-container">
 											<span
 												class="qodef-shortcode qodef-m qodef-qi-button qodef-layout--textual qodef-icon--right"><span
-													class="qodef-m-text">All Services</span> <span
+													class="qodef-m-text" data-i18n="intro_btn">All Services</span> <span
 													class="qodef-m-icon"><span class="qodef-m-icon-inner"><svg
 															height="21" viewbox="0 0 21 21" width="21"
 															xmlns="http://www.w3.org/2000/svg">
@@ -2661,7 +2675,8 @@
 									<div class="elementor-element elementor-element-630a7b5 elementor-widget elementor-widget-heading"
 										data-element_type="widget" data-id="630a7b5" data-widget_type="heading.default">
 										<div class="elementor-widget-container">
-											<h2 class="elementor-heading-title elementor-size-default">VISIO
+											<h2 class="elementor-heading-title elementor-size-default"
+												data-i18n="intro_visio_title">VISIO
 												Architecture: Timeless spaces shaped by innovation, rigorous planning,
 												and client-focused delivery.</h2>
 										</div>
@@ -2671,7 +2686,8 @@
 										data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 										data-widget_type="heading.default">
 										<div class="elementor-widget-container">
-											<p class="elementor-heading-title elementor-size-default">VISIO Architecture
+											<p class="elementor-heading-title elementor-size-default"
+												data-i18n="intro_visio_desc">VISIO Architecture
 												brings together creativity and precision. With expertise in design,
 												planning, and project management, we transform your ambition into
 												exceptional built outcomes.</p>
@@ -2689,7 +2705,8 @@
 												class="qodef-shortcode qodef-m qodef-qi-accordion qodef-qi-clear qodef-behavior--accordion qodef-layout--simple qodef-style--border-between qodef-height--auto">
 
 												<h3 class="qodef-e-title-holder">
-													<span class="qodef-e-title">Architecture</span>
+													<span class="qodef-e-title"
+														data-i18n="acc_arch_title">Architecture</span>
 													<span class="qodef-e-mark">
 														<span class="qodef-icon--plus">
 															<span class="qodef-e-icon">
@@ -2724,7 +2741,7 @@
 												</h3>
 												<div class="qodef-e-content">
 													<div class="qodef-e-content-inner">
-														<ul>
+														<ul data-i18n="acc_arch_list">
 															<li>Architectural design</li>
 															<li>Site analysis & architectural programming</li>
 															<li>Concept design options + massing studies</li>
@@ -2743,7 +2760,8 @@
 												</div>
 
 												<h3 class="qodef-e-title-holder">
-													<span class="qodef-e-title">Urban Planning & Master Planning</span>
+													<span class="qodef-e-title" data-i18n="acc_urban_title">Urban
+														Planning & Master Planning</span>
 													<span class="qodef-e-mark">
 														<span class="qodef-icon--plus">
 															<span class="qodef-e-icon">
@@ -2778,7 +2796,7 @@
 												</h3>
 												<div class="qodef-e-content">
 													<div class="qodef-e-content-inner">
-														<ul>
+														<ul data-i18n="acc_urban_list">
 															<li>Urban design and master planning</li>
 															<li>Feasibility and development potential studies</li>
 															<li>Land use planning + density / typology studies</li>
@@ -2793,7 +2811,8 @@
 												</div>
 
 												<h3 class="qodef-e-title-holder">
-													<span class="qodef-e-title">Interior Architecture & Fit-Out</span>
+													<span class="qodef-e-title" data-i18n="acc_interior_title">Interior
+														Architecture & Fit-Out</span>
 													<span class="qodef-e-mark">
 														<span class="qodef-icon--plus">
 															<span class="qodef-e-icon">
@@ -2828,7 +2847,7 @@
 												</h3>
 												<div class="qodef-e-content">
 													<div class="qodef-e-content-inner">
-														<ul>
+														<ul data-i18n="acc_interior_list">
 															<li>Interior design concept and space planning</li>
 															<li>FF&E design guidance</li>
 															<li>Materials, finishes, lighting concept, and detailing
@@ -2842,7 +2861,9 @@
 												</div>
 
 												<h3 class="qodef-e-title-holder">
-													<span class="qodef-e-title">Landscape Architecture & External
+													<span class="qodef-e-title"
+														data-i18n="acc_landscape_title">Landscape Architecture &
+														External
 														Works</span>
 													<span class="qodef-e-mark">
 														<span class="qodef-icon--plus">
@@ -2878,7 +2899,7 @@
 												</h3>
 												<div class="qodef-e-content">
 													<div class="qodef-e-content-inner">
-														<ul>
+														<ul data-i18n="acc_landscape_list">
 															<li>Landscape concept and detailed design</li>
 															<li>Hardscape/softscape design</li>
 															<li>External lighting concept</li>
@@ -2936,7 +2957,8 @@
 							<div class="elementor-widget-container">
 								<div
 									class="qodef-shortcode qodef-m qodef-qi-accordion qodef-qi-clear qodef-behavior--accordion qodef-layout--simple qodef-style--border-between qodef-height--auto">
-									<h3 class="qodef-e-title-holder"><span class="qodef-e-title">Project
+									<h3 class="qodef-e-title-holder"><span class="qodef-e-title"
+											data-i18n="acc_pm_title">Project
 											Management</span> <span class="qodef-e-mark"><span
 												class="qodef-icon--plus"><span class="qodef-e-icon"><svg height="512"
 														id="Capa_1" viewbox="0 0 207.2 207.2" width="512"
@@ -2963,7 +2985,7 @@
 													</svg></span></span></span></h3>
 									<div class="qodef-e-content">
 										<div class="qodef-e-content-inner">
-											<ul>
+											<ul data-i18n="acc_pm_list">
 												<li>Project appraisal and project structuring support</li>
 												<li>Design programme and deliverables planning</li>
 												<li>Stakeholder coordination and meeting leadership</li>
@@ -2974,7 +2996,8 @@
 											</ul>
 										</div>
 									</div>
-									<h3 class="qodef-e-title-holder"><span class="qodef-e-title">Feasibility, Strategy &
+									<h3 class="qodef-e-title-holder"><span class="qodef-e-title"
+											data-i18n="acc_feasibility_title">Feasibility, Strategy &
 											Development Advisory
 											Planning</span> <span class="qodef-e-mark"><span
 												class="qodef-icon--plus"><span class="qodef-e-icon"><svg height="512"
@@ -3002,7 +3025,7 @@
 													</svg></span></span></span></h3>
 									<div class="qodef-e-content">
 										<div class="qodef-e-content-inner">
-											<ul>
+											<ul data-i18n="acc_feasibility_list">
 												<li>Highest-and-best-use studies</li>
 												<li>Development strategy and positioning</li>
 												<li>Concept visioning packs for investors / boards</li>
@@ -3011,7 +3034,8 @@
 											</ul>
 										</div>
 									</div>
-									<h3 class="qodef-e-title-holder"><span class="qodef-e-title">Building Refurbishment,
+									<h3 class="qodef-e-title-holder"><span class="qodef-e-title"
+											data-i18n="acc_refurb_title">Building Refurbishment,
 											Retrofit & Adaptive Reuse</span>
 										<span class="qodef-e-mark"><span class="qodef-icon--plus"><span
 													class="qodef-e-icon"><svg height="512" id="Capa_1"
@@ -3040,7 +3064,7 @@
 									</h3>
 									<div class="qodef-e-content">
 										<div class="qodef-e-content-inner">
-											<ul>
+											<ul data-i18n="acc_refurb_list">
 												<li>Condition appraisal and upgrade strategies</li>
 												<li>Façade refurbishment / modernization concepts</li>
 												<li>Replanning, reconfiguration, and conversion studies</li>
@@ -3063,7 +3087,8 @@
 						<div class="elementor-element elementor-element-5200541 elementor-widget elementor-widget-heading"
 							data-element_type="widget" data-id="5200541" data-widget_type="heading.default">
 							<div class="elementor-widget-container">
-								<h2 class="elementor-heading-title elementor-size-default">Sustainability & Resilience
+								<h2 class="elementor-heading-title elementor-size-default"
+									data-i18n="acc_sustain_title">Sustainability & Resilience
 									Integration</h2>
 							</div>
 						</div>
@@ -3074,7 +3099,8 @@
 							<div class="elementor-widget-container">
 								<div
 									class="qodef-shortcode qodef-m qodef-qi-accordion qodef-qi-clear qodef-behavior--accordion qodef-layout--simple qodef-style--border-between qodef-height--auto">
-									<h3 class="qodef-e-title-holder"><span class="qodef-e-title">Design
+									<h3 class="qodef-e-title-holder"><span class="qodef-e-title"
+											data-i18n="acc_sustain_sub_title">Design
 											Excellence</span> <span class="qodef-e-mark"><span
 												class="qodef-icon--plus"><span class="qodef-e-icon"><svg height="512"
 														id="Capa_1" viewbox="0 0 207.2 207.2" width="512"
@@ -3101,7 +3127,7 @@
 													</svg></span></span></span></h3>
 									<div class="qodef-e-content">
 										<div class="qodef-e-content-inner">
-											<ul>
+											<ul data-i18n="acc_sustain_list">
 												<li>Climate-responsive design</li>
 												<li>Passive design studies</li>
 												<li>Material strategy for durability and reduced maintenance</li>
@@ -3110,7 +3136,8 @@
 											</ul>
 										</div>
 									</div>
-									<h3 class="qodef-e-title-holder"><span class="qodef-e-title">BIM / Digital Design
+									<h3 class="qodef-e-title-holder"><span class="qodef-e-title"
+											data-i18n="acc_sustain_bim_title">BIM / Digital Design
 											Support</span> <span class="qodef-e-mark"><span
 												class="qodef-icon--plus"><span class="qodef-e-icon"><svg height="512"
 														id="Capa_1" viewbox="0 0 207.2 207.2" width="512"
@@ -3137,7 +3164,7 @@
 													</svg></span></span></span></h3>
 									<div class="qodef-e-content">
 										<div class="qodef-e-content-inner">
-											<ul>
+											<ul data-i18n="acc_sustain_bim_list">
 												<li>BIM-ready design delivery</li>
 												<li>3D modeling and coordination support</li>
 												<li>Drawing standards, documentation management, revision control
@@ -3145,7 +3172,8 @@
 											</ul>
 										</div>
 									</div>
-									<h3 class="qodef-e-title-holder"><span class="qodef-e-title">Specialist
+									<h3 class="qodef-e-title-holder"><span class="qodef-e-title"
+											data-i18n="acc_sustain_spec_title">Specialist
 											Built-Environment Studies</span>
 										<span class="qodef-e-mark"><span class="qodef-icon--plus"><span
 													class="qodef-e-icon"><svg height="512" id="Capa_1"
@@ -3174,7 +3202,7 @@
 									</h3>
 									<div class="qodef-e-content">
 										<div class="qodef-e-content-inner">
-											<ul>
+											<ul data-i18n="acc_sustain_spec_list">
 												<li>Functional flow planning</li>
 												<li>Space standards, area schedules, stacking and adjacency studies</li>
 												<li>Accessibility and user-experience planning</li>
@@ -3230,7 +3258,7 @@
 								<div class="elementor-widget-container">
 									<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-word qodef-qi--has-appear qodef--appear-from-top"
 										data-appear-delay="100">
-										<h1 class="qodef-m-title"
+										<h1 class="qodef-m-title" data-i18n-group="type_title"
 											style="margin-bottom: 60px; width: 100%; max-width: 100%; overflow: visible; font-size: clamp(30px, 8vw, 80px); white-space: normal;">
 											<span class="qodef-e-word">TYPE</span> <span class="qodef-e-word">OF</span>
 											<span class="qodef-e-word">PROJECTS</span>
@@ -3247,11 +3275,11 @@
 										<!-- Column 1 -->
 										<div class="projects-column">
 											<div class="project-category" style="margin-bottom: 40px;">
-												<h4
-													style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';">
+												<h4 style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';"
+													data-i18n="type_core_title">
 													Core Architecture</h4>
-												<p
-													style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';">
+												<p style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';"
+													data-i18n="type_core_desc">
 													Commercial & Mixed-Use<br>
 													Office Buildings & Corporate HQ<br>
 													Retail & Flagship Stores<br>
@@ -3270,11 +3298,11 @@
 												</p>
 											</div>
 											<div class="project-category" style="margin-bottom: 40px;">
-												<h4
-													style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';">
+												<h4 style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';"
+													data-i18n="type_infra_title">
 													Infrastructure & Transport</h4>
-												<p
-													style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';">
+												<p style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';"
+													data-i18n="type_infra_desc">
 													Airport & Aviation Facilities<br>
 													Urban Terminals & Mobility Hubs<br>
 													Transport-Oriented Development<br>
@@ -3283,11 +3311,11 @@
 												</p>
 											</div>
 											<div class="project-category">
-												<h4
-													style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';">
+												<h4 style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';"
+													data-i18n="type_ind_title">
 													Industrial & Logistics</h4>
-												<p
-													style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';">
+												<p style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';"
+													data-i18n="type_ind_desc">
 													Industrial Facilities & Warehousing<br>
 													Logistics Parks & Distribution Hubs<br>
 													Waste & Environmental Infrastructure<br>
@@ -3298,11 +3326,11 @@
 										<!-- Column 2 -->
 										<div class="projects-column">
 											<div class="project-category" style="margin-bottom: 40px;">
-												<h4
-													style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';">
+												<h4 style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';"
+													data-i18n="type_urban_dev_title">
 													Urban Planning & Territorial Development</h4>
-												<p
-													style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';">
+												<p style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';"
+													data-i18n="type_urban_dev_desc">
 													City Regeneration & Urban Renewal<br>
 													Master Planning & New Towns<br>
 													Smart City / Mixed-Use Districts<br>
@@ -3311,11 +3339,11 @@
 												</p>
 											</div>
 											<div class="project-category" style="margin-bottom: 40px;">
-												<h4
-													style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';">
+												<h4 style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';"
+													data-i18n="type_heritage_title">
 													Heritage & Adaptive Reuse</h4>
-												<p
-													style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';">
+												<p style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';"
+													data-i18n="type_heritage_desc">
 													Heritage Conservation<br>
 													Adaptive Reuse & Conversions<br>
 													Façade Upgrades & Building Refurbishments<br>
@@ -3323,11 +3351,11 @@
 												</p>
 											</div>
 											<div class="project-category" style="margin-bottom: 40px;">
-												<h4
-													style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';">
+												<h4 style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';"
+													data-i18n="type_interior_title">
 													Interior Architecture</h4>
-												<p
-													style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';">
+												<p style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';"
+													data-i18n="type_interior_desc">
 													Corporate Interiors<br>
 													Retail Interiors<br>
 													Residential Interiors<br>
@@ -3336,22 +3364,22 @@
 												</p>
 											</div>
 											<div class="project-category" style="margin-bottom: 40px;">
-												<h4
-													style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';">
+												<h4 style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';"
+													data-i18n="type_land_title">
 													Landscape & Environment</h4>
-												<p
-													style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';">
+												<p style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';"
+													data-i18n="type_land_desc">
 													Landscape Architecture<br>
 													Parks, Green Corridors & Waterfront Landscapes<br>
 													Sustainable / Climate-Resilient Design Projects
 												</p>
 											</div>
 											<div class="project-category">
-												<h4
-													style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';">
+												<h4 style="font-weight: 700; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 10px; font-family: 'Onest';"
+													data-i18n="type_spec_title">
 													Specialist / Strategic Work</h4>
-												<p
-													style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';">
+												<p style="font-size: 15px; line-height: 1.8; color: #32455e; font-family: 'Onest';"
+													data-i18n="type_spec_desc">
 													Feasibility Studies & Development Strategy<br>
 													Concept Visioning & Investment Pitch Packages<br>
 													Design Competitions & Prototypes
@@ -3395,7 +3423,8 @@
 												data-element_type="widget" data-id="3d80490"
 												data-widget_type="heading.default">
 												<div class="elementor-widget-container">
-													<h4 class="elementor-heading-title elementor-size-default">
+													<h4 class="elementor-heading-title elementor-size-default"
+														data-i18n="collab_subtitle">
 														Collaboration —</h4>
 												</div>
 											</div>
@@ -3415,7 +3444,7 @@
 												<div class="elementor-widget-container">
 													<div
 														class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-letter qodef-qi--has-appear qodef--appear-fade">
-														<h1 class="qodef-m-title"><span
+														<h1 class="qodef-m-title" data-i18n-group="collab_title"><span
 																class="qodef-e-word-holder">Let's</span> <span
 																class="qodef-e-word-holder">work</span><br>
 															<span class="qodef-e-word-holder">together.</span><br>
@@ -3427,7 +3456,8 @@
 												data-element_type="widget" data-id="7a5f298"
 												data-widget_type="heading.default">
 												<div class="elementor-widget-container">
-													<h3 class="elementor-heading-title elementor-size-default">Tell us
+													<h3 class="elementor-heading-title elementor-size-default"
+														data-i18n="collab_text">Tell us
 														about your project— we’ll help shape it from idea to
 														delivery</h3>
 												</div>
@@ -3447,7 +3477,8 @@
 												<div class="elementor-widget-container">
 													<a class="qodef-shortcode qodef-m qodef-qi-button qodef-html--link qodef-layout--outlined qodef-type--standard qodef-size--large qodef-icon--right qodef-hover--icon-move-horizontal-short"
 														href="https://themes.pixelwars.org/arkiz/demo-01/contact/"
-														target="_self"><span class="qodef-m-text">Let&#039;s Talk</span>
+														target="_self"><span class="qodef-m-text"
+															data-i18n="collab_btn">Let&#039;s Talk</span>
 														<span class="qodef-m-icon"><span class="qodef-m-icon-inner"><svg
 																	height="21" viewbox="0 0 21 21" width="21"
 																	xmlns="http://www.w3.org/2000/svg">
@@ -3615,7 +3646,7 @@
 								<div class="elementor-widget-container">
 									<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-word qodef-qi--has-appear qodef--appear-from-top"
 										data-appear-delay="100">
-										<h1 class="qodef-m-title">
+										<h1 class="qodef-m-title" data-i18n-group="footer_contact_us_title">
 											<span class="qodef-e-word">CONTACT</span> <span
 												class="qodef-e-word">US</span>
 										</h1>
@@ -3627,7 +3658,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">Address</p>
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_address_title">Address</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-6b961ec animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3635,7 +3667,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">45, Saint Georges Street
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_address_content">45, Saint Georges Street
 										11324 Port Louis, Mauritius</p>
 								</div>
 							</div>
@@ -3644,7 +3677,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">Mail Us</p>
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_mail_title">Mail Us</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-6e0f571 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3660,7 +3694,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">Call Us</p>
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_call_title">Call Us</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-7eea730 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3676,7 +3711,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">Working Hours</p>
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_hours_title">Working Hours</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-2f0bf20 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3684,7 +3720,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">Monday - Friday : 8:00am -
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_hours_content">Monday - Friday : 8:00am -
 										5:00 pm</p>
 								</div>
 							</div>
@@ -3697,7 +3734,7 @@
 								<div class="elementor-widget-container">
 									<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-word qodef-qi--has-appear qodef--appear-from-top"
 										data-appear-delay="100">
-										<h1 class="qodef-m-title">
+										<h1 class="qodef-m-title" data-i18n-group="footer_our_projects_title">
 											<span class="qodef-e-word">OUR</span> <span
 												class="qodef-e-word">PROJECTS</span>
 										</h1>
@@ -3709,7 +3746,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a href="../project/">All
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_all_projects">All
 											Projects</a></p>
 								</div>
 							</div>
@@ -3718,8 +3756,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Architecture</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_architecture">Architecture</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-b8c769d animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3727,8 +3765,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Urban Planning & Master
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_urban_planning">Urban Planning & Master
 											Planning</a></p>
 								</div>
 							</div>
@@ -3737,8 +3775,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Infrastructure & Mobility</a>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_infrastructure">Infrastructure & Mobility</a>
 									</p>
 								</div>
 							</div>
@@ -3747,8 +3785,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Industrial & Logistics</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_industrial">Industrial & Logistics</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-heritage animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3756,8 +3794,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Heritage & Adaptive Reuse</a>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_heritage">Heritage & Adaptive Reuse</a>
 									</p>
 								</div>
 							</div>
@@ -3766,8 +3804,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Interior Architecture</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_interior">Interior Architecture</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-landscape animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3775,8 +3813,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Landscape & Public Realm</a>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_landscape">Landscape & Public Realm</a>
 									</p>
 								</div>
 							</div>
@@ -3785,8 +3823,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Strategy & Feasibility</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_strategy">Strategy & Feasibility</a></p>
 								</div>
 							</div>
 						</div>
@@ -3798,7 +3836,7 @@
 								<div class="elementor-widget-container">
 									<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-word qodef-qi--has-appear qodef--appear-from-top"
 										data-appear-delay="100">
-										<h1 class="qodef-m-title">
+										<h1 class="qodef-m-title" data-i18n-group="footer_links_title">
 											<span class="qodef-e-word">LINKS</span>
 										</h1>
 									</div>
@@ -3809,7 +3847,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a href="../">Home</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../"
+											data-i18n="footer_home">Home</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-16b69b6 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3817,8 +3856,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../aboutus/">About Us</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../aboutus/"
+											data-i18n="footer_about">About Us</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-e90a0d1 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3826,8 +3865,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../service/">Services</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../service/"
+											data-i18n="footer_services">Services</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-0c21dbe animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3835,8 +3874,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../africa/">Africa</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../africa/"
+											data-i18n="footer_africa">Africa</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-rise-link animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3844,8 +3883,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../rise/">RISE</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../rise/"
+											data-i18n="footer_rise">RISE</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-social-link animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3853,8 +3892,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../social/">Social</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../social/"
+											data-i18n="footer_social">Social</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-project-link animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3862,8 +3901,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Projects</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_projects">Projects</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-news-link animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3871,8 +3910,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../news/">News</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../news/"
+											data-i18n="footer_news">News</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-contact-link animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3880,8 +3919,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../contact/">Contact</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../contact/"
+											data-i18n="footer_contact">Contact</a></p>
 								</div>
 							</div>
 						</div>
@@ -3893,7 +3932,7 @@
 								<div class="elementor-widget-container">
 									<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-word qodef-qi--has-appear qodef--appear-from-top"
 										data-appear-delay="100">
-										<h1 class="qodef-m-title">
+										<h1 class="qodef-m-title" data-i18n-group="footer_mission_vision_title">
 											<span class="qodef-e-word">MISSION</span> <span
 												class="qodef-e-word">&amp;</span> <span
 												class="qodef-e-word">VISION</span>
@@ -3906,7 +3945,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">MISSION</p>
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_mission_subtitle">MISSION</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-bcdd153 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3914,7 +3954,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">To deliver design
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_mission_desc">To deliver design
 										excellence through innovation, technical rigour, and sustainable
 										thinking—creating spaces and places that add long-term value for clients and
 										communities.</p>
@@ -3925,7 +3966,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">VISION</p>
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_vision_subtitle">VISION</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-6ad3838 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -3933,7 +3975,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">To set the benchmark for
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_vision_desc">To set the benchmark for
 										architecture, planning, and development in Mauritius, and to be recognised among
 										Africa's leading multidisciplinary firms.</p>
 								</div>
@@ -3952,57 +3995,8 @@
 	<script type="speculationrules">
 	     {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 	</script>
+
 	<script>
-		// Gestion de l'état de langue avec mise en évidence EN-FR (persistée)
-		const LANGUAGE_STORAGE_KEY = 'currentLanguage';
-
-		function getCurrentLanguage() {
-			try {
-				return localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'EN';
-			} catch (e) {
-				return 'EN';
-			}
-		}
-
-		function setCurrentLanguage(lang) {
-			try {
-				localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
-			} catch (e) {
-				// ignore
-			}
-		}
-
-		function updateLanguageUI() {
-			const lang = getCurrentLanguage();
-			const languageBtn = document.getElementById('language-btn');
-			const languageMenuItem = document.querySelector('#menu-item-language a');
-
-			if (languageBtn && !languageBtn.querySelector('.lang-en')) {
-				languageBtn.innerHTML = '<span class="lang-part lang-en">EN<\/span><span class="lang-sep">-<\/span><span class="lang-part lang-fr">FR<\/span>';
-			}
-
-			const btnEn = languageBtn ? languageBtn.querySelector('.lang-en') : null;
-			const btnFr = languageBtn ? languageBtn.querySelector('.lang-fr') : null;
-			const menuEn = languageMenuItem ? languageMenuItem.querySelector('.lang-en') : null;
-			const menuFr = languageMenuItem ? languageMenuItem.querySelector('.lang-fr') : null;
-
-			[btnEn, menuEn].forEach(function (el) { if (el) el.classList.toggle('active', lang === 'EN'); });
-			[btnFr, menuFr].forEach(function (el) { if (el) el.classList.toggle('active', lang === 'FR'); });
-
-			if (languageBtn) {
-				languageBtn.classList.toggle('active', lang === 'FR');
-			}
-		}
-
-		function toggleLanguage() {
-			const next = getCurrentLanguage() === 'EN' ? 'FR' : 'EN';
-			setCurrentLanguage(next);
-			updateLanguageUI();
-		}
-
-		document.addEventListener('DOMContentLoaded', function () {
-			updateLanguageUI();
-		});
 		const lazyloadRunObserver = () => {
 			const lazyloadBackgrounds = document.querySelectorAll(`.e-con.e-parent:not(.e-lazyloaded)`);
 			const lazyloadBackgroundObserver = new IntersectionObserver((entries) => {
@@ -4027,7 +4021,6 @@
 		events.forEach((event) => {
 			document.addEventListener(event, lazyloadRunObserver);
 		});
-
 	</script>
 	<script>
 		// Mobile menu toggle (explicit, to ensure consistent behavior on this static page)
@@ -4273,6 +4266,8 @@
 			setInterval(forceFooterPosition, 1000);
 		});
 	</script>
+	<script src="../js/language.js"></script>
+	<script src="../js/services-translation.js"></script>
 </body>
 
 </html>
