@@ -890,6 +890,153 @@
 		.elementor-element-83346e1 .elementor-element-7dcf136 a {
 			margin-left: 0 !important;
 		}
+
+		/* --- STYLES PRE-FOOTER SECTION - DESIGN COMME AFRICA.HTML --- */
+		/* Fond noir pour la section pre-footer */
+		.elementor-element-83346e1 {
+			background-color: #000000 !important;
+			background: #000000 !important;
+			padding-bottom: 100px !important;
+		}
+
+		.elementor-element-83346e1 .e-con-inner {
+			background: transparent !important;
+		}
+
+		/* Tous les titres en blanc */
+		.elementor-element-83346e1 .qodef-m-title,
+		.elementor-element-83346e1 .qodef-e-word,
+		.elementor-element-83346e1 h1,
+		.elementor-element-83346e1 h2,
+		.elementor-element-83346e1 h3,
+		.elementor-element-83346e1 h4,
+		.elementor-element-83346e1 h5,
+		.elementor-element-83346e1 h6 {
+			color: #ffffff !important;
+		}
+
+		/* Tous les textes en blanc */
+		.elementor-element-83346e1 .elementor-heading-title,
+		.elementor-element-83346e1 .elementor-widget-container p,
+		.elementor-element-83346e1 p {
+			color: #ffffff !important;
+		}
+
+		/* Tous les liens en blanc */
+		.elementor-element-83346e1 a,
+		.elementor-element-83346e1 .elementor-heading-title a {
+			color: #ffffff !important;
+			text-decoration: none !important;
+			transition: opacity 0.3s ease !important;
+		}
+
+		.elementor-element-83346e1 a:hover,
+		.elementor-element-83346e1 .elementor-heading-title a:hover {
+			color: #ffffff !important;
+			opacity: 0.8 !important;
+		}
+
+		/* Icônes des réseaux sociaux avec fond noir et icône blanche (comme africa.html) */
+		.elementor-element-83346e1 .elementor-element-7dcf136 a {
+			display: inline-flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			width: 40px !important;
+			height: 40px !important;
+			margin: 0 !important;
+			background-color: #000000 !important;
+			border-radius: 12px !important;
+			border: none !important;
+		}
+
+		.elementor-element-83346e1 .elementor-element-7dcf136 svg,
+		.elementor-element-83346e1 .elementor-element-7dcf136 svg path {
+			fill: #ffffff !important;
+		}
+
+		/* Espacement des icônes sociales - sans gap */
+		.elementor-element-83346e1 .elementor-element-7dcf136 {
+			display: flex !important;
+			flex-direction: row !important;
+			align-items: center !important;
+			justify-content: flex-end !important;
+			gap: 0 !important;
+			flex-wrap: nowrap !important;
+		}
+
+		.elementor-element-83346e1 .elementor-element-7dcf136 .elementor-widget,
+		.elementor-element-83346e1 .elementor-element-7dcf136 .elementor-widget-container,
+		.elementor-element-83346e1 .elementor-element-7dcf136 .elementor-element {
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+
+		/* Conteneurs internes sans background */
+		.elementor-element-83346e1 .e-con,
+		.elementor-element-83346e1 .e-con-full {
+			background: transparent !important;
+		}
+
+		/* Responsive mobile */
+		@media (max-width: 768px) {
+			.elementor-element-83346e1 {
+				padding-bottom: 80px !important;
+			}
+
+			.elementor-element-83346e1 .elementor-element-7dcf136 {
+				justify-content: flex-start !important;
+			}
+		}
+
+		/* Ligne de séparation blanche en bas du header du footer (Logo + Social) */
+		.elementor-element-83346e1 .elementor-element-c7ccbf0 {
+			border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+			padding-bottom: 10px !important;
+			/* Réduit pour rapprocher de la ligne */
+			margin-bottom: 30px !important;
+			display: flex !important;
+			align-items: flex-end !important;
+			/* Pousse les éléments (logo et social) vers le bas */
+		}
+
+		/* Ajuster spécifiquement le conteneur social pour qu'il touche presque la ligne */
+		.elementor-element-83346e1 .elementor-element-7dcf136 {
+			margin-bottom: -5px !important;
+			/* Ajustement fin pour l'alignement visuel */
+		}
+
+		/* --- ESPACEMENT REDUIT POUR LES MENUS OUR PROJECTS & LINKS (Comme africa.html) --- */
+
+		/* 1. Gérer le conteneur flex/grid */
+		.elementor-element-83346e1 .elementor-element-1c03fac,
+		.elementor-element-83346e1 .elementor-element-a876615 {
+			gap: 0 !important;
+			/* On gère l'espace via margin pour être sûr */
+			display: flex !important;
+			flex-direction: column !important;
+		}
+
+		/* 2. Réduire l'espacement sur TOUS les widgets dans ces colonnes */
+		.elementor-element-83346e1 .elementor-element-1c03fac .elementor-widget,
+		.elementor-element-83346e1 .elementor-element-a876615 .elementor-widget {
+			margin-bottom: 5px !important;
+			margin-top: 0 !important;
+			padding: 0 !important;
+		}
+
+		/* 3. Exception pour les TITRES (plus d'espace en bas) */
+		.elementor-element-83346e1 .elementor-element-701fde8,
+		.elementor-element-83346e1 .elementor-element-d726f80 {
+			margin-bottom: 25px !important;
+		}
+
+		/* S'assurer que les titres h3/h4/p dans les widgets n'ont pas de marge parasite */
+		.elementor-element-83346e1 .elementor-element-1c03fac .elementor-heading-title,
+		.elementor-element-83346e1 .elementor-element-a876615 .elementor-heading-title {
+			padding: 0 !important;
+			margin: 0 !important;
+			line-height: 1.4 !important;
+		}
 	</style>
 	<link href='//fonts.googleapis.com' rel='dns-prefetch'>
 	<link href="https://themes.pixelwars.org/arkiz/demo-01/feed/" rel="alternate"
@@ -3373,7 +3520,7 @@
 								data-widget_type="qi_addons_for_elementor_animated_text.default">
 								<div class="elementor-widget-container">
 									<div class="" data-appear-delay="100"><!-- LOGO FOOTER -->
-										<img alt="VISIO" src="../public/logo.png"
+										<img alt="VISIO" src="../public/logoblanc.png"
 											style="max-width: 150px; height: auto; margin-bottom: 10px;">
 									</div>
 								</div>
