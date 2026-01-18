@@ -185,78 +185,63 @@
     };
 
     function updatePageContent(lang) {
-        document.querySelectorAll('[data-i18n]').forEach(element => {
-            const key = element.getAttribute('data-i18n');
-            if (translations[lang] && translations[lang][key]) {
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    element.placeholder = translations[lang][key];
+        const dictionary = translations[lang];
+        if (!dictionary) return;
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const translated = dictionary[key];
+            if (translated) {
+                // Robust check: if the element has a .link-text span (theme structure), update that instead
+                const linkTextSpan = el.querySelector('.link-text');
+                if (linkTextSpan) {
+                    linkTextSpan.textContent = translated;
                 } else {
-                    element.innerHTML = translations[lang][key];
+                    el.innerHTML = translated;
                 }
             }
         });
 
-        // Split Title Logic for grouped Headers
-        const groups = {};
+        // Robust handling for animated titles (data-i18n-group)
         document.querySelectorAll('[data-i18n-group]').forEach(el => {
             const groupName = el.getAttribute('data-i18n-group');
-            if (!groups[groupName]) groups[groupName] = [];
-            groups[groupName].push(el);
-        });
+            const translatedText = dictionary[groupName]; // Some groups might use the key directly
 
-        Object.keys(groups).forEach(groupName => {
-            const elements = groups[groupName];
-            // Sort by occurrence in DOM or assume order is correct
+            // Or look up based on mapping
+            let groupText = '';
+            if (groupName === 'about_africa_title') groupText = dictionary['about_africa_title'];
+            else if (groupName === 'serv_title') groupText = dictionary['serv_title'];
+            else if (groupName === 'footer_contact_us_title') groupText = dictionary['footer_contact_us_title'];
+            else if (groupName === 'footer_our_projects_title') groupText = dictionary['footer_our_projects_title'];
+            else if (groupName === 'footer_links_title') groupText = dictionary['footer_links_title'];
+            else if (groupName === 'footer_mission_vision_title') groupText = dictionary['footer_mission_vision_title'];
 
-            let translatedText = '';
-            // Determine full text based on group name map
-            if (groupName === 'about_africa_title') translatedText = translations[lang]['about_africa_title'];
-            else if (groupName === 'serv_title') translatedText = translations[lang]['serv_title'];
-            else if (groupName === 'footer_contact_us_title') translatedText = translations[lang]['footer_contact_us_title'];
-            else if (groupName === 'footer_our_projects_title') translatedText = translations[lang]['footer_our_projects_title'];
-            else if (groupName === 'footer_links_title') translatedText = translations[lang]['footer_links_title'];
-            else if (groupName === 'footer_mission_vision_title') translatedText = translations[lang]['footer_mission_vision_title'];
+            if (groupText) {
+                const words = groupText.split(' ');
+                const wordSpans = el.querySelectorAll('.qodef-e-word, .qodef-e-word-holder');
 
-
-            if (translatedText) {
-                const words = translatedText.split(' ');
-
-                // Clear existing content in the spans but keep the spans structure if possible, 
-                // OR naive approach: fill first span with everything if it's too hard to split perfectly matching DOM.
-                // Better approach: Distribute words among available elements.
-
-                if (elements.length === 1) {
-                    elements[0].textContent = translatedText;
-                } else {
-                    // Heuristic distribution
-                    const wordsPerElement = Math.ceil(words.length / elements.length);
-                    elements.forEach((el, index) => {
+                if (wordSpans.length > 0) {
+                    // Distribute words among spans
+                    const wordsPerElement = Math.ceil(words.length / wordSpans.length);
+                    wordSpans.forEach((span, index) => {
                         const start = index * wordsPerElement;
                         const end = start + wordsPerElement;
                         const segment = words.slice(start, end).join(' ');
-                        el.innerHTML = segment; // innerHTML to handle potential special chars
-
-                        // Fix for "Mission & Vision" where & might be a separate word or symbol
-                        if (groupName === 'footer_mission_vision_title' && lang === 'FR' && index === 1) {
-                            // "MISSION & VISION" -> FR: "MISSION & VISION" (Same layout usually)
-                            // If it was "MISSION" "AND" "VISION", we'd have issues.
-                            // Currently English is "MISSION" "&" "VISION" spans.
-                            // FR translation is "MISSION & VISION".
-                        }
+                        span.textContent = segment;
                     });
-
-                    // Specific Override for Mission & Vision (3 parts) -> FR: Mission & Vision (3 parts)
+                } else {
+                    el.textContent = groupText;
                 }
             }
         });
 
-        // Update Language Button State (Specific to Africa Page styling)
+        // Update Language Button State
         const languageBtn = document.getElementById('language-btn');
         if (languageBtn) {
             languageBtn.classList.toggle('active', lang === 'FR');
         }
 
-        // Force layout recalculation for Accordion and other plugins
+        // Force layout recalculation
         setTimeout(() => {
             window.dispatchEvent(new Event('resize'));
         }, 100);

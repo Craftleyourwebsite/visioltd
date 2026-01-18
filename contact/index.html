@@ -2329,50 +2329,55 @@
 									<ul id="menu-mymenu" class="">
 										<li id="menu-item-23651"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children menu-item-23651">
-											<a href="../">Home</a>
+											<a href="../" data-i18n="nav_home">Home</a>
 
 										</li>
 										<li id="menu-item-africa"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-africa">
-											<a href="../africa/">Africa</a>
+											<a href="../africa/" data-i18n="nav_africa">Africa</a>
 										</li>
 										<li id="menu-item-15520"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15520">
-											<a href="../project/">Projects</a>
+											<a href="../project/" data-i18n="nav_projects">Projects</a>
 										</li>
 										<li id="menu-item-23188"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23188">
-											<a href="../service/">Services</a>
+											<a href="../service/" data-i18n="nav_services">Services</a>
 										</li>
 										<li id="menu-item-rise"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-rise">
-											<a href="../rise/">RISE</a>
+											<a href="../rise/" data-i18n="nav_rise">RISE</a>
 										</li>
 										<li id="menu-item-social"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-social">
-											<a href="../social/">Social</a>
+											<a href="../social/" data-i18n="nav_social">Social</a>
 										</li>
 										<li id="menu-item-23186"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23186">
-											<a href="../aboutus/">About Us</a>
+											<a href="../aboutus/" data-i18n="nav_about_us">About Us</a>
 										</li>
 										<li id="menu-item-news"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-news">
-											<a href="../news/">News</a>
+											<a href="../news/" data-i18n="nav_news">News</a>
 										</li>
 										<li id="menu-item-23184"
 											class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-23132 current_page_item menu-item-23184">
-											<a href="../contact/" aria-current="page">Contact</a>
+											<a href="../contact/" aria-current="page"
+												data-i18n="nav_contact">Contact</a>
 										</li>
 										<li id="menu-item-language" class="menu-item menu-item-language"><a href="#"
-												onclick="toggleLanguage(); return false;">Language: <span
+												onclick="toggleLanguage(); return false;"><span
+													data-i18n="nav_language_label">Language:</span> <span
 													class="lang-part lang-en">EN</span><span class="lang-sep"> -
 												</span><span class="lang-part lang-fr">FR</span></a></li>
 									</ul>
 								</div>
 								<div class="language-switcher">
-									<button id="language-btn" class="aboutus-language-btn"
-										onclick="toggleLanguage()">EN</button>
+									<button id="language-btn" class="aboutus-language-btn" onclick="toggleLanguage()">
+										<span class="lang-part lang-en">EN</span>
+										<span class="lang-sep"> - </span>
+										<span class="lang-part lang-fr">FR</span>
+									</button>
 								</div> <!-- .language-switcher -->
 							</div> <!-- .layout-medium -->
 						</div> <!-- .menu-wrap -->
@@ -2413,40 +2418,44 @@
 			</div>
 			<section class="contact-section">
 				<div class="contact-header">
-					<span class="subtitle">CONTACT</span>
-					<h2>Ready to build something great? Let’s talk.</h2>
-					<p>
+					<span class="subtitle" data-i18n="contact_subtitle">CONTACT</span>
+					<h2 data-i18n="contact_title">Ready to build something great? Let’s talk.</h2>
+					<p data-i18n="contact_description">
 						Feel free to reach out to VISIO for enquiries, project collaborations, or design consultations.
 						Our team is here to guide you and help bring your vision to life. <strong>Get in touch
 							today—let’s
 							shape thoughtful, high-performing spaces together.</strong> </p>
 					<div class="contact-info">
-						<p>+ (230) 208 9394</p>
-						<p>contact@visio.mu</p>
-						<p>45, Saint Georges Street, 11324, Port Louis, Rep. of Mauritius</p>
-						<p>We open at <strong>08:00 - 17:00 to Monday to Friday </strong><strong>(Excluding Public
+						<p data-i18n="contact_phone_label">+ (230) 208 9394</p>
+						<p data-i18n="contact_email_label">contact@visio.mu</p>
+						<p data-i18n="contact_address_label">45, Saint Georges Street, 11324, Port Louis, Rep. of
+							Mauritius</p>
+						<p data-i18n="contact_hours_label">We open at <strong>08:00 - 17:00 to Monday to Friday
+							</strong><strong>(Excluding Public
 								Holidays)</strong>.</p>
 					</div>
 				</div>
 
 				<form class="contact-form">
 					<div class="form-left">
-						<input type="text" placeholder="Name" required>
-						<input type="email" placeholder="Email Address" required>
-						<input type="tel" placeholder="Phone Number">
-						<label class="terms">
+						<input type="text" placeholder="Name" required data-i18n-placeholder="contact_form_name">
+						<input type="email" placeholder="Email Address" required
+							data-i18n-placeholder="contact_form_email">
+						<input type="tel" placeholder="Phone Number" data-i18n-placeholder="contact_form_phone">
+						<label class="terms" data-i18n="contact_form_terms">
 							<input type="checkbox" id="terms-checkbox" required> I have agreed to the terms &
 							conditions.
 						</label>
 					</div>
 					<div class="form-right">
-						<textarea placeholder="Your Message"></textarea>
-						<button type="submit">Send Message</button>
+						<textarea placeholder="Your Message" data-i18n-placeholder="contact_form_message"></textarea>
+						<button type="submit" data-i18n="contact_form_send">Send Message</button>
 					</div>
 				</form>
 				<div style="display: flex; gap: 50px; max-width: 1000px; margin: 0 auto; justify-content: flex-start;">
 					<div style="width: 50%; display: flex; flex-direction: column;">
-						<button type="button" id="career-btn" class="career-btn">CAREER / INTERNSHIP</button>
+						<button type="button" id="career-btn" class="career-btn" data-i18n="contact_career_btn">CAREER /
+							INTERNSHIP</button>
 					</div>
 					<div style="width: 50%;"></div>
 				</div>
@@ -2574,7 +2583,7 @@
 								<div class="elementor-widget-container">
 									<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-word qodef-qi--has-appear qodef--appear-from-top"
 										data-appear-delay="100">
-										<h1 class="qodef-m-title">
+										<h1 class="qodef-m-title" data-i18n-group="footer_contact_us">
 											<span class="qodef-e-word">CONTACT</span> <span
 												class="qodef-e-word">US</span>
 										</h1>
@@ -2586,7 +2595,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">Address</p>
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_address_title">Address</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-7614565 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2594,7 +2604,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">45, Saint Georges Street
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_address_content">45, Saint Georges Street
 										11324 Port Louis, Mauritius</p>
 								</div>
 							</div>
@@ -2603,7 +2614,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">Mail Us</p>
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_mail_title">Mail Us</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-7f479f4 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2611,7 +2623,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">contact@visio.mu</p>
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_mail_content">contact@visio.mu</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-760e2d4 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2619,7 +2632,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">Call Us</p>
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_call_title">Call Us</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-6babe2c animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2635,7 +2649,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">Working Hours</p>
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_hours_title">Working Hours</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-e20eeba animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2643,7 +2658,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">Monday - Friday : 8:00am -
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_hours_content">Monday - Friday : 8:00am -
 										5:00 pm</p>
 								</div>
 							</div>
@@ -2656,7 +2672,7 @@
 								<div class="elementor-widget-container">
 									<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-word qodef-qi--has-appear qodef--appear-from-top"
 										data-appear-delay="100">
-										<h1 class="qodef-m-title">
+										<h1 class="qodef-m-title" data-i18n-group="footer_projects_title">
 											<span class="qodef-e-word">OUR</span> <span
 												class="qodef-e-word">PROJECTS</span>
 										</h1>
@@ -2668,7 +2684,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a href="../project/">All
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_all_projects">All
 											Projects</a></p>
 								</div>
 							</div>
@@ -2677,8 +2694,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Architecture</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_architecture">Architecture</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-2f02a73 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2686,8 +2703,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Urban Planning & Master
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_urban_planning">Urban Planning & Master
 											Planning</a></p>
 								</div>
 							</div>
@@ -2696,8 +2713,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Infrastructure & Mobility</a>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_infrastructure">Infrastructure & Mobility</a>
 									</p>
 								</div>
 							</div>
@@ -2706,8 +2723,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Industrial & Logistics</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_industrial">Industrial & Logistics</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-heritage animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2715,8 +2732,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Heritage & Adaptive Reuse</a>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_heritage">Heritage & Adaptive Reuse</a>
 									</p>
 								</div>
 							</div>
@@ -2725,8 +2742,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Interior Architecture</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_interior">Interior Architecture</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-landscape animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2734,8 +2751,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Landscape & Public Realm</a>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_landscape">Landscape & Public Realm</a>
 									</p>
 								</div>
 							</div>
@@ -2744,8 +2761,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Strategy & Feasibility</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="footer_strategy">Strategy & Feasibility</a></p>
 								</div>
 							</div>
 						</div>
@@ -2757,7 +2774,7 @@
 								<div class="elementor-widget-container">
 									<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-word qodef-qi--has-appear qodef--appear-from-top"
 										data-appear-delay="100">
-										<h1 class="qodef-m-title">
+										<h1 class="qodef-m-title" data-i18n-group="footer_links_title">
 											<span class="qodef-e-word">LINKS</span>
 										</h1>
 									</div>
@@ -2768,7 +2785,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a href="../">Home</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../"
+											data-i18n="nav_home">Home</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-c911c76 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2776,8 +2794,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../aboutus/">About Us</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../aboutus/"
+											data-i18n="nav_about_us">About Us</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-a745241 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2785,8 +2803,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../service/">Services</a>
+									<p class="elementor-heading-title elementor-size-default"><a href="../service/"
+											data-i18n="nav_services">Services</a>
 									</p>
 								</div>
 							</div>
@@ -2795,8 +2813,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../africa/">Africa</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../africa/"
+											data-i18n="nav_africa">Africa</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-a65c4a6 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2804,8 +2822,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../rise/">RISE</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../rise/"
+											data-i18n="nav_rise">RISE</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-project-link animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2813,8 +2831,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../project/">Projects</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../project/"
+											data-i18n="nav_projects">Projects</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-news-link animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2822,8 +2840,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../news/">News</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../news/"
+											data-i18n="nav_news">News</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-social-link animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2831,8 +2849,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../social/">Social</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../social/"
+											data-i18n="nav_social">Social</a></p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-contact-link animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2840,8 +2858,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default"><a
-											href="../contact/">Contact</a></p>
+									<p class="elementor-heading-title elementor-size-default"><a href="../contact/"
+											data-i18n="nav_contact">Contact</a></p>
 								</div>
 							</div>
 						</div>
@@ -2853,7 +2871,7 @@
 								<div class="elementor-widget-container">
 									<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-word qodef-qi--has-appear qodef--appear-from-top"
 										data-appear-delay="100">
-										<h1 class="qodef-m-title">
+										<h1 class="qodef-m-title" data-i18n-group="footer_mission_vision_title">
 											<span class="qodef-e-word">MISSION</span> <span
 												class="qodef-e-word">&amp;</span> <span
 												class="qodef-e-word">VISION</span>
@@ -2866,7 +2884,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">MISSION</p>
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_mission_title">MISSION</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-2869339 animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2874,7 +2893,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">To deliver design
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_mission_content">To deliver design
 										excellence through innovation, technical rigour, and sustainable
 										thinking—creating spaces and places that add long-term value for clients and
 										communities.</p>
@@ -2885,7 +2905,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">VISION</p>
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_vision_title">VISION</p>
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-03f90fa animated-slow elementor-invisible elementor-widget elementor-widget-heading"
@@ -2893,7 +2914,8 @@
 								data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}"
 								data-widget_type="heading.default">
 								<div class="elementor-widget-container">
-									<p class="elementor-heading-title elementor-size-default">To set the benchmark for
+									<p class="elementor-heading-title elementor-size-default"
+										data-i18n="footer_vision_content">To set the benchmark for
 										architecture, planning, and development in Mauritius, and to be recognised among
 										Africa's leading multidisciplinary firms.</p>
 								</div>
@@ -2911,36 +2933,9 @@
 	<script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/arkiz\/demo-01\/*"},{"not":{"href_matches":["\/arkiz\/demo-01\/wp-*.php","\/arkiz\/demo-01\/wp-admin\/*","\/arkiz\/demo-01\/wp-content\/uploads\/sites\/3\/*","\/arkiz\/demo-01\/wp-content\/*","\/arkiz\/demo-01\/wp-content\/plugins\/*","\/arkiz\/demo-01\/wp-content\/themes\/arkiz\/*","\/arkiz\/demo-01\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
+	<script src="../js/language.js"></script>
+	<script src="../js/contact-translation.js"></script>
 	<script>
-		// Gestion de l'état de langue EN/FR persistée (identique au blog)
-		const LANGUAGE_STORAGE_KEY = 'currentLanguage';
-
-		function getCurrentLanguage() {
-			try { return localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'EN'; } catch (_) { return 'EN'; }
-		}
-		function setCurrentLanguage(lang) {
-			try { localStorage.setItem(LANGUAGE_STORAGE_KEY, lang); } catch (_) { }
-		}
-		function updateLanguageUI() {
-			const lang = getCurrentLanguage();
-			const languageBtn = document.getElementById('language-btn');
-			const languageMenuItem = document.querySelector('#menu-item-language a');
-			if (languageBtn && !languageBtn.querySelector('.lang-en')) {
-				languageBtn.innerHTML = '<span class="lang-part lang-en">EN<\/span><span class="lang-sep">  -  <\/span><span class="lang-part lang-fr">FR<\/span>';
-			}
-			const btnEn = languageBtn ? languageBtn.querySelector('.lang-en') : null;
-			const btnFr = languageBtn ? languageBtn.querySelector('.lang-fr') : null;
-			const menuEn = languageMenuItem ? languageMenuItem.querySelector('.lang-en') : null;
-			const menuFr = languageMenuItem ? languageMenuItem.querySelector('.lang-fr') : null;
-			[btnEn, menuEn].forEach(el => { if (el) el.classList.toggle('active', lang === 'EN'); });
-			[btnFr, menuFr].forEach(el => { if (el) el.classList.toggle('active', lang === 'FR'); });
-			if (languageBtn) languageBtn.classList.toggle('active', lang === 'FR');
-		}
-		function toggleLanguage() {
-			const next = getCurrentLanguage() === 'EN' ? 'FR' : 'EN';
-			setCurrentLanguage(next);
-			updateLanguageUI();
-		}
 		const lazyloadRunObserver = () => {
 			const lazyloadBackgrounds = document.querySelectorAll(`.e-con.e-parent:not(.e-lazyloaded)`);
 			const lazyloadBackgroundObserver = new IntersectionObserver((entries) => {
@@ -3026,7 +3021,7 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
 
-			<p>© 2025 Visio. All Rights Reserved.</p>
+			<p data-i18n="footer_rights">© 2025 Visio. All Rights Reserved.</p>
 		</div> <!-- .site-info -->
 	</footer> <!-- #colophon .site-footer -->
 	</div>

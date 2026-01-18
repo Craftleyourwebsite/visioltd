@@ -221,54 +221,45 @@
     };
 
     function updatePageContent(lang) {
-        document.querySelectorAll('[data-i18n]').forEach(element => {
-            const key = element.getAttribute('data-i18n');
-            if (translations[lang] && translations[lang][key]) {
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    element.placeholder = translations[lang][key];
+        const dictionary = translations[lang];
+        if (!dictionary) return;
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const translated = dictionary[key];
+            if (translated) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = translated;
                 } else {
-                    element.innerHTML = translations[lang][key];
+                    // Robust check: if the element has a .link-text span (theme structure), update that instead
+                    const linkTextSpan = el.querySelector('.link-text');
+                    if (linkTextSpan) {
+                        linkTextSpan.textContent = translated;
+                    } else {
+                        el.innerHTML = translated;
+                    }
                 }
             }
         });
 
-        // Split Title Logic for "SERVICES", "TYPE OF PROJECTS", "Let's work together"
-        // These titles are animated word by word, so we need to rebuild them carefully or update the parent container.
-
-        // Handling "SERVICES" animated title
-        const servicesTitle = document.querySelector('[data-i18n-group="intro_title"]');
-        if (servicesTitle && translations[lang]['intro_title']) {
-            // For simplicity in this non-react setup, we might replace the inner content structure 
-            // or just update text if the structure is simple.
-            // The structure is <h1 class="qodef-m-title"><span class="qodef-e-word-holder">SERVICES</span></h1>
-            // Since "SERVICES" is one word, we can just update the text content of the span.
-            const wordHolder = servicesTitle.querySelector('.qodef-e-word-holder');
-            if (wordHolder) wordHolder.textContent = translations[lang]['intro_title'];
-        }
-
-        // Handling "TYPE OF PROJECTS" (Multi-word)
-        // Structure: <span class="qodef-e-word">TYPE</span> <span class="qodef-e-word">OF</span> ...
-        // We will replace the innerHTML of the h1 with new spans based on the translated string.
-        const typeTitle = document.querySelector('[data-i18n-group="type_title"]');
-        if (typeTitle && translations[lang]['type_title']) {
-            const words = translations[lang]['type_title'].split(' ');
-            const newHTML = words.map(word => `<span class="qodef-e-word" style="display: inline-block; opacity: 1; visibility: visible; transform: translate(0px, 0px);">${word}</span>`).join(' ');
-            typeTitle.innerHTML = newHTML;
-        }
-
-        // Handling "Let's work together." (Multi-line / Multi-word)
-        // Original: <span class="qodef-e-word-holder">Let's</span> <span class="qodef-e-word-holder">work</span><br> <span class="qodef-e-word-holder">together.</span><br>
-        const collabTitle = document.querySelector('[data-i18n-group="collab_title"]');
-        if (collabTitle && translations[lang]['collab_title']) {
-            // Simplified replacement strategy: just standard text or spans, preserving breaks if possible
-            // Or just replace text content if animation is not critical to precise structure
-            const text = translations[lang]['collab_title']; // "Travaillons ensemble."
-            // Split by space?
-            const words = text.split(' ');
-            // Rebuild roughly
-            const newHTML = words.map(word => `<span class="qodef-e-word-holder" style="display: inline-block; opacity: 1; visibility: visible; transform: translate(0px, 0px);">${word}</span>`).join(' ');
-            collabTitle.innerHTML = newHTML;
-        }
+        // Robust handling for animated titles (data-i18n-group)
+        document.querySelectorAll('[data-i18n-group]').forEach(el => {
+            const key = el.getAttribute('data-i18n-group');
+            const words = dictionary[key];
+            if (words) {
+                // If it's a multi-word animated title
+                if (key === 'type_title' || key === 'collab_title') {
+                    const wordList = words.split(' ');
+                    const newHTML = wordList.map(word => `<span class="qodef-e-word-holder" style="display: inline-block; opacity: 1; visibility: visible; transform: translate(0px, 0px);">${word}</span>`).join(' ');
+                    el.innerHTML = newHTML;
+                } else {
+                    // Single word or simple group
+                    const holder = el.querySelector('.qodef-e-word-holder, .qodef-e-word');
+                    if (holder) holder.textContent = words;
+                    else el.textContent = words;
+                }
+            }
+        });
 
         // Update Language Button State
         const languageBtn = document.querySelector('.aboutus-language-btn');
@@ -276,7 +267,7 @@
             languageBtn.classList.toggle('active', lang === 'FR');
         }
 
-        // Force layout recalculation for Accordion and Parallax
+        // Force layout recalculation
         setTimeout(() => {
             window.dispatchEvent(new Event('resize'));
         }, 100);
