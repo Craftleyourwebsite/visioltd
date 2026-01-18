@@ -71,6 +71,35 @@
   background: none !important;
 }
 
+/* Ensure active language is always gold, even in clone mode */
+.site-header.clone .lang-part.active {
+  color: #d4af37 !important;
+  opacity: 1 !important;
+}
+
+/* In clone mode, inactive parts should be white (default text color) but slightly dimmed */
+.site-header.clone .lang-part:not(.active) {
+  color: #ffffff !important;
+}
+
+/* Fix Hover in Clone Mode: */
+/* Ensure active part stays gold on hover, inactive part can brighten but stay white or turn gold? */
+/* User complained: "once I scroll it becomes FR the hover active whereas the language is English" */
+/* This implies they saw FR turn gold. My previous logic DID turn inactive (FR) gold on hover. */
+/* Let's SIMPLIFY: On hover, just keep active GOLD, and make inactive WHITE (brighter). */
+
+.site-header.clone .language-btn:hover .lang-part.active {
+  opacity: 1 !important;
+  color: #d4af37 !important;
+  /* Keep Active Gold */
+}
+
+.site-header.clone .language-btn:hover .lang-part:not(.active) {
+  opacity: 0.8 !important;
+  color: #ffffff !important;
+  /* Keep Inactive White */
+}
+
 /* Desktop alignment */
 @media screen and (min-width: 992px) {
   .language-switcher {

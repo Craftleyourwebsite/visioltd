@@ -55,11 +55,11 @@
 }
 
 /* --- ALIGNEMENT DES TITRES CONTACT US & LINKS --- */
-.elementor-element-7667d46 .qodef-m-title,
-.elementor-element-1c03fac .qodef-m-title,
-.elementor-element-2f0bf20 .qodef-m-title,
-.elementor-element-c6893dd .qodef-m-title,
-.elementor-element-c7a1e3a .qodef-m-title,
+/* Added Contact Us Title (f055c35) back to left-align list */
+.elementor-element-f055c35 .qodef-m-title,
+.elementor-element-d726f80 .qodef-m-title,
+.elementor-element-701fde8 .qodef-m-title,
+.elementor-element-9678fe9 .qodef-m-title,
 .elementor-element-73063f9 .qodef-m-title,
 .elementor-element-a3502a3 .qodef-m-title,
 .elementor-element-669c2da .qodef-m-title,
@@ -71,11 +71,11 @@
 	font-weight: 300 !important;
 }
 
-.elementor-element-7667d46 .elementor-widget-container,
-.elementor-element-1c03fac .elementor-widget-container,
-.elementor-element-2f0bf20 .elementor-widget-container,
-.elementor-element-c6893dd .elementor-widget-container,
-.elementor-element-c7a1e3a .elementor-widget-container,
+/* Added Contact widgets back to forced left align list */
+.elementor-element-f055c35 .elementor-widget-container,
+.elementor-element-d726f80 .elementor-widget-container,
+.elementor-element-701fde8 .elementor-widget-container,
+.elementor-element-9678fe9 .elementor-widget-container,
 .elementor-element-73063f9 .elementor-widget-container,
 .elementor-element-a3502a3 .elementor-widget-container,
 .elementor-element-669c2da .elementor-widget-container,
@@ -83,7 +83,7 @@
 	text-align: left !important;
 }
 
-/* Aligner spécifiquement les mots animés */
+/* Aligner spécifiquement les mots animés - Added Contact back */
 .elementor-element-f055c35 .qodef-e-word,
 .elementor-element-d726f80 .qodef-e-word,
 .elementor-element-701fde8 .qodef-e-word,
@@ -94,6 +94,24 @@
 .elementor-element-49eefb5 .qodef-e-word {
 	text-align: left !important;
 	display: inline-block !important;
+}
+
+/* --- CONTACT HEADER ALIGNMENT FIX --- */
+/* Force the Contact Us column container to align left and remove any vertical drop */
+.elementor-element-cd0b81e {
+	align-items: flex-start !important;
+	justify-content: flex-start !important;
+	text-align: left !important;
+}
+
+.elementor-element-cd0b81e .elementor-widget {
+	margin-bottom: 0px !important;
+	/* Remove potential gap causing drop */
+}
+
+/* Specific fix for Address/Mail/Phone headers to alignment left */
+.elementor-element-cd0b81e .elementor-heading-title {
+	text-align: left !important;
 }
 
 /* Responsive mobile - aligner les icônes sociales à gauche */
@@ -201,45 +219,46 @@
 		padding: 0px !important;
 	}
 }
+
 /* --- STYLES IMPORTED FROM AFRICA.TheME FOR FOOTER CONSISTENCY --- */
 
 /* Footer avec background noir comme le header */
 .site-footer {
-background-color: #000000 !important;
+	background-color: #000000 !important;
 }
 
 .site-footer .site-info {
-background-color: #000000 !important;
-color: #ffffff !important;
+	background-color: #000000 !important;
+	color: #ffffff !important;
 }
 
 /* S'assurer que le texte dans le footer reste blanc */
 .site-footer .site-info p,
 .site-footer .site-info a {
-color: #ffffff !important;
+	color: #ffffff !important;
 }
 
 /* --- STYLES POUR L'ALIGNEMENT DU FOOTER (AFRICA STYLE) --- */
 /* Aligner les titres CONTACT US et LINKS avec leur contenu */
 .elementor-element-f055c35 .qodef-m-title,
 .elementor-element-d726f80 .qodef-m-title {
-text-align: left !important;
-margin-left: 0 !important;
-padding-left: 0 !important;
+	text-align: left !important;
+	margin-left: 0 !important;
+	padding-left: 0 !important;
 }
 
 /* Aligner le titre OUR PROJECTS à gauche */
 .elementor-element-701fde8 .qodef-m-title {
-text-align: left !important;
-margin-left: 0 !important;
-padding-left: 0 !important;
+	text-align: left !important;
+	margin-left: 0 !important;
+	padding-left: 0 !important;
 }
 
 /* Aligner le titre MISSION & VISION à gauche */
 .elementor-element-9678fe9 .qodef-m-title {
-text-align: left !important;
-margin-left: 0 !important;
-padding-left: 0 !important;
+	text-align: left !important;
+	margin-left: 0 !important;
+	padding-left: 0 !important;
 }
 
 /* S'assurer que les conteneurs des titres sont alignés à gauche */
@@ -247,7 +266,7 @@ padding-left: 0 !important;
 .elementor-element-d726f80 .elementor-widget-container,
 .elementor-element-701fde8 .elementor-widget-container,
 .elementor-element-9678fe9 .elementor-widget-container {
-text-align: left !important;
+	text-align: left !important;
 }
 
 /* Aligner spécifiquement les mots animés */
@@ -255,8 +274,8 @@ text-align: left !important;
 .elementor-element-d726f80 .qodef-e-word,
 .elementor-element-701fde8 .qodef-e-word,
 .elementor-element-9678fe9 .qodef-e-word {
-text-align: left !important;
-display: inline-block !important;
+	text-align: left !important;
+	display: inline-block !important;
 }
 
 /* --- STYLES POUR LA COHÉRENCE DES COULEURS DES PROJETS --- */
@@ -270,8 +289,8 @@ display: inline-block !important;
 .elementor-element-interior .elementor-heading-title,
 .elementor-element-landscape .elementor-heading-title,
 .elementor-element-strategy .elementor-heading-title {
-color: #ffffff !important;
-transition: color 0.3s ease !important;
+	color: #ffffff !important;
+	transition: color 0.3s ease !important;
 }
 
 /* Effet hover cohérent pour tous les éléments de projet - reste blanc */
@@ -284,7 +303,7 @@ transition: color 0.3s ease !important;
 .elementor-element-interior .elementor-heading-title:hover,
 .elementor-element-landscape .elementor-heading-title:hover,
 .elementor-element-strategy .elementor-heading-title:hover {
-color: #ffffff !important;
+	color: #ffffff !important;
 }
 
 /* --- ESPACEMENTS POUR LES ÉLÉMENTS DE PROJET --- */
@@ -293,8 +312,8 @@ color: #ffffff !important;
 .elementor-element-interior,
 .elementor-element-landscape,
 .elementor-element-strategy {
-margin-top: 8px !important;
-margin-bottom: 3px !important;
+	margin-top: 8px !important;
+	margin-bottom: 3px !important;
 }
 
 /* Espacement général pour tous les éléments de projet */
@@ -307,7 +326,7 @@ margin-bottom: 3px !important;
 .elementor-element-interior,
 .elementor-element-landscape,
 .elementor-element-strategy {
-margin-bottom: 6px !important;
+	margin-bottom: 6px !important;
 }
 
 /* --- STYLES POUR LA COHÉRENCE DES LIENS DANS LA SECTION LINKS --- */
@@ -321,9 +340,9 @@ margin-bottom: 6px !important;
 .elementor-element-project-link .elementor-heading-title a,
 .elementor-element-news-link .elementor-heading-title a,
 .elementor-element-contact-link .elementor-heading-title a {
-color: #ffffff !important;
-text-decoration: none !important;
-transition: color 0.3s ease !important;
+	color: #ffffff !important;
+	text-decoration: none !important;
+	transition: color 0.3s ease !important;
 }
 
 /* Effet hover cohérent pour tous les liens - reste blanc */
@@ -336,8 +355,8 @@ transition: color 0.3s ease !important;
 .elementor-element-project-link .elementor-heading-title a:hover,
 .elementor-element-news-link .elementor-heading-title a:hover,
 .elementor-element-contact-link .elementor-heading-title a:hover {
-color: #ffffff !important;
-text-decoration: none !important;
+	color: #ffffff !important;
+	text-decoration: none !important;
 }
 
 /* Espacements pour les éléments de liens */
@@ -346,6 +365,6 @@ text-decoration: none !important;
 .elementor-element-project-link,
 .elementor-element-news-link,
 .elementor-element-contact-link {
-margin-top: 8px !important;
-margin-bottom: 3px !important;
+	margin-top: 8px !important;
+	margin-bottom: 3px !important;
 }
