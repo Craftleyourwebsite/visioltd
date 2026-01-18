@@ -592,32 +592,33 @@
 				transform: translateX(0);
 			}
 
-			/* Overlay sombre derrière le menu ouvert */
-			.is-menu-toggled-on::before {
-				content: '';
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100vh;
-				background: rgba(0, 0, 0, 0.5);
-				z-index: 998;
+			/* Styles pour le menu mobile quand il est ouvert - Plein écran noir */
+			.is-menu-toggled-on .nav-menu {
+				position: fixed !important;
+				top: 0 !important;
+				right: 0 !important;
+				width: 100% !important;
+				height: 100vh !important;
+				background: #000000 !important;
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: flex-start !important;
+				justify-content: flex-start !important;
+				padding-top: 140px !important;
+				z-index: 10100 !important;
+				transform: translateX(0) !important;
+				transition: transform 0.3s ease !important;
+				overflow-y: auto !important;
+				-webkit-overflow-scrolling: touch !important;
 			}
 
-			/* Conteneur du menu mobile (demi-écran à droite) */
-			.is-menu-toggled-on .nav-menu {
-				position: fixed;
-				top: 0;
-				right: 0;
-				width: 50%;
-				height: 100vh;
-				background: #000000;
+			.is-menu-toggled-on .nav-menu ul {
 				display: flex;
-				align-items: center;
-				justify-content: center;
-				z-index: 999;
-				transform: translateX(0);
-				transition: transform 0.3s ease;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 0 !important;
+				padding: 0 40px;
+				width: 100%;
 			}
 
 			.is-menu-toggled-on .nav-menu ul {
@@ -636,13 +637,15 @@
 
 			.is-menu-toggled-on .nav-menu a {
 				color: #ffffff !important;
-				font-size: 18px;
-				font-weight: 400;
+				font-size: 20px !important;
+				font-weight: 500 !important;
+				text-transform: uppercase !important;
+				letter-spacing: 2px !important;
 				text-decoration: none;
 				transition: all 0.3s ease;
 				display: block;
-				padding: 10px 0;
-				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				padding: 22px 0 !important;
+				border-bottom: 1px solid #ffffff !important;
 			}
 
 			.is-menu-toggled-on .nav-menu a:hover {
@@ -697,7 +700,7 @@
 				}
 			}
 
-			/* Hamburger en X quand le menu est ouvert */
+			/* Burger Animation to X */
 			.is-menu-toggled-on .menu-toggle .lines {
 				background-color: transparent !important;
 			}
@@ -706,12 +709,50 @@
 				top: 0 !important;
 				transform: rotate(45deg) !important;
 				background-color: #ffffff !important;
+				position: absolute !important;
+				z-index: 10530 !important;
+				width: 28px !important;
+				display: block !important;
 			}
 
 			.is-menu-toggled-on .menu-toggle .lines:after {
 				bottom: 0 !important;
 				transform: rotate(-45deg) !important;
 				background-color: #ffffff !important;
+				position: absolute !important;
+				z-index: 10530 !important;
+				width: 28px !important;
+				display: block !important;
+			}
+
+			/* FIX CONFLICTS MOBILE MENU - Raising Header Above Drawer */
+			.is-menu-toggled-on .site-header {
+				z-index: 10500 !important;
+			}
+
+			.is-menu-toggled-on .site-header .site-branding {
+				position: fixed !important;
+				top: 20px !important;
+				left: 20px !important;
+				z-index: 10510 !important;
+				pointer-events: none !important;
+				display: flex !important;
+				justify-content: flex-start !important;
+				width: auto !important;
+				opacity: 1 !important;
+				visibility: visible !important;
+			}
+
+			.is-menu-toggled-on .site-header .site-branding a {
+				pointer-events: auto !important;
+				display: block !important;
+			}
+
+			.is-menu-toggled-on .menu-toggle {
+				z-index: 10520 !important;
+				position: fixed !important;
+				top: 10px !important;
+				right: 15px !important;
 			}
 		}
 
@@ -2418,6 +2459,66 @@
 				lazyloadBackgroundObserver.observe(lazyloadBackground);
 			});
 		};
+		// Mobile menu toggle (explicit, to ensure consistent behavior on this static page)
+		document.addEventListener('DOMContentLoaded', function () {
+			var root = document.documentElement;
+			var navMenu = document.querySelector('.nav-menu');
+
+			function closeMenu() {
+				root.classList.remove('is-menu-toggled-on');
+				document.body.classList.remove('is-menu-toggled-on');
+				document.querySelectorAll('.menu-toggle').forEach(t => t.setAttribute('aria-expanded', 'false'));
+				document.documentElement.style.overflow = '';
+			}
+
+			function openMenu() {
+				root.classList.add('is-menu-toggled-on');
+				document.body.classList.add('is-menu-toggled-on');
+				document.querySelectorAll('.menu-toggle').forEach(t => t.setAttribute('aria-expanded', 'true'));
+				document.documentElement.style.overflow = 'hidden';
+			}
+
+			// Event delegation for all toggles
+			document.addEventListener('click', function (e) {
+				var toggleEl = e.target.closest('.menu-toggle');
+				if (toggleEl) {
+					e.preventDefault();
+					e.stopPropagation();
+					var isOpen = root.classList.contains('is-menu-toggled-on');
+					isOpen ? closeMenu() : openMenu();
+				}
+			}, true);
+
+			document.addEventListener('touchend', function (e) {
+				var toggleEl = e.target.closest('.menu-toggle');
+				if (toggleEl) {
+					e.preventDefault();
+					e.stopPropagation();
+					var isOpen = root.classList.contains('is-menu-toggled-on');
+					isOpen ? closeMenu() : openMenu();
+				}
+			}, { passive: false, capture: true });
+
+			// Close menu when a navigation link is clicked
+			document.querySelectorAll('.nav-menu a').forEach(function (link) {
+				link.addEventListener('click', closeMenu);
+			});
+
+			// Close if clicking outside menu and toggle
+			document.addEventListener('click', function (e) {
+				if (!root.classList.contains('is-menu-toggled-on')) return;
+				var target = e.target;
+				if (navMenu && navMenu.contains(target)) return;
+				if (target.closest('.menu-toggle')) return;
+				closeMenu();
+			});
+
+			// Reset on resize
+			window.addEventListener('resize', function () {
+				if (window.innerWidth >= 992) closeMenu();
+			});
+		});
+
 		const events = [
 			'DOMContentLoaded',
 			'elementor/lazyload/observe',
