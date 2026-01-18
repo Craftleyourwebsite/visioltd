@@ -2206,6 +2206,89 @@
 			}
 		}
 	</style>
+
+	<style>
+		/* ULTRA ROBUST FOOTER FIX - FORCE STICKY */
+		.site-footer,
+		#colophon,
+		#colophon.site-footer,
+		footer#colophon {
+			position: fixed !important;
+			bottom: 0 !important;
+			left: 0 !important;
+			right: 0 !important;
+			width: 100vw !important;
+			width: 100% !important;
+			margin: 0 !important;
+			padding: 20px 0 !important;
+			clear: both !important;
+			z-index: 99999 !important;
+			transform: none !important;
+			top: auto !important;
+			display: block !important;
+			visibility: visible !important;
+			opacity: 1 !important;
+			height: auto !important;
+			min-height: 60px !important;
+			max-height: none !important;
+			overflow: visible !important;
+			background: #000000 !important;
+			/* Solid Black */
+			border-top: none !important;
+			box-shadow: none !important;
+		}
+
+		/* Color the larger footer area (Contact section) in solid black too */
+		#contact,
+		.elementor-element-7cdd405 {
+			background-color: #000000 !important;
+			background: #000000 !important;
+			padding-bottom: 100px !important;
+			/* Space for the fixed copyright footer */
+		}
+
+		.site-footer .site-info {
+			max-width: 1200px !important;
+			margin: 0 auto !important;
+			padding: 0 20px !important;
+			text-align: center !important;
+			width: 100% !important;
+			display: block !important;
+		}
+
+		.site-footer .site-info p {
+			color: #ffffff !important;
+			margin: 0 !important;
+			font-size: 13px !important;
+			letter-spacing: 2px !important;
+			text-transform: uppercase !important;
+			font-weight: 500 !important;
+		}
+
+		/* Remove bottom padding from body to eliminate white gap */
+		body {
+			padding-bottom: 0 !important;
+			margin-bottom: 0 !important;
+		}
+
+		/* Mobile responsive */
+		@media (max-width: 768px) {
+			.site-footer {
+				padding: 15px 0 !important;
+				min-height: 50px !important;
+			}
+
+			#contact,
+			.elementor-element-7cdd405 {
+				padding-bottom: 80px !important;
+			}
+
+			.site-footer .site-info p {
+				font-size: 11px !important;
+				letter-spacing: 1px !important;
+			}
+		}
+	</style>
 </head>
 
 <body
@@ -3154,6 +3237,31 @@
 			if (!navigator.onLine) { showMapFallback(); }
 			window.addEventListener('online', () => { reloadMap(); });
 			window.addEventListener('offline', () => { showMapFallback(); });
+		});
+	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			// ULTRA ROBUST FOOTER FIX - Force footer positioning (Copied from aboutus/index)
+			function forceFooterPosition() {
+				const footer = document.querySelector('#colophon, .site-footer, footer');
+				if (footer) {
+					footer.style.position = 'fixed';
+					footer.style.bottom = '0';
+					footer.style.left = '0';
+					footer.style.right = '0';
+					footer.style.width = '100%';
+					footer.style.zIndex = '99999';
+					footer.style.display = 'block';
+					footer.style.visibility = 'visible';
+					footer.style.opacity = '1';
+				}
+			}
+
+			// Run immediately and on common events
+			forceFooterPosition();
+			window.addEventListener('load', forceFooterPosition);
+			window.addEventListener('resize', forceFooterPosition);
+			setInterval(forceFooterPosition, 1000);
 		});
 	</script>
 </body>
