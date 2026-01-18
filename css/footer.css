@@ -67,6 +67,8 @@
 	text-align: left !important;
 	margin-left: 0 !important;
 	padding-left: 0 !important;
+	font-size: 18px !important;
+	font-weight: 300 !important;
 }
 
 .elementor-element-7667d46 .elementor-widget-container,
@@ -135,14 +137,20 @@
 	}
 
 	.elementor-element-1c03fac .qodef-m-title,
-	.elementor-element-1c03fac .elementor-heading-title,
 	.elementor-element-a3502a3 .qodef-m-title,
-	.elementor-element-a3502a3 .elementor-heading-title {
+	.elementor-element-a876615 .qodef-m-title {
+		font-size: 18px !important;
+		font-weight: 300 !important;
+		font-family: 'Onest', sans-serif !important;
+	}
+
+	.elementor-element-1c03fac .elementor-heading-title,
+	.elementor-element-a3502a3 .elementor-heading-title,
+	.elementor-element-a876615 .elementor-heading-title {
 		white-space: nowrap !important;
 		font-size: 16px !important;
-		/* Taille uniforme pour tous les titres */
-		font-weight: 500 !important;
-		font-family: 'Onest', sans-serif !important;
+		font-weight: 300 !important;
+		font-family: 'Jost', sans-serif !important;
 	}
 
 	/* EMPÊCHER LE RETOUR À LA LIGNE DES HORAIRES */

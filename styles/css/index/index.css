@@ -43,17 +43,24 @@
 /* --- STYLES POUR L'ALIGNEMENT DU FOOTER --- */
 /* Aligner les titres CONTACT US et LINKS avec leur contenu */
 .elementor-element-f055c35 .qodef-m-title,
-.elementor-element-d726f80 .qodef-m-title {
-	text-align: left !important;
-	margin-left: 0 !important;
-	padding-left: 0 !important;
-}
-
-/* Aligner le titre OUR PROJECTS à gauche */
+.elementor-element-d726f80 .qodef-m-title,
 .elementor-element-701fde8 .qodef-m-title {
 	text-align: left !important;
 	margin-left: 0 !important;
 	padding-left: 0 !important;
+	font-weight: 300 !important;
+	font-family: 'Onest', sans-serif !important;
+	font-size: 18px !important;
+}
+
+/* Titre MISSION & VISION à gauche */
+.elementor-element-9678fe9 .qodef-m-title {
+	text-align: left !important;
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+	font-weight: 300 !important;
+	font-family: 'Onest', sans-serif !important;
+	font-size: 18px !important;
 }
 
 /* Aligner le titre MISSION & VISION à gauche */
@@ -93,19 +100,35 @@
 .elementor-element-strategy .elementor-heading-title {
 	color: #ffffff !important;
 	transition: color 0.3s ease !important;
+	font-size: 16px !important;
+	font-weight: 300 !important;
+	font-family: 'Jost', sans-serif !important;
 }
 
 /* Effet hover cohérent pour tous les éléments de projet - reste blanc */
-.elementor-element-13e222f .elementor-heading-title:hover,
-.elementor-element-421a564 .elementor-heading-title:hover,
-.elementor-element-b8c769d .elementor-heading-title:hover,
-.elementor-element-0a2435e .elementor-heading-title:hover,
-.elementor-element-0541d16 .elementor-heading-title:hover,
-.elementor-element-heritage .elementor-heading-title:hover,
-.elementor-element-interior .elementor-heading-title:hover,
-.elementor-element-landscape .elementor-heading-title:hover,
-.elementor-element-strategy .elementor-heading-title:hover {
+.elementor-element-13e222f .elementor-heading-title a,
+.elementor-element-421a564 .elementor-heading-title a,
+.elementor-element-b8c769d .elementor-heading-title a,
+.elementor-element-0a2435e .elementor-heading-title a,
+.elementor-element-0541d16 .elementor-heading-title a,
+.elementor-element-heritage .elementor-heading-title a,
+.elementor-element-interior .elementor-heading-title a,
+.elementor-element-landscape .elementor-heading-title a,
+.elementor-element-strategy .elementor-heading-title a,
+.elementor-element-13e222f .elementor-heading-title a:hover,
+.elementor-element-421a564 .elementor-heading-title a:hover,
+.elementor-element-b8c769d .elementor-heading-title a:hover,
+.elementor-element-0a2435e .elementor-heading-title a:hover,
+.elementor-element-0541d16 .elementor-heading-title a:hover,
+.elementor-element-heritage .elementor-heading-title a:hover,
+.elementor-element-interior .elementor-heading-title a:hover,
+.elementor-element-landscape .elementor-heading-title a:hover,
+.elementor-element-strategy .elementor-heading-title a:hover {
 	color: #ffffff !important;
+	text-decoration: none !important;
+	font-weight: 300 !important;
+	font-size: 16px !important;
+	font-family: 'Jost', sans-serif !important;
 }
 
 /* --- ESPACEMENTS POUR LES ÉLÉMENTS DE PROJET --- */
@@ -145,6 +168,9 @@
 	color: #ffffff !important;
 	text-decoration: none !important;
 	transition: color 0.3s ease !important;
+	font-weight: 300 !important;
+	font-size: 16px !important;
+	font-family: 'Jost', sans-serif !important;
 }
 
 /* Effet hover cohérent pour tous les liens - reste blanc */
