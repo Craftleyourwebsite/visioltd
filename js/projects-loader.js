@@ -1,7 +1,7 @@
 /**
  * PROJECTS LOADER
  * Fetches projects from Strapi and renders them into #projects-container
- * Uses ContentLoader for intelligent caching and skeleton loading
+ * Uses robust fallback loading with caching
  */
 
 (function () {
@@ -12,46 +12,53 @@
     const GRID_CACHE_KEY = 'cached_strapi_projects_grid';
     const GRID_CACHE_TTL = 300000; // 5 minutes
 
+    // Track if load has been initiated to prevent double-loading
+    let loadInitiated = false;
+    let loadCompleted = false;
+
     /**
      * Load Projects content
      */
     async function loadProjects() {
         const container = document.getElementById('projects-container');
-        if (!container) return;
+        if (!container) {
+            console.log('[Projects] Container not found');
+            return;
+        }
+
+        // Prevent double-loading during same page session
+        if (loadInitiated && !loadCompleted) {
+            console.log('[Projects] Load already in progress, skipping');
+            return;
+        }
+
+        // If already completed and container has real content, skip
+        if (loadCompleted && container.querySelector('.hentry:not(.skeleton-card)')) {
+            console.log('[Projects] Already loaded, skipping');
+            return;
+        }
+
+        loadInitiated = true;
+        loadCompleted = false;
 
         const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
 
         // --- STATIC CATEGORIES HANDLING (Always run) ---
         updateCategoryVisibility(lang);
 
-        // Listen for language changes
-        window.addEventListener('languageChanged', (e) => {
-            updateCategoryVisibility(e.detail.language);
-        });
+        // Listen for language changes (only once)
+        if (!window._projectsLangListenerAdded) {
+            window.addEventListener('languageChanged', (e) => {
+                updateCategoryVisibility(e.detail?.language || 'en');
+            });
+            window._projectsLangListenerAdded = true;
+        }
 
         // Fix: Allow clicking "All Categories" title to reset filter
         setupAllCategoriesClick(container);
 
-        // Check if ContentLoader is available
-        if (typeof ContentLoader !== 'undefined') {
-            // Use the unified ContentLoader
-            await ContentLoader.load({
-                type: CONTENT_TYPE,
-                url: `${CONFIG.API_URL}/projects?locale=${lang}&populate=*&pagination[limit]=100`,
-                containerId: 'projects-container',
-                renderFn: createProjectCard,
-                skeletonCount: 9,
-                onSuccess: (items, source) => {
-                    console.log(`[Projects] Loaded ${items.length} items from ${source}`);
-                },
-                onError: (error) => {
-                    console.error('[Projects] Load error:', error);
-                }
-            });
-        } else {
-            // Fallback to direct loading with cache
-            await loadProjectsDirect();
-        }
+        // Always use direct loading (more reliable)
+        await loadProjectsDirect();
     }
 
     /**
@@ -76,97 +83,145 @@
      */
     function setupAllCategoriesClick(container) {
         const allCatTitle = document.querySelector('.all-categories-title');
-        if (allCatTitle) {
-            allCatTitle.replaceWith(allCatTitle.cloneNode(true));
-            const newTitle = document.querySelector('.all-categories-title');
-            newTitle.addEventListener('click', () => {
+        if (allCatTitle && !allCatTitle._clickHandlerAdded) {
+            allCatTitle.addEventListener('click', () => {
                 filterProjectsBy('All');
                 if (container) container.scrollIntoView({ behavior: 'smooth' });
             });
+            allCatTitle._clickHandlerAdded = true;
         }
     }
 
     /**
-     * Direct loading fallback with built-in cache
+     * Direct loading with built-in cache - ROBUST VERSION
      */
     async function loadProjectsDirect() {
         const container = document.getElementById('projects-container');
-        if (!container) return;
+        if (!container) {
+            loadCompleted = true;
+            return;
+        }
 
         const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
         const cacheKey = `${GRID_CACHE_KEY}_${lang}`;
 
-        // Show skeleton loading
-        container.innerHTML = generateSkeletons(9);
-
         let projects = [];
         let useCache = false;
 
-        // 1. Try Cache
+        // 1. Try Cache FIRST (show cached content immediately)
         try {
             const cachedData = localStorage.getItem(cacheKey);
             if (cachedData) {
                 const parsed = JSON.parse(cachedData);
                 const now = Date.now();
-                if (now - parsed.timestamp < GRID_CACHE_TTL) {
-                    projects = parsed.data;
-                    useCache = true;
-                    console.log(`[Projects] Using cache (expires in ${Math.round((GRID_CACHE_TTL - (now - parsed.timestamp)) / 1000)}s)`);
+                if (parsed.data && Array.isArray(parsed.data) && parsed.data.length > 0) {
+                    // Use cache if valid, or as immediate display while fetching
+                    if (now - parsed.timestamp < GRID_CACHE_TTL) {
+                        projects = parsed.data;
+                        useCache = true;
+                        console.log(`[Projects] Using valid cache (${projects.length} items)`);
+                    } else {
+                        // Show expired cache immediately, then refresh
+                        console.log('[Projects] Showing expired cache while fetching fresh data');
+                        renderProjects(container, parsed.data);
+                    }
                 }
             }
         } catch (e) {
-            console.warn('[Projects] Cache parse error');
+            console.warn('[Projects] Cache parse error:', e);
         }
 
-        // 2. Fetch if no valid cache
-        if (!useCache) {
-            try {
-                console.log('[Projects] Fetching fresh data...');
-                const response = await fetch(`${CONFIG.API_URL}/projects?locale=${lang}&populate=*&pagination[limit]=100`, {
-                    mode: 'cors',
-                    credentials: 'omit'
-                });
+        // 2. If we have valid cache, render and we're done
+        if (useCache && projects.length > 0) {
+            renderProjects(container, projects);
+            loadCompleted = true;
+            return;
+        }
 
-                if (!response.ok) {
-                    throw new Error(`HTTP Error ${response.status}`);
-                }
+        // 3. Show skeleton loading only if no cached content shown
+        if (!container.querySelector('.hentry:not(.skeleton-card)')) {
+            container.innerHTML = generateSkeletons(9);
+        }
 
-                const json = await response.json();
-                const fetchedProjects = CONFIG.flatten(json);
+        // 4. Fetch fresh data
+        try {
+            console.log('[Projects] Fetching fresh data from API...');
 
-                if (Array.isArray(fetchedProjects)) {
-                    projects = fetchedProjects;
-                    // Save to Cache
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
+
+            const response = await fetch(`${CONFIG.API_URL}/projects?locale=${lang}&populate=*&pagination[limit]=100`, {
+                mode: 'cors',
+                credentials: 'omit',
+                signal: controller.signal
+            });
+
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+                throw new Error(`HTTP Error ${response.status}`);
+            }
+
+            const json = await response.json();
+            const fetchedProjects = CONFIG.flatten(json);
+
+            if (Array.isArray(fetchedProjects) && fetchedProjects.length > 0) {
+                projects = fetchedProjects;
+                // Save to Cache
+                try {
                     localStorage.setItem(cacheKey, JSON.stringify({
                         timestamp: Date.now(),
                         data: projects
                     }));
+                    console.log(`[Projects] Cached ${projects.length} projects`);
+                } catch (e) {
+                    console.warn('[Projects] Failed to cache:', e);
                 }
-            } catch (error) {
-                console.error('[Projects] Fetch error:', error);
+            } else if (Array.isArray(fetchedProjects) && fetchedProjects.length === 0) {
+                console.log('[Projects] API returned empty array');
+                projects = [];
+            }
+        } catch (error) {
+            console.error('[Projects] Fetch error:', error);
 
-                // Fallback: Try to use expired cache
-                const cachedData = localStorage.getItem(cacheKey);
-                if (cachedData) {
-                    try {
-                        projects = JSON.parse(cachedData).data;
-                        console.log('[Projects] Using expired cache as fallback');
-                    } catch (e) { }
-                }
+            // Fallback: Try to use ANY cached data (even expired)
+            if (projects.length === 0) {
+                try {
+                    const cachedData = localStorage.getItem(cacheKey);
+                    if (cachedData) {
+                        const parsed = JSON.parse(cachedData);
+                        if (parsed.data && Array.isArray(parsed.data)) {
+                            projects = parsed.data;
+                            console.log('[Projects] Using expired cache as fallback');
+                        }
+                    }
+                } catch (e) { }
+            }
 
-                if (projects.length === 0) {
-                    container.innerHTML = `
-                        <div class="content-error" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
-                            <h3>Connection Error</h3>
-                            <p>Could not load projects. Please check your connection.</p>
-                            <button onclick="location.reload()">Retry</button>
-                        </div>`;
-                    return;
-                }
+            // If still no data, show error
+            if (projects.length === 0) {
+                container.innerHTML = `
+                    <div class="content-error" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <h3>Connection Error</h3>
+                        <p>Could not load projects. Please check your connection.</p>
+                        <button onclick="location.reload()" style="padding: 10px 20px; cursor: pointer;">Retry</button>
+                    </div>`;
+                loadCompleted = true;
+                return;
             }
         }
 
-        // 3. Render
+        // 5. Final Render
+        renderProjects(container, projects);
+        loadCompleted = true;
+    }
+
+    /**
+     * Render projects into container
+     */
+    function renderProjects(container, projects) {
+        if (!container) return;
+
         if (!Array.isArray(projects) || projects.length === 0) {
             container.innerHTML = `
                 <div class="content-empty" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
@@ -176,7 +231,11 @@
             return;
         }
 
+        console.log(`[Projects] Rendering ${projects.length} projects`);
+
+        // Clear skeleton/previous content
         container.innerHTML = '';
+
         const fragment = document.createDocumentFragment();
         projects.forEach(project => {
             const div = document.createElement('div');
@@ -185,7 +244,9 @@
                 fragment.appendChild(div.firstChild);
             }
         });
+
         container.appendChild(fragment);
+        console.log('[Projects] Render complete');
     }
 
     /**
@@ -198,12 +259,12 @@
                 <div class="hentry skeleton-card">
                     <div class="hentry-wrap">
                         <div class="featured-image">
-                            <div class="skeleton-image content-skeleton" style="width:100%;height:0;padding-bottom:66.67%;"></div>
+                            <div class="skeleton-image content-skeleton" style="width:100%;height:0;padding-bottom:66.67%;background:#e0e0e0;"></div>
                         </div>
                         <div class="hentry-middle">
                             <header class="entry-header">
                                 <h2 class="entry-title">
-                                    <span class="skeleton-title content-skeleton" style="display:block;height:24px;width:80%;margin:15px auto 0;"></span>
+                                    <span class="skeleton-title content-skeleton" style="display:block;height:24px;width:80%;margin:15px auto 0;background:#e0e0e0;"></span>
                                 </h2>
                             </header>
                         </div>
@@ -221,26 +282,26 @@
         const imgUrl = CONFIG.getImageUrl(project.thumbnail, 'public/section/1.jpeg');
 
         const categories = Array.isArray(project.categories) ? project.categories : (project.category ? [project.category] : []);
-        const categoryList = categories.map(c => c.name);
+        const categoryList = categories.map(c => c.name || c);
 
         // Clean categories string for attribute
         const catAttr = JSON.stringify(categoryList).replace(/"/g, '&quot;');
 
         // LINK FIX: Point to ../projectview/index.html
-        const projectUrl = `../projectview/index.html?project=${project.slug}`;
+        const projectUrl = `../projectview/index.html?project=${project.slug || project.id}`;
 
         return `
             <div class="hentry" data-categories="${catAttr}">
                 <div class="hentry-wrap">
                     <div class="featured-image">
                         <a href="${projectUrl}">
-                            <img src="${imgUrl}" alt="${project.title}" loading="lazy">
+                            <img src="${imgUrl}" alt="${project.title || 'Project'}" loading="lazy">
                         </a>
                     </div>
                     <div class="hentry-middle">
                         <header class="entry-header">
                             <h2 class="entry-title">
-                                <a href="${projectUrl}">${project.title}</a>
+                                <a href="${projectUrl}">${project.title || 'Untitled Project'}</a>
                             </h2>
                         </header>
                     </div>
@@ -257,7 +318,10 @@
         items.forEach(item => {
             let cats = [];
             try {
-                cats = JSON.parse(item.getAttribute('data-categories').replace(/&quot;/g, '"') || '[]');
+                const catData = item.getAttribute('data-categories');
+                if (catData) {
+                    cats = JSON.parse(catData.replace(/&quot;/g, '"') || '[]');
+                }
             } catch (e) {
                 console.warn('Error parsing categories:', e);
             }
@@ -272,19 +336,30 @@
         });
     }
 
+    /**
+     * Force reload projects (for language change)
+     */
+    function forceReloadProjects() {
+        loadInitiated = false;
+        loadCompleted = false;
+        loadProjects();
+    }
+
     // Expose for category filtering
     window.filterProjectsBy = filterProjectsBy;
+    window.forceReloadProjects = forceReloadProjects;
 
     // Initialize on DOM ready
-    document.addEventListener('DOMContentLoaded', loadProjects);
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadProjects);
+    } else {
+        // DOM is already ready
+        loadProjects();
+    }
 
     // Re-load on language change
     window.addEventListener('languageChanged', () => {
-        // Clear loading state to allow refresh
-        if (typeof ContentLoader !== 'undefined') {
-            ContentLoader.LoadingState.resetAll();
-        }
-        loadProjects();
+        forceReloadProjects();
     });
 
 })();
