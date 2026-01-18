@@ -250,7 +250,17 @@
                 // If it's a multi-word animated title
                 if (key === 'type_title' || key === 'collab_title') {
                     const wordList = words.split(' ');
-                    const newHTML = wordList.map(word => `<span class="qodef-e-word-holder" style="display: inline-block; opacity: 1; visibility: visible; transform: translate(0px, 0px);">${word}</span>`).join(' ');
+                    let newHTML = "";
+                    wordList.forEach((word, index) => {
+                        // Add line break before the last word for collab_title
+                        if (key === 'collab_title' && index === wordList.length - 1 && wordList.length > 1) {
+                            newHTML += '<br>';
+                        }
+                        newHTML += `<span class="qodef-e-word-holder" style="display: inline-block; opacity: 1; visibility: visible; transform: translate(0px, 0px);">${word}</span>`;
+                        if (index < wordList.length - 1) {
+                            newHTML += ' ';
+                        }
+                    });
                     el.innerHTML = newHTML;
                 } else {
                     // Single word or simple group
