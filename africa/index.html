@@ -676,6 +676,20 @@
 				left: -70px !important;
 			}
 		}
+
+		/* Supprimer les filtres et formes sur les images du Hero */
+		.bdt-overlay-default,
+		.bdt-slide-shape {
+			display: none !important;
+		}
+
+		/* S'assurer que le texte reste lisible sur des images claires sans filtre */
+		.bdt-title-tag,
+		.bdt-ps-sub-title,
+		.bdt-slider-excerpt p,
+		.bdt-prime-slider-button-text {
+			text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5) !important;
+		}
 	</style>
 	<link rel='stylesheet' id='swiper-css'
 		href='https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/assets/plugins/swiper/8.4.5/swiper.min.css?ver=8.4.5'

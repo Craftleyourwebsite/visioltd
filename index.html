@@ -169,6 +169,20 @@
         text-align: left !important;
       }
     }
+
+    /* Supprimer les filtres et formes sur les images du Hero */
+    .bdt-overlay-default,
+    .bdt-slide-shape {
+      display: none !important;
+    }
+
+    /* S'assurer que le texte reste lisible sur des images claires sans filtre */
+    .bdt-title-tag,
+    .bdt-ps-sub-title,
+    .bdt-slider-excerpt p,
+    .bdt-prime-slider-button-text {
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5) !important;
+    }
   </style>
 </head>
 
@@ -290,8 +304,7 @@
                         <div class="bdt-ps-slide-img bg-cover-center full-viewport h-100"
                           style="background-image: url('public/1.jpeg');"></div>
                       </div>
-                      <div class="bdt-overlay-default bdt-position-cover"></div>
-                      <div class="bdt-slide-shape" data-bdt-slideshow-parallax="Y: -100,0,100; opacity: 1,1,0"></div>
+
                       <div class="bdt-prime-slider-wrapper">
                         <div class="bdt-prime-slider-content">
                           <div class="bdt-prime-slider-desc">
@@ -368,8 +381,7 @@
                         <div class="bdt-ps-slide-img bg-cover-center full-viewport h-100"
                           style="background-image: url('public/2.jpeg');"></div>
                       </div>
-                      <div class="bdt-overlay-default bdt-position-cover"></div>
-                      <div class="bdt-slide-shape" data-bdt-slideshow-parallax="Y: -100,0,100; opacity: 1,1,0"></div>
+
                       <div class="bdt-prime-slider-wrapper">
                         <div class="bdt-prime-slider-content">
                           <div class="bdt-prime-slider-desc">
@@ -446,8 +458,7 @@
                         <div class="bdt-ps-slide-img bg-cover-center full-viewport h-100"
                           style="background-image: url('public/3.jpeg');"></div>
                       </div>
-                      <div class="bdt-overlay-default bdt-position-cover"></div>
-                      <div class="bdt-slide-shape" data-bdt-slideshow-parallax="Y: -100,0,100; opacity: 1,1,0"></div>
+
                       <div class="bdt-prime-slider-wrapper">
                         <div class="bdt-prime-slider-content">
                           <div class="bdt-prime-slider-desc">
@@ -524,8 +535,7 @@
                         <div class="bdt-ps-slide-img bg-cover-center full-viewport h-100"
                           style="background-image: url('public/4.jpeg');"></div>
                       </div>
-                      <div class="bdt-overlay-default bdt-position-cover"></div>
-                      <div class="bdt-slide-shape" data-bdt-slideshow-parallax="Y: -100,0,100; opacity: 1,1,0"></div>
+
                       <div class="bdt-prime-slider-wrapper">
                         <div class="bdt-prime-slider-content">
                           <div class="bdt-prime-slider-desc">
@@ -1585,7 +1595,7 @@
                     data-widget_type="qi_addons_for_elementor_button.default">
                     <div class="elementor-widget-container">
                       <a class="qodef-shortcode qodef-m qodef-qi-button qodef-html--link qodef-layout--textual qodef-icon--right qodef-hover--icon-move-horizontal-short"
-                        href="news/" target="_self">
+                        href="service/" target="_self">
                         <span class="qodef-m-text">See More</span>
                         <span class="qodef-m-icon">
                           <span class="qodef-m-icon-inner">
