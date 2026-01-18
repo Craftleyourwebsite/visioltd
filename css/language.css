@@ -13,7 +13,6 @@
 .language-btn {
   background: none;
   border: none;
-  color: #ffffff;
   font-weight: bold;
   font-size: 14px;
   padding: 8px 16px;
@@ -27,55 +26,52 @@
 }
 
 .language-btn:hover {
-  background: none;
-  color: #000000 !important;
+  background: none !important;
   transform: none;
 }
 
-.language-btn.active {
-  background: none;
-  color: #ffff;
+/* Base styles for language parts */
+.lang-part {
+  opacity: 0.6 !important;
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
 }
 
-/* Lang toggle showing both EN-FR with active highlight */
-.language-btn .lang-part,
-.menu-item-language .lang-part {
-  opacity: 0.6;
-  transition: color 0.2s ease, opacity 0.2s ease;
-}
-
-.language-btn .lang-part.active,
-.menu-item-language .lang-part.active {
-  opacity: 1;
-  color: #d4af37;
-  /* highlight active language */
+/* Gold Highlight for active language */
+.lang-part.active {
+  opacity: 1 !important;
+  color: #d4af37 !important;
   font-weight: 700;
+}
+
+/* Dynamic Swap on Hover: Active becomes dimmed, Inactive becomes gold */
+.language-btn:hover .lang-part.active,
+.menu-item-language a:hover .lang-part.active {
+  opacity: 0.6 !important;
+  color: #ffffff !important;
+}
+
+.language-btn:hover .lang-part:not(.active),
+.menu-item-language a:hover .lang-part:not(.active) {
+  opacity: 1 !important;
+  color: #d4af37 !important;
 }
 
 .language-btn .lang-sep,
 .menu-item-language .lang-sep {
   display: inline-block;
   margin: 0 8px;
-  /* spacing around dash */
   opacity: 0.6;
-}
-
-/* Language button color when mobile menu is open */
-.is-menu-toggled-on .site-header:not(.clone) .language-btn {
   color: #ffffff !important;
 }
 
-/* Language button when header is in clone (scrolled) state */
-.site-header.clone .language-btn:hover {
-  color: #000000 !important;
+/* Header state overrides (scrolled/mobile) */
+.is-menu-toggled-on .language-btn,
+.site-header.clone .language-btn {
+  background: none !important;
 }
 
-.site-header.clone .language-btn,
-.site-header.clone .language-btn.active {
-  color: #ffffff !important;
-}
-
-/* Desktop: show language switcher and hide menu language item */
+/* Desktop alignment */
 @media screen and (min-width: 992px) {
   .language-switcher {
     display: flex !important;

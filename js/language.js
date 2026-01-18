@@ -27,12 +27,16 @@
     const menuEn = languageMenuItem ? languageMenuItem.querySelector('.lang-en') : null;
     const menuFr = languageMenuItem ? languageMenuItem.querySelector('.lang-fr') : null;
 
-    [btnEn, menuEn].forEach(function (el) { if (el) el.classList.toggle('active', lang === 'EN'); });
-    [btnFr, menuFr].forEach(function (el) { if (el) el.classList.toggle('active', lang === 'FR'); });
-
-    if (languageBtn) {
-      languageBtn.classList.toggle('active', lang === 'FR');
-    }
+    [btnEn, menuEn].forEach(function (el) {
+      if (el) {
+        el.classList.toggle('active', lang === 'EN');
+      }
+    });
+    [btnFr, menuFr].forEach(function (el) {
+      if (el) {
+        el.classList.toggle('active', lang === 'FR');
+      }
+    });
   }
 
   function toggleLanguage() {
