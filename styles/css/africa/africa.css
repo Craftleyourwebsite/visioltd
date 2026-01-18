@@ -1460,21 +1460,23 @@ html .learn-press-breadcrumb {
 /* From africa.html: Africa Map component (~1453) */
 .africa-map-container {
 	position: relative;
-	width: 400px;
-	height: 400px;
+	width: fit-content;
+	max-width: 100%;
 	margin: 0 auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background: transparent;
+	border: 1px solid #000000;
+	padding: 10px;
 }
 
 .africa-map {
-	width: 100%;
-	height: 100%;
+	width: auto;
+	height: auto;
+	max-width: 1200px;
+	max-height: 1200px;
 	object-fit: contain;
-	border-radius: 10px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 	transition: transform 0.3s ease;
 }
 
@@ -1484,14 +1486,14 @@ html .learn-press-breadcrumb {
 
 @media screen and (max-width: 768px) {
 	.africa-map-container {
-		width: 300px;
-		height: 300px;
+		width: fit-content;
+		max-width: 90%;
 		margin: 20px auto;
 	}
 
 	.africa-map {
-		border-radius: 8px;
-		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+		border-radius: 0;
+		box-shadow: none;
 	}
 
 	.africa-map:hover {
@@ -1501,14 +1503,14 @@ html .learn-press-breadcrumb {
 
 @media screen and (max-width: 480px) {
 	.africa-map-container {
-		width: 250px;
-		height: 250px;
+		width: fit-content;
+		max-width: 95%;
 		margin: 15px auto;
 	}
 
 	.africa-map {
-		border-radius: 6px;
-		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+		border-radius: 0;
+		box-shadow: none;
 	}
 }
 
@@ -1517,6 +1519,47 @@ html .learn-press-breadcrumb {
 .elementor-element-1bbe67d4 {
 	margin-left: 0 !important;
 }
+
+/* Accordion Fix - Prevent Overlap */
+.qodef-qi-accordion .qodef-e-title-holder {
+	display: flex !important;
+	justify-content: space-between !important;
+	align-items: center !important;
+	position: relative !important;
+	margin: 0 !important;
+	padding: 20px 0 !important;
+	cursor: pointer;
+	clear: both !important;
+}
+
+.qodef-qi-accordion .qodef-e-mark {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	width: 24px !important;
+	height: 24px !important;
+	flex-shrink: 0 !important;
+}
+
+.qodef-qi-accordion .qodef-e-mark svg {
+	width: 16px !important;
+	height: 16px !important;
+	fill: currentColor !important;
+}
+
+.qodef-qi-accordion .qodef-e-content {
+	position: relative !important;
+	height: auto !important;
+	overflow: visible !important;
+	clear: both !important;
+	padding: 10px 0 20px 0 !important;
+}
+
+.qodef-qi-accordion .qodef-e-content-inner {
+	display: block !important;
+	position: relative !important;
+}
+
 
 /* Styles de base avec sélecteurs plus spécifiques */
 .qodef-shortcode.qodef-m.qodef-qi-tabs-horizontal .qodef-tabs-horizontal-navigation {

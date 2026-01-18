@@ -644,3 +644,72 @@
     object-position: center top !important;
   }
 }
+
+/* ===== PREVIOUS TEAM MEMBER SECTION STYLES ===== */
+
+/* Previous Team Grid Container - Same layout as main team */
+.previous-team-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 30px !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+@media screen and (min-width: 769px) {
+  .previous-team-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    justify-content: start !important;
+    justify-items: stretch !important;
+  }
+}
+
+/* Previous Team Member Cards - Same style as main team cards */
+.previous-team-grid .team-member-card {
+  flex: 1 1 250px !important;
+  max-width: 300px !important;
+  min-width: 250px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: all 0.3s ease, opacity 0.4s ease !important;
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  animation: slideInUp 0.5s ease-out forwards !important;
+}
+
+@media screen and (min-width: 769px) {
+  .previous-team-grid .team-member-card {
+    width: auto !important;
+    max-width: none !important;
+    flex: none !important;
+  }
+}
+
+/* Hidden state for pagination - ensure cards beyond 4 are hidden */
+.previous-team-grid .previous-team-hidden {
+  display: none !important;
+}
+
+/* Previous Team See More Button - Uses same styles as Team section */
+/* The .qodef-m-see-more class from line 271-276 handles positioning */
+/* The .qodef-see-more-link class from line 278-289 handles button styling */
+
+/* Mobile Responsive for Previous Team */
+@media screen and (max-width: 768px) {
+  .previous-team-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+    padding: 0 15px !important;
+  }
+
+  .previous-team-grid .team-member-card {
+    flex: none !important;
+    max-width: none !important;
+    min-width: auto !important;
+    width: 100% !important;
+  }
+}
