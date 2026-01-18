@@ -1866,34 +1866,59 @@
 		/* Fix for Integrity and Showcase titles - Prevent cutting and shift left */
 		.elementor-element-053e7a1,
 		.elementor-element-3b97dd0,
+		.elementor-element-pm-title,
 		.elementor-element-053e7a1 .elementor-widget-container,
 		.elementor-element-3b97dd0 .elementor-widget-container,
+		.elementor-element-pm-title .elementor-widget-container,
 		.elementor-element-053e7a1 .qodef-qi-animated-text,
-		.elementor-element-3b97dd0 .qodef-qi-animated-text {
+		.elementor-element-3b97dd0 .qodef-qi-animated-text,
+		.elementor-element-pm-title .qodef-qi-animated-text {
 			overflow: visible !important;
 		}
 
-		.elementor-element-053e7a1 .qodef-m-title,
-		.elementor-element-3b97dd0 .qodef-m-title {
+		.elementor-element-053e7a1 .qodef-m-title {
 			position: relative !important;
-			left: -12% !important;
+			left: 0% !important;
 			white-space: nowrap !important;
-			width: max-content !important;
+			width: 100% !important;
+			text-align: center !important;
+			display: block !important;
+			font-size: 215px !important;
+		}
+
+		/* Centering fix for INTEGRITY (053e7a1), TEAM (3b97dd0) and PAST MEMBERS (pm-title) */
+		.elementor-element-053e7a1,
+		.elementor-element-3b97dd0,
+		.elementor-element-pm-title {
+			width: 100% !important;
+			display: flex !important;
+			justify-content: center !important;
+		}
+
+		.elementor-element-053e7a1 .qodef-m-title,
+		.elementor-element-3b97dd0 .qodef-m-title,
+		.elementor-element-pm-title .qodef-m-title {
+			position: relative !important;
+			left: 0 !important;
+			text-align: center !important;
+			width: 100% !important;
+			display: block !important;
 		}
 
 		@media (max-width: 1024px) {
 
 			.elementor-element-053e7a1 .qodef-m-title,
-			.elementor-element-3b97dd0 .qodef-m-title {
-				left: -8% !important;
-				font-size: 0.9em !important;
+			.elementor-element-3b97dd0 .qodef-m-title,
+			.elementor-element-pm-title .qodef-m-title {
+				left: 0 !important;
 			}
 		}
 
 		@media (max-width: 768px) {
 
 			.elementor-element-053e7a1 .qodef-m-title,
-			.elementor-element-3b97dd0 .qodef-m-title {
+			.elementor-element-3b97dd0 .qodef-m-title,
+			.elementor-element-pm-title .qodef-m-title {
 				left: 0 !important;
 				font-size: clamp(3rem, 15vw, 6rem) !important;
 				text-align: center !important;
@@ -2359,14 +2384,15 @@
 							<div class="elementor-widget-container">
 								<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-letter qodef-qi--has-appear qodef--appear-from-right"
 									data-appear-delay="100">
-									<h1 class="qodef-m-title"><span class="qodef-e-word-holder">Integrity</span></h1>
+									<h1 class="qodef-m-title"><span class="qodef-e-word-holder">INTEGRITY</span></h1>
 								</div>
 							</div>
 						</div>
 						<div class="elementor-element elementor-element-7580a6e elementor-widget elementor-widget-heading"
 							data-element_type="widget" data-id="7580a6e" data-widget_type="heading.default">
-							<div class="elementor-widget-container">
-								<h2 class="elementor-heading-title elementor-size-default">"With a commitment to
+							<div class="elementor-widget-container" style="text-align: center;">
+								<h2 class="elementor-heading-title elementor-size-default"
+									style="max-width: 800px; margin: 0 auto;">"With a commitment to
 									excellence and integrity, VISIO creates spaces that expand possibilities and deliver
 									lasting value through thoughtful, context-driven architectural solutions."</h2>
 							</div>
@@ -2477,16 +2503,16 @@
 						<div class="elementor-element elementor-element-3b97dd0 elementor-widget elementor-widget-qi_addons_for_elementor_animated_text"
 							data-element_type="widget" data-id="3b97dd0"
 							data-widget_type="qi_addons_for_elementor_animated_text.default">
-							<div class="elementor-widget-container">
+							<div class="elementor-widget-container" style="text-align: center;">
 								<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-letter qodef-qi--has-appear qodef--appear-from-right"
 									data-appear-delay="100">
-									<h1 class="qodef-m-title"><span class="qodef-e-word-holder">showcase</span></h1>
+									<h1 class="qodef-m-title"><span class="qodef-e-word-holder">TEAM</span></h1>
 								</div>
 							</div>
 						</div>
 						<div class="elementor-element elementor-element-f856cd5 elementor-widget elementor-widget-heading"
 							data-element_type="widget" data-id="f856cd5" data-widget_type="heading.default">
-							<div class="elementor-widget-container">
+							<div class="elementor-widget-container" style="text-align: center;">
 								<h2 class="elementor-heading-title elementor-size-default">Dream. Design. Deliver.</h2>
 							</div>
 						</div>
@@ -2843,17 +2869,16 @@
 
 			<!-- PAST MEMBERS SECTION -->
 			<div class="elementor-element elementor-element-past-members e-flex e-con-boxed e-con e-parent"
-				data-id="past-members" data-element_type="container" style="margin-top: 80px; margin-bottom: 80px;">
+				data-id="past-members" data-element_type="container" style="margin-top: 120px; margin-bottom: 80px;">
 				<div class="e-con-inner">
 					<div class="elementor-element elementor-element-pm-title elementor-widget elementor-widget-qi_addons_for_elementor_animated_text"
 						data-id="pm-title" data-element_type="widget"
 						data-widget_type="qi_addons_for_elementor_animated_text.default">
-						<div class="elementor-widget-container">
+						<div class="elementor-widget-container" style="text-align: center;">
 							<div class="qodef-shortcode qodef-m qodef-qi-animated-text qodef--animated-by-letter qodef-qi--has-appear qodef--appear-from-left"
 								data-appear-delay="100">
-								<h1 class="qodef-m-title">
-									<span class="qodef-e-word-holder">LIST PAST MEMBERS</span>
-								</h1>
+								<h1 class="qodef-m-title"><span class="qodef-e-word-holder">PAST</span> <span
+										class="qodef-e-word-holder">MEMBERS</span></h1>
 							</div>
 						</div>
 					</div>
