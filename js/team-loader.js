@@ -43,43 +43,36 @@
         hideAllMainTeamSlots();
 
         try {
-            let cachedMembers = null;
-
-            // 2. Try to show cached data FIRST for instant display
-            if (typeof ContentCache !== 'undefined') {
-                const cached = ContentCache.get(CONTENT_TYPE, lang);
-                if (cached && cached.data && cached.data.length > 0) {
-                    cachedMembers = cached.data;
-                    console.log('[Team] Showing cached data instantly');
-                    updateMainTeam(cachedMembers.slice(0, 4));
-                    updateExtendedTeam(cachedMembers.slice(4));
-                }
-            }
-
-            // 3. ALWAYS fetch fresh data from Strapi (stale-while-revalidate)
+            // 2. ALWAYS fetch fresh data from Strapi
             const url = `${CONFIG.API_URL}/team-members?populate=*&sort=order:asc`;
+            console.log('[Team] Fetching from:', url);
+
             const response = await (typeof ContentLoader !== 'undefined'
                 ? ContentLoader.fetchWithRetry(url)
                 : fetch(url).then(r => r.json()));
-            const freshMembers = CONFIG.flatten(response);
+            let freshMembers = CONFIG.flatten(response);
+
+            // IMPORTANT: Sort by order to ensure correct display order
+            if (Array.isArray(freshMembers)) {
+                freshMembers = freshMembers.sort((a, b) => {
+                    const orderA = a.order !== undefined && a.order !== null ? a.order : 9999;
+                    const orderB = b.order !== undefined && b.order !== null ? b.order : 9999;
+                    return orderA - orderB;
+                });
+                console.log('[Team] Members sorted by order:');
+                freshMembers.forEach((m, i) => console.log(`  ${i}: ${m.name} (order: ${m.order})`));
+            }
 
             if (Array.isArray(freshMembers) && freshMembers.length > 0) {
-                // 4. Update cache with fresh data
+                // Update cache with fresh sorted data
                 if (typeof ContentCache !== 'undefined') {
                     ContentCache.set(CONTENT_TYPE, lang, freshMembers);
                 }
 
-                // 5. Check if data changed - if so, update display
-                const dataChanged = !cachedMembers ||
-                    JSON.stringify(freshMembers) !== JSON.stringify(cachedMembers);
-
-                if (dataChanged) {
-                    console.log('[Team] Fresh data received, updating display');
-                    updateMainTeam(freshMembers.slice(0, 4));
-                    updateExtendedTeam(freshMembers.slice(4));
-                } else {
-                    console.log('[Team] Data unchanged, no update needed');
-                }
+                // ALWAYS update display with fresh data
+                console.log('[Team] Updating display with fresh data');
+                updateMainTeam(freshMembers.slice(0, 4));
+                updateExtendedTeam(freshMembers.slice(4));
             }
 
         } catch (error) {
@@ -154,22 +147,54 @@
     }
 
     function updateSocialLinks(container, attr) {
-        const socialLinks = container.querySelectorAll('.qodef-e-social-icon-link');
-        socialLinks.forEach(link => {
-            const svg = link.querySelector('svg');
-            if (!svg) return;
+        const socialLinksContainer = container.querySelector('.qodef-m-social-icons');
+        if (!socialLinksContainer) return;
 
-            let show = false;
-            let href = '#';
+        // Clear all existing links first, then rebuild based on available data
+        const existingLinks = socialLinksContainer.querySelectorAll('.qodef-e-social-icon-link');
+        existingLinks.forEach(link => link.style.display = 'none');
 
-            if (svg.classList.contains('e-fab-facebook')) { if (attr.facebook_link) { href = attr.facebook_link; show = true; } }
-            else if (svg.classList.contains('e-fab-twitter')) { if (attr.twitter_link) { href = attr.twitter_link; show = true; } }
-            else if (svg.classList.contains('e-fab-instagram')) { if (attr.instagram_link) { href = attr.instagram_link; show = true; } }
-            else if (svg.classList.contains('e-far-envelope')) { if (attr.email) { href = `mailto:${attr.email}`; show = true; } }
+        // Define icon paths
+        const iconPaths = {
+            facebook: "M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z",
+            twitter: "M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z",
+            linkedin: "M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z",
+            envelope: "M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"
+        };
 
-            link.href = href;
-            link.style.display = show ? 'inline-flex' : 'none';
-        });
+        // Helper to create a new social link
+        function createSocialLink(href, type) {
+            const vb = (type === 'linkedin') ? "0 0 448 512" : "0 0 512 512";
+            const iconClass = (type === 'envelope') ? 'e-far-envelope' : `e-fab-${type}`;
+            const a = document.createElement('a');
+            a.className = 'qodef-e-social-icon-link';
+            a.setAttribute('itemprop', 'url');
+            a.href = href;
+            a.target = '_blank';
+            a.style.display = 'inline-flex';
+            a.innerHTML = `
+                <span class="qodef-e-social-icon">
+                    <svg aria-hidden="true" class="e-font-icon-svg ${iconClass}" viewBox="${vb}" xmlns="http://www.w3.org/2000/svg">
+                        <path d="${iconPaths[type]}"></path>
+                    </svg>
+                </span>
+            `;
+            return a;
+        }
+
+        // Add social links based on available data
+        if (attr.facebook_link) {
+            socialLinksContainer.appendChild(createSocialLink(attr.facebook_link, 'facebook'));
+        }
+        if (attr.twitter_link) {
+            socialLinksContainer.appendChild(createSocialLink(attr.twitter_link, 'twitter'));
+        }
+        if (attr.linkedin_link) {
+            socialLinksContainer.appendChild(createSocialLink(attr.linkedin_link, 'linkedin'));
+        }
+        if (attr.email) {
+            socialLinksContainer.appendChild(createSocialLink(`mailto:${attr.email}`, 'envelope'));
+        }
     }
 
     function updateExtendedTeam(members) {
@@ -224,7 +249,7 @@
                                 <div class="qodef-m-social-icons">
                                     ${generateSocialLinkHTML(member.facebook_link, 'facebook')}
                                     ${generateSocialLinkHTML(member.twitter_link, 'twitter')}
-                                    ${generateSocialLinkHTML(member.instagram_link, 'instagram')}
+                                    ${generateSocialLinkHTML(member.linkedin_link, 'linkedin')}
                                     ${generateSocialLinkHTML(member.email, 'envelope', true)}
                                 </div>
                             </div>
@@ -245,11 +270,11 @@
         const iconPaths = {
             facebook: "M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z",
             twitter: "M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z",
-            instagram: "M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z",
+            linkedin: "M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z",
             envelope: "M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"
         };
         const iconClass = (type === 'envelope') ? 'e-far-envelope' : `e-fab-${type}`;
-        const vb = (type === 'instagram') ? "0 0 448 512" : "0 0 512 512";
+        const vb = (type === 'linkedin') ? "0 0 448 512" : "0 0 512 512";
         return `
             <a class="qodef-e-social-icon-link" itemprop="url" href="${href}" target="_blank">
                 <span class="qodef-e-social-icon">
