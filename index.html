@@ -2667,7 +2667,17 @@
     id="qi-addons-for-elementor-elementor-js"></script>
   <script src="js/language.js"></script>
   <script src="js/home-translation.js"></script>
+  <!-- CACHE BUSTING SYSTEM - Must load BEFORE other scripts -->
+  <script>
+    // Dynamic cache buster for critical scripts
+    (function() {
+      var v = Date.now();
+      document.write('<script src="js/version-check.js?v=' + v + '"><\/script>');
+      document.write('<script src="js/api.js?v=' + v + '"><\/script>');
+    })();
+  </script>
   <script src="js/config.js"></script>
+  <script src="js/content-loader.js"></script>
   <script src="js/testimonial-loader.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {

@@ -2611,6 +2611,14 @@
 	<script type="text/javascript"
 		src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/bdthemes-prime-slider-lite/assets/js/prime-slider-site.min.js?ver=3.17.6"
 		id="prime-slider-site-js"></script>
+	<!-- CACHE BUSTING SYSTEM - Must load BEFORE other scripts -->
+	<script>
+		(function () {
+			var v = Date.now();
+			document.write('<script src="../js/version-check.js?v=' + v + '"><\/script>');
+			document.write('<script src="../js/api.js?v=' + v + '"><\/script>');
+		})();
+	</script>
 	<script src="../js/config.js"></script>
 	<script src="../js/content-loader.js"></script>
 	<script src="../js/rise-loader.js"></script>

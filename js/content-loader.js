@@ -256,11 +256,29 @@
     async function fetchWithRetry(url, options = {}, retries = CACHE_CONFIG.MAX_RETRIES) {
         let lastError;
 
+        // Get anti-cache headers from API module if available
+        const antiCacheHeaders = (typeof API !== 'undefined' && API.getAntiCacheHeaders)
+            ? API.getAntiCacheHeaders()
+            : {
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
+            };
+
+        // Add cache buster to URL
+        const cacheBustedUrl = url.includes('?')
+            ? `${url}&_cb=${Date.now()}`
+            : `${url}?_cb=${Date.now()}`;
+
         for (let i = 0; i < retries; i++) {
             try {
-                const response = await fetch(url, {
+                const response = await fetch(cacheBustedUrl, {
                     mode: 'cors',
                     credentials: 'omit',
+                    headers: {
+                        ...antiCacheHeaders,
+                        'Accept': 'application/json'
+                    },
                     ...options
                 });
 

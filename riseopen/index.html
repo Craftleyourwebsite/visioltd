@@ -1401,6 +1401,14 @@
 	<script type="text/javascript"
 		src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/pixelwars-core/themes/global/js/shortcodes.js"
 		id="pixelwars-core-shortcodes-js"></script>
+	<!-- CACHE BUSTING SYSTEM - Must load BEFORE other scripts -->
+	<script>
+		(function () {
+			var v = Date.now();
+			document.write('<script src="../js/version-check.js?v=' + v + '"><\/script>');
+			document.write('<script src="../js/api.js?v=' + v + '"><\/script>');
+		})();
+	</script>
 	<script src="../js/config.js"></script>
 	<script src="../js/rise-detail-loader.js"></script>
 </body>

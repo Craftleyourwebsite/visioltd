@@ -3251,6 +3251,15 @@
 							src="https://themes.pixelwars.org/arkiz/demo-01/wp-content/plugins/qi-addons-for-elementor/inc/plugins/elementor/assets/js/elementor.js?ver=6.8.2"
 							type="text/javascript">
 							</script>
+						<!-- CACHE BUSTING SYSTEM - Must load BEFORE other scripts -->
+						<script>
+							// Dynamic cache buster for critical scripts
+							(function () {
+								var v = Date.now();
+								document.write('<script src="../js/version-check.js?v=' + v + '"><\/script>');
+								document.write('<script src="../js/api.js?v=' + v + '"><\/script>');
+							})();
+						</script>
 						<script src="../js/config.js"></script>
 						<script src="../js/content-loader.js"></script>
 						<script src="../js/team-loader.js"></script>
