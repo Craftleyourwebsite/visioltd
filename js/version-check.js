@@ -18,7 +18,7 @@
     // ============================================
     // CONFIGURATION - UPDATE ON EVERY DEPLOYMENT
     // ============================================
-    const APP_VERSION = '1.0.0'; // INCREMENT THIS ON EVERY DEPLOYMENT!
+    const APP_VERSION = '1.0.1'; // INCREMENT THIS ON EVERY DEPLOYMENT!
     const VERSION_KEY = 'app_version';
     const LAST_CACHE_CLEAR_KEY = 'app_last_cache_clear';
 

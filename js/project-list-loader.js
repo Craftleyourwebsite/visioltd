@@ -1,6 +1,7 @@
 /**
- * PROJECT LIST LOADER (V5 - OPTIMIZED DYNAMIC HYBRID)
- * Fetches "Selected Projects" directly from Strapi API at runtime.
+ * PROJECT LIST LOADER (V6 - FIXED)
+ * Fetches projects from Strapi API at runtime.
+ * Uses the correct 'projects' endpoint instead of the non-existent 'selected-project-list'.
  * Merges them with INITIAL_PROJECTS (Static).
  * Sorts by Year DESC.
  * OPTIMIZATION: Uses localStorage caching (5 minutes TTL) to prevent hammering Strapi on every page load.
@@ -36,13 +37,13 @@ const INITIAL_PROJECTS = [
 ];
 
 // Config for Optimization
-const PROJECTS_CACHE_KEY = 'cached_strapi_projects';
+const PROJECTS_CACHE_KEY = 'cached_strapi_projects_list';
 const CACHE_TTL_MS = 300000; // 5 Minutes Cache
 
 document.addEventListener('DOMContentLoaded', loadProjectList);
 
 async function loadProjectList() {
-    console.log('Project List Loader (Optimized Dynamic): Initializing...');
+    console.log('Project List Loader (V6 Fixed): Initializing...');
     const lang = (localStorage.getItem('currentLanguage') || 'en').toLowerCase();
 
     // Elements
@@ -86,37 +87,63 @@ async function loadProjectList() {
         // 2. Fetch if not in valid cache
         if (!loadedFromValidCache) {
             try {
-                // Fetch from Strapi (Selected List)
-                const baseUrl = (typeof CONFIG !== 'undefined' && CONFIG.API_URL) ? CONFIG.API_URL : 'https://admin.creatymu.org/api';
-                const url = `${baseUrl}/selected-project-list?locale=${language}&populate[projects]=true`;
+                // Use CONFIG.API_URL (correct URL from config.js)
+                const baseUrl = (typeof CONFIG !== 'undefined' && CONFIG.API_URL) ? CONFIG.API_URL : 'https://visiostrapi-production.up.railway.app/api';
 
-                console.log(`[List] Fetching dynamic projects from: ${url}`);
+                // FIXED: Use 'projects' endpoint instead of non-existent 'selected-project-list'
+                // Requesting only the fields we need for the list view
+                const url = `${baseUrl}/projects?locale=${language}&fields[0]=title&fields[1]=date&fields[2]=client&fields[3]=location&pagination[limit]=100&_cb=${Date.now()}`;
+
+                console.log(`[List] Fetching projects from: ${url.split('?')[0]}...`);
 
                 const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second max
+                const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second max
 
-                const response = await fetch(url, { signal: controller.signal });
+                const response = await fetch(url, {
+                    signal: controller.signal,
+                    mode: 'cors',
+                    credentials: 'omit',
+                    headers: {
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache'
+                    }
+                });
                 clearTimeout(timeoutId);
 
                 if (response.ok) {
                     const json = await response.json();
                     let rawProjects = [];
 
-                    if (json.data && json.data.attributes && Array.isArray(json.data.attributes.projects)) {
+                    // Handle Strapi v5 flat response or v4 nested response
+                    if (Array.isArray(json.data)) {
+                        rawProjects = json.data;
+                    } else if (json.data && json.data.attributes && Array.isArray(json.data.attributes.projects)) {
                         rawProjects = json.data.attributes.projects;
-                    } else if (json.data && json.data.projects) {
-                        rawProjects = json.data.projects;
                     }
 
-                    strapiProjects = rawProjects.map(p => ({
-                        year: p.year || 'Unknown',
-                        location: p.location || '',
-                        title: p.name || '',
-                        client: p.client || '',
-                        category: p.category || '',
-                        isFromStrapi: true,
-                        id: p.id
-                    }));
+                    strapiProjects = rawProjects.map(p => {
+                        // Handle Strapi v5 flat format vs v4 nested format
+                        const attrs = p.attributes || p;
+
+                        // Extract year from date field (could be "2024" or "January 2024" etc.)
+                        let year = 'Unknown';
+                        if (attrs.date) {
+                            const yearMatch = String(attrs.date).match(/\d{4}/);
+                            if (yearMatch) year = yearMatch[0];
+                        }
+
+                        return {
+                            year: year,
+                            location: attrs.location || '',
+                            title: attrs.title || attrs.name || '',
+                            client: attrs.client || '',
+                            category: attrs.category || '',
+                            isFromStrapi: true,
+                            id: p.id
+                        };
+                    });
+
+                    console.log(`[List] Fetched ${strapiProjects.length} projects from Strapi`);
 
                     // Save to Cache
                     localStorage.setItem(cacheKey, JSON.stringify({
@@ -147,12 +174,7 @@ async function loadProjectList() {
         // We use a Map to deduplicate using normalized title as key
         const projectMap = new Map();
 
-        // Add Strapi projects first (higher priority if we want them to be the source of truth, 
-        // or lower if we want static to override? Usually dynamic overrides static, but here 
-        // we're appending static ones that aren't in dynamic. The user wants "Selected Project List" + "Initial".
-        // Use title as unique key.
-
-        // Add dynamic projects
+        // Add dynamic projects first (higher priority)
         strapiProjects.forEach(p => {
             projectMap.set(p.title.trim().toLowerCase(), p);
         });

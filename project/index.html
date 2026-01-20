@@ -3278,7 +3278,13 @@
   <script src="../js/config.js"></script>
   <script src="../js/content-loader.js"></script>
   <script src="../js/projects-loader.js"></script>
-  <script src="../js/project-list-loader.js"></script>
+  <script>
+    // Cache busting for project-list-loader
+    (function () {
+      var v = Date.now();
+      document.write('<script src="../js/project-list-loader.js?v=' + v + '"><\/script>');
+    })();
+  </script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       // ULTRA ROBUST FOOTER FIX - Force footer positioning (Copied from aboutus/index)
