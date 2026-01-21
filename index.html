@@ -318,6 +318,47 @@
         bottom: 20px !important;
       }
     }
+
+    /* Hide thumbnails on desktop for the portfolio carousel but keep navigation arrows */
+    @media screen and (min-width: 992px) {
+      .bdt-ps-thumbnav {
+        display: none !important;
+      }
+
+      /* Match portfolio carousel arrows to hero slider design on desktop */
+      .bdt-prime-slider-skin-coral .bdt-navigation-arrows {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        margin-right: 40px !important;
+      }
+
+      .bdt-prime-slider-skin-coral .bdt-navigation-arrows a {
+        padding: 0 !important;
+        height: 50px !important;
+        width: 50px !important;
+        display: flex !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        background: rgba(0, 0, 0, 0.2) !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: all 0.3s ease !important;
+        border-radius: 0 !important;
+      }
+
+      .bdt-prime-slider-skin-coral .bdt-navigation-arrows a:hover {
+        background: rgba(0, 0, 0, 0.8) !important;
+        border-color: #fff !important;
+      }
+
+      /* Ensure arrows icons are white */
+      .bdt-prime-slider-skin-coral .bdt-navigation-arrows a svg,
+      .bdt-prime-slider-skin-coral .bdt-navigation-arrows a::before,
+      .bdt-prime-slider-skin-coral .bdt-navigation-arrows a::after {
+        color: #fff !important;
+        stroke: #fff !important;
+      }
+    }
   </style>
 </head>
 
@@ -2670,7 +2711,7 @@
   <!-- CACHE BUSTING SYSTEM - Must load BEFORE other scripts -->
   <script>
     // Dynamic cache buster for critical scripts
-    (function() {
+    (function () {
       var v = Date.now();
       document.write('<script src="js/version-check.js?v=' + v + '"><\/script>');
       document.write('<script src="js/api.js?v=' + v + '"><\/script>');
