@@ -83,6 +83,40 @@
 		.site-footer .site-info p {
 			color: #fff !important;
 		}
+
+		/* Social Sharing Hover Colors */
+		.share-links a {
+			background: none !important;
+			border: none !important;
+			box-shadow: none !important;
+			color: #333 !important;
+			transition: all 0.3s ease !important;
+		}
+
+		.share-links a:hover {
+			transform: translateY(-3px) !important;
+		}
+
+		.share-links a.share-facebook:hover {
+			color: #1877F2 !important;
+		}
+
+		.share-links a.share-instagram:hover {
+			color: #E4405F !important;
+		}
+
+		.share-links a.share-twitter:hover {
+			color: #1DA1F2 !important;
+			/* X/Twitter Blue for better visibility */
+		}
+
+		.share-links a.share-linkedin:hover {
+			color: #0077B5 !important;
+		}
+
+		.share-links a.share-whatsapp:hover {
+			color: #25D366 !important;
+		}
 	</style>
 	<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 	<link rel="alternate" type="application/rss+xml" title="Visio Architecture Ltd &raquo; Feed"
@@ -1089,7 +1123,7 @@
 	class="wp-singular post-template-default single single-post postid-5656 single-format-standard wp-theme-arkiz qodef-qi--no-touch qi-addons-for-elementor-1.8.9 elementor-default elementor-kit-11">
 	<div id="page" class="hfeed site">
 		<div style="position: fixed; top: 30px; left: 30px; z-index: 1000;">
-			<a href="javascript:history.back()"
+			<a href="../news/"
 				style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: #000000; border-radius: 50%; text-decoration: none; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;"
 				onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 6px 20px rgba(0, 0, 0, 0.3)'"
 				onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.2)'">
@@ -1151,12 +1185,23 @@
 									<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
 										xmlns="http://www.w3.org/2000/svg">
 										<path
-											d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.324v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+											d="M9.193 19.1h3.022V11.33h2.627l.393-3.051H12.215V6.33c0-.882.245-1.483 1.51-1.483H15.353V2.121C15.074 2.083 14.118 2 13.007 2c-2.32 0-3.908 1.416-3.908 4.017v2.261H6.467v3.051h2.671V19.1z" />
+									</svg>
+								</a>
+
+								<a id="share-instagram-bottom" class="share-instagram" rel="nofollow" target="_blank"
+									href="https://www.instagram.com" title="Follow us on Instagram"
+									style="display: inline-flex; align-items: center; justify-content: center; margin-right: 15px;">
+									<svg width="24" height="24" viewBox="0 0 448 512" fill="currentColor"
+										xmlns="http://www.w3.org/2000/svg">
+										<path
+											d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
+										</path>
 									</svg>
 								</a>
 
 								<a id="share-twitter-bottom" class="share-twitter" rel="nofollow" target="_blank"
-									href="#" title="Tweet this post to your followers"
+									href="#" title="Share on X"
 									style="display: inline-flex; align-items: center; justify-content: center; margin-right: 15px;">
 									<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
 										xmlns="http://www.w3.org/2000/svg">
@@ -1165,25 +1210,23 @@
 									</svg>
 								</a>
 
-								<a id="share-pinterest-bottom" class="share-pinterest" rel="nofollow" target="_blank"
-									href="#" title="Pin it"
+								<a id="share-linkedin-bottom" class="share-linkedin" rel="nofollow" target="_blank"
+									href="#" title="Share on LinkedIn"
 									style="display: inline-flex; align-items: center; justify-content: center; margin-right: 15px;">
 									<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
 										xmlns="http://www.w3.org/2000/svg">
 										<path
-											d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.965 1.406-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z" />
+											d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v11h5v-11zm7.982 0h-4.968v11h4.968v-6.033c0-3.312 4.026-3.564 4.026 0v6.033h4.992v-8.395c0-6.521-7.29-6.309-9.018-3.003v-1.602z" />
 									</svg>
 								</a>
 
-								<a id="share-mail-bottom" class="share-mail" rel="nofollow" target="_blank" href="#"
-									title="Email this post to a friend"
+								<a id="share-whatsapp-bottom" class="share-whatsapp" rel="nofollow" target="_blank"
+									href="#" title="Share on WhatsApp"
 									style="display: inline-flex; align-items: center; justify-content: center;">
-									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-										stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+										xmlns="http://www.w3.org/2000/svg">
 										<path
-											d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-										</path>
-										<polyline points="22,6 12,13 2,6"></polyline>
+											d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884 0 2.225.569 3.808 1.694 5.754l-.992 3.622 3.787-.975zm11.332-6.859c-.31-.155-1.838-.906-2.121-1.01-.283-.102-.49-.155-.694.154-.204.311-.791.993-.97 1.199-.178.204-.356.23-.666.075-.31-.155-1.312-.483-2.498-1.541-.923-.824-1.546-1.841-1.726-2.152-.18-.311-.019-.479.136-.633.14-.138.311-.362.466-.544.156-.181.205-.311.31-.518.103-.207.051-.389-.026-.544-.078-.155-.694-1.67-.951-2.288-.25-.6-.524-.519-.718-.529l-.612-.011c-.214 0-.561.08-.854.4-.294.32-1.123 1.101-1.123 2.682s1.149 3.111 1.306 3.318c.158.207 2.261 3.453 5.478 4.843.765.33 1.362.528 1.828.675.768.243 1.467.209 2.02.127.617-.091 1.838-.751 2.098-1.477.26-.725.26-1.345.183-1.475-.077-.13-.284-.207-.591-.362z" />
 									</svg>
 								</a>
 							</div> <!-- .share-links -->
@@ -1246,7 +1289,7 @@
 		<footer id="colophon" class="site-footer" role="contentinfo">
 			<div class="site-info">
 
-				<p>© 2025 Visio. All Rights Reserved.</p>
+				<p>© 2025 Visio. All Rights Reserved. <a href="../terms/" style="color: #ffffff; text-decoration: none; margin-left: 20px; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">TERMS AND CONDITION</a></p>
 			</div> <!-- .site-info -->
 		</footer> <!-- #colophon .site-footer -->
 	</div>

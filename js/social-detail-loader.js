@@ -206,10 +206,14 @@ function updateSocialSharing(item) {
         if (el) el.href = href;
     };
 
+    // Facebook
     updateLink('share-facebook', `https://www.facebook.com/sharer.php?u=${encodedUrl}`);
+    // X (Twitter)
     updateLink('share-twitter', `https://twitter.com/intent/tweet?text=${encodeURIComponent('Currently reading: ' + item.title)}&url=${encodedUrl}`);
-    updateLink('share-pinterest', `https://pinterest.com/pin/create/button/?url=${encodedUrl}&media=${encodeURIComponent(imageUrl)}&description=${title}`);
-    updateLink('share-mail', `mailto:?subject=${encodeURIComponent('Check out this post: ' + item.title)}&body=${encodeURIComponent('I wanted you to see this: ' + pageUrl)}`);
+    // LinkedIn
+    updateLink('share-linkedin', `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`);
+    // WhatsApp
+    updateLink('share-whatsapp', `https://api.whatsapp.com/send?text=${encodeURIComponent(item.title + ' ' + pageUrl)}`);
 }
 
 function renderRichText(content) {

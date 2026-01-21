@@ -221,14 +221,14 @@ function updateSocialSharing(item) {
     // Facebook: https://www.facebook.com/sharer.php?u=URL
     updateLink('share-facebook', `https://www.facebook.com/sharer.php?u=${encodedUrl}`);
 
-    // Twitter: https://twitter.com/intent/tweet?text=TEXT&url=URL
+    // X (Twitter): https://twitter.com/intent/tweet?text=TEXT&url=URL
     updateLink('share-twitter', `https://twitter.com/intent/tweet?text=${encodeURIComponent('Currently reading: ' + item.title)}&url=${encodedUrl}`);
 
-    // Pinterest: https://pinterest.com/pin/create/button/?url=URL&media=IMAGE&description=TEXT
-    updateLink('share-pinterest', `https://pinterest.com/pin/create/button/?url=${encodedUrl}&media=${encodeURIComponent(imageUrl)}&description=${title}`);
+    // LinkedIn: https://www.linkedin.com/sharing/share-offsite/?url=URL
+    updateLink('share-linkedin', `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`);
 
-    // Email
-    updateLink('share-mail', `mailto:?subject=${encodeURIComponent('Check out this post: ' + item.title)}&body=${encodeURIComponent('I wanted you to see this: ' + pageUrl)}`);
+    // WhatsApp: https://api.whatsapp.com/send?text=TEXT
+    updateLink('share-whatsapp', `https://api.whatsapp.com/send?text=${encodeURIComponent(item.title + ' ' + pageUrl)}`);
 }
 
 function renderRichText(content) {
