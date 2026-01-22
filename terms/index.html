@@ -10,7 +10,7 @@
     <link href="http://gmpg.org/xfn/11" rel="profile">
     <link href="../public/favicon.jpeg" rel="icon" type="image/jpeg">
     <link href="../public/favicon.jpeg" rel="shortcut icon" type="image/jpeg">
-    <title>Terms and Condition &#8211; Visio Architecture Ltd</title>
+    <title>Terms and Conditions &#8211; Visio Architecture Ltd</title>
     <link rel="stylesheet" href="../styles/css/africa/africa.css">
     <meta content='max-image-preview:large' name='robots'>
     <link rel="stylesheet" href="../css/team.css">
@@ -22,204 +22,9 @@
 
 
 
-        /* --- STYLES SPÉCIFIQUES POUR LE HEADER ABOUT US - NOIR EN PERMANENCE --- */
+        /* Nettoyage des styles conflictuels (Déplacés à la fin du fichier avec !important) */
 
-        /* Header noir en permanence (normal et scroll) */
-        .site-header .header-wrap:before,
-        .site-header.clone .header-wrap:before {
-            background: #000000 !important;
-            opacity: 1 !important;
-        }
 
-        /* Forcer le header à être noir en permanence */
-        .site-header .header-wrap,
-        .site-header.clone .header-wrap {
-            background: #000000 !important;
-        }
-
-        /* S'assurer que le header-wrap-inner est aussi noir */
-        .site-header .header-wrap-inner,
-        .site-header.clone .header-wrap-inner {
-            background: #000000 !important;
-        }
-
-        /* Texte blanc en permanence pour tous les liens de navigation */
-        .site-header .nav-menu a,
-        .site-header .menu-toggle .lines,
-        .site-header .menu-toggle .lines:before,
-        .site-header .menu-toggle .lines:after,
-        .site-header.clone .nav-menu a,
-        .site-header.clone .menu-toggle .lines,
-        .site-header.clone .menu-toggle .lines:before,
-        .site-header.clone .menu-toggle .lines:after {
-            color: #ffffff !important;
-        }
-
-        .site-header .nav-menu a:hover,
-        .site-header.clone .nav-menu a:hover {
-            color: #d4af37 !important;
-        }
-
-        /* Exception spéciale : "About Us" (ou item courant) est or par défaut et reste or au hover */
-        .site-header .nav-menu .current-menu-item a,
-        .site-header.clone .nav-menu .current-menu-item a,
-        .site-header .nav-menu .current_page_item a,
-        .site-header.clone .nav-menu .current_page_item a {
-            color: #d4af37 !important;
-        }
-
-        .site-header .nav-menu .current-menu-item a:hover,
-        .site-header.clone .nav-menu .current-menu-item a:hover {
-            color: #d4af37 !important;
-        }
-
-        /* Bouton de langue blanc en permanence */
-        .aboutus-language-btn {
-            background: transparent !important;
-            background-color: transparent !important;
-            background-image: none !important;
-            border: none !important;
-            border-width: 0 !important;
-            border-style: none !important;
-            border-color: transparent !important;
-            outline: none !important;
-            outline-width: 0 !important;
-            color: #ffffff !important;
-            font-weight: bold !important;
-            font-size: 14px !important;
-            padding: 8px 16px !important;
-            cursor: pointer !important;
-            transition: none !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1px !important;
-            min-width: 40px !important;
-            text-align: center !important;
-            white-space: nowrap !important;
-            box-shadow: none !important;
-            text-decoration: none !important;
-            text-shadow: none !important;
-            display: inline-block !important;
-            vertical-align: middle !important;
-            line-height: 1 !important;
-            -webkit-box-shadow: none !important;
-            -moz-box-shadow: none !important;
-            -webkit-border-radius: 0 !important;
-            -moz-border-radius: 0 !important;
-            border-radius: 0 !important;
-            -webkit-appearance: none !important;
-            -moz-appearance: none !important;
-            appearance: none !important;
-        }
-
-        /* EN-FR toggle parts + active highlight */
-        .aboutus-language-btn .lang-part,
-        .menu-item-language .lang-part {
-            opacity: 0.6;
-            transition: color 0.2s ease, opacity 0.2s ease;
-        }
-
-        .aboutus-language-btn .lang-part.active,
-        .menu-item-language .lang-part.active {
-            opacity: 1;
-            color: #d4af37;
-            /* highlight active language */
-            font-weight: 700;
-        }
-
-        .aboutus-language-btn .lang-sep,
-        .menu-item-language .lang-sep {
-            display: inline-block;
-            margin: 0 8px;
-            /* spacing around dash */
-            opacity: 0.6;
-        }
-
-        /* S'assurer que le logo reste blanc (car c'est logoblanc.png) */
-        .site-header .logo-image,
-        .site-header.clone .logo-image {
-            filter: brightness(0) invert(1) !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-        }
-
-        .aboutus-language-btn:hover {
-            background: transparent !important;
-            background-color: transparent !important;
-            background-image: none !important;
-            color: #ffffff !important;
-            transform: none !important;
-            border: none !important;
-            border-width: 0 !important;
-            border-style: none !important;
-            border-color: transparent !important;
-            outline: none !important;
-            outline-width: 0 !important;
-            box-shadow: none !important;
-            text-decoration: none !important;
-            text-shadow: none !important;
-            -webkit-box-shadow: none !important;
-            -moz-box-shadow: none !important;
-            -webkit-border-radius: 0 !important;
-            -moz-border-radius: 0 !important;
-            border-radius: 0 !important;
-        }
-
-        .aboutus-language-btn.active {
-            background: transparent !important;
-            background-color: transparent !important;
-            background-image: none !important;
-            color: #ffffff !important;
-            border: none !important;
-            border-width: 0 !important;
-            border-style: none !important;
-            border-color: transparent !important;
-            outline: none !important;
-            outline-width: 0 !important;
-            box-shadow: none !important;
-            text-decoration: none !important;
-            text-shadow: none !important;
-            -webkit-box-shadow: none !important;
-            -moz-box-shadow: none !important;
-            -webkit-border-radius: 0 !important;
-            -moz-border-radius: 0 !important;
-            border-radius: 0 !important;
-        }
-
-        .aboutus-language-btn:focus {
-            border: none !important;
-            border-width: 0 !important;
-            border-style: none !important;
-            border-color: transparent !important;
-            outline: none !important;
-            outline-width: 0 !important;
-            box-shadow: none !important;
-            text-decoration: none !important;
-            text-shadow: none !important;
-            -webkit-box-shadow: none !important;
-            -moz-box-shadow: none !important;
-            -webkit-border-radius: 0 !important;
-            -moz-border-radius: 0 !important;
-            border-radius: 0 !important;
-        }
-
-        .aboutus-language-btn:active {
-            border: none !important;
-            border-width: 0 !important;
-        }
-
-        /* Styles spécifiques pour aboutus.html - Menu burger à droite */
-        .menu-toggle {
-            order: 1 !important;
-            margin-left: auto !important;
-        }
-
-        .nav-menu {
-            order: 2 !important;
-        }
-
-        .language-switcher {
-            order: 3 !important;
-        }
 
 
 
@@ -507,87 +312,12 @@
             padding: 0 !important;
         }
 
-        /* Forcer le texte uniquement */
-        #language-btn.aboutus-language-btn {
-            color: #ffffff !important;
-            font-weight: bold !important;
-            font-size: 14px !important;
-            padding: 8px 16px !important;
-            cursor: pointer !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1px !important;
-            min-width: 40px !important;
-            text-align: center !important;
-            white-space: nowrap !important;
-            display: inline-block !important;
-            vertical-align: middle !important;
-            line-height: 1 !important;
-        }
 
-        /* Forcer le positionnement à droite dans le header */
-        .layout-medium {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-        }
 
-        .nav-menu {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
 
-        .language-switcher {
-            flex-shrink: 0;
-        }
 
+        /* MOBILE MENU OVERLAY STYLES (Keep existing animation) */
         @media screen and (max-width: 991px) {
-            .language-switcher {
-                margin-left: 10px;
-            }
-
-            .aboutus-language-btn {
-                font-size: 12px !important;
-                padding: 6px 12px !important;
-                min-width: 35px !important;
-            }
-
-            /* Masquer le language switcher sur mobile et afficher l'option dans le menu */
-            .language-switcher {
-                display: none !important;
-            }
-
-            .menu-item-language {
-                display: block !important;
-            }
-
-            /* Styles pour le texte du header en mobile - Texte blanc pour être visible */
-            .site-header:not(.clone) .nav-menu a,
-            .site-header:not(.clone) .menu-toggle .lines,
-            .site-header:not(.clone) .menu-toggle .lines:before,
-            .site-header:not(.clone) .menu-toggle .lines:after {
-                color: #ffffff !important;
-            }
-
-            .site-header:not(.clone) .menu-toggle .lines,
-            .site-header:not(.clone) .menu-toggle .lines:before,
-            .site-header:not(.clone) .menu-toggle .lines:after {
-                background-color: #ffffff !important;
-            }
-
-            /* Quand le menu est ouvert en mobile - Texte blanc */
-            .is-menu-toggled-on .site-header:not(.clone) .nav-menu a,
-            .is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines,
-            .is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:before,
-            .is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:after {
-                color: #ffffff !important;
-            }
-
-            .is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines,
-            .is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:before,
-            .is-menu-toggled-on .site-header:not(.clone) .menu-toggle .lines:after {
-                background-color: #ffffff !important;
-            }
 
             /* Animation d'entrée du menu - slide depuis la droite */
             .nav-menu {
@@ -706,14 +436,16 @@
             }
         }
 
-        /* Afficher le language switcher sur desktop et masquer l'option dans le menu */
+        /* Afficher le language switcher sur desktop (dans le menu) */
         @media screen and (min-width: 992px) {
-            .language-switcher {
-                display: flex !important;
+            .menu-item-language {
+                display: inline-flex !important;
             }
 
-            .menu-item-language {
-                display: none !important;
+            .menu-item-language a {
+                color: #ffffff !important;
+                font-weight: bold !important;
+                text-transform: uppercase !important;
             }
         }
     </style>
@@ -2030,11 +1762,6 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="language-switcher">
-                                    <button class="aboutus-language-btn" id="language-btn"><span
-                                            class="lang-part lang-en">EN</span><span class="lang-sep">-</span><span
-                                            class="lang-part lang-fr">FR</span></button>
-                                </div><!-- .language-switcher -->
                             </div><!-- .layout-medium -->
                         </div><!-- .menu-wrap -->
                     </nav><!-- #site-navigation .main-navigation .site-navigation -->
@@ -2051,8 +1778,8 @@
                             style="padding: 140px 0 50px; text-align: center; background: #fff; position: relative; z-index: 10;">
                             <div class="layout-medium">
                                 <h1 class="entry-title"
-                                    style="color: #000 !important; text-transform: uppercase; letter-spacing: 5px; font-size: 48px; margin: 0; font-weight: 800; visibility: visible !important; opacity: 1 !important; position: relative;"
-                                    data-i18n="terms_title">Terms and Condition</h1>
+                                    style="display: block !important; color: #000 !important; text-transform: uppercase; letter-spacing: 5px; font-size: 48px; margin: 0; font-weight: 800; visibility: visible !important; opacity: 1 !important; position: relative; z-index: 20;"
+                                    data-i18n="terms_title">Terms and Conditions</h1>
                                 <div style="width: 80px; height: 4px; background: #000; margin: 25px auto 0;"></div>
                             </div>
                         </header>
@@ -2136,7 +1863,7 @@
             (function () {
                 const termsTranslations = {
                     'EN': {
-                        'terms_title': 'Terms and Condition',
+                        'terms_title': 'Terms and Conditions',
                         'terms_text': '<p style="font-size: 1.1em; margin-bottom: 25px;">Welcome to Viseo Architecture Ltd. By accessing this website, you agree to comply with and be bound by the following terms and conditions.</p><p>This page is currently being updated with our full terms and conditions. Please check back soon or contact us directly if you have any urgent questions regarding our terms of service.</p>',
                         'footer_rights': '© 2025 Visio. All Rights Reserved.'
                     },
@@ -2159,7 +1886,7 @@
                 window.addEventListener('languageChanged', (e) => updateTermsContent(e.detail.language));
 
                 document.addEventListener('DOMContentLoaded', () => {
-                    const savedLang = localStorage.getItem('currentLanguage') || 'EN';
+                    const savedLang = (localStorage.getItem('currentLanguage') || 'EN').toUpperCase();
                     updateTermsContent(savedLang);
 
                     // ULTRA ROBUST FOOTER FIX
@@ -2206,7 +1933,7 @@
         <script src="../js/config.js"></script>
         <script src="../js/content-loader.js"></script>
         <script src="../js/language.js"></script>
-        <script src="../js/aboutus-translation.js"></script>
+
         <footer class="site-footer" id="colophon" role="contentinfo">
             <div class="site-info">
                 <p><span data-i18n="footer_rights">© 2025 Visio. All Rights Reserved.</span><a href="../terms/"
@@ -2220,6 +1947,157 @@
     </div>
     </div>
     </div>
+    <!-- FINAL HEADER CSS OVERRIDES -->
+    <style>
+        /* --- FINAL HEADER FIXES (Priority Override) --- */
+
+        /* 1. Header Background & Basic Text */
+        .site-header .header-wrap,
+        .site-header.clone .header-wrap,
+        .site-header .header-wrap-inner,
+        .site-header.clone .header-wrap-inner,
+        .site-header .header-wrap:before,
+        .site-header.clone .header-wrap:before {
+            background: #000000 !important;
+            opacity: 1 !important;
+        }
+
+        .site-header .nav-menu a,
+        .site-header.clone .nav-menu a {
+            color: #ffffff !important;
+        }
+
+        /* 2. HOVER & ACTIVE STATES - WHITE NO UNDERLINE (SOPHISTICATED) */
+
+        /* Smooth Transition */
+        html body .site-header .nav-menu a,
+        html body .site-header.clone .nav-menu a {
+            transition: opacity 0.3s ease !important;
+        }
+
+        html body .site-header .nav-menu ul li a:hover,
+        html body .site-header.clone .nav-menu ul li a:hover,
+        #site-navigation ul li a:hover,
+        .nav-menu a:hover {
+            color: #ffffff !important;
+            text-decoration: none !important;
+            opacity: 0.7 !important;
+        }
+
+        html body .site-header .nav-menu .current-menu-item a,
+        html body .site-header.clone .nav-menu .current-menu-item a,
+        #site-navigation .current-menu-item a {
+            color: #ffffff !important;
+            text-decoration: none !important;
+            font-weight: 700 !important;
+            opacity: 1 !important;
+        }
+
+        html body .site-header .nav-menu .current-menu-item a:hover,
+        html body .site-header.clone .nav-menu .current-menu-item a:hover,
+        #site-navigation .current-menu-item a:hover {
+            color: #ffffff !important;
+            text-decoration: none !important;
+            opacity: 0.8 !important;
+        }
+
+        /* 3. LOGO Styling */
+        .site-header .logo-image,
+        .site-header.clone .logo-image {
+            filter: brightness(0) invert(1) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        /* 4. LAYOUT - Desktop Specifics */
+        @media screen and (min-width: 992px) {
+
+            /* Logo Left, Menu Right */
+            .site-header .layout-medium,
+            .site-header.clone .layout-medium {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+
+            .nav-menu {
+                flex: 1 !important;
+                display: flex !important;
+                justify-content: center !important;
+            }
+
+            /* GAP & SPACING FIX */
+            .nav-menu>ul {
+                display: flex !important;
+                gap: 30px !important;
+                align-items: center !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                list-style: none !important;
+            }
+
+            .nav-menu li {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* Language Switcher Visibility */
+            .menu-item-language {
+                display: inline-flex !important;
+            }
+
+            .menu-item-language a {
+                color: #ffffff !important;
+            }
+        }
+
+        /* 5. MOBILE OVERLAY FIXES */
+        @media screen and (max-width: 991px) {
+
+            /* Fullscreen Black Overlay */
+            .is-menu-toggled-on .nav-menu {
+                position: fixed !important;
+                top: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                height: 100vh !important;
+                background: #000000 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                justify-content: center !important;
+                padding-top: 60px !important;
+                z-index: 9999 !important;
+                /* Increased z-index */
+            }
+
+            /* Ensure links stay white on mobile */
+            .site-header .nav-menu a,
+            .site-header .nav-menu a:hover,
+            .site-header .nav-menu .current-menu-item a,
+            .site-header .nav-menu .current-menu-item a:hover {
+                color: #ffffff !important;
+                text-decoration: none !important;
+            }
+
+            /* Hamburger Icon White */
+            .site-header .menu-toggle .lines,
+            .site-header .menu-toggle .lines:before,
+            .site-header .menu-toggle .lines:after {
+                background-color: #ffffff !important;
+            }
+        }
+
+        /* 6. CONTENT VISIBILITY SAFEGUARD */
+        .entry-header .layout-medium {
+            display: block !important;
+            width: 100% !important;
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+    </style>
 </body>
 
 </html>
